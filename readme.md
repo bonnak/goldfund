@@ -1,4 +1,5 @@
 ### Development Setup
 
 ``` bash
-composer install
+> composer install
+```
