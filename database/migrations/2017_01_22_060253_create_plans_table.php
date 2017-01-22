@@ -16,10 +16,10 @@ class CreatePlansTable extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $this->text('description')->nullable();
-            $this->decimal('price');
-            $this->string('created_by');
-            $this->string('updated_by');
+            $table->text('description')->nullable();
+            $table->decimal('price');
+            $table->string('created_by');
+            $table->string('updated_by');
             $table->timestamps();
         });
     }
