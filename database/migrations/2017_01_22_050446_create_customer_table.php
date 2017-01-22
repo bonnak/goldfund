@@ -18,6 +18,11 @@ class CreateCustomerTable extends Migration
             $table->increments('id');
             $table->string('surname');
             $table->string('name');
+            $table->char('gender', 1);
+            $table->date('date_of_birth');
+            $table->string('ssid');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
