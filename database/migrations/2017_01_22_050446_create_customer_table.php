@@ -22,7 +22,8 @@ class CreateCustomerTable extends Migration
             $table->char('gender', 1);
             $table->date('date_of_birth');
             $table->string('ssid')->nullable();
-            $this->string('block_chain_code');
+            $table->string('block_chain_code');
+            $table->integer('sponsor_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });
