@@ -127,6 +127,14 @@ body.md-theme-app{
 		.main-sidebar-links{
 			flex: 1;
 			overflow: auto;
+
+			.md-list-expand{
+				.md-list-item{
+					.md-button{
+						padding-left: 84px;
+					}
+				}
+			}
 		}
 
 		.top-of-side-bar{
@@ -143,7 +151,7 @@ body.md-theme-app{
 		}
 
 		.md-list-expand .md-list.md-theme-app{
-			background-color: red;
+			background-color: rgba(153,153,153,0.05);
 		}
 	}
 
