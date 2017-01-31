@@ -1743,10 +1743,6 @@
             </div>
         </div> <!-- / END CONTAINER -->
     </footer> <!-- / END FOOOTER  -->
-        <div id="app" class="content">
-            <example></example>
-        </div>
-
         <!-- SCRIPTS -->
         <script src="/js-template/bootstrap.min.js"></script>
         <script src="/js-template/wow.min.js"></script>
