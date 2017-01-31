@@ -1,6 +1,4 @@
-//require('./bootstrap');
-
-import Vue from 'vue'
+require('./bootstrap');
 
 Vue.component('passport-clients', require('./components/passport/Clients.vue'));
 Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
