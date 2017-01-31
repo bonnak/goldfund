@@ -2,7 +2,7 @@
 	<div id="app">
 		<md-sidenav class="md-fixed main-sidebar" ref="leftSidenav">
       <div class="top-of-side-bar">
-        <md-image :md-src="require('../assets/logo.png')" style="height:100px"></md-image>        
+        <md-image :md-src="require('../assets/logo.png')" style="height:100px"></md-image> 
       </div>
       <div class="main-sidebar-links">
 	      <md-list>
