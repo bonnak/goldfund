@@ -7,7 +7,7 @@
         <title>Laravel</title>
 
         <!-- =========================
-         FAV AND TOUCH ICONS
+         FAV AND TOUCH ICONSbackgrounds/bg3.jpg
         ============================== -->
         <link rel="shortcut icon" href="images/icons/favicon.ico">
         <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
@@ -33,7 +33,7 @@
 
         <script src="/js-template/jquery.min.js"></script>
     </head>
-    <body>
+    <body id="app">
     <header id="home" class="header">
 
         <!-- TOP BAR -->
