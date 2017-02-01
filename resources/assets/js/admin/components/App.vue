@@ -83,6 +83,10 @@
 
 <script>
 export default {
+	mounted(){
+		this.toggleLeftSidenav();
+	},
+	
   methods: {
     toggleLeftSidenav() {
       this.$refs.leftSidenav.toggle();

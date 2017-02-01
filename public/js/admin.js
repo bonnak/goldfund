@@ -19296,6 +19296,11 @@ Vue.material.setCurrentTheme('app');
 //
 
 /* harmony default export */ __webpack_exports__["default"] = {
+  mounted: function mounted() {
+    this.toggleLeftSidenav();
+  },
+
+
   methods: {
     toggleLeftSidenav: function toggleLeftSidenav() {
       this.$refs.leftSidenav.toggle();
