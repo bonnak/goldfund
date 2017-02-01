@@ -18,8 +18,21 @@ require('bootstrap-sass');
 
 window.Vue = require('vue');
 
+/**
+ * Router
+ */
+window.VueRouter = require('vue-router')
 
-Vue.prototype.$http = require('axios')
+/**
+ * State management
+ */
+window.Vuex = require('vuex')
+
+/**  
+ * Ajax api call
+ */
+window.Axios = require('axios')
+Vue.prototype.$http = Axios
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
