@@ -20188,11 +20188,7 @@ Vue.prototype.$http = Axios;
  * included with Laravel will automatically verify the header's value.
  */
 
-// Vue.http.interceptors.push((request, next) => {
-//     request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-
-//     next();
-// });
+Axios.defaults.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -40206,7 +40202,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "dropdown-menu"
   }, [_c('li', [_c('a', {
     attrs: {
-      "href": "#"
+      "href": "/admin/logout"
     }
   }, [_vm._v("Logout")])])])])], 1)]), _vm._v(" "), _c('div', {
     staticClass: "main-content"

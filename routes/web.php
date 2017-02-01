@@ -17,4 +17,12 @@ Route::prefix('admin')->group(function(){
 		return view('admin.index');
 	});
 
+	Route::get('login', 'Admin\Auth\LoginController@loginForm');
+	Route::post('login', 'Admin\Auth\LoginController@login');
+	Route::get('logout', 'Admin\Auth\LoginController@logout');
+
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

@@ -68,7 +68,7 @@
 							<span class="user-name">administrator</span>
 						</a>
 	          <ul class="dropdown-menu">
-					    <li><a href="#">Logout</a></li>
+					    <li><a href="/admin/logout">Logout</a></li>
 					  </ul>
 					 </div>
 			  </div>
