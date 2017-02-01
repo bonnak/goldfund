@@ -75,7 +75,7 @@
 			</md-toolbar>
 		  
 		  <div class="main-content">
-		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, rerum? Error sunt, aperiam dolores, atque expedita molestiae tenetur. Quis eveniet accusamus velit explicabo adipisci reiciendis modi eaque quas, officia excepturi.</p>
+		    <router-view></router-view>
 		  </div>
 	  </div>
 	</div>
@@ -83,6 +83,10 @@
 
 <script>
 export default {
+	created(){
+		this.$http.get('api/admin/user');
+	},
+
 	mounted(){
 		this.toggleLeftSidenav();
 	},
