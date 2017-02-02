@@ -10,10 +10,13 @@ class LoginController extends Controller
 {
   use AuthenticatesAdminUsers;
 
+  public function __construct()
+  {
+      $this->middleware('admin.guest', ['except' => 'logout']);
+  }
+
   public function loginForm()
   {
-  	if(auth()->check()) return redirect()->back();
-
   	return view('admin.login');
   }
 }

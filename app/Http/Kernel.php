@@ -55,5 +55,9 @@ class Kernel extends HttpKernel
         'scopes' => \Laravel\Passport\Http\Middleware\CheckScopes::class,
         'scope' => \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+
+        'admin.auth' => \App\Http\Middleware\AuthenticateAdmin::class,
+        'admin.guest' => \App\Http\Middleware\RedirectIfAdminAuthenticated::class,
     ];
 }
