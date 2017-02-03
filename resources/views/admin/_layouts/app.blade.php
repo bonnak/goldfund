@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="/css/admin.css">
 </head>
-<body>
+<body {{ Auth::guest() ? 'class=login' : ''}}>
 	@if (Auth::guest())
     @yield('login-section')
   @else

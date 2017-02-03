@@ -24,4 +24,17 @@ trait AuthenticatesAdminUsers
 
     return redirect($this->redirectTo . '/login');
   }
+
+  protected function sendFailedLoginResponse(Request $request)
+  {
+    $errors = [$this->username() => 'Username or password is invalid.'];
+
+    if ($request->expectsJson()) {
+        return response()->json($errors, 422);
+    }
+
+    return redirect()->back()
+        ->withInput($request->only($this->username(), 'remember'))
+        ->withErrors($errors);
+  }
 } 
