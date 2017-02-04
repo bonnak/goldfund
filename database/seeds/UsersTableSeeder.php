@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
     	User::truncate();
 
     	factory(User::class)->create(['username' => 'admin', 'type' => 'admin']);
-    	factory(User::class, 10)->create();
+        factory(User::class, 20)->create(['type' => 'admin']);
+    	factory(User::class, 10)->create(['type' => 'cust']);
     }
 }

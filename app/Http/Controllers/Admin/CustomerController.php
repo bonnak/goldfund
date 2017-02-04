@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Customer;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
-	public function users()
-	{
-		 return User::where('type', 'admin')
+  public function customer()
+  {
+  	return Customer::where('type', 'admin')
 		 							->paginate(request()->input('size'));
-	}
+  }
 }

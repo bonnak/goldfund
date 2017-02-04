@@ -13,6 +13,8 @@ const admin_app = new Vue({
     render: h => h(require('./components/App.vue'))
 });
 
+Vue.material.inkRipple = false;
+
 Vue.material.registerTheme('app', {
     primary: 'cyan',
     accent: 'black'

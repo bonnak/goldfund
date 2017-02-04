@@ -20,12 +20,11 @@
 		  </md-table-body>
 		</md-table>
 		<md-table-pagination
-	    md-size="5"
-	    md-total="10"
-	    md-page="1"
-	    md-label="Rows"
-	    md-separator="of"
+	    :md-size="pagination.per_page"
+	    :md-total="pagination.total"
+	    :md-page="pagination.current_page"
 	    :md-page-options="[5, 10, 25, 50]"
+	    md-label="Per page"
 	    @pagination="onPagination">
 	  </md-table-pagination>
   </md-table-card>
@@ -37,21 +36,50 @@ import Api from '../../api/RestApi'
 export default{
 	data(){
 		return{
-			users: []
+			users: [],
+			pagination: {
+				data : [],
+				current_page : 1,
+				from : 1, 
+				last_page : 1,
+				per_page : 1,
+				to : 1,
+				total : 0,				
+				next_page_url : null,
+				prev_page_url : null,
+			}
 		}
 	},
 
 	created(){
-		Api.get('users').then((response) => {
-			var data = response.data.data;
+		this.loadData({ size : 5, page: 1});
+	},
 
-			data.forEach(el => {
-				this.users.push(el);
-			});
-		});
+	mounted(){
 	},
 
 	methods:{
+		loadData(pagination){
+			Api.get('users', pagination).then((response) => {	
+				this.pagination.current_page = parseInt(response.data.current_page);
+				this.pagination.from = parseInt(response.data.from);
+				this.pagination.last_page = parseInt(response.data.last_page);
+				this.pagination.per_page = parseInt(response.data.per_page);
+				this.pagination.to = parseInt(response.data.to);
+				this.pagination.total = parseInt(response.data.total);
+				this.pagination.next_page_url = response.data.next_page_url;
+				this.pagination.prev_page_url = response.data.prev_page_url;
+
+				var data = response.data.data;
+
+				this.users.splice(0);
+
+				data.forEach(el => {
+					this.users.push(el);
+				});
+			});
+		},
+
 		onSelect(data){
 		 	console.log(data);
 		},
@@ -61,7 +89,7 @@ export default{
 		},
 
 		onPagination(pagination){
-			console.log(pagination);
+			this.loadData(pagination);
 		}
 	}
 }

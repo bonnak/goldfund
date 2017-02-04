@@ -2,7 +2,7 @@ const root = 'api/admin/';
 
 export default{
 	get(uri, options = null){
-		return Axios.get(root + uri);
+		return Axios.get(root + uri, { params: options });
 	},
 
 	post(uri, data = null, options = null){
@@ -14,7 +14,7 @@ export default{
 	},
 
 	delete(uri, options = null){
-		return Axios.delete(root + uri);
+		return Axios.delete(root + uri, { params: options });
 	}
 }
 

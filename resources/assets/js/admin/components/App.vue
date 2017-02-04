@@ -6,9 +6,9 @@
       </div>
       <div class="main-sidebar-links">
 	      <md-list>
-	  			<md-list-item>
-			      <md-icon>move_to_inbox</md-icon><span>User</span>
-			    </md-list-item>
+  				<router-link :to="{ path: '/user'}" tag="md-list-item">
+						<md-icon><i class="fa fa-user"></i></md-icon><span>User</span>
+  				</router-link>
 
 			    <md-list-item>
 			      <md-icon>send</md-icon> <span>Sent Mail</span>
