@@ -11,6 +11,7 @@ class CustomerRegistrationTest extends TestCase
 {
     public function testExample()
     {
+	    	$this->withoutMiddleware();
         $this->assertTrue(true);
     }
 }

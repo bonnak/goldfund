@@ -25,7 +25,7 @@
 	  <div id="admin-app">
 	  </div>
 
-	  <script src="/js/admin.js"></script>
+	  <script src="js/admin.js"></script>
 	@endif
 </body>
 </html>

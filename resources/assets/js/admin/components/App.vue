@@ -7,7 +7,7 @@
       <div class="main-sidebar-links">
 	      <md-list>
 	  			<md-list-item>
-			      <md-icon>move_to_inbox</md-icon> <span>Inbox</span>
+			      <md-icon>move_to_inbox</md-icon><span>User</span>
 			    </md-list-item>
 
 			    <md-list-item>
@@ -84,7 +84,7 @@
 <script>
 export default {
 	created(){
-		this.$http.get('api/admin/user');
+		
 	},
 
 	mounted(){
@@ -192,6 +192,8 @@ body.md-theme-app{
 }
 
 .top-bar{
+	z-index: 99;
+
 	.user-link{
 		text-decoration: none !important;
 		color: #fff !important;

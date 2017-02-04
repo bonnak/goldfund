@@ -19,3 +19,9 @@ Vue.material.registerTheme('app', {
 });
 
 Vue.material.setCurrentTheme('app');
+
+
+// Vue global filters
+Vue.filter('active', function (value) {
+  return value > 0 ? 'Yes' : 'No';
+})

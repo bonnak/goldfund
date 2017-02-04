@@ -17,6 +17,14 @@
     "vuex": "^2.1.1"
   },
   "dependencies": {
+    "bulma": "^0.2.3",
+    "vue-bulma-brace": "0.0.1",
+    "vue-bulma-card": "^1.0.1",
+    "vue-bulma-chartist": "^1.0.0",
+    "vue-bulma-chartjs": "^1.0.0",
+    "vue-bulma-collapse": "^1.0.3",
+    "vue-bulma-expanding": "0.0.0",
+    "vue-bulma-jump": "0.0.1",
     "vue-material": "^0.6.3"
   }
 }
