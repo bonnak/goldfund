@@ -13,18 +13,9 @@ class CustomersTableSeeder extends Seeder
    */
   public function run()
   {
-  	$faker = Factory::create();
-
     Customer::truncate();
 
-		$values = [];
-		for ($i=0; $i < 100; $i++) {
-		  $values []= $faker->unique($maxRetries = 100)->randomDigitNotNull;
-		}
-		$values = array_unique($values);
-
-		foreach ($values as $val) {
-		  factory(Customer::class)->create([ 'user_id' => $val ]);
-		}
+		factory(Customer::class)->create(['username' => 'admin', 'email' => 'admin@binary.com']);
+  	factory(Customer::class, 10)->create();
 	}
 }
