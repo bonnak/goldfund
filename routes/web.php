@@ -18,7 +18,6 @@ Route::get('/my-account', function(){
 	return view('my-account');
 })->middleware('auth');
 
-
 Route::get('/', function(){
 	return view('home');
 });
