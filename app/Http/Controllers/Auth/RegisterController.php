@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Customer;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/my-account';
 
     /**
      * Create a new controller instance.
@@ -48,9 +49,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|max:255|unique:customers',
+            'email' => 'required|email|max:255|unique:customers',
             'password' => 'required|min:6|confirmed',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'bitcoin_account' => 'required',
+            'date_of_birth' => 'required',
         ]);
     }
 
@@ -62,10 +67,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return Customer::create([
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'first_name' => $data['first_name'],
+            'is_active' => true,
+            'last_name' => $data['last_name'],
+            'gender' => $data['gender'],
+            'date_of_birth' => Carbon::createFromFormat('Y-m-d', $data['date_of_birth'])->toDateTimeString(),
+            'sponsor_id' => $data['sponsor_id'],
+            'bitcoin_account' => $data['bitcoin_account'],
+            'direction' => $data['direction'],
         ]);
     }
 }

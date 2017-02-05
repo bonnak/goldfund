@@ -24,8 +24,10 @@ class CreateCustomerTable extends Migration
             $table->char('gender', 1);
             $table->date('date_of_birth');            
             $table->boolean('is_active');
-            $table->string('block_chain_code')->nullable();
-            $table->integer('sponsor_id')->unsigned()->nullable();
+            $table->string('bitcoin_account')->unique();
+            $table->integer('sponsor_id')->unsigned();
+            $table->integer('placement_id')->unsigned()->nullable();
+            $table->char('direction', 1);
             $table->rememberToken();
             $table->timestamps();
         });
