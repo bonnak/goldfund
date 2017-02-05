@@ -51,16 +51,14 @@
                 </div>
                 <nav class="navbar-collapse collapse" role="navigation" id="bs-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
-                        <li><a href="v1.3.1.html#home">Home</a></li>
-                        <li><a href="v1.3.1.html#focus">Focus</a></li>
-                        <li><a href="v1.3.1.html#works">Works</a></li>
-                        <li><a href="v1.3.1.html#aboutus">About Us</a></li>
-                        <li><a href="v1.3.1.html#team">Team</a></li>
-                        <li><a href="v1.3.1.html#pricingtable">Pricing</a></li>
-                        <li><a href="v1.3.1.html#features">Features</a></li>
-                        <li><a href="v1.3.1.html#products">Products</a></li>
-                        <li><a href="v1.3.1.html#testimonials">Testimonials</a></li>
-                        <li><a href="v1.3.1.html#contact">Contact</a></li>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/register">Register</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/term">Term</a></li>
+                        <li><a href="/news">News</a></li>
+                        <li><a href="/support">Support</a></li>
+                        <li><a href="/about-us">About Us</a></li>
+                        <li><a href="/contact-us">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -117,13 +115,13 @@
     </footer> <!-- / END FOOOTER  -->
     <!-- SCRIPTS -->
     <script src="/js-template/bootstrap.min.js"></script>
-    <script src="/js-template/wow.min.js"></script>
-    <script src="/js-template/jquery.nav.js"></script>
-    <script src="/js-template/jquery.knob.js"></script>
-    <script src="/js-template/owl.carousel.min.js"></script>
-    <script src="/js-template/smoothscroll.js"></script>
-    <script src="/js-template/jquery.vegas.min.js"></script>
-    <script src="/js-template/zerif.js"></script>
+    {{--<script src="/js-template/wow.min.js"></script>--}}
+    {{--<script src="/js-template/jquery.nav.js"></script>--}}
+    {{--<script src="/js-template/jquery.knob.js"></script>--}}
+    {{--<script src="/js-template/owl.carousel.min.js"></script>--}}
+    {{--<script src="/js-template/smoothscroll.js"></script>--}}
+    {{--<script src="/js-template/jquery.vegas.min.js"></script>--}}
+    {{--<script src="/js-template/zerif.js"></script>--}}
 
     <script src="/js/app.js"></script>
 </body>

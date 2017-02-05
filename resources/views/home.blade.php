@@ -2,36 +2,6 @@
 
 @section('content')
 
-        <!-- HEADING -->
-<h1 class="intro">Affordable Quality services for Small Businesses</h1>
-
-<!-- CALL TO ACTION BUTTONS -->
-<div class="buttons inpage-scroll">
-    <a href="v1.3.1.html#works" class="btn btn-primary custom-button red-btn">Sign In</a>
-    <a href="v1.3.1.html#pricingtable" class="btn btn-primary custom-button green-btn">Sign Out</a>
-</div>
-
-<!-- 3 SHORT MESSAGE ABOUT COMPANY -->
-<div class="row bottom-message-section">
-    <div class="col-lg-4 col-sm-4">
-        <div class="short-text">
-            <i class="icon icon-fontawesome-webfont-358"></i> Fixed price for packages
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-4">
-        <div class="short-text">
-            <i class="icon-fontawesome-webfont-286"></i> Quality product in time
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-4">
-        <div class="short-text">
-            <i class="icon-fontawesome-webfont-347"></i> Satisfaction guranteed
-        </div>
-    </div>
-</div>    <!-- =========================
-       FOCUS SECTION
-    ============================== -->
-
 <section class="focus" id="focus">
     <div class="container">
 
