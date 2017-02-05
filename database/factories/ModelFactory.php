@@ -27,12 +27,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Customer::class, function (Faker\Generator $faker) {
 
     return [
-      'user_id' => 1, 
-      'surname' => $faker->lastName, 
-      'given_name' => $faker->firstName, 
-      'gender' => $faker->randomElement(['M', 'F']), 
-  		'date_of_birth' => $faker->dateTime, 
-  		'ssid' => null, 
+        'username' => $faker->username,
+        'email' => $faker->unique()->safeEmail,
+        'password' => bcrypt('secret'),
+        'is_active' => true,
+        'remember_token' => str_random(10),
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'gender' => $faker->randomElement(['M', 'F']),
+  		'date_of_birth' => $faker->dateTime,
   		'block_chain_code' => null, 
   		'sponsor_id' => null,
     ];

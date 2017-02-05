@@ -16,14 +16,17 @@ class CreateCustomerTable extends Migration
         Schema::create('customers', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->unique();
-            $table->string('surname');
-            $table->string('given_name');
+            $table->string('username')->unique();
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('is_active');
             $table->char('gender', 1);
             $table->date('date_of_birth');
-            $table->string('ssid')->nullable();
             $table->string('block_chain_code')->nullable();
             $table->integer('sponsor_id')->unsigned()->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
