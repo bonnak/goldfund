@@ -17,5 +17,4 @@ class CustomersTableSeeder extends Seeder
 
 		factory(Customer::class)->create(['username' => 'admin', 'email' => 'admin@binary.com']);
   	factory(Customer::class, 10)->create();
-	}
 }

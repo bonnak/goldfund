@@ -328,20 +328,22 @@ h6 {
 	border-radius: 4px;
 	background: rgba(255,255,255, 0.95);
 }
- textarea:hover, 
-input:hover, 
-textarea:active, 
-input:active, 
-textarea:focus, 
+ textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
 input:focus {
-    outline: 1 !important;
-    outline-color: #e96656 !important;
-    -webkit-appearance:none;
-        border:none !important;
+    /*outline: 1 !important;*/
+    /*outline-color: #e96656 !important;*/
+    /*-webkit-appearance:none;*/
+        /*border:none !important;*/
   -webkit-box-shadow:none !important;
           box-shadow:none !important;
         }
-
+.form-control{
+	border-radius: 0px;
+}
 /*---------------------------------------
  **   SECTION HEADERS                -----
 -----------------------------------------*/
@@ -400,8 +402,8 @@ input:focus {
 -----------------------------------------*/
 
 .header {
-	background: rgba(0, 0, 0, 0.5);
-	min-height: 775px;
+	/*background: rgba(0, 0, 0, 0.5);*/
+	/*min-height: 775px;*/
 	position: relative;
 	overflow: hidden;
 }
