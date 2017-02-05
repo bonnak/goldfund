@@ -13,6 +13,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $userSession = auth()->user();
+        return view('home', compact('userSession'));
+        //return view('home');
     }
 }

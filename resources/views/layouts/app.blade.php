@@ -17,10 +17,10 @@
          STYLESHEETS Template
     ============================== -->
     <link rel="stylesheet" href="/css-template/bootstrap.min.css">
-    <link rel="stylesheet" href="/css-template/owl.theme.css">
-    <link rel="stylesheet" href="/css-template/owl.carousel.css">
-    <link rel="stylesheet" href="/css-template/jquery.vegas.min.css">
-    <link rel="stylesheet" href="/css-template/animate.min.css">
+    {{--<link rel="stylesheet" href="/css-template/owl.theme.css">--}}
+    {{--<link rel="stylesheet" href="/css-template/owl.carousel.css">--}}
+    {{--<link rel="stylesheet" href="/css-template/jquery.vegas.min.css">--}}
+    {{--<link rel="stylesheet" href="/css-template/animate.min.css">--}}
 
     <link rel="stylesheet" href="/assets/icon-fonts/styles.css">
     <link rel="stylesheet" href="/css-template/pixeden-icons.css">
@@ -52,7 +52,9 @@
                 <nav class="navbar-collapse collapse" role="navigation" id="bs-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
                         <li><a href="/home">Home</a></li>
-                        <li><a href="/register">Register</a></li>
+                        @if(!auth()->check())
+                            <li><a href="/register">Register</a></li>
+                        @endif
                         <li><a href="/faq">FAQ</a></li>
                         <li><a href="/term">Term</a></li>
                         <li><a href="/news">News</a></li>
@@ -60,6 +62,9 @@
                         <li><a href="/about-us">About Us</a></li>
                         <li><a href="/contact-us">Contact</a></li>
                         <li><a href="/my-account">My Account</a></li>
+                        @if(auth()->check())
+                            <li><a href="/logout">Logout</a></li>
+                        @endif
                     </ul>
                 </nav>
             </div>
