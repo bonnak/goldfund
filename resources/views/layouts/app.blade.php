@@ -4,84 +4,127 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Laravel</title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- =========================
+     FAV AND TOUCH ICONSbackgrounds/bg3.jpg
+    ============================== -->
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://demo.templateocean.com/wrapbootstrap/zerif-html/v1.3.1/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png">
+    <!-- =========================
+         STYLESHEETS Template
+    ============================== -->
+    <link rel="stylesheet" href="/css-template/bootstrap.min.css">
+    <link rel="stylesheet" href="/css-template/owl.theme.css">
+    <link rel="stylesheet" href="/css-template/owl.carousel.css">
+    <link rel="stylesheet" href="/css-template/jquery.vegas.min.css">
+    <link rel="stylesheet" href="/css-template/animate.min.css">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="/assets/icon-fonts/styles.css">
+    <link rel="stylesheet" href="/css-template/pixeden-icons.css">
 
-    <!-- Styles -->
-    <link href="/css/admin.css" rel="stylesheet">
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="/css-template/styles.css">
+    <link rel="stylesheet" href="/css-template/responsive.css">
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400|Homemade+Apple' rel='stylesheet' type='text/css'>
 
-    <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
+    <script src="/js-template/jquery.min.js"></script>
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+<body id="app">
+    <header id="home" class="header">
+        <!-- TOP BAR -->
+        <div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
             <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
+                <div class="navbar-header responsive-logo">
+                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                    <div class="navbar-brand">
+                        <img src="images/logo.png" alt="Zerif">
+                    </div>
                 </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+                <nav class="navbar-collapse collapse" role="navigation" id="bs-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
+                        <li><a href="v1.3.1.html#home">Home</a></li>
+                        <li><a href="v1.3.1.html#focus">Focus</a></li>
+                        <li><a href="v1.3.1.html#works">Works</a></li>
+                        <li><a href="v1.3.1.html#aboutus">About Us</a></li>
+                        <li><a href="v1.3.1.html#team">Team</a></li>
+                        <li><a href="v1.3.1.html#pricingtable">Pricing</a></li>
+                        <li><a href="v1.3.1.html#features">Features</a></li>
+                        <li><a href="v1.3.1.html#products">Products</a></li>
+                        <li><a href="v1.3.1.html#testimonials">Testimonials</a></li>
+                        <li><a href="v1.3.1.html#contact">Contact</a></li>
                     </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
+                </nav>
             </div>
-        </nav>
+        </div>
+        <!-- / END TOP BAR -->
+        <!-- / END HOME SECTION  -->
+        <!-- BIG HEADING WITH CALL TO ACTION BUTTONS AND SHORT MESSAGES -->
+        <div class="">
+            @yield('content')
+        </div>
+    </header>
+    <!-- =========================
+       FOOTER
+    ============================== -->
+    <footer>
+        <div class="container">
 
-        @yield('content')
-    </div>
+            <!-- COMPANY ADDRESS-->
+            <div class="col-md-5 company-details">
+                <div class="icon-top red-text">
+                    <i class="icon-fontawesome-webfont-302"></i>
+                </div>
+                PO Box 16122 Collins Street West, Victoria 8007 Australia
+            </div>
 
-    <!-- Scripts -->
-    <script src="/js/admin.js"></script>
+            <!-- COMPANY EMAIL-->
+            <div class="col-md-2 company-details">
+                <div class="icon-top green-text">
+                    <i class="icon-fontawesome-webfont-329"></i>
+                </div>
+                contact@designlab.co
+            </div>
+
+            <!-- COMPANY PHONE NUMBER -->
+            <div class="col-md-2 company-details">
+                <div class="icon-top blue-text">
+                    <i class="icon-fontawesome-webfont-101"></i>
+                </div>
+                +613 0000 0000
+            </div>
+
+            <!-- SOCIAL ICON AND COPYRIGHT -->
+            <div class="col-lg-3 col-sm-3 copyright">
+                <ul class="social">
+                    <li><a href="v1.3.1.html"><i class="icon-facebook"></i></a></li>
+                    <li><a href="v1.3.1.html"><i class="icon-twitter-alt"></i></a></li>
+                    <li><a href="v1.3.1.html"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="v1.3.1.html"><i class="icon-behance"></i></a></li>
+                    <li><a href="v1.3.1.html"><i class="icon-dribbble"></i></a></li>
+                </ul>
+                ©2013 Zerif LLC
+            </div>
+        </div> <!-- / END CONTAINER -->
+    </footer> <!-- / END FOOOTER  -->
+    <!-- SCRIPTS -->
+    <script src="/js-template/bootstrap.min.js"></script>
+    <script src="/js-template/wow.min.js"></script>
+    <script src="/js-template/jquery.nav.js"></script>
+    <script src="/js-template/jquery.knob.js"></script>
+    <script src="/js-template/owl.carousel.min.js"></script>
+    <script src="/js-template/smoothscroll.js"></script>
+    <script src="/js-template/jquery.vegas.min.js"></script>
+    <script src="/js-template/zerif.js"></script>
+
+    <script src="/js/app.js"></script>
 </body>
 </html>
