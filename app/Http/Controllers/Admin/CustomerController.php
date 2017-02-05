@@ -8,9 +8,8 @@ use App\Customer;
 
 class CustomerController extends Controller
 {
-  public function customer()
+  public function customers()
   {
-  	return Customer::where('type', 'admin')
-		 							->paginate(request()->input('size'));
+  	return Customer::paginate(request()->input('size'));
   }
 }

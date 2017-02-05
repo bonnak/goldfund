@@ -9,43 +9,21 @@
   				<router-link :to="{ path: '/user'}" tag="md-list-item">
 						<md-icon><i class="fa fa-user"></i></md-icon><span>User</span>
   				</router-link>
-
-			    <md-list-item>
-			      <md-icon>send</md-icon> <span>Sent Mail</span>
-			    </md-list-item>
-
-			    <md-list-item>
-			      <md-icon>delete</md-icon> <span>Trash</span>
-			    </md-list-item>
+		      <router-link :to="{ path: '/customer'}" tag="md-list-item">
+						<md-icon><i class="fa fa-users"></i></md-icon><span>Customer</span>
+  				</router-link>
 
 			    <md-list-item>
 			      <md-icon>whatshot</md-icon>
-			      <span>News</span>
+			      <span>Plans</span>
 
 			      <md-list-expand>
 			        <md-list>
-			          <md-list-item class="md-inset">World</md-list-item>
-			          <md-list-item class="md-inset">Americas</md-list-item>
-			          <md-list-item class="md-inset">Europe</md-list-item>
+			          <md-list-item class="md-inset">Plan 1</md-list-item>
+			          <md-list-item class="md-inset">Plan 2</md-list-item>
+			          <md-list-item class="md-inset">Plan 3</md-list-item>
 			        </md-list>
 			      </md-list-expand>
-			    </md-list-item>
-
-			    <md-list-item>
-			      <md-icon>error</md-icon> <span>Spam</span>
-			      <md-divider class="md-inset"></md-divider>
-			    </md-list-item>
-
-			    <md-list-item>
-			      <md-avatar>
-			        <img src="https://placeimg.com/40/40/people/5" alt="People">
-			      </md-avatar>
-
-			      <span>Abbey Christansen</span>
-
-			      <md-button class="md-icon-button md-list-action">
-			        <md-icon class="md-primary">chat_bubble</md-icon>
-			      </md-button>
 			    </md-list-item>
 			  </md-list>
 			</div>
@@ -180,6 +158,12 @@ body.md-theme-app{
 		.md-list-item .md-icon{
 			color: #fff;
 		}
+	}
+
+	.md-theme-app.md-list .md-list-item-expand .md-list-item-container:hover, 
+	.md-theme-app.md-list .md-list-item-expand .md-list-item-container:focus,
+	.md-button:hover:not([disabled]):not(.md-raised) {
+    background-color: rgba(153,153,153,0.2);
 	}
 }
 

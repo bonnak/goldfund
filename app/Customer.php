@@ -12,4 +12,9 @@ class Customer extends Model
   	'user_id', 'surname', 'given_name', 'gender', 
   	'date_of_birth', 'ssid', 'block_chain_code', 'sponsor_id'
   ];
+
+  public function sponsor()
+  {
+  	 return $this->belongsTo('App\Customer');
+  }
 }
