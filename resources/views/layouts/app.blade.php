@@ -59,6 +59,7 @@
                         <li><a href="/support">Support</a></li>
                         <li><a href="/about-us">About Us</a></li>
                         <li><a href="/contact-us">Contact</a></li>
+                        <li><a href="/my-account">My Account</a></li>
                     </ul>
                 </nav>
             </div>
