@@ -14,9 +14,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 Auth::routes();
 
-Route::get('/my-account', function(){
-	return view('my-account');
-})->middleware('auth');
+Route::get('/my-account',  'UserController@index')->middleware('auth');
 
 Route::get('logout', 'Auth\LoginController@logout')->middleware('auth');
 

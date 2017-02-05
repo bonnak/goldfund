@@ -9,7 +9,7 @@
 
                 <!-- SECTION TITLE -->
                 <h2 class="dark-text">
-                    My Account
+                    Welcome: {{$userSession->username}}
                 </h2>
 
                 <!-- SHORT DESCRIPTION ABOUT THE SECTION -->
