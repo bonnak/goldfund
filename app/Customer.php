@@ -2,7 +2,6 @@
 
 namespace App;
 
-//use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
@@ -12,9 +11,13 @@ class Customer extends Authenticatable
   protected $table = 'customers';
 
   protected $fillable = [ 
-  	'last_name', 'first_name', 'gender', 'username', 'password',
-  	'date_of_birth', 'block_chain_code', 'sponsor_id',
-    'email', 'is_active',
+  	'username', 'email', 'password', 'is_active', 
+  	'first_name', 'last_name', 'gender', 
+  	'date_of_birth', 'block_chain_code', 'sponsor_id'
+  ];
+
+  protected $hidden = [
+    'password', 'remember_token',
   ];
 
   public function sponsor()

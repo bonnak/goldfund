@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'],function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth:admin'],function(){
 	Route::get('/', function(){
 		return view('admin.index');
 	});

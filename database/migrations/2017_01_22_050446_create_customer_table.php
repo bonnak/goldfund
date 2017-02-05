@@ -21,9 +21,9 @@ class CreateCustomerTable extends Migration
             $table->string('password');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('is_active');
             $table->char('gender', 1);
-            $table->date('date_of_birth');
+            $table->date('date_of_birth');            
+            $table->boolean('is_active');
             $table->string('block_chain_code')->nullable();
             $table->integer('sponsor_id')->unsigned()->nullable();
             $table->rememberToken();
