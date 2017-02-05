@@ -17,7 +17,7 @@
             </h6>
         </div>
         <!-- / END SECTION HEADER -->
-
+        {{ $userSession->username }}
         <!-- 4 FOCUS BOXES -->
         <div class="row">
 

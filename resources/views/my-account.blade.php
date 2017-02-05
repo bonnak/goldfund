@@ -4,7 +4,6 @@
 
     <section class="focus" id="focus">
         <div class="container">
-
             <!-- SECTION HEADER -->
             <div class="section-header">
 
