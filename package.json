@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "bulma": "^0.2.3",
+    "laravel-echo": "^1.2.3",
+    "pusher-js": "^4.0.0",
     "vue-bulma-brace": "0.0.1",
     "vue-bulma-card": "^1.0.1",
     "vue-bulma-chartist": "^1.0.0",
