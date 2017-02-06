@@ -15,7 +15,17 @@ class CustomersTableSeeder extends Seeder
   {
     Customer::truncate();
 
-    factory(Customer::class)->create(['username' => 'admin', 'email' => 'admin@binary.com']);
-    factory(Customer::class, 10)->create();
+    factory(Customer::class)->create([
+      'username' => 'admin', 
+      'email' => 'admin@binary.com', 
+      'sponsor_id' => null,
+      'direction' => null
+    ]);
+
+    foreach (range(1, 10) as $i) 
+    {
+      factory(Customer::class)->create(['sponsor_id' => 1, 'placement_id' => $i]);
+    }
+    
   }
 }

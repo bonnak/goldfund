@@ -18,7 +18,7 @@ Route::get('/my-account',  'UserController@index')->middleware('auth');
 
 Route::get('logout', 'Auth\LoginController@logout')->middleware('auth');
 
-Route::get('/', function(){
+Route::get('/', function(){	
 	return view('home');
 });
 

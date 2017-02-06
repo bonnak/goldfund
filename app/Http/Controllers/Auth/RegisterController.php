@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Carbon\Carbon;
+use App\Acme\Binary;
 
 class RegisterController extends Controller
 {
@@ -54,8 +55,10 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
             'first_name' => 'required',
             'last_name' => 'required',
+            'gender' => 'required',
             'bitcoin_account' => 'required',
             'date_of_birth' => 'required',
+            'direction' => 'required',
         ]);
     }
 
@@ -77,6 +80,7 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'date_of_birth' => Carbon::createFromFormat('Y-m-d', $data['date_of_birth'])->toDateTimeString(),
             'sponsor_id' => $data['sponsor_id'],
+            'placement_id' => Binary::lastPlacement($data['direction'], $data['sponsor_id'])->id,
             'bitcoin_account' => $data['bitcoin_account'],
             'direction' => $data['direction'],
         ]);
