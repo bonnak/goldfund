@@ -15,6 +15,7 @@ class CustomersTableSeeder extends Seeder
   {
     Customer::truncate();
 
-		factory(Customer::class)->create(['username' => 'admin', 'email' => 'admin@binary.com']);
-  	factory(Customer::class, 10)->create();
+    factory(Customer::class)->create(['username' => 'admin', 'email' => 'admin@binary.com']);
+    factory(Customer::class, 10)->create();
+  }
 }
