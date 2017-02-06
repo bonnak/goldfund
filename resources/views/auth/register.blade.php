@@ -51,10 +51,10 @@
                                     <div class="col-md-6">
                                         <select id="gender"
                                                 class="form-control"
-                                                name="gender"
-                                                value="{{ old('gender') }}">
-                                            <option value="M" selected>Male</option>
-                                            <option value="F">Female</option>
+                                                name="gender">
+                                            <option value="">Select</option>
+                                            <option value="M" {{ old('gender') == 'M' ? 'selected' : ''}}>Male</option>
+                                            <option value="F" {{ old('gender') == 'F' ? 'selected' : ''}}>Female</option>
                                         </select>
 
                                         @if ($errors->has('gender'))
@@ -87,7 +87,7 @@
 
                                     <div class="col-md-6">
                                         <input id="username" type="text" class="form-control" name="username"
-                                               value="{{ old('username') }}" required autofocus>
+                                               value="{{ old('username') }}">
 
                                         @if ($errors->has('username'))
                                             <span class="help-block">
@@ -101,7 +101,7 @@
                                     <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">
@@ -128,7 +128,7 @@
                                     <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                                     <div class="col-md-6">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                                     </div>
                                 </div>
 
@@ -170,10 +170,10 @@
                                     <div class="col-md-6">
                                         <select id="direction"
                                                 class="form-control"
-                                                name="direction"
-                                                value="{{ old('direction') }}">
-                                            <option value="L" selected>Left</option>
-                                            <option value="R">Right</option>
+                                                name="direction">
+                                            <option value="">Select</option>
+                                            <option value="L" {{ old('direction') == 'L' ? 'selected' : ''}}>Left</option>
+                                            <option value="R" {{ old('direction') == 'R' ? 'selected' : ''}}>Right</option>
                                         </select>
 
                                         @if ($errors->has('direction'))
