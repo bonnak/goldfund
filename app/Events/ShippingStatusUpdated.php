@@ -10,20 +10,22 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class TestEvent implements ShouldBroadcast
+class ShippingStatusUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    //public $data;
+    public $update;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($update)
     {
-        //$this->data = $data;
+        $this->update = $update;
+
+        $this->dontBroadcastToCurrentUser();
     }
 
     /**
@@ -33,8 +35,8 @@ class TestEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        //return ['test-channel'];
+        //return new PrivateChannel('ship-channel');
 
-        return new PrivateChannel('test-channel');
+        return ['ship-channel'];
     }
 }

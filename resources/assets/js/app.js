@@ -14,5 +14,23 @@ const app = new Vue({
 
     components: {
     	Portfolio
+    },
+
+    data: {
+    	message: ''
+    },
+
+    mounted(){
+    	this.message = 'Excellence';
+    	this.listen();
+    },
+
+    methods: {
+    	listen(){
+    		Echo.channel('ship-channel')
+    		.listen('ShippingStatusUpdated', event => {
+    			console.log(event);
+    		});
+    	}
     }
 });

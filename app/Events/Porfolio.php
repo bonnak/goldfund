@@ -10,11 +10,9 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class TestEvent implements ShouldBroadcast
+class Porfolio implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    //public $data;
 
     /**
      * Create a new event instance.
@@ -23,7 +21,7 @@ class TestEvent implements ShouldBroadcast
      */
     public function __construct()
     {
-        //$this->data = $data;
+        //
     }
 
     /**
@@ -33,8 +31,6 @@ class TestEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        //return ['test-channel'];
-
-        return new PrivateChannel('test-channel');
+        return new PrivateChannel('portfolio-channel');
     }
 }

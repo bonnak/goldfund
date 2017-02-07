@@ -53,3 +53,8 @@ Route::get('live', function(){
 });
 
 Route::get('portfolios', 'PortfolioController@index');
+
+Route::get('/event', function () {
+	event(new \App\Events\ShippingStatusUpdated('My broadcasting'));
+    return view('welcome');
+});
