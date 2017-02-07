@@ -24,33 +24,17 @@
                             <p class="text">Members</p>
                         </div>
                         <div class="stat">
-                            <p class="num">691,697 $</p>
+                            <p class="num">{{ $invested_capital }}$</p>
                             <p class="text">Invested</p>
                         </div>
                     </div>
                     <div class="table-stat__right">
                         <div class="table-stat__title">Last Investments</div>
                         <dl>
-                            <dt>#zizzopr****</dt>
-                            <dd><i class="payment icon-adv_cash-type-3"></i> 10$</dd>
-                            <dt>@Mar****</dt>
-                            <dd><i class="payment icon-bitcoin-type-3"></i> 10$</dd>
-                            <dt>#sky****</dt>
-                            <dd><i class="payment icon-payeer-type-3"></i> 55$</dd>
-                            <dt>#thanh****</dt>
-                            <dd><i class="payment icon-bitcoin-type-3"></i> 100$</dd>
-                            <dt>#m****</dt>
-                            <dd><i class="payment icon-adv_cash-type-3"></i> 500$</dd>
-                            <dt>@Mar****</dt>
-                            <dd><i class="payment icon-bitcoin-type-3"></i> 10$</dd>
-                            <dt>#rom****</dt>
-                            <dd><i class="payment icon-payeer-type-3"></i> 15$</dd>
-                            <dt>#K****</dt>
-                            <dd><i class="payment icon-bitcoin-type-3"></i> 50$</dd>
-                            <dt>#Olex****</dt>
-                            <dd><i class="payment icon-adv_cash-type-3"></i> 256$</dd>
-                            <dt>@Anatoli****</dt>
-                            <dd><i class="payment icon-adv_cash-type-3"></i> 10$</dd>
+                            @foreach ($last_deposits as $last_deposit)
+                                <dt>{{ $last_deposit->owner->username }}</dt>
+                                <dd>{{ $last_deposit->amount }}$</dd>
+                            @endforeach
                         </dl>
                     </div>
                 </div>
