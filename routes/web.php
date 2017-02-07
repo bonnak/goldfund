@@ -52,10 +52,4 @@ Route::get('live', function(){
 	return view('live');
 });
 
-Route::get('event', function () {
-
-	$user = Redis::get('user:profile:1');
-		//Redis::connection();
-    Redis::publish('test-channel', json_encode('JohnDoe2'));
-    event(new \App\Events\TestEvent('JohnDoe'));
-});
+Route::get('portfolios', 'PortfolioController@index');

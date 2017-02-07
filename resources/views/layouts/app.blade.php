@@ -46,9 +46,9 @@
             position: relative;
             padding: 30px 40px 130px;
             text-align: center;
-            width: 650px;
+            width: 700px;
             border-radius: 20px 20px 0 0;
-            background: #9627a9;
+            background: #191919;
         }
 
         .table-stat {
@@ -144,6 +144,11 @@
         .table-stat__right dd {
             color: #c6c6c6;
             width: 40%;
+        }
+
+        .table-stat__right .table-stat__title,
+        .table-stat__right dl{
+            text-align: right;
         }
     </style>
 </head>
