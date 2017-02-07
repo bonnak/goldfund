@@ -1,5 +1,7 @@
 require('./bootstrap');
 
+Vue.use(require('vue-moment'));
+
 Vue.component('passport-clients', require('./components/passport/Clients.vue'));
 Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
 Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
@@ -27,10 +29,17 @@ const app = new Vue({
 
     methods: {
     	listen(){
-    		Echo.channel('ship-channel')
-    		.listen('ShippingStatusUpdated', event => {
+    		Echo.channel('user.register')
+    		.listen('NewMemberRegistered', event => {
     			console.log(event);
     		});
     	}
+
+        // listen(){
+        //     Echo.channel('ship-channel')
+        //     .listen('ShippingStatusUpdated', event => {
+        //         console.log(event);
+        //     });
+        // }
     }
 });
