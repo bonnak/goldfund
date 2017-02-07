@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "laravel-echo": "^1.2.3",
+    "moment": "^2.17.1",
     "pusher-js": "^4.0.0",
-    "vue-material": "^0.6.3"
+    "vue-material": "^0.6.3",
+    "vue-moment": "^2.0.2"
   }
 }
