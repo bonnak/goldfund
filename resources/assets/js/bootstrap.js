@@ -28,19 +28,21 @@ window.VueRouter = require('vue-router')
  */
 window.Vuex = require('vuex')
 
-/**  
- * Ajax api call
- */
-window.Axios = require('axios')
-Vue.prototype.$http = Axios
 
 /**
- * We'll register a HTTP interceptor to attach the "CSRF" header to each of
- * the outgoing requests issued by this application. The CSRF middleware
- * included with Laravel will automatically verify the header's value.
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-Axios.defaults.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
+window.Axios = require('axios');
+
+window.Axios.defaults.headers.common = {
+    'X-CSRF-TOKEN': window.Laravel.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest'
+};
+
+Vue.prototype.$http = Axios
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -48,13 +50,18 @@ Axios.defaults.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from "laravel-echo"
+import Echo from "laravel-echo"
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'e283fce33a446bb48093',
+    cluster: 'ap1'
+});
 
 
+
+/**
+ * Material design for vuejs
+ */
 
 Vue.use(require('vue-material'))

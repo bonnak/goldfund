@@ -17,9 +17,8 @@ class CreatePlansTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->decimal('price');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->decimal('min_price')->nullable();
+            $table->decimal('max_price')->nullable();
             $table->timestamps();
         });
     }

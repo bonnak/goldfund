@@ -7,6 +7,30 @@ Vue.component('passport-personal-access-tokens', require('./components/passport/
 Vue.component('example', { template : '<h1>Example</h1>' });
 
 
+import Portfolio from './components/Portfolio.vue'
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    components: {
+    	Portfolio
+    },
+
+    data: {
+    	message: ''
+    },
+
+    mounted(){
+    	this.message = 'Excellence';
+    	this.listen();
+    },
+
+    methods: {
+    	listen(){
+    		Echo.channel('ship-channel')
+    		.listen('ShippingStatusUpdated', event => {
+    			console.log(event);
+    		});
+    	}
+    }
 });
