@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 76);
+/******/ 	return __webpack_require__(__webpack_require__.s = 75);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -50248,7 +50248,7 @@ var admin_app = new Vue({
     el: '#admin-app',
     router: router,
     render: function render(h) {
-        return h(__webpack_require__(68));
+        return h(__webpack_require__(67));
     }
 });
 
@@ -50565,7 +50565,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var routes = [{ path: '/user', component: __webpack_require__(70) }, { path: '/customer', component: __webpack_require__(69) }];
+var routes = [{ path: '/user', component: __webpack_require__(69) }, { path: '/customer', component: __webpack_require__(68) }];
 
 /* harmony default export */ __webpack_exports__["a"] = routes;
 
@@ -50585,23 +50585,17 @@ exports.push([module.i, "\nbody.md-theme-app {\n  background-color: #ecf0f5 !imp
 
 /***/ }),
 /* 67 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/logo.png?82b9c7a5a3f405032b1db71a25f67021";
-
-/***/ }),
-/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(75)
+__webpack_require__(74)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(61),
   /* template */
-  __webpack_require__(72),
+  __webpack_require__(71),
   /* scopeId */
   null,
   /* cssModules */
@@ -50628,14 +50622,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(62),
   /* template */
-  __webpack_require__(74),
+  __webpack_require__(73),
   /* scopeId */
   null,
   /* cssModules */
@@ -50662,14 +50656,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(63),
   /* template */
-  __webpack_require__(73),
+  __webpack_require__(72),
   /* scopeId */
   null,
   /* cssModules */
@@ -50696,8 +50690,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 71 */,
-/* 72 */
+/* 70 */,
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -50715,7 +50709,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "height": "100px"
     },
     attrs: {
-      "md-src": __webpack_require__(67)
+      "md-src": "./assets/logo.png"
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "main-sidebar-links"
@@ -50799,7 +50793,7 @@ if (false) {
 }
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -50842,7 +50836,7 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -50881,7 +50875,7 @@ if (false) {
 }
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -50907,7 +50901,7 @@ if(false) {
 }
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(58);
