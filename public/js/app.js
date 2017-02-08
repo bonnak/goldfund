@@ -64942,6 +64942,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     name: 'LivePorfolio',
@@ -65009,7 +65011,7 @@ exports = module.exports = __webpack_require__(4)();
 
 
 // module
-exports.push([module.i, "\n.inner {\n    position: relative;\n    padding: 30px 40px 130px;\n    text-align: center;\n    width: 700px;\n    border-radius: 20px 20px 0 0;\n    background: #191919;\n}\n.table-stat {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    z-index: 1;\n}\n.table-stat__left {\n    width: 33%;\n}\n.table-stat__right {\n    width: 33%;\n}\n.table-stat__title {\n    text-transform: uppercase;\n    font-size: 17px;\n    text-align: center;\n    margin-bottom: 10px;\n}\n.table-stat dl {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    text-align: left;\n    font-size: 11px;\n    font-weight: 400;\n}\n.table-stat dl dt {\n    margin: 0;\n    padding: 0;\n    font-weight: 300;\n    line-height: 20px;\n}\n.table-stat__left dt {\n    width: 40%;\n    color: #c6c6c6;\n}\n.table-stat dl dd {\n    margin: 0;\n    padding: 0;\n    font-weight: 400;\n    line-height: 20px;\n}\n.table-stat__left dd {\n    width: 60%;\n    color: #6dc3f5;\n}\ndl {\n    margin-top: 0;\n    margin-bottom: 20px;\n}\n.table-stat__center {\n    width: 34%;\n    padding-top: 24px;\n}\n.table-stat__center .stat {\n    margin-bottom: 27px;\n}\n.table-stat__center .num {\n    color: #fff;\n    font-size: 21px;\n    margin: 0 0 3px;\n    line-height: 1;\n}\n.table-stat__center .text {\n    color: #6dc3f5;\n    font-weight: 300;\n    margin: 0;\n    font-size: 15px;\n}\n.table-stat__right dt {\n    width: 60%;\n    color: #6dc3f5;\n}\n.table-stat__right dd {\n    color: #c6c6c6;\n    width: 40%;\n}\n.table-stat__right .table-stat__title,\n.table-stat__right dl{\n    text-align: right;\n}\n.live{\n     padding: 10px;\n     border: 1px solid#e96656;\n}\n.align-left{\n     text-align: left;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*.inner {*/\n    /*position: relative;*/\n    /*padding: 30px 40px 130px;*/\n    /*text-align: center;*/\n    /*width: 700px;*/\n    /*border-radius: 20px 20px 0 0;*/\n    /*background: #191919;*/\n/*}*/\n\n/*.table-stat {*/\n    /*display: -webkit-box;*/\n    /*display: flex;*/\n    /*position: relative;*/\n    /*z-index: 1;*/\n/*}*/\n\n/*.table-stat__left {*/\n    /*width: 33%;*/\n/*}*/\n\n/*.table-stat__right {*/\n    /*width: 33%;*/\n/*}*/\n\n/*.table-stat__title {*/\n    /*text-transform: uppercase;*/\n    /*font-size: 17px;*/\n    /*text-align: center;*/\n    /*margin-bottom: 10px;*/\n/*}*/\n\n/*.table-stat dl {*/\n    /*display: -webkit-box;*/\n    /*display: flex;*/\n    /*flex-wrap: wrap;*/\n    /*text-align: left;*/\n    /*font-size: 11px;*/\n    /*font-weight: 400;*/\n/*}*/\n\n/*.table-stat dl dt {*/\n    /*margin: 0;*/\n    /*padding: 0;*/\n    /*font-weight: 300;*/\n    /*line-height: 20px;*/\n/*}*/\n\n/*.table-stat__left dt {*/\n    /*width: 40%;*/\n    /*color: #c6c6c6;*/\n/*}*/\n\n/*.table-stat dl dd {*/\n    /*margin: 0;*/\n    /*padding: 0;*/\n    /*font-weight: 400;*/\n    /*line-height: 20px;*/\n/*}*/\n\n/*.table-stat__left dd {*/\n    /*width: 60%;*/\n    /*color: #6dc3f5;*/\n/*}*/\n\n/*dl {*/\n    /*margin-top: 0;*/\n    /*margin-bottom: 20px;*/\n/*}*/\n\n\n\n/*.table-stat__center {*/\n    /*width: 34%;*/\n    /*padding-top: 24px;*/\n/*}*/\n\n/*.table-stat__center .stat {*/\n    /*margin-bottom: 27px;*/\n/*}*/\n\n/*.table-stat__center .num {*/\n    /*color: #fff;*/\n    /*font-size: 21px;*/\n    /*margin: 0 0 3px;*/\n    /*line-height: 1;*/\n/*}*/\n\n/*.table-stat__center .text {*/\n    /*color: #6dc3f5;*/\n    /*font-weight: 300;*/\n    /*margin: 0;*/\n    /*font-size: 15px;*/\n/*}*/\n\n/*.table-stat__right dt {*/\n    /*width: 60%;*/\n    /*color: #6dc3f5;*/\n/*}*/\n\n/*.table-stat__right dd {*/\n    /*color: #c6c6c6;*/\n    /*width: 40%;*/\n/*}*/\n\n/*.table-stat__right .table-stat__title,*/\n/*.table-stat__right dl{*/\n    /*text-align: right;*/\n/*}*/\n.live{\n     background-color: rgba(0,0,0,0.6);\n     padding-top: 20px;\n     color: #fff;\n     border-radius: 5px;\n}\n.align-left{\n     text-align: left;\n}\n", ""]);
 
 // exports
 
@@ -65302,22 +65304,18 @@ module.exports = Component.exports
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('section', {
     staticClass: "live"
-  }, [_c('div', {
-    staticClass: "container"
-  }, [_c('div', {}, [_c('div', {
+  }, [_c('div', {}, [_c('div', {}, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-4 col-sm-4 col-xs-4"
-  }, [_c('div', {
-    staticClass: "table-stat__title"
-  }, [_vm._v("Last Registrations")]), _vm._v(" "), _c('dl', [_vm._l((_vm.customers), function(customer) {
+    staticClass: "col-md-4"
+  }, [_c('h4', [_vm._v("Last Registrations")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('dl', [_vm._l((_vm.customers), function(customer) {
     return [_c('div', {
-      staticClass: "col-md-6 align-left"
+      staticClass: "col-md-6 col-xs-6 align-left"
     }, [_vm._v("\n                                " + _vm._s(_vm._f("moment")(customer.created_at, 'from')) + "\n                            ")]), _vm._v(" "), _c('div', {
-      staticClass: "col-md-6 align-left"
+      staticClass: "col-md-6 col-xs-6 align-left"
     }, [_vm._v("\n                                " + _vm._s(customer.username) + "\n                            ")])]
   })], 2)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4 col-sm-4 col-xs-4"
+    staticClass: "col-md-4"
   }, [_c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "stat"
   }, [_c('p', {
@@ -65331,14 +65329,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.invested_capital) + "$")]), _vm._v(" "), _c('p', {
     staticClass: "text"
   }, [_vm._v("Invested")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4 col-sm-4 col-xs-4"
-  }, [_c('div', {
-    staticClass: "table-stat__title"
-  }, [_vm._v("Last Investments")]), _vm._v(" "), _c('dl', [_vm._l((_vm.last_deposits), function(last_deposit) {
+    staticClass: "col-md-4"
+  }, [_c('h4', [_vm._v("Last Investments")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('dl', [_vm._l((_vm.last_deposits), function(last_deposit) {
     return [_c('div', {
-      staticClass: "col-md-6 align-left"
+      staticClass: "col-md-6 col-xs-6 align-left"
     }, [_vm._v("\n                                " + _vm._s(last_deposit.owner.username) + "\n                            ")]), _vm._v(" "), _c('div', {
-      staticClass: "col-md-6 align-left"
+      staticClass: "col-md-6 col-xs-6 align-left"
     }, [_vm._v("\n                                " + _vm._s(last_deposit.amount) + "$\n                            ")])]
   })], 2)])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

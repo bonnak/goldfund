@@ -17,10 +17,10 @@
          STYLESHEETS Template
     ============================== -->
     <link rel="stylesheet" href="/css-template/bootstrap.min.css">
-    {{--<link rel="stylesheet" href="/css-template/owl.theme.css">--}}
-    {{--<link rel="stylesheet" href="/css-template/owl.carousel.css">--}}
-    {{--<link rel="stylesheet" href="/css-template/jquery.vegas.min.css">--}}
-    {{--<link rel="stylesheet" href="/css-template/animate.min.css">--}}
+    <link rel="stylesheet" href="/css-template/owl.theme.css">
+    <link rel="stylesheet" href="/css-template/owl.carousel.css">
+    <link rel="stylesheet" href="/css-template/jquery.vegas.min.css">
+    <link rel="stylesheet" href="/css-template/animate.min.css">
 
     <link rel="stylesheet" href="/assets/icon-fonts/styles.css">
     <link rel="stylesheet" href="/css-template/pixeden-icons.css">
@@ -55,7 +55,9 @@
                             <span class="icon-bar"></span>
                         </button>
                         <div class="navbar-brand">
-                            <img src="images/logo.png" alt="Zerif">
+                            <a href="/home">
+                                <img src="images/logo.png" alt="Zerif">
+                            </a>
                         </div>
                     </div>
                     <nav class="navbar-collapse collapse" role="navigation" id="bs-navbar-collapse">
@@ -132,13 +134,13 @@
 
     <!-- SCRIPTS -->
     <script src="/js-template/bootstrap.min.js"></script>
-    {{--<script src="/js-template/wow.min.js"></script>--}}
-    {{--<script src="/js-template/jquery.nav.js"></script>--}}
-    {{--<script src="/js-template/jquery.knob.js"></script>--}}
-    {{--<script src="/js-template/owl.carousel.min.js"></script>--}}
-    {{--<script src="/js-template/smoothscroll.js"></script>--}}
-    {{--<script src="/js-template/jquery.vegas.min.js"></script>--}}
-    {{--<script src="/js-template/zerif.js"></script>--}}
+    <script src="/js-template/wow.min.js"></script>
+    <script src="/js-template/jquery.nav.js"></script>
+    <script src="/js-template/jquery.knob.js"></script>
+    <script src="/js-template/owl.carousel.min.js"></script>
+    <script src="/js-template/smoothscroll.js"></script>
+    <script src="/js-template/jquery.vegas.min.js"></script>
+    <script src="/js-template/zerif.js"></script>
 
     <script src="/js/app.js"></script>
 </body>
