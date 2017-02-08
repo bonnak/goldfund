@@ -166,7 +166,6 @@
 
                                 <div class="form-group{{ $errors->has('direction') ? ' has-error' : '' }}">
                                     <label for="direction" class="col-md-4 control-label">Direction</label>
-
                                     <div class="col-md-6">
                                         <select id="direction"
                                                 class="form-control"
@@ -184,6 +183,18 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group{{ $errors->has('check') ? ' has-error' : '' }}">
+                                    <label for="direction" class="col-md-4 control-label"></label>
+                                    <div class="col-md-6">
+                                        <input type="checkbox" id="check" name="check"/>
+                                        @if ($errors->has('check'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('check') }}</strong>
+                                            </span>
+                                        @endif
+                                        I agree with Terms and conditions
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary">
