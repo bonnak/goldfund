@@ -47,3 +47,14 @@ Route::get('/faq', function(){
 Route::get('/support', function(){
 	return view('support');
 });
+
+Route::get('live', function(){
+	return view('live');
+});
+
+Route::get('portfolios', 'PortfolioController@index');
+
+Route::get('/event', function () {
+	event(new \App\Events\ShippingStatusUpdated('My broadcasting'));
+    return view('welcome');
+});

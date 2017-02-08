@@ -70,7 +70,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Customer::create([
+        $customer = Customer::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -84,5 +84,10 @@ class RegisterController extends Controller
             'bitcoin_account' => $data['bitcoin_account'],
             'direction' => $data['direction'],
         ]);
+
+        // Broadcast a new memerber just register.
+        event(new \App\Events\NewMemberRegistered($customer));
+
+        return $customer;
     }
 }
