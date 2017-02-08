@@ -1,60 +1,63 @@
 @extends('layouts.app')
 
 @section('content')
-
-<section class="focus" id="focus">
-    <div class="container">
-
-        <!-- SECTION HEADER -->
-        <div class="section-header">
-
-            <!-- SECTION TITLE -->
-            <h2 class="dark-text">Our Focus</h2>
-
-            <!-- SHORT DESCRIPTION ABOUT THE SECTION -->
-            <h6>
-                We design &amp; develop qaulity products to help small &amp; medium level business.
-            </h6>
-        </div>
-
-        <portfolio></portfolio>
-        <!-- / END SECTION HEADER -->
-        <!-- 4 FOCUS BOXES -->
-
-        <!-- OTHER FOCUSES -->
-        <div class="other-focuses">
-            <h5><span class="section-footer-title">ALSO WE FOCUS ON</span></h5>
-        </div>
-
-        <!-- OTHER FOCUS LIST -->
-        <div class="other-focus-list wow fadeInUp animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
-            <ul>
-                <li><i class="icon-fontawesome-webfont-8"></i>WEB APPLICATIONS</li>
-                <li><i class="icon-fontawesome-webfont-267"></i>SEARCH ENGINE OPTIMIZATION</li>
-                <li><i class="icon-fontawesome-webfont-75"></i>CLOUD STORAGE</li>
-                <li><i class="icon-fontawesome-webfont-358"></i>Project Management</li>
-                <li><i class="icon-fontawesome-webfont-102"></i>IOS APP</li>
-                <li><i class="icon-fontawesome-webfont-328"></i>ANDROID APP</li>
-                <li><i class="icon-fontawesome-webfont-195"></i>WINDOWS APP</li>
-                <li><i class="icon-fontawesome-webfont-297"></i>UX STRATEGY</li>
-            </ul>
-        </div> <!-- / END OTHER FOCUS LIST -->
-    </div> <!-- / END CONTAINER -->
-</section>  <!-- / END FOCUS SECTION -->
-
+    <header class="header" id="header">
+        <section class="" id="">
+            <div class="container">
+                <div class="col-md-4">
+                    <!-- HEADING -->
+                    <h2 class="intro">WHO WE ARE?</h2>
+                    <div class="content-company">
+                        <p>
+                            Elizion - a new era of passive earnings. Accuracy and efficiency of our work in the cryptoforeign exchange
+                            markets creates prerequisites for expansion of growth of our platform around the world and provides high profit for investors.
+                            We're always one step ahead. We create the future of financial deals already today.
+                        </p>
+                        <br/>
+                        <h4>
+                            <i class="fa fa-lock"></i>
+                            Login Member
+                        </h4>
+                        <form name="resignationForm" novalidate role="form" class="form-horizontal" style="margin-top: -30px;">
+                            <!-- CALL TO ACTION BUTTONS -->
+                            <div class="buttons inpage-scroll">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" name="username" placeholder="Username..."/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="password" class="form-control" name="password" placeholder="Password..."/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <button class="btn btn-primary custom-button green-btn">
+                                            <i class="fa fa-sign-in"></i>
+                                            Sign-in
+                                        </button>
+                                        <button class="btn btn-primary custom-button blue-btn">
+                                            <i class="fa fa-sign-out"></i>
+                                            Sign-out
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <h2 class="intro" style="margin-top: 12%;">STATISTICS</h2>
+                    <portfolio></portfolio>
+                </div>
+            </div>
+        </section>
+    </header>
 <!-- =========================
    SEPARATOR ONE
 ============================== -->
 
-<section class="separator-one">
-    <div class="color-overlay">
-        <h3 class="container text wow fadeInLeft animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
-            We have 100+ happy customers in last few years. You can check what they're saying about us. </h3>
-        <div class="wow fadeInRight animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
-            <a href="v1.3.1.html" class="btn btn-primary custom-button green-btn">TESTIMONIALS</a>
-        </div>
-    </div>
-</section>  <!-- / END SEPARATOR -->
 <!-- =========================
    FEATURES SECTION
 ============================== -->
