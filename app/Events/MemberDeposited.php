@@ -9,21 +9,22 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use App\Deposit;
 
-class TestEvent implements ShouldBroadcast
+class MemberDeposited implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    //public $data;
+    public $deposit;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Deposit $deposit)
     {
-        //$this->data = $data;
+        $this->deposit = $deposit->toArray();
     }
 
     /**
@@ -33,8 +34,6 @@ class TestEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        //return ['test-channel'];
-
-        return new PrivateChannel('test-channel');
+        return ['customer'];
     }
 }

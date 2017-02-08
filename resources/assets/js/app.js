@@ -24,17 +24,10 @@ const app = new Vue({
 
     mounted(){
     	this.message = 'Excellence';
-    	this.listen();
+    	//this.listen();
     },
 
     methods: {
-    	listen(){
-    		Echo.channel('user.register')
-    		.listen('NewMemberRegistered', event => {
-    			console.log(event);
-    		});
-    	}
-
         // listen(){
         //     Echo.channel('ship-channel')
         //     .listen('ShippingStatusUpdated', event => {
