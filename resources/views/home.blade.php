@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Home')
 @section('content')
     <header class="header" id="header">
         <section class="" id="">
@@ -37,10 +37,12 @@
                                             <i class="fa fa-sign-in"></i>
                                             Sign-in
                                         </button>
-                                        <button class="btn btn-primary custom-button blue-btn">
+                                        <a href="{{ url('register') }}"
+                                           class="btn btn-primary custom-button blue-btn"
+                                            style="text-decoration: none;">
                                             <i class="fa fa-sign-out"></i>
                                             Sign-out
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
