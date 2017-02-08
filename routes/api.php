@@ -1,5 +1,8 @@
 <?php
 
+/***
+ * Back-end
+ */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function(){
 
 	Route::get('/users', 'Admin\UserController@users');
@@ -9,4 +12,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function(){
 });
 
 
+/***
+ * Front-end
+ */
 Route::get('/portfolio/live', 'PortfolioController@live');

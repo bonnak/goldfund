@@ -50608,7 +50608,7 @@ var Component = __webpack_require__(3)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\goldfund\\resources\\assets\\js\\components\\passport\\AuthorizedClients.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\passport\\AuthorizedClients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AuthorizedClients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -50646,7 +50646,7 @@ var Component = __webpack_require__(3)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\goldfund\\resources\\assets\\js\\components\\passport\\Clients.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\passport\\Clients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Clients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -50684,7 +50684,7 @@ var Component = __webpack_require__(3)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\goldfund\\resources\\assets\\js\\components\\passport\\PersonalAccessTokens.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\passport\\PersonalAccessTokens.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PersonalAccessTokens.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -64862,24 +64862,17 @@ var app = new Vue({
 
     mounted: function mounted() {
         this.message = 'Excellence';
-        this.listen();
+        //this.listen();
     },
 
 
     methods: {
-        listen: function listen() {
-            Echo.channel('user.register').listen('NewMemberRegistered', function (event) {
-                console.log(event);
-            });
-        }
-
         // listen(){
         //     Echo.channel('ship-channel')
         //     .listen('ShippingStatusUpdated', event => {
         //         console.log(event);
         //     });
         // }
-
     }
 });
 
@@ -64982,7 +64975,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.invested_capital = data.invested_capital;
         });
     },
-    mounted: function mounted() {}
+    mounted: function mounted() {
+        this.listenWhenRegisteredNewMember();
+        this.listenWhenMemberDeposit();
+    },
+
+
+    methods: {
+        listenWhenRegisteredNewMember: function listenWhenRegisteredNewMember() {
+            var _this2 = this;
+
+            Echo.channel('customer').listen('NewMemberRegistered', function (event) {
+                _this2.customers.splice(0, 0, event.data);
+                ++_this2.total_member;
+            });
+        },
+        listenWhenMemberDeposit: function listenWhenMemberDeposit() {
+            var _this3 = this;
+
+            Echo.channel('customer').listen('MemberDeposited', function (event) {
+                _this3.last_deposits.splice(0, 0, event.deposit);
+                _this3.invested_capital = parseInt(_this3.invested_capital) + parseInt(event.deposit.amount);
+            });
+        }
+    }
 };
 
 /***/ }),
@@ -64995,7 +65011,7 @@ exports = module.exports = __webpack_require__(4)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*.inner {*/\n    /*position: relative;*/\n    /*padding: 30px 40px 130px;*/\n    /*text-align: center;*/\n    /*width: 700px;*/\n    /*border-radius: 20px 20px 0 0;*/\n    /*background: #191919;*/\n/*}*/\n\n/*.table-stat {*/\n    /*display: -webkit-box;*/\n    /*display: flex;*/\n    /*position: relative;*/\n    /*z-index: 1;*/\n/*}*/\n\n/*.table-stat__left {*/\n    /*width: 33%;*/\n/*}*/\n\n/*.table-stat__right {*/\n    /*width: 33%;*/\n/*}*/\n\n/*.table-stat__title {*/\n    /*text-transform: uppercase;*/\n    /*font-size: 17px;*/\n    /*text-align: center;*/\n    /*margin-bottom: 10px;*/\n/*}*/\n\n/*.table-stat dl {*/\n    /*display: -webkit-box;*/\n    /*display: flex;*/\n    /*flex-wrap: wrap;*/\n    /*text-align: left;*/\n    /*font-size: 11px;*/\n    /*font-weight: 400;*/\n/*}*/\n\n/*.table-stat dl dt {*/\n    /*margin: 0;*/\n    /*padding: 0;*/\n    /*font-weight: 300;*/\n    /*line-height: 20px;*/\n/*}*/\n\n/*.table-stat__left dt {*/\n    /*width: 40%;*/\n    /*color: #c6c6c6;*/\n/*}*/\n\n/*.table-stat dl dd {*/\n    /*margin: 0;*/\n    /*padding: 0;*/\n    /*font-weight: 400;*/\n    /*line-height: 20px;*/\n/*}*/\n\n/*.table-stat__left dd {*/\n    /*width: 60%;*/\n    /*color: #6dc3f5;*/\n/*}*/\n\n/*dl {*/\n    /*margin-top: 0;*/\n    /*margin-bottom: 20px;*/\n/*}*/\n\n\n\n/*.table-stat__center {*/\n    /*width: 34%;*/\n    /*padding-top: 24px;*/\n/*}*/\n\n/*.table-stat__center .stat {*/\n    /*margin-bottom: 27px;*/\n/*}*/\n\n/*.table-stat__center .num {*/\n    /*color: #fff;*/\n    /*font-size: 21px;*/\n    /*margin: 0 0 3px;*/\n    /*line-height: 1;*/\n/*}*/\n\n/*.table-stat__center .text {*/\n    /*color: #6dc3f5;*/\n    /*font-weight: 300;*/\n    /*margin: 0;*/\n    /*font-size: 15px;*/\n/*}*/\n\n/*.table-stat__right dt {*/\n    /*width: 60%;*/\n    /*color: #6dc3f5;*/\n/*}*/\n\n/*.table-stat__right dd {*/\n    /*color: #c6c6c6;*/\n    /*width: 40%;*/\n/*}*/\n\n/*.table-stat__right .table-stat__title,*/\n/*.table-stat__right dl{*/\n    /*text-align: right;*/\n/*}*/\n.live{\n     background-color: rgba(0,0,0,0.6);\n     padding-top: 20px;\n     color: #fff;\n     border-radius: 5px;\n}\n.align-left{\n     text-align: left;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*.inner {*/\n    /*position: relative;*/\n    /*padding: 30px 40px 130px;*/\n    /*text-align: center;*/\n    /*width: 700px;*/\n    /*border-radius: 20px 20px 0 0;*/\n    /*background: #191919;*/\n/*}*/\n\n/*.table-stat {*/\n    /*display: -webkit-box;*/\n    /*display: flex;*/\n    /*position: relative;*/\n    /*z-index: 1;*/\n/*}*/\n\n/*.table-stat__left {*/\n    /*width: 33%;*/\n/*}*/\n\n/*.table-stat__right {*/\n    /*width: 33%;*/\n/*}*/\n\n/*.table-stat__title {*/\n    /*text-transform: uppercase;*/\n    /*font-size: 17px;*/\n    /*text-align: center;*/\n    /*margin-bottom: 10px;*/\n/*}*/\n\n/*.table-stat dl {*/\n    /*display: -webkit-box;*/\n    /*display: flex;*/\n    /*flex-wrap: wrap;*/\n    /*text-align: left;*/\n    /*font-size: 11px;*/\n    /*font-weight: 400;*/\n/*}*/\n\n/*.table-stat dl dt {*/\n    /*margin: 0;*/\n    /*padding: 0;*/\n    /*font-weight: 300;*/\n    /*line-height: 20px;*/\n/*}*/\n\n/*.table-stat__left dt {*/\n    /*width: 40%;*/\n    /*color: #c6c6c6;*/\n/*}*/\n\n/*.table-stat dl dd {*/\n    /*margin: 0;*/\n    /*padding: 0;*/\n    /*font-weight: 400;*/\n    /*line-height: 20px;*/\n/*}*/\n\n/*.table-stat__left dd {*/\n    /*width: 60%;*/\n    /*color: #6dc3f5;*/\n/*}*/\n\n/*dl {*/\n    /*margin-top: 0;*/\n    /*margin-bottom: 20px;*/\n/*}*/\n\n\n\n/*.table-stat__center {*/\n    /*width: 34%;*/\n    /*padding-top: 24px;*/\n/*}*/\n\n/*.table-stat__center .stat {*/\n    /*margin-bottom: 27px;*/\n/*}*/\n\n/*.table-stat__center .num {*/\n    /*color: #fff;*/\n    /*font-size: 21px;*/\n    /*margin: 0 0 3px;*/\n    /*line-height: 1;*/\n/*}*/\n\n/*.table-stat__center .text {*/\n    /*color: #6dc3f5;*/\n    /*font-weight: 300;*/\n    /*margin: 0;*/\n    /*font-size: 15px;*/\n/*}*/\n\n/*.table-stat__right dt {*/\n    /*width: 60%;*/\n    /*color: #6dc3f5;*/\n/*}*/\n\n/*.table-stat__right dd {*/\n    /*color: #c6c6c6;*/\n    /*width: 40%;*/\n/*}*/\n\n/*.table-stat__right .table-stat__title,*/\n/*.table-stat__right dl{*/\n    /*text-align: right;*/\n/*}*/\n.live{\n     background-color: rgba(0,0,0,0.6);\n     padding-top: 20px;\n     color: #fff;\n     border-radius: 5px;\n}\n.align-left{\n     text-align: left;\n}\n", ""]);
 
 // exports
 
@@ -65261,7 +65277,7 @@ var Component = __webpack_require__(3)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp\\htdocs\\goldfund\\resources\\assets\\js\\components\\Portfolio.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\Portfolio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Portfolio.vue: functional components are not supported with templates, they should use render functions.")}
 
