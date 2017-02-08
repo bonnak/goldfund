@@ -4,6 +4,15 @@
     <header class="header" id="header">
         <section class="" id="">
             <div class="container">
+                <div class="row">
+                <div class="col-md-8">
+                    <h2 class="intro" style="margin-top: 12%;">STATISTICS</h2>
+                    <p class="content-company">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
                 <div class="col-md-4">
                     <!-- HEADING -->
                     <h2 class="intro">WHO WE ARE?</h2>
@@ -49,9 +58,6 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <h2 class="intro" style="margin-top: 12%;">STATISTICS</h2>
-                    <portfolio></portfolio>
                 </div>
             </div>
         </section>
@@ -70,18 +76,13 @@
         <div class="section-header">
 
             <!-- SECTION TITLE -->
-            <h2 class="dark-text">Features</h2>
-
-            <!-- SHORT DESCRIPTION ABOUT THE SECTION -->
-            <h6>
-                We design &amp; develop qaulity products to help small &amp; medium level business.
-            </h6>
+            <h2 class="dark-text">Statistics</h2>
         </div>
         <!-- / END SECTION HEADER -->
 
         <!-- FEATURS -->
         <div class="row">
-
+            <portfolio></portfolio>
             <!-- FEATURES COLUMN LEFT -->
             <div class="col-md-6 col-sm-6 wow fadeInLeft animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
 
