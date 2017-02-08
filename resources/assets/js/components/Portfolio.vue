@@ -75,14 +75,33 @@
     					this.last_deposits.push(el);
     				});
     				
-	        	this.total_member = data.total_member;
-	          this.invested_capital = data.invested_capital;
+	        	    this.total_member = data.total_member;
+	                this.invested_capital = data.invested_capital;
 
     			});
     		},
 
         mounted() {
-            
+            this.listenWhenRegisteredNewMember();
+            this.listenWhenMemberDeposit();
+        },
+
+        methods: {
+            listenWhenRegisteredNewMember(){
+                Echo.channel('customer')
+                .listen('NewMemberRegistered', event => {
+                    this.customers.splice(0, 0, event.data);
+                    ++this.total_member;
+                });
+            },
+
+            listenWhenMemberDeposit(){
+                Echo.channel('customer')
+                .listen('MemberDeposited', event => {
+                    this.last_deposits.splice(0, 0, event.deposit);
+                    this.invested_capital = parseInt(this.invested_capital) +parseInt(event.deposit.amount);
+                });
+            }
         }
     }
 </script>
