@@ -1,18 +1,23 @@
 <template>
-  <section class="focus">
+  <section class="live">
     <div class="container">
-        <div class="inner">
-            <div class="table-stat">
-                <div class="table-stat__left">
+        <div class="">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                     <div class="table-stat__title">Last Registrations</div>
                     <dl>
-                    		<template v-for="customer in customers">
-												    <dt>{{ customer.created_at | moment('from') }}</dt>
-                            <dd>{{ customer.username }}</dd>
-												</template>
+                        <template v-for="customer in customers">
+                            <div class="col-md-6 align-left">
+                                {{ customer.created_at | moment('from') }}
+                            </div>
+                            <div class="col-md-6 align-left">
+                                {{ customer.username }}
+                            </div>
+                        </template>
                     </dl>
                 </div>
-                <div class="table-stat__center">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <br/>
                     <div class="stat">
                         <p class="num">95</p>
                         <p class="text">Days Online</p>
@@ -26,13 +31,17 @@
                         <p class="text">Invested</p>
                     </div>
                 </div>
-                <div class="table-stat__right">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                     <div class="table-stat__title">Last Investments</div>
                     <dl>
                         <template v-for="last_deposit in last_deposits">
-												    <dt>{{ last_deposit.owner.username }}</dt>
-                            <dd>{{ last_deposit.amount }}$</dd>
-												</template>
+                            <div class="col-md-6 align-left">
+                                {{ last_deposit.owner.username }}
+                            </div>
+                            <div class="col-md-6 align-left">
+                                {{ last_deposit.amount }}$
+                            </div>
+                        </template>
                     </dl>
                 </div>
             </div>
@@ -77,3 +86,121 @@
         }
     }
 </script>
+
+     <style>
+        .inner {
+            position: relative;
+            padding: 30px 40px 130px;
+            text-align: center;
+            width: 700px;
+            border-radius: 20px 20px 0 0;
+            background: #191919;
+        }
+
+        .table-stat {
+            display: -webkit-box;
+            display: flex;
+            position: relative;
+            z-index: 1;
+        }
+
+        .table-stat__left {
+            width: 33%;
+        }
+
+        .table-stat__right {
+            width: 33%;
+        }
+
+        .table-stat__title {
+            text-transform: uppercase;
+            font-size: 17px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .table-stat dl {
+            display: -webkit-box;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        .table-stat dl dt {
+            margin: 0;
+            padding: 0;
+            font-weight: 300;
+            line-height: 20px;
+        }
+
+        .table-stat__left dt {
+            width: 40%;
+            color: #c6c6c6;
+        }
+
+        .table-stat dl dd {
+            margin: 0;
+            padding: 0;
+            font-weight: 400;
+            line-height: 20px;
+        }
+
+        .table-stat__left dd {
+            width: 60%;
+            color: #6dc3f5;
+        }
+
+        dl {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+
+
+        .table-stat__center {
+            width: 34%;
+            padding-top: 24px;
+        }
+
+        .table-stat__center .stat {
+            margin-bottom: 27px;
+        }
+
+        .table-stat__center .num {
+            color: #fff;
+            font-size: 21px;
+            margin: 0 0 3px;
+            line-height: 1;
+        }
+
+        .table-stat__center .text {
+            color: #6dc3f5;
+            font-weight: 300;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .table-stat__right dt {
+            width: 60%;
+            color: #6dc3f5;
+        }
+
+        .table-stat__right dd {
+            color: #c6c6c6;
+            width: 40%;
+        }
+
+        .table-stat__right .table-stat__title,
+        .table-stat__right dl{
+            text-align: right;
+        }
+         .live{
+             padding: 10px;
+             border: 1px solid#e96656;
+         }
+         .align-left{
+             text-align: left;
+         }
+    </style>
