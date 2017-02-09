@@ -152,10 +152,12 @@
                                     <label for="sponsor_id" class="col-md-4 control-label">Sponsor</label>
 
                                     <div class="col-md-6">
-                                        <input id="sponsor_id" type="text"
+                                        <input id="sponsor_id" 
+                                               type="hidden"
                                                class="form-control"
                                                name="sponsor_id"
-                                               value="{{ old('sponsor_id') }}">
+                                               value="{{ $sponsor->id }}">
+                                            <span>{{ $sponsor->username }}</span>
                                         @if ($errors->has('sponsor_id'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('sponsor_id') }}</strong>
@@ -166,7 +168,6 @@
 
                                 <div class="form-group{{ $errors->has('direction') ? ' has-error' : '' }}">
                                     <label for="direction" class="col-md-4 control-label">Direction</label>
-
                                     <div class="col-md-6">
                                         <select id="direction"
                                                 class="form-control"
@@ -184,6 +185,18 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group{{ $errors->has('agree_term_condition') ? ' has-error' : '' }}">
+                                    <label for="agree_term_condition" class="col-md-4 control-label"></label>
+                                    <div class="col-md-6">
+                                        <input type="checkbox" id="agree_term_condition" name="agree_term_condition" {{ old('agree_term_condition') == 'on' ? 'checked' : ''}} />                                        
+                                        I agree with Terms and conditions
+                                        @if ($errors->has('agree_term_condition'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('agree_term_condition') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary">

@@ -1,5 +1,8 @@
 <?php
 
+/***
+ * Back-end
+ */
 Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth:admin'],function(){
 	Route::get('/', function(){
 		return view('admin.index');
@@ -12,14 +15,29 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('logout', 'Admin\Auth\LoginController@logout');
 });
 
+
+
+/***
+ * Front-end
+ */
 Auth::routes();
 
-Route::get('/my-account',  'UserController@index')->middleware('auth');
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('/my-account',  'UserController@index');
+	Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('logout', 'Auth\LoginController@logout')->middleware('auth');
+	//Deposit
+	Route::get('/deposit', 'DepositController@showForm')->name('deposit');
+	Route::post('/deposit', 'DepositController@create');
+});
+
 
 Route::get('/', function(){	
 	return view('home');
+
+	//dd($customer = \App\Customer::find(1)->toArray());
+
+	//$customer->notify(new \App\Notifications\VerifyCustomerRegister());
 });
 
 Route::get('/home', 'HomeController@index');
@@ -50,11 +68,4 @@ Route::get('/support', function(){
 
 Route::get('live', function(){
 	return view('live');
-});
-
-Route::get('portfolios', 'PortfolioController@index');
-
-Route::get('/event', function () {
-	event(new \App\Events\ShippingStatusUpdated('My broadcasting'));
-    return view('welcome');
 });

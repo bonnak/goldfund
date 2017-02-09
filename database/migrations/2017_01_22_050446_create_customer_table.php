@@ -28,6 +28,9 @@ class CreateCustomerTable extends Migration
             $table->integer('sponsor_id')->unsigned()->nullable();
             $table->integer('placement_id')->unsigned()->nullable();
             $table->char('direction', 1)->nullable();
+            $table->boolean('agree_term_condition');
+            $table->boolean('email_verified')->default(false);
+            $table->string('verified_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Carbon\Carbon;
 use App\Acme\Binary;
+use App\Notifications\VerifyCustomerRegister;
 
 class RegisterController extends Controller
 {
@@ -41,6 +42,16 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $ref = request()->query('ref');
+        $sponsor = Customer::find(
+            ($ref === null || $ref < 1) ? 1 : $ref
+        );
+
+        return view('auth.register', compact('sponsor'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -59,6 +70,7 @@ class RegisterController extends Controller
             'bitcoin_account' => 'required',
             'date_of_birth' => 'required',
             'direction' => 'required',
+            'agree_term_condition' => 'required',
         ]);
     }
 
@@ -83,7 +95,10 @@ class RegisterController extends Controller
             'placement_id' => Binary::lastPlacement($data['direction'], $data['sponsor_id'])->id,
             'bitcoin_account' => $data['bitcoin_account'],
             'direction' => $data['direction'],
+            'agree_term_condition' => $data['agree_term_condition'] == 'on' ? true : false,
         ]);
+
+        //$customer->notify(new VerifyCustomerRegister());
 
         // Broadcast a new memerber just register.
         event(new \App\Events\NewMemberRegistered($customer));

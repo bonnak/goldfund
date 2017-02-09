@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <title>@yield('title', 'Welcome') | {{env('APP_TITLE')}}</title>
 
     <!-- =========================
      FAV AND TOUCH ICONSbackgrounds/bg3.jpg
@@ -17,10 +17,10 @@
          STYLESHEETS Template
     ============================== -->
     <link rel="stylesheet" href="/css-template/bootstrap.min.css">
-    {{--<link rel="stylesheet" href="/css-template/owl.theme.css">--}}
-    {{--<link rel="stylesheet" href="/css-template/owl.carousel.css">--}}
-    {{--<link rel="stylesheet" href="/css-template/jquery.vegas.min.css">--}}
-    {{--<link rel="stylesheet" href="/css-template/animate.min.css">--}}
+    <link rel="stylesheet" href="/css-template/owl.theme.css">
+    <link rel="stylesheet" href="/css-template/owl.carousel.css">
+    <link rel="stylesheet" href="/css-template/jquery.vegas.min.css">
+    <link rel="stylesheet" href="/css-template/animate.min.css">
 
     <link rel="stylesheet" href="/assets/icon-fonts/styles.css">
     <link rel="stylesheet" href="/css-template/pixeden-icons.css">
@@ -40,117 +40,6 @@
            'csrfToken' => csrf_token(),
        ]) !!};
      </script>
-
-     <style>
-        .inner {
-            position: relative;
-            padding: 30px 40px 130px;
-            text-align: center;
-            width: 700px;
-            border-radius: 20px 20px 0 0;
-            background: #191919;
-        }
-
-        .table-stat {
-            display: -webkit-box;
-            display: flex;
-            position: relative;
-            z-index: 1;
-        }
-
-        .table-stat__left {
-            width: 33%;
-        }
-
-        .table-stat__right {
-            width: 33%;
-        }
-
-        .table-stat__title {
-            text-transform: uppercase;
-            color: #fff;
-            font-size: 17px;
-            text-align: left;
-        }
-
-        .table-stat dl {
-            display: -webkit-box;
-            display: flex;
-            flex-wrap: wrap;
-            text-align: left;
-            font-size: 11px;
-            font-weight: 400;
-        }
-
-        .table-stat dl dt {
-            margin: 0;
-            padding: 0;
-            font-weight: 300;
-            line-height: 20px;
-        }
-
-        .table-stat__left dt {
-            width: 40%;
-            color: #c6c6c6;
-        }
-
-        .table-stat dl dd {
-            margin: 0;
-            padding: 0;
-            font-weight: 400;
-            line-height: 20px;
-        }
-
-        .table-stat__left dd {
-            width: 60%;
-            color: #6dc3f5;
-        }
-
-        dl {
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-
-
-        .table-stat__center {
-            width: 34%;
-            padding-top: 24px;
-        }
-
-        .table-stat__center .stat {
-            margin-bottom: 27px;
-        }
-
-        .table-stat__center .num {
-            color: #fff;
-            font-size: 21px;
-            margin: 0 0 3px;
-            line-height: 1;
-        }
-
-        .table-stat__center .text {
-            color: #6dc3f5;
-            font-weight: 300;
-            margin: 0;
-            font-size: 15px;
-        }
-
-        .table-stat__right dt {
-            width: 60%;
-            color: #6dc3f5;
-        }
-
-        .table-stat__right dd {
-            color: #c6c6c6;
-            width: 40%;
-        }
-
-        .table-stat__right .table-stat__title,
-        .table-stat__right dl{
-            text-align: right;
-        }
-    </style>
 </head>
 <body>
     <div id="app">
@@ -166,7 +55,9 @@
                             <span class="icon-bar"></span>
                         </button>
                         <div class="navbar-brand">
-                            <img src="images/logo.png" alt="Zerif">
+                            <a href="/home">
+                                <img src="images/logo.png" alt="Zerif">
+                            </a>
                         </div>
                     </div>
                     <nav class="navbar-collapse collapse" role="navigation" id="bs-navbar-collapse">
@@ -243,13 +134,13 @@
 
     <!-- SCRIPTS -->
     <script src="/js-template/bootstrap.min.js"></script>
-    {{--<script src="/js-template/wow.min.js"></script>--}}
-    {{--<script src="/js-template/jquery.nav.js"></script>--}}
-    {{--<script src="/js-template/jquery.knob.js"></script>--}}
-    {{--<script src="/js-template/owl.carousel.min.js"></script>--}}
-    {{--<script src="/js-template/smoothscroll.js"></script>--}}
-    {{--<script src="/js-template/jquery.vegas.min.js"></script>--}}
-    {{--<script src="/js-template/zerif.js"></script>--}}
+    <script src="/js-template/wow.min.js"></script>
+    <script src="/js-template/jquery.nav.js"></script>
+    <script src="/js-template/jquery.knob.js"></script>
+    <script src="/js-template/owl.carousel.min.js"></script>
+    <script src="/js-template/smoothscroll.js"></script>
+    <script src="/js-template/jquery.vegas.min.js"></script>
+    <script src="/js-template/zerif.js"></script>
 
     <script src="/js/app.js"></script>
 </body>

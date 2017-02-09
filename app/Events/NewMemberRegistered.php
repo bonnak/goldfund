@@ -10,7 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class NewMemberRegistered
+class NewMemberRegistered implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -24,6 +24,8 @@ class NewMemberRegistered
     public function __construct($data)
     {
         $this->data = $data;
+
+        $this->dontBroadcastToCurrentUser();
     }
 
     /**
@@ -33,6 +35,6 @@ class NewMemberRegistered
      */
     public function broadcastOn()
     {
-        return ['user.register'];
+        return ['customer'];
     }
 }
