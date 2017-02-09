@@ -19,16 +19,12 @@ Route::group(['prefix' => 'admin'], function(){
 
 /***
  * Front-end
- */{
-	//Route::get('/my-account',  'UserController@index');
-
-
-	Route::group(['middleware' => 'auth'], function());
-	Route::get('/logout', 'Auth\LoginController@logout');
-	Route::get('/account', function(){
-		return view('layouts.user-dashboard');
-	}
+ */
 Auth::routes();
+
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('/account',  'UserController@index');
+	Route::get('/logout', 'Auth\LoginController@logout');
 
 	//Deposit
 	Route::get('/deposit', 'DepositController@showForm')->name('deposit');
@@ -36,7 +32,7 @@ Auth::routes();
 });
 
 
-Route::get('/', function(){	
+Route::get('/', function(){
 	return view('home');
 
 	//dd($customer = \App\Customer::find(1)->toArray());

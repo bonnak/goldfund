@@ -10,6 +10,6 @@ class UserController extends Controller
     public function index()
     {
         $userSession = auth()->user();
-        return view('my-account', compact('userSession'));
+        return view('layouts.user-dashboard', compact('userSession'));
     }
 }
