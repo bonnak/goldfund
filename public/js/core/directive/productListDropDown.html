@@ -1,0 +1,23 @@
+<ui-select theme="select2"
+           style="width: 100%;"
+           reset-search-input="false"
+           data-ng-model="vm.localSelected"
+           data-ng-change="onChange();"
+           name="{{name}}"
+           required="{{required}}">
+    <ui-select-match placeholder="{{ 'SearchProductName' | translate}}">
+        {{$select.selected.products_name}}
+    </ui-select-match>
+    <ui-select-null-choice>No person</ui-select-null-choice>
+    <ui-select-choices repeat="u as u in vm.productLists track by $index"
+                       refresh="vm.bindProductList($select.search)"
+                       refresh-delay="0">
+        <div data-ng-bind-html="u.products_name | highlight: $select.search"></div>
+        <small>
+            <i>
+                <span>{{u.barcode}}</span>,
+                <span>{{u.products_type_fields[0].name}}</span>
+            </i>
+        </small>
+    </ui-select-choices>
+</ui-select>
