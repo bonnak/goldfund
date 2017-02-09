@@ -1,159 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="MetronicApp">
 <head>
-    <meta charset="utf-8">
+    <title data-ng-bind="'AngularJS | ' + $state.current.data.pageTitle"></title>
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Welcome') | {{env('APP_TITLE')}}</title>
-
-    <!-- =========================
-     FAV AND TOUCH ICONSbackgrounds/bg3.jpg
-    ============================== -->
-    <link rel="shortcut icon" href="images/icons/favicon.ico">
-    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72"
-          href="http://demo.templateocean.com/wrapbootstrap/zerif-html/v1.3.1/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png">
-    <!-- =========================
-         STYLESHEETS Template
-    ============================== -->
-    <link rel="stylesheet" href="/css-template/bootstrap.min.css">
-    <link rel="stylesheet" href="/css-template/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="/css-template/owl.theme.css">
-    <link rel="stylesheet" href="/css-template/owl.carousel.css">
-    <link rel="stylesheet" href="/css-template/jquery.vegas.min.css">
-    <link rel="stylesheet" href="/css-template/animate.min.css">
-
-    <link rel="stylesheet" href="/assets/icon-fonts/styles.css">
-    <link rel="stylesheet" href="/css-template/pixeden-icons.css">
-
-    <!-- CUSTOM STYLES -->
-    <link rel="stylesheet" href="/css-template/styles.css">
-    <link rel="stylesheet" href="/css-template/responsive.css">
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400|Homemade+Apple'
-          rel='stylesheet' type='text/css'>
-
-    <script src="/js-template/jquery.min.js"></script>
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-     <script>
-       window.Laravel = {!! json_encode([
-           'csrfToken' => csrf_token(),
-       ]) !!};
-     </script>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/global/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/global/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
+    <link id="ng_load_plugins_before" />
+    <!-- END DYMANICLY LOADED CSS FILES -->
+    <!-- BEGIN THEME STYLES -->
+    <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
+    <link href="{{ URL::asset('assets/global/css/components-rounded.min.css') }}" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/global/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/layouts/layout4/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/layouts/layout4/css/themes/light.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="{{ URL::asset('assets/layouts/layout4/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" /> </head>
 </head>
-<body>
-    <div id="app">
-        <header id="home" class="header">
-            <!-- TOP BAR -->
-            <div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
-                <div class="container">
-                    <div class="navbar-header responsive-logo">
-                        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <div class="navbar-brand">
-                            <a href="/home">
-                                <img src="images/logo.png" alt="Zerif">
-                            </a>
-                        </div>
-                    </div>
-                    <nav class="navbar-collapse collapse" role="navigation" id="bs-navbar-collapse">
-                        <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
-                            <li><a href="/home">Home</a></li>
-                            @if(!auth()->check())
-                                <li><a href="/register">Register</a></li>
-                            @endif
-                            <li><a href="{{url('faq')}}">FAQ</a></li>
-                            <li><a href="{{url('term')}}">Term</a></li>
-                            <li><a href="{{url('news')}}">News</a></li>
-                            <li><a href="{{url('support')}}">Support</a></li>
-                            <li><a href="{{url('about-us')}}">About Us</a></li>
-                            <li><a href="{{url('contact-us')}}">Contact</a></li>
-                            <li><a href="{{url('my-account')}}">My Account</a></li>
-                            @if(auth()->check())
-                                <li><a href="{{url('logout')}}">Logout</a></li>
-                            @endif
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- / END TOP BAR -->
-            <!-- / END HOME SECTION  -->
-            <!-- BIG HEADING WITH CALL TO ACTION BUTTONS AND SHORT MESSAGES -->
-            <div class="">
-                @yield('content')
-            </div>
-        </header>
-        <!-- =========================
-           FOOTER
-        ============================== -->
-        <footer>
-            <div class="container">
-
-                <!-- COMPANY ADDRESS-->
-                <div class="col-md-5 company-details">
-                    <div class="icon-top red-text">
-                        <i class="icon-fontawesome-webfont-302"></i>
-                    </div>
-                    PO Box 16122 Collins Street West, Victoria 8007 Australia
-                </div>
-
-                <!-- COMPANY EMAIL-->
-                <div class="col-md-2 company-details">
-                    <div class="icon-top green-text">
-                        <i class="icon-fontawesome-webfont-329"></i>
-                    </div>
-                    contact@designlab.co
-                </div>
-
-                <!-- COMPANY PHONE NUMBER -->
-                <div class="col-md-2 company-details">
-                    <div class="icon-top blue-text">
-                        <i class="icon-fontawesome-webfont-101"></i>
-                    </div>
-                    +613 0000 0000
-                </div>
-
-                <!-- SOCIAL ICON AND COPYRIGHT -->
-                <div class="col-lg-3 col-sm-3 copyright">
-                    <ul class="social">
-                        <li><a href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#"><i class="icon-twitter-alt"></i></a></li>
-                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                        <li><a href="#"><i class="icon-behance"></i></a></li>
-                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    </ul>
-                    ©2013 Zerif LLC
-                </div>
-            </div> <!-- / END CONTAINER -->
-        </footer> <!-- / END FOOOTER  -->
+<body ng-controller="AppController"
+      class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo page-on-load"
+      ng-class="{'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+<!-- BEGIN PAGE SPINNER -->
+<div ng-spinner-bar class="page-spinner-bar">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+<!-- END PAGE SPINNER -->
+<!-- BEGIN HEADER -->
+<div data-ng-include="'tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top"> </div>
+<!-- END HEADER -->
+<div class="clearfix"> </div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div data-ng-include="'tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper"> </div>
+    <!-- END SIDEBAR -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <!-- BEGIN PAGE HEAD -->
+            <div data-ng-include="'tpl/page-head.html'" data-ng-controller="PageHeadController" class="page-head"> </div>
+            <!-- END PAGE HEAD -->
+            <!-- BEGIN ACTUAL CONTENT -->
+            <div ui-view class="fade-in-up"> </div>
+            <!-- END ACTUAL CONTENT -->
+        </div>
     </div>
+    <!-- BEGIN QUICK SIDEBAR -->
+    <a href="javascript:;" class="page-quick-sidebar-toggler">
+        <i class="icon-login"></i>
+    </a>
+    <div data-ng-include="'tpl/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper"></div>
+    <!-- END QUICK SIDEBAR -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<div data-ng-include="'tpl/footer.html'" data-ng-controller="FooterController" class="page-footer"> </div>
+<!-- END FOOTER -->
 
-    <!-- SCRIPTS -->
-    <script src="/js-template/bootstrap.min.js"></script>
-    <script src="/js-template/bootstrap-datepicker.min.js"></script>
-    <script src="/js-template/wow.min.js"></script>
-    <script src="/js-template/jquery.nav.js"></script>
-    <script src="/js-template/jquery.knob.js"></script>
-    <script src="/js-template/owl.carousel.min.js"></script>
-    <script src="/js-template/smoothscroll.js"></script>
-    <script src="/js-template/jquery.vegas.min.js"></script>
-    <script src="/js-template/zerif.js"></script>
 
-    {{--<script src="/js/app.js"></script>--}}
 
-    <script>
-        $('.date').datepicker({
-            autoclose: true,
-            todayHighlight: true,
-            format: 'yyyy-mm-dd'
-        });
-    </script>
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE JQUERY PLUGINS -->
+<!--[if lt IE 9]>
+<script src="{{ URL::asset('assets/global/plugins/respond.min.js') }}"></script>
+<script src="{{ URL::asset('assets/global/plugins/excanvas.min.js') }}"></script>
+<![endif]-->
+<script src="{{ URL::asset('assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/jquery-migrate.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
+<!-- END CORE JQUERY PLUGINS -->
+<!-- BEGIN CORE ANGULARJS PLUGINS -->
+<script src="{{ URL::asset('assets/global/plugins/angularjs/angular.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/angularjs/angular-sanitize.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/angularjs/angular-touch.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/angularjs/plugins/angular-ui-router.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js') }}" type="text/javascript"></script>
+<!-- END CORE ANGULARJS PLUGINS -->
+<!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
+<script src="{{ URL::asset('js/main.js') }}" type="text/javascript"></script>
+<script src="js/directives.js" type="text/javascript"></script>
+<!-- END APP LEVEL ANGULARJS SCRIPTS -->
+<!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
+<script src="{{ URL::asset('assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/layouts/layout4/scripts/layout.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/layouts/layout4/scripts/demo.min.js') }}" type="text/javascript"></script>
+<!-- END APP LEVEL JQUERY SCRIPTS -->
+<!-- END JAVASCRIPTS -->
+
 </body>
 </html>

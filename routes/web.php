@@ -19,12 +19,16 @@ Route::group(['prefix' => 'admin'], function(){
 
 /***
  * Front-end
- */
-Auth::routes();
+ */{
+	//Route::get('/my-account',  'UserController@index');
 
-Route::group(['middleware' => 'auth'], function(){
-	Route::get('/my-account',  'UserController@index');
+
+	Route::group(['middleware' => 'auth'], function());
 	Route::get('/logout', 'Auth\LoginController@logout');
+	Route::get('/account', function(){
+		return view('layouts.user-dashboard');
+	}
+Auth::routes();
 
 	//Deposit
 	Route::get('/deposit', 'DepositController@showForm')->name('deposit');
