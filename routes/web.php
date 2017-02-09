@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin'], function(){
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
-	Route::get('/my-account',  'UserController@index');
+	Route::get('/account',  'UserController@index');
 	Route::get('/logout', 'Auth\LoginController@logout');
 
 	//Deposit
@@ -32,8 +32,12 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 
-Route::get('/', function(){	
+Route::get('/', function(){
 	return view('home');
+
+	//dd($customer = \App\Customer::find(1)->toArray());
+
+	//$customer->notify(new \App\Notifications\VerifyCustomerRegister());
 });
 
 Route::get('/home', 'HomeController@index');
