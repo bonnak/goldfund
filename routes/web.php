@@ -34,6 +34,10 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/', function(){	
 	return view('home');
+
+	//dd($customer = \App\Customer::find(1)->toArray());
+
+	//$customer->notify(new \App\Notifications\VerifyCustomerRegister());
 });
 
 Route::get('/home', 'HomeController@index');

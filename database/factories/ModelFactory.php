@@ -31,7 +31,10 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'bitcoin_account' => $faker->uuid,
         'sponsor_id' => 1,
         'placement_id' => null,
-        'direction' => $faker->randomElement(['L', 'R'])
+        'direction' => $faker->randomElement(['L', 'R']),
+        'agree_term_condition' => true,
+        'email_verified' => true,
+        'verified_token' => null,
     ];
 });
 
