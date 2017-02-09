@@ -46,7 +46,7 @@ class RegisterController extends Controller
     {
         $ref = request()->query('ref');
         $sponsor = Customer::find(
-            ($ref === null || $ref) < 1 ? 1 : $ref
+            ($ref === null || $ref < 1) ? 1 : $ref
         );
 
         return view('auth.register', compact('sponsor'));
