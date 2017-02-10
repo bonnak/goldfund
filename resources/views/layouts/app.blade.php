@@ -16,6 +16,7 @@
     <!-- =========================
          STYLESHEETS Template
     ============================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css-template/bootstrap.min.css">
     <link rel="stylesheet" href="/css-template/owl.theme.css">
     <link rel="stylesheet" href="/css-template/owl.carousel.css">
