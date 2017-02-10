@@ -67,5 +67,5 @@ Route::get('/support', function(){
 });
 
 Route::get('live', function(){
-	return view('live');
+    event(new \App\Events\NewMemberRegistered(\App\Customer::find(1)));
 });
