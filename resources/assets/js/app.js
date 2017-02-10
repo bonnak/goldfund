@@ -25,6 +25,12 @@ const app = new Vue({
     mounted(){
     	this.message = 'Excellence';
     	//this.listen();
+
+        // $('.date').datepicker({
+        //     autoclose: true,
+        //     todayHighlight: true,
+        //     format: 'yyyy-mm-dd'
+        // });
     },
 
     methods: {
