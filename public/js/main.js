@@ -147,7 +147,7 @@ MetronicApp.controller('FooterController', ['$scope', function($scope) {
 /* Setup Rounting For All Pages */
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("/dashboard.html");  
+    $urlRouterProvider.otherwise("dashboard.html");
     
     $stateProvider
 
@@ -161,7 +161,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID.
+                        // Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             '../assets/global/plugins/morris/morris.css',
                             '../assets/global/plugins/morris/morris.min.js',
@@ -177,18 +178,18 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
         })
 
         // Blank Page
-        .state('blank', {
-            url: "/blank",
-            templateUrl: "views/blank.html",            
-            data: {pageTitle: 'Blank Page Template'},
-            controller: "BlankController",
+        .state('deposit', {
+            url: "/deposit.html",
+            templateUrl: "views/deposit.html",
+            data: {pageTitle: 'Make Deposit'},
+            controller: "DepositController",
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            'js/controllers/BlankController.js'
+                            'js/controllers/DepositController.js'
                         ] 
                     });
                 }]
