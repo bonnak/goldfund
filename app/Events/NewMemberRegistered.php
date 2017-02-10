@@ -35,6 +35,6 @@ class NewMemberRegistered implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['customer'];
+        return ['customer.registerd'];
     }
 }
