@@ -11,13 +11,15 @@
     ============================== -->
     <link rel="shortcut icon" href="images/icons/favicon.ico">
     <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="http://demo.templateocean.com/wrapbootstrap/zerif-html/v1.3.1/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="http://demo.templateocean.com/wrapbootstrap/zerif-html/v1.3.1/images/icons/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png">
     <!-- =========================
          STYLESHEETS Template
     ============================== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css-template/bootstrap.min.css">
+    <link rel="stylesheet" href="/css-template/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="/css-template/owl.theme.css">
     <link rel="stylesheet" href="/css-template/owl.carousel.css">
     <link rel="stylesheet" href="/css-template/jquery.vegas.min.css">
@@ -30,7 +32,8 @@
     <link rel="stylesheet" href="/css-template/styles.css">
     <link rel="stylesheet" href="/css-template/responsive.css">
     <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400|Homemade+Apple' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400|Homemade+Apple'
+          rel='stylesheet' type='text/css'>
 
     <script src="/js-template/jquery.min.js"></script>
 
@@ -67,15 +70,15 @@
                             @if(!auth()->check())
                                 <li><a href="/register">Register</a></li>
                             @endif
-                            <li><a href="/faq">FAQ</a></li>
-                            <li><a href="/term">Term</a></li>
-                            <li><a href="/news">News</a></li>
-                            <li><a href="/support">Support</a></li>
-                            <li><a href="/about-us">About Us</a></li>
-                            <li><a href="/contact-us">Contact</a></li>
-                            <li><a href="/my-account">My Account</a></li>
+                            <li><a href="{{url('faq')}}">FAQ</a></li>
+                            <li><a href="{{url('term')}}">Term</a></li>
+                            <li><a href="{{url('news')}}">News</a></li>
+                            <li><a href="{{url('support')}}">Support</a></li>
+                            <li><a href="{{url('about-us')}}">About Us</a></li>
+                            <li><a href="{{url('contact-us')}}">Contact</a></li>
+                            <li><a href="{{url('account')}}">My Account</a></li>
                             @if(auth()->check())
-                                <li><a href="/logout">Logout</a></li>
+                                <li><a href="{{url('logout')}}">Logout</a></li>
                             @endif
                         </ul>
                     </nav>
@@ -121,11 +124,11 @@
                 <!-- SOCIAL ICON AND COPYRIGHT -->
                 <div class="col-lg-3 col-sm-3 copyright">
                     <ul class="social">
-                        <li><a href="v1.3.1.html"><i class="icon-facebook"></i></a></li>
-                        <li><a href="v1.3.1.html"><i class="icon-twitter-alt"></i></a></li>
-                        <li><a href="v1.3.1.html"><i class="icon-linkedin"></i></a></li>
-                        <li><a href="v1.3.1.html"><i class="icon-behance"></i></a></li>
-                        <li><a href="v1.3.1.html"><i class="icon-dribbble"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-twitter-alt"></i></a></li>
+                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                        <li><a href="#"><i class="icon-behance"></i></a></li>
+                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
                     </ul>
                     ©2013 Zerif LLC
                 </div>
@@ -135,6 +138,7 @@
 
     <!-- SCRIPTS -->
     <script src="/js-template/bootstrap.min.js"></script>
+    <script src="/js-template/bootstrap-datepicker.min.js"></script>
     <script src="/js-template/wow.min.js"></script>
     <script src="/js-template/jquery.nav.js"></script>
     <script src="/js-template/jquery.knob.js"></script>
@@ -143,6 +147,14 @@
     <script src="/js-template/jquery.vegas.min.js"></script>
     <script src="/js-template/zerif.js"></script>
 
-    <script src="/js/app.js"></script>
+    {{--<script src="/js/app.js"></script>--}}
+
+    <script>
+        $('.date').datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            format: 'yyyy-mm-dd'
+        });
+    </script>
 </body>
 </html>

@@ -90,8 +90,9 @@
 
         methods: {
             listenWhenRegisteredNewMember(){
-                Echo.channel('customer')
+                Echo.channel('customer.registerd')
                 .listen('NewMemberRegistered', event => {
+                    console.log(event);
                     this.customers.splice(0, 0, event.data);
                     ++this.total_member;
                 });

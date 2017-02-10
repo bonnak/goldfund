@@ -1,0 +1,22 @@
+<ui-select theme="select2"
+           style="width: 100%;"
+           reset-search-input="false"
+           data-ng-model="vm.localSelected"
+           name="{{name}}"
+           required="{{required}}">
+    <ui-select-match placeholder="{{ 'Search' | translate}}">
+        {{$select.selected.name}}
+    </ui-select-match>
+    <ui-select-choices repeat="u as u in vm.vendorLists"
+                       refresh="vm.bindVendorList($select.search)"
+                       refresh-delay="0">
+        <div data-ng-bind-html="u.name | highlight: $select.search"></div>
+        <small>
+            <i>
+                <span data-ng-bind="u.tel"></span>,
+                <span data-ng-bind="u.company_name"></span>,
+                <span data-ng-bind="u.vendor_type[0].name"></span>
+            </i>
+        </small>
+    </ui-select-choices>
+</ui-select>

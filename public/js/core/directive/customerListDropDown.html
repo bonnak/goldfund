@@ -1,0 +1,15 @@
+﻿<ui-select theme="select2"
+           style="width: 100%;"
+           reset-search-input="false"
+           data-ng-model="vm.localSelected"
+           name="{{name}}"
+           required="{{required}}">
+    <ui-select-match placeholder="{{ 'Search' | translate}}">
+        {{$select.selected.customers_name}}
+    </ui-select-match>
+    <ui-select-choices repeat="u as u in vm.customerLists"
+                       refresh="vm.bindCustomerList($select.search)"
+                       refresh-delay="0">
+        <div data-ng-bind-html="u.customers_name | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select>
