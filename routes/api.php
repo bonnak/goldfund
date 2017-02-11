@@ -16,3 +16,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function(){
  * Front-end
  */
 Route::get('/portfolio/live', 'PortfolioController@live');
+Route::get('qr/admin/bitcoin', 'Api\QrController@adminBitCoinAccountQrImage');
