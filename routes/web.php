@@ -1,4 +1,11 @@
 <?php
+use chillerlan\QRCode\Output\QRImage;
+use chillerlan\QRCode\QRCode;
+Route::get('qr', function(){
+	$data = '1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu';
+
+	echo '<img src="'.(new QRCode($data, new QRImage))->output().'" />';
+});
 
 /***
  * Back-end
@@ -67,5 +74,5 @@ Route::get('/support', function(){
 });
 
 Route::get('live', function(){
-	return view('live');
+    event(new \App\Events\NewMemberRegistered(\App\Customer::find(1)));
 });

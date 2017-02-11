@@ -19,7 +19,8 @@ class CustomersTableSeeder extends Seeder
       'username' => 'admin', 
       'email' => 'admin@binary.com', 
       'sponsor_id' => null,
-      'direction' => null
+      'direction' => null,
+      'bitcoin_account' => '1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu',
     ]);
 
     foreach (range(1, 10) as $i) 

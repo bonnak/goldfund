@@ -28,4 +28,9 @@ class Customer extends Authenticatable
   {
   	 return $this->belongsTo('App\Customer');
   }
+
+  public function scopeAdmin($query)
+  {
+    return $query->where('username', 'admin')->first();
+  }
 }

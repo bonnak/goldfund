@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "097b14da39f9e9b47d51dbcbaa40b8b2",
+    "content-hash": "294020b10b67be7e64b906dce1e01777",
     "packages": [
+        {
+            "name": "chillerlan/php-qrcode",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codemasher/php-qrcode.git",
+                "reference": "16e889d0ca28748c87eabccfeaf082f082e5aef5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codemasher/php-qrcode/zipball/16e889d0ca28748c87eabccfeaf082f082e5aef5",
+                "reference": "16e889d0ca28748c87eabccfeaf082f082e5aef5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.3.*"
+            },
+            "suggest": {
+                "chillerlan/php-googleauth": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "chillerlan\\QRCode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Smiley",
+                    "email": "smiley@chillerlan.net"
+                },
+                {
+                    "name": "Kazuhiko Arase",
+                    "homepage": "https://github.com/kazuhikoarase"
+                }
+            ],
+            "description": "A QR code generator. PHP 5.6+, PHP 7",
+            "homepage": "https://github.com/codemasher/php-qrcode",
+            "keywords": [
+                "qr code"
+            ],
+            "time": "2017-02-10T21:24:38+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -1240,6 +1290,53 @@
                 "random"
             ],
             "time": "2016-11-07T23:38:38+00:00"
+        },
+        {
+            "name": "ph-7/qrcode-generator-php-class",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pH-7/QRCode-Generator-PHP-Class.git",
+                "reference": "52aa4575312d0ed1cd81af7e885357caf52b7857"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pH-7/QRCode-Generator-PHP-Class/zipball/52aa4575312d0ed1cd81af7e885357caf52b7857",
+                "reference": "52aa4575312d0ed1cd81af7e885357caf52b7857",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "QRCode.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Pierre-Henry Soria",
+                    "email": "phy@hizup.uk",
+                    "homepage": "http://hizup.uk",
+                    "role": "Web Engineer"
+                }
+            ],
+            "description": "Light QRCode PHP class (library). QR Code Generator using vCard 4.0 and the Google Chart AP",
+            "homepage": "http://hizup.uk",
+            "keywords": [
+                "class",
+                "library",
+                "qr code",
+                "qr code class",
+                "qr code library",
+                "vCard"
+            ],
+            "time": "2017-01-23T18:14:34+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -2765,6 +2862,52 @@
                 "test"
             ],
             "time": "2015-05-11T14:41:42+00:00"
+        },
+        {
+            "name": "laravel/homestead",
+            "version": "v4.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/homestead.git",
+                "reference": "a1bcbde2462d8ac1fa608cd6f00b46623aabd705"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/homestead/zipball/a1bcbde2462d8ac1fa608cd6f00b46623aabd705",
+                "reference": "a1bcbde2462d8ac1fa608cd6f00b46623aabd705",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/console": "~2.3|~3.0",
+                "symfony/process": "~2.3|~3.0"
+            },
+            "bin": [
+                "homestead"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Homestead\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "A virtual machine for web artisans.",
+            "time": "2017-02-07T19:06:26+00:00"
         },
         {
             "name": "mockery/mockery",
