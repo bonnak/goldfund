@@ -20,6 +20,7 @@ class CreateDepositsTable extends Migration
             $table->decimal('amount');
             $table->date('issue_date');
             $table->date('expire_date');
+            $table->string('invoice_attachment');
             $table->timestamps();
         });
     }

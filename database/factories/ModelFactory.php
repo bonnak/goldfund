@@ -56,5 +56,6 @@ $factory->define(App\Deposit::class, function (Faker\Generator $faker) {
         'amount' => 300,
         'issue_date' => Carbon::now(),
         'expire_date' => Carbon::now()->addDay(30),
+        'invoice_attachment' => substr($faker->image('public/images/invoices'), 6),
     ];
 });

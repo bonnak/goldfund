@@ -26,6 +26,7 @@ class DepositRequest extends FormRequest
         return [
             'plan_id' => 'required',
             'amount' => 'required|numeric',
+            'invoice_attachment' => 'required|file'
         ];
     }
 }
