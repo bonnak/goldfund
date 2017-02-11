@@ -90,7 +90,8 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
 MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope, $rootScope) {
     $scope.$on('$viewContentLoaded', function() {
         App.initComponents(); // init core components
-        //Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials included in server side instead of loading with ng-include directive
+        // Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials
+        // included in server side instead of loading with ng-include directive
     });
 }]);
 
@@ -192,22 +193,17 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
         })
 
         // AngularJS plugins
-        .state('fileupload', {
-            url: "/file_upload.html",
-            templateUrl: "views/file_upload.html",
-            data: {pageTitle: 'AngularJS File Upload'},
-            controller: "GeneralPageController",
+        .state('request_payment', {
+            url: "/request_payment.html",
+            templateUrl: "views/request_payment.html",
+            data: {pageTitle: 'Request Payment'},
+            controller: "RequestPaymentController as vm",
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load([{
                         name: 'angularFileUpload',
                         files: [
-                            '../assets/global/plugins/angularjs/plugins/angular-file-upload/angular-file-upload.min.js',
-                        ] 
-                    }, {
-                        name: 'MetronicApp',
-                        files: [
-                            'js/controllers/GeneralPageController.js'
+                            'js/controllers/RequestPaymentController.js',
                         ]
                     }]);
                 }]
@@ -215,11 +211,11 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
         })
 
         // UI Select
-        .state('uiselect', {
-            url: "/ui_select.html",
-            templateUrl: "views/ui_select.html",
-            data: {pageTitle: 'AngularJS Ui Select'},
-            controller: "UISelectController",
+        .state('deposit_list', {
+            url: "/deposit_list.html",
+            templateUrl: "views/deposit_list.html",
+            data: {pageTitle: 'Deposit Information'},
+            controller: "DepositListController",
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load([{
