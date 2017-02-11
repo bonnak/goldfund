@@ -102,7 +102,8 @@ class RegisterController extends Controller
             'agree_term_condition' => $data['agree_term_condition'] == 'on' ? true : false,
         ]);
 
-        //$customer->notify(new VerifyCustomerRegister());
+        // Notify user must activate their account.
+        $customer->notify(new VerifyCustomerRegister());
 
         // Broadcast a new memerber just register.
         event(new \App\Events\NewMemberRegistered($customer));
