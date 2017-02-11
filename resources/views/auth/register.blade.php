@@ -64,7 +64,7 @@
                                         <select id="gender"
                                                 class="form-control"
                                                 name="gender">
-                                            <option value="">Select</option>
+                                            <option value="">--Select--</option>
                                             <option value="M" {{ old('gender') == 'M' ? 'selected' : ''}}>Male</option>
                                             <option value="F" {{ old('gender') == 'F' ? 'selected' : ''}}>Female</option>
                                         </select>
@@ -76,18 +76,24 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="country"  class="col-md-4 control-label">
+                                <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
+                                    <label for="country_id"  class="col-md-4 control-label">
                                         Country
                                     </label>
                                     <div class="col-md-6">
-                                        <select name="country_id" class="form-control">
+                                        <select name="country_id" class="form-control" id="country_id">
+                                            <option value="">--Select--</option>
                                             @foreach($countries as $country)
-                                                <option value="{{ $country->id }}">
+                                                <option value="{{ $country->id }}" {{ old('country_id') == $country->id ? 'selected' : ''}}>
                                                     {{ $country->name }}
                                                 </option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('country_id'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('country_id') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('date_of_birth') ? ' has-error' : '' }}">
@@ -244,7 +250,7 @@
                                         <select id="direction"
                                                 class="form-control"
                                                 name="direction">
-                                            <option value="">Select</option>
+                                            <option value="">--Select--</option>
                                             <option value="L" {{ old('direction') == 'L' ? 'selected' : ''}}>Left</option>
                                             <option value="R" {{ old('direction') == 'R' ? 'selected' : ''}}>Right</option>
                                         </select>

@@ -33,4 +33,9 @@ class Customer extends Authenticatable
   {
     return $query->where('username', 'admin')->first();
   }
+
+  public function setPasswordAttribute($password)
+  {
+    $this->attributes['password'] = bcrypt($password);
+  }
 }
