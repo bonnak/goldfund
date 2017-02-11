@@ -1,12 +1,20 @@
 /* Setup blank page controller */
-angular.module('MetronicApp').controller('DepositController', ['$rootScope', '$scope', 'settings', function($rootScope, $scope, settings) {
-    $scope.$on('$viewContentLoaded', function() {   
-        // initialize core components
-        App.initAjax();
+angular.module('MetronicApp').controller('DepositController', [
+    '$scope',
+    '$anchorScroll',
+    function($scope, $anchorScroll) {
+    $scope.$on('$viewContentLoaded', function() {
+        var vm = this;
+        vm.model = {};
+        console.log(vm.model);
 
-        // set default layout mode
-        $rootScope.settings.layout.pageContentWhite = true;
-        $rootScope.settings.layout.pageBodySolid = false;
-        $rootScope.settings.layout.pageSidebarClosed = false;
+        vm.save = function(){
+            if (!$scope.depositForm.$valid) {
+                $anchorScroll();
+                return;
+            }
+            vm.loading = true;
+        }
     });
+
 }]);
