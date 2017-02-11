@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row wow fadeInRight animated">
                 <div class="col-md-8" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
-                    <h2 class="intro" style="margin-top: 12%;">STATISTICS</h2>
+                    <h2 class="intro" style="margin-top: 12%;">Fundcrpto Trader</h2>
                     <p class="content-company">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-4" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                     <!-- HEADING -->
-                    <h2 class="intro">WHO WE ARE?</h2>
+                    <h2 class="intro">Who we are?</h2>
                     <div class="content-company">
                         <p>
                             Elizion - a new era of passive earnings. Accuracy and efficiency of our work in the cryptoforeign exchange
@@ -114,7 +114,7 @@
             </div>
             <!-- FEATURES COLUMN LEFT -->
                 <!-- SECTION TITLE -->
-            <h2 class="color-white">Feature</h2>
+            <h2 class="color-white">Advantage of company</h2>
             <div class="col-md-6 col-sm-6 wow fadeInLeft animated content-company"
                  data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                 <!-- FEATURE -->

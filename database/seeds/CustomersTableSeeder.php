@@ -19,13 +19,14 @@ class CustomersTableSeeder extends Seeder
       'username' => 'admin', 
       'email' => 'admin@binary.com', 
       'sponsor_id' => null,
+      'country_id' => 1,
       'direction' => null,
       'bitcoin_account' => '1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu',
     ]);
 
     foreach (range(1, 10) as $i) 
     {
-      factory(Customer::class)->create(['sponsor_id' => 1, 'placement_id' => $i]);
+      factory(Customer::class)->create(['sponsor_id' => 1, 'placement_id' => $i, 'country_id' => 1, ]);
     }
     
   }
