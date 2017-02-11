@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Countries;
+use App\Country;
 use App\Customer;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -45,15 +45,11 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $ref = request()->query('ref');
-        $countries = Countries::all();
-        $sponsor = Customer::find(
-            ($ref === null || $ref < 1) ? 1 : $ref
-        );
-        // detect error if null
-        if($sponsor == null){
-            $sponsor = Customer::find(1);
-        }
+        $ref = request()->query('ref');        
+        $sponsor = Customer::find(($ref === null || $ref < 1) ? 1 : $ref);
+        $countries = Country::all();
+
+
         return view('auth.register', compact('sponsor', 'countries'));
     }
 
@@ -105,11 +101,12 @@ class RegisterController extends Controller
             'agree_term_condition' => $data['agree_term_condition'] == 'on' ? true : false,
         ]);
 
-        // Notify user must activate their account.
-        $customer->notify(new VerifyCustomerRegister());
 
         // Broadcast a new memerber just register.
         event(new \App\Events\NewMemberRegistered($customer));
+
+        // Notify user must activate their account.
+        $customer->notify(new VerifyCustomerRegister());
 
         return $customer;
     }
