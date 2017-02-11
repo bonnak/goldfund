@@ -1,9 +1,7 @@
-/* Setup blank page controller */
 angular.module('MetronicApp').controller('DepositController', [
     '$scope',
     '$anchorScroll',
     function($scope, $anchorScroll) {
-    $scope.$on('$viewContentLoaded', function() {
         var vm = this;
         vm.model = {};
         console.log(vm.model);
@@ -14,7 +12,9 @@ angular.module('MetronicApp').controller('DepositController', [
                 return;
             }
             vm.loading = true;
-        }
-    });
+        };
 
-}]);
+        $scope.$on('$viewContentLoaded', function() {});
+
+    }
+]);

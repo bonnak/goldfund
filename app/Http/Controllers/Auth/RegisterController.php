@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Countries;
 use App\Customer;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -45,7 +46,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $ref = request()->query('ref');
-
+        $countries = Countries::all();
         $sponsor = Customer::find(
             ($ref === null || $ref < 1) ? 1 : $ref
         );
@@ -53,7 +54,7 @@ class RegisterController extends Controller
         if($sponsor == null){
             $sponsor = Customer::find(1);
         }
-        return view('auth.register', compact('sponsor'));
+        return view('auth.register', compact('sponsor', 'countries'));
     }
 
     /**
@@ -70,6 +71,7 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
             'first_name' => 'required',
             'last_name' => 'required',
+            'country_id' => 'required',
             'gender' => 'required',
             'bitcoin_account' => 'required',
             'date_of_birth' => 'required',
@@ -91,6 +93,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'first_name' => $data['first_name'],
+            'country_id' => $data['country_id'],
             'is_active' => true,
             'last_name' => $data['last_name'],
             'gender' => $data['gender'],

@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/account',  'UserController@index');
 	Route::get('/logout', 'Auth\LoginController@logout');
 
+	Route::get('/user/getProfile', 'Api\UserController@getProfile');
+
 	//Deposit
 	Route::get('/deposit', 'DepositController@showForm')->name('deposit');
 	Route::post('/deposit', 'DepositController@create');
