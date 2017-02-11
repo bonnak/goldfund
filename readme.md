@@ -20,7 +20,7 @@
 
 ### Fix error index or unique key out-of-range in db
 ``` bash
-> SET GLOBAL default_storage_engine = 'InnoDB'
+> SET GLOBAL default_storage_engine = 'InnoDB';
 ```
 
 ### Fix error mailer
