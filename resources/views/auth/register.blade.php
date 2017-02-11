@@ -76,7 +76,20 @@
                                         @endif
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="country"  class="col-md-4 control-label">
+                                        Country
+                                    </label>
+                                    <div class="col-md-6">
+                                        <select name="country_id" class="form-control">
+                                            @foreach($countries as $country)
+                                                <option value="{{ $country->id }}">
+                                                    {{ $country->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group{{ $errors->has('date_of_birth') ? ' has-error' : '' }}">
                                     <label for="date_of_birth" class="col-md-4 control-label">
                                         Date of birth
@@ -207,7 +220,6 @@
                                         @endif
                                     </div>
                                 </div>
-
                                 <div class="form-group{{ $errors->has('sponsor_id') ? ' has-error' : '' }}">
                                     <label for="sponsor_id" class="col-md-4 control-label">Sponsor</label>
 
