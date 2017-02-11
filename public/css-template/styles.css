@@ -482,6 +482,7 @@ input:focus {
 .intro {
 	text-align: center;
 	color: #FFF;
+	text-shadow: 3px 4px 10px #000;
 	margin-top: 25%;
 	line-height: 65px;
 	z-index: 0;
@@ -1499,8 +1500,13 @@ footer {
 	background-color: rgba(0,0,0,0.6);
 	color: #fff;
 	border-radius: 5px;
-	padding: 15px 15px 0px 15px;
+	padding: 15px 15px 15px 15px;
 }
 .num{
 	font-size: 20px;
+}
+.color-white{
+	text-shadow: 3px 4px 10px #000;
+	color: #ffffff;
+	padding: 30px;
 }
