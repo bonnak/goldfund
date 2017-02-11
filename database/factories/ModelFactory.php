@@ -22,6 +22,7 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'username' => $faker->username,
         'email' => $faker->unique()->safeEmail,
         'password' => bcrypt('12345678'),
+        'country_id' => $faker->numberBetween(1, 20),
         'is_active' => true,
         'remember_token' => str_random(10),
         'first_name' => $faker->firstName,
