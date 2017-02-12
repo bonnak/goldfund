@@ -4,18 +4,27 @@
     <header class="header" id="header">
         <section class="" id="">
             <div class="container">
-                <div class="row">
-                <div class="col-md-8">
-                    <h2 class="intro" style="margin-top: 12%;">STATISTICS</h2>
+                <div class="row wow fadeInRight animated">
+                <div class="col-md-8" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
+                    <h2 class="intro" style="margin-top: 12%;">Fundcrpto Trader</h2>
                     <p class="content-company">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                     <!-- HEADING -->
-                    <h2 class="intro">WHO WE ARE?</h2>
+                    <h2 class="intro">Who we are?</h2>
                     <div class="content-company">
                         <p>
                             Elizion - a new era of passive earnings. Accuracy and efficiency of our work in the cryptoforeign exchange
@@ -27,30 +36,56 @@
                             <i class="fa fa-lock"></i>
                             Login Member
                         </h4>
-                        <form name="resignationForm" novalidate role="form" class="form-horizontal" style="margin-top: -30px;">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}" style="margin-top: -30px;">
+                            {{ csrf_field() }}
                             <!-- CALL TO ACTION BUTTONS -->
                             <div class="buttons inpage-scroll">
-                                <div class="form-group">
+                                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" name="username" placeholder="Username..."/>
+                                        <div class="input-group">
+                                            <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">
+                                                    <i class="fa fa-user"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                        @if ($errors->has('username'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('username') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
-                                <div class="form-group">
+
+                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                     <div class="col-md-12">
-                                        <input type="password" class="form-control" name="password" placeholder="Password..."/>
+                                        <div class="input-group">
+                                            <input id="password" type="password" class="form-control" name="password" required>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">
+                                                    <i class="fa fa-key"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                        @if ($errors->has('password'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <button class="btn btn-primary custom-button green-btn">
                                             <i class="fa fa-sign-in"></i>
-                                            Sign-in
+                                            Login
                                         </button>
                                         <a href="{{ url('register') }}"
                                            class="btn btn-primary custom-button blue-btn"
                                             style="text-decoration: none;">
                                             <i class="fa fa-sign-out"></i>
-                                            Sign-out
+                                            Register
                                         </a>
                                     </div>
                                 </div>
@@ -69,23 +104,19 @@
 <!-- =========================
    FEATURES SECTION
 ============================== -->
-<section class="features" id="features">
+<section>
     <div class="container">
-
-        <!-- SECTION HEADER -->
-        <div class="section-header">
-
-            <!-- SECTION TITLE -->
-            <h2 class="dark-text">Statistics</h2>
-        </div>
-        <!-- / END SECTION HEADER -->
-
         <!-- FEATURS -->
-        <div class="row">
-            <portfolio></portfolio>
+        <div class="row wow fadeInRight animated">
+            <h2 class="color-white">Statistics</h2>
+            <div data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
+                <portfolio></portfolio>
+            </div>
             <!-- FEATURES COLUMN LEFT -->
-            <div class="col-md-6 col-sm-6 wow fadeInLeft animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
-
+                <!-- SECTION TITLE -->
+            <h2 class="color-white">Advantage of company</h2>
+            <div class="col-md-6 col-sm-6 wow fadeInLeft animated content-company"
+                 data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                 <!-- FEATURE -->
                 <div class="feature">
                     <div class="feature-icon">
@@ -124,7 +155,8 @@
             </div> <!-- / FEATURES COLUMN LEFT -->
 
             <!-- FEATURES COLUMN RIGHT -->
-            <div class="col-md-6 col-sm-6 wow fadeInRight animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
+            <div class="col-md-6 col-sm-6 wow fadeInRight animated content-company"
+                 data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                 <!-- FEATURE -->
                 <div class="feature">
                     <div class="feature-icon">

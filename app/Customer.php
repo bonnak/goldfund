@@ -14,7 +14,7 @@ class Customer extends Authenticatable
 
   protected $fillable = [ 
   	'username', 'email', 'password', 'is_active', 
-  	'first_name', 'last_name', 'gender', 
+  	'first_name', 'last_name', 'gender', 'country_id',
   	'date_of_birth', 'bitcoin_account', 'sponsor_id', 
     'placement_id', 'direction', 'agree_term_condition',
     'email_verified', 'verified_token'
@@ -28,4 +28,19 @@ class Customer extends Authenticatable
   {
   	 return $this->belongsTo('App\Customer');
   }
+
+  public function scopeAdmin($query)
+  {
+    return $query->where('username', 'admin')->first();
+  }
+
+  public function setPasswordAttribute($password)
+  {
+    $this->attributes['password'] = bcrypt($password);
+  }
+
+  public function country(){
+    return $this->belongsTo(Country::class, 'country_id')->select('id', 'name');
+  }
+
 }

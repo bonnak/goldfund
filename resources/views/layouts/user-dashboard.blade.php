@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-ng-app="MetronicApp">
 <head>
-    <title data-ng-bind="'AngularJS | ' + $state.current.data.pageTitle"></title>
+    <title data-ng-bind="'{{env('APP_TITLE')}} | ' + $state.current.data.pageTitle"></title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -96,6 +96,8 @@
 <!-- END CORE ANGULARJS PLUGINS -->
 <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
 <script src="{{ URL::asset('js/main.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('js/core/restful/restful.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('js/controllers/appController.js') }}" type="text/javascript"></script>
 <script src="js/directives.js" type="text/javascript"></script>
 <!-- END APP LEVEL ANGULARJS SCRIPTS -->
 <!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
