@@ -9,7 +9,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Deposit</div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ route('deposit')}}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ route('deposit')}}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
                                 <div class="form-group{{ $errors->has('plan_id') ? ' has-error' : '' }}">
@@ -44,6 +44,30 @@
                                         @if ($errors->has('amount'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('amount') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="admin_account" class="col-md-4 control-label">Admin account</label>
+                                    <div class="col-md-6">
+                                        <img src="{{ $admin_qr_account }}" id="admin_account"/>
+                                        <div>{{ $admin_account }}</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group{{ $errors->has('invoice_attachment') ? ' has-error' : '' }}">
+                                    <label for="invoice_attachment" class="col-md-4 control-label">Invoice attachment</label>
+
+                                    <div class="col-md-6">
+                                        <input id="invoice_attachment" type="file"
+                                               class="form-control" name="invoice_attachment"
+                                               value="{{ old('invoice_attachment') }}" >
+
+                                        @if ($errors->has('invoice_attachment'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('invoice_attachment') }}</strong>
                                             </span>
                                         @endif
                                     </div>

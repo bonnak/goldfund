@@ -15,8 +15,15 @@
                                     <label for="username" class="col-md-4 control-label">Username</label>
 
                                     <div class="col-md-6">
-                                        <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
-
+                                        <div class="input-group">
+                                            <input id="username" type="text" class="form-control"
+                                                   name="username" value="{{ old('username') }}" required autofocus>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">
+                                                    <i class="fa fa-user"></i>
+                                                </button>
+                                            </span>
+                                        </div>
                                         @if ($errors->has('username'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('username') }}</strong>
@@ -29,8 +36,14 @@
                                     <label for="password" class="col-md-4 control-label">Password</label>
 
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control" name="password" required>
-
+                                        <div class="input-group">
+                                            <input id="password" type="password" class="form-control" name="password" required>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">
+                                                    <i class="fa fa-key"></i>
+                                                </button>
+                                            </span>
+                                        </div>
                                         @if ($errors->has('password'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('password') }}</strong>

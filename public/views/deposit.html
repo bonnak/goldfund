@@ -1,0 +1,125 @@
+<form name="depositForm" novalidate role="form" class="form-horizontal">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN: ACCORDION DEMO -->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <span class="caption-subject bold uppercase">
+                            Select your investment plan
+                        </span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <section id="bs-pricing-five" class="bs-pricing-five p-top-100 bg-white">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="bs-five-area">
+                                    <div class="col-md-4 no-padding">
+                                        <div class="bs-five" ng-class="{'active': vm.model.plan == 1}">
+                                            <h3 class="text-uppercase">Plan A</h3>
+                                            <h1 class="bs-caption"><sup>%</sup>2.00</h1>
+                                            <p>Daily for 100 days</p>
+                                            <ul>
+                                                <li><b>Deposit: 50$ - 300$</b></li>
+                                                <li>Profit: 200%</li>
+                                                <li>24/7 Customer Support</li>
+                                            </ul>
+                                            <a ng-click="vm.model.plan = 1;vm.model.amount = 50;" class="btn btn-success btn-round m-top-40">Select</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 no-padding">
+                                        <div class="bs-five" ng-class="{'active': vm.model.plan == 2}">
+                                            <h3 class="text-uppercase">Plan B</h3>
+                                            <h1 class="bs-caption"><sup>%</sup>3.00</h1>
+                                            <p>Daily for 100 days</p>
+
+                                            <ul>
+                                                <li><b>Deposit: 301$ - 5000$</b></li>
+                                                <li>Profit: 300%</li>
+                                                <li>24/7 Customer Support</li>
+                                            </ul>
+                                            <a ng-click="vm.model.plan = 2;vm.model.amount = 301;" class="btn btn-success btn-round m-top-40">Select</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 no-padding">
+                                        <div class="bs-five" ng-class="{'active': vm.model.plan == 3}">
+                                            <h3 class="text-uppercase">Plan C</h3>
+                                            <h1 class="bs-caption"><sup>%</sup>4.00</h1>
+                                            <p>Daily for 100 days</p>
+
+                                            <ul>
+                                                <li><b>Deposit: 5001$ - 10000$</b></li>
+                                                <li>Profit: 400%</li>
+                                                <li>24/7 Customer Support</li>
+                                            </ul>
+                                            <a ng-click="vm.model.plan = 3;vm.model.amount = 5001;" class="btn btn-success btn-round m-top-40">Select</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="portlet light bordered" ng-if="vm.model.plan">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <span class="caption-subject bold uppercase">
+                            Amount to deposit
+                        </span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-group"
+                         ng-class="{ 'has-error': depositForm.amount.$invalid && depositForm.$submitted }">
+                        <label class="col-md-2 control-label">
+                            Amount to spend($)
+                            <span class="required">* </span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="number"
+                                   required
+                                   ng-model="vm.model.amount"
+                                   name="amount"
+                                   placeholder="amount"
+                                   class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet light bordered" ng-if="vm.model.plan">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <span class="caption-subject bold uppercase">
+                            Deposit fund from
+                        </span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            Blockchain Information
+                            <span class="required">* </span>
+                        </label>
+                        <div class="col-md-4">
+                            <img src="/images/qr_code.jpg">
+                            <b>1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">
+                    </label>
+                    <div class="col-md-4">
+                        <button class="btn blue" ng-click="vm.save();" ng-disabled="vm.loading">
+                            <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
+                            <i class="fa fa-save" ng-show="!vm.loading"></i>
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

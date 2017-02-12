@@ -1,5 +1,4 @@
 <?php
-
 /***
  * Back-end
  */
@@ -25,6 +24,8 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/account',  'UserController@index');
 	Route::get('/logout', 'Auth\LoginController@logout');
+
+	Route::get('/user/getProfile', 'Api\UserController@getProfile');
 
 	//Deposit
 	Route::get('/deposit', 'DepositController@showForm')->name('deposit');
@@ -67,5 +68,5 @@ Route::get('/support', function(){
 });
 
 Route::get('live', function(){
-	return view('live');
+    event(new \App\Events\NewMemberRegistered(\App\Customer::find(1)));
 });
