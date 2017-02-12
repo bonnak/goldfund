@@ -8,6 +8,8 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use App\Exceptions\AdminAuthenticationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use App\Exceptions\InvalidConfirmationCodeException;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -23,6 +25,8 @@ class Handler extends ExceptionHandler
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
         \Symfony\Component\HttpKernel\Exception\NotFoundHttpException::class,
+
+        \App\Exceptions\InvalidConfirmationCodeException::class,
     ];
 
     /**
@@ -70,7 +74,12 @@ class Handler extends ExceptionHandler
         if($exception instanceof AdminAuthenticationException)
         {
             return redirect()->guest('admin/login');
-        }        
+        }    
+
+        if($exception instanceof InvalidConfirmationCodeException)
+        {
+            return redirect()->guest('/');
+        }    
 
         return redirect()->guest('login');
     }

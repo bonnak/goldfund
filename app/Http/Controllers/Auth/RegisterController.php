@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Carbon\Carbon;
 use App\Acme\Binary;
 use App\Notifications\VerifyCustomerRegister;
+use App\Exceptions\InvalidConfirmationCodeException;
 
 class RegisterController extends Controller
 {
@@ -114,7 +115,7 @@ class RegisterController extends Controller
 
 
     public function confirm($token)
-    {        
+    {       
         $user = Customer::whereVerifiedToken($token)->first();
 
         if (!$user)
@@ -128,6 +129,6 @@ class RegisterController extends Controller
 
         session()->flash('message', 'You have successfully verified your account.');
 
-        return redirect('login');        
+        return view('auth.confirm');        
     }
 }
