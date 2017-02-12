@@ -97,6 +97,7 @@
 <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
 <script src="{{ URL::asset('js/main.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/core/restful/restful.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('js/controllers/appController.js') }}" type="text/javascript"></script>
 <script src="js/directives.js" type="text/javascript"></script>
 <!-- END APP LEVEL ANGULARJS SCRIPTS -->
 <!-- BEGIN APP LEVEL JQUERY SCRIPTS -->

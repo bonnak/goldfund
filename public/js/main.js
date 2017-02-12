@@ -86,15 +86,6 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
     return settings;
 }]);
 
-/* Setup App Main Controller */
-MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope, $rootScope) {
-    $scope.$on('$viewContentLoaded', function() {
-        App.initComponents(); // init core components
-        // Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials
-        // included in server side instead of loading with ng-include directive
-    });
-}]);
-
 /***
 Layout Partials.
 By default the partials are loaded through AngularJS ng-include directive. In case they loaded in server side(e.g: PHP include function) then below partial 
@@ -235,24 +226,38 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
 
-        //// UI Bootstrap
-        //.state('uibootstrap', {
-        //    url: "/ui_bootstrap.html",
-        //    templateUrl: "views/ui_bootstrap.html",
-        //    data: {pageTitle: 'AngularJS UI Bootstrap'},
-        //    controller: "GeneralPageController",
-        //    resolve: {
-        //        deps: ['$ocLazyLoad', function($ocLazyLoad) {
-        //            return $ocLazyLoad.load([{
-        //                name: 'MetronicApp',
-        //                files: [
-        //                    'js/controllers/GeneralPageController.js'
-        //                ]
-        //            }]);
-        //        }]
-        //    }
-        //})
-        //
+        .state('user_profile', {
+            url: "/user_profile.html",
+            templateUrl: "views/user_profile.html",
+            data: {pageTitle: 'User Profile'},
+            controller: "UserProfileController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'MetronicApp',
+                        files: [
+                            'js/controllers/UserProfileController.js'
+                        ]
+                    }]);
+                }]
+            }
+        })
+        .state('user_profile_edit', {
+            url: "/user_profile_edit.html",
+            templateUrl: "views/user_profile_edit.html",
+            data: {pageTitle: 'Edit User Profile'},
+            controller: "UserProfileEditController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'MetronicApp',
+                        files: [
+                            'js/controllers/UserProfileEditController.js'
+                        ]
+                    }]);
+                }]
+            }
+        })
         //// Tree View
         //.state('tree', {
         //    url: "/tree",

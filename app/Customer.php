@@ -38,4 +38,9 @@ class Customer extends Authenticatable
   {
     $this->attributes['password'] = bcrypt($password);
   }
+
+  public function country(){
+    return $this->belongsTo(Country::class, 'country_id')->select('id', 'name');
+  }
+
 }

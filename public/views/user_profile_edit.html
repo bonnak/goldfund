@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-globe theme-font hide"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase">
+                        Edit User Profile
+                    </span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form role="form" novalidate class="form-horizontal" name="profileForm">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">First Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" placeholder="John" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Last Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" placeholder="John" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Gender</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" placeholder="+1 646 580 DEMO (6284)" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Country</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" placeholder="Design, Web etc." class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Date of birth</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" placeholder="Web Developer" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Username</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="username" required ng-model="vm.model.username"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Email</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="email" class="form-control" name="email" required ng-model="vm.model.email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Sponsor</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="email" class="form-control" readonly ng-model="vm.model.sponsor">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Direction</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" readonly ng-model="vm.model.direction">
+                        </div>
+                    </div>
+                    <div class="margiv-top-10">
+                        <button class="btn blue" type="submit">
+                            <i class="fa fa-save"></i>
+                            Save Changes
+                        </button>
+                        <a ui-sref="user_profile" class="btn default">
+                            <i class="fa fa-close"></i>
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
