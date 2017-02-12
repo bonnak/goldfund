@@ -10,7 +10,6 @@ class UserController extends Controller
 {
 	public function users()
 	{
-		 return User::where('type', 'admin')
-		 							->paginate(request()->input('size'));
+		 return User::where('type', 'admin')->paginate(request()->input('size'));
 	}
 }

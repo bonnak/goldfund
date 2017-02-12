@@ -10,13 +10,13 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <form role="form" novalidate class="form-horizontal" name="profileForm">
+                <form role="form" novalidate class="form-horizontal" name="profileForm" ng-submit="vm.save()">
                     <div class="form-group">
                         <div class="col-md-3">
                             <label class="control-label">First Name</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" placeholder="John" class="form-control" />
+                            <input type="text" ng-model="vm.model.first_name" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -24,7 +24,7 @@
                             <label class="control-label">Last Name</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" placeholder="John" class="form-control" />
+                            <input type="text" ng-model="vm.model.last_name" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -32,7 +32,10 @@
                             <label class="control-label">Gender</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" placeholder="+1 646 580 DEMO (6284)" class="form-control" />
+                            <select class="form-control"
+                                    ng-model="vm.model.gender"
+                                    ng-options="x.code as x.name for x in vm.genders"
+                            ></select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -40,7 +43,10 @@
                             <label class="control-label">Country</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" placeholder="Design, Web etc." class="form-control" />
+                            <select class="form-control"
+                                    ng-model="vm.model.country_id"
+                                    ng-options="x.id as x.name for x in vm.countries">
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -48,7 +54,14 @@
                             <label class="control-label">Date of birth</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" placeholder="Web Developer" class="form-control" />
+                            <div class="input-group">
+                                <input type="text" ng-model="vm.model.date_of_birth"  class="form-control" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -82,7 +95,10 @@
                             <label class="control-label">Direction</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" readonly ng-model="vm.model.direction">
+                            <select class="form-control"
+                                    ng-model="vm.model.direction"
+                                    ng-options="x.code as x.name for x in vm.directions"
+                            ></select>
                         </div>
                     </div>
                     <div class="margiv-top-10">
