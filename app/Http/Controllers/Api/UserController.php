@@ -15,12 +15,12 @@ class UserController extends Controller
         return $user->toArray();
     }
 
-    public function updateProfile($data){
-        $user_id = auth()->user()->id;
-        dd($data);
-        $user = Customer::find($user_id);
-        $user->first_name = $data->first_name;
-
-        $user->save();
+    public function updateProfile(){
+        $user_id = request()->input('id');
+        return(request());
+//        $user = Customer::find($user_id);
+//        $user->first_name = $request->first_name;
+//
+//        $user->save();
     }
 }

@@ -26,20 +26,16 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/logout', 'Auth\LoginController@logout');
 
 	Route::get('/user/getProfile', 'Api\UserController@getProfile');
-	Route::put('/user/updateProfile', 'Api\UserController@getProfile');
 
 	//Deposit
 	Route::get('/deposit', 'DepositController@showForm')->name('deposit');
 	Route::post('/deposit', 'DepositController@create');
 });
 
+Route::get('/getCountry', 'CountryController@get');
 
 Route::get('/', function(){
 	return view('home');
-
-	//dd($customer = \App\Customer::find(1)->toArray());
-
-	//$customer->notify(new \App\Notifications\VerifyCustomerRegister());
 });
 
 Route::get('/home', 'HomeController@index');
