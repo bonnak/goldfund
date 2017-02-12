@@ -18,16 +18,12 @@
 > npm run production
 ```
 
-### Update .env file
-``` bash
-BROADCAST_DRIVER=pusher
-
-PUSHER_APP_ID=299192
-PUSHER_APP_KEY=e283fce33a446bb48093
-PUSHER_APP_SECRET=0477974f486aa0ddca77
-```
-
 ### Fix error index or unique key out-of-range in db
 ``` bash
-> SET GLOBAL default_storage_engine = 'InnoDB'
+> SET GLOBAL default_storage_engine = 'InnoDB';
+```
+
+### Fix error mailer
+``` bash
+> php artisan config:cache
 ```
