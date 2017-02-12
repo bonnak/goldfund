@@ -17,17 +17,26 @@ class UserController extends Controller
 
     public function updateProfile(Request $request)
     {
-      $user = Customer::find($request->id);
+//        if (User::where('email', '=', $request->email)->count() > 0) {
+//            // user found
+//            return 'email exist';
+//        }
+//        if (User::where('username', '=', $request->username)->count() > 0) {
+//            // user found
+//            return 'user exist';
+//        }
 
-      $user->email = $request->email; 
-      $user->password = $request->password; 
+        $user = Customer::find($request->id);
+
+        $user->email = $request->email;
+        $user->password = $request->password;
   		$user->first_name = $request->first_name; 
   		$user->last_name = $request->last_name; 
   		$user->gender = $request->gender; 
   		$user->country_id = $request->country_id;
   		$user->date_of_birth = $request->date_of_birth; 
-  		$user->bitcoin_account = $request->bitcoin_account; 
-
-      return $user->save();
+  		$user->bitcoin_account = $request->bitcoin_account;
+        $user->save();
+        return 'update success';
     }
 }

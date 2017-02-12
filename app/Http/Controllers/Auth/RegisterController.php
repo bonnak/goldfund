@@ -107,7 +107,7 @@ class RegisterController extends Controller
         event(new \App\Events\NewMemberRegistered($customer));
 
         // Notify user must activate their account.
-        $customer->notify(new VerifyCustomerRegister());
+        //$customer->notify(new VerifyCustomerRegister());
 
         return $customer;
     }

@@ -102,8 +102,9 @@
                         </div>
                     </div>
                     <div class="margiv-top-10">
-                        <button class="btn blue" type="submit">
-                            <i class="fa fa-save"></i>
+                        <button class="btn blue" type="submit" ng-disable="vm.loading">
+                            <i class="fa fa-save" ng-if="!vm.loading"></i>
+                            <i class="fa fa-spin fa-spinner" ng-if="vm.loading"></i>
                             Save Changes
                         </button>
                         <a ui-sref="user_profile" class="btn default">
