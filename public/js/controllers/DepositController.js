@@ -1,7 +1,8 @@
 angular.module('MetronicApp').controller('DepositController', [
     '$scope',
     '$anchorScroll',
-    function($scope, $anchorScroll) {
+    'Restful',
+    function($scope, $anchorScroll, Restful) {
         var vm = this;
         vm.model = {};
         console.log(vm.model);
@@ -13,7 +14,13 @@ angular.module('MetronicApp').controller('DepositController', [
             }
             vm.loading = true;
         };
-
+        vm.getQrCode = function(params){
+            Restful.get('api/qr/admin/bitcoin').success(function(data){
+                vm.qrcode = data;
+                console.log(data);
+            });
+        };
+        vm.getQrCode();
         $scope.$on('$viewContentLoaded', function() {});
 
     }
