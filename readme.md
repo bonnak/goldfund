@@ -23,6 +23,11 @@
 > SET GLOBAL default_storage_engine = 'InnoDB';
 ```
 
+### Create database utf8mb4 (recommend)
+``` bash
+> CREATE DATABASE mydb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
 ### Fix error mailer
 ``` bash
 > php artisan config:cache
