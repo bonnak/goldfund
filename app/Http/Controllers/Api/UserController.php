@@ -15,12 +15,19 @@ class UserController extends Controller
         return $user->toArray();
     }
 
-    public function updateProfile(){
-        $user_id = request()->input('id');
-        return(request());
-//        $user = Customer::find($user_id);
-//        $user->first_name = $request->first_name;
-//
-//        $user->save();
+    public function updateProfile(Request $request)
+    {
+      $user = Customer::find($request->id);
+
+      $user->email = $request->email; 
+      $user->password = $request->password; 
+  		$user->first_name = $request->first_name; 
+  		$user->last_name = $request->last_name; 
+  		$user->gender = $request->gender; 
+  		$user->country_id = $request->country_id;
+  		$user->date_of_birth = $request->date_of_birth; 
+  		$user->bitcoin_account = $request->bitcoin_account; 
+
+      return $user->save();
     }
 }
