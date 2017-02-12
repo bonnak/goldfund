@@ -32,6 +32,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::post('/deposit', 'DepositController@create');
 });
 
+
+Route::get('/customer/activation/{token}', 'Auth\RegisterController@confirm');
+
 Route::get('/getCountry', 'CountryController@get');
 
 Route::get('/', function(){
@@ -62,8 +65,4 @@ Route::get('/faq', function(){
 
 Route::get('/support', function(){
 	return view('support');
-});
-
-Route::get('live', function(){
-    event(new \App\Events\NewMemberRegistered(\App\Customer::find(1)));
 });
