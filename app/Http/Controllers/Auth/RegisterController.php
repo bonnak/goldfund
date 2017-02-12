@@ -87,10 +87,10 @@ class RegisterController extends Controller
         $customer = Customer::create([
             'username' => $data['username'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => $data['password'],
             'first_name' => $data['first_name'],
             'country_id' => $data['country_id'],
-            'is_active' => true,
+            'is_active' => false,
             'last_name' => $data['last_name'],
             'gender' => $data['gender'],
             'date_of_birth' => Carbon::createFromFormat('Y-m-d', $data['date_of_birth'])->toDateTimeString(),
@@ -99,6 +99,7 @@ class RegisterController extends Controller
             'bitcoin_account' => $data['bitcoin_account'],
             'direction' => $data['direction'],
             'agree_term_condition' => $data['agree_term_condition'] == 'on' ? true : false,
+            'verified_token' => hash_hmac('sha256', str_random(40), $data['username'] . $data['password']),
         ]);
 
 
@@ -109,5 +110,24 @@ class RegisterController extends Controller
         $customer->notify(new VerifyCustomerRegister());
 
         return $customer;
+    }
+
+
+    public function confirm($token)
+    {        
+        $user = Customer::whereVerifiedToken($token)->first();
+
+        if (!$user)
+        {
+            throw new InvalidConfirmationCodeException;
+        }
+        
+        $user->is_active = true;
+        $user->verified_date = Carbon::now();
+        $user->save();
+
+        session()->flash('message', 'You have successfully verified your account.');
+
+        return redirect('login');        
     }
 }

@@ -34,8 +34,8 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'placement_id' => null,
         'direction' => $faker->randomElement(['L', 'R']),
         'agree_term_condition' => true,
-        'email_verified' => true,
-        'verified_token' => null,
+        'verified_token' => $faker->uuid,
+        'verified_date' => Carbon::now(),
     ];
 });
 
