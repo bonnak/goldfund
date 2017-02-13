@@ -40,12 +40,17 @@ class VerifyCustomerRegister extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Please verify your account.')
-                    ->greeting('...')
-                    ->line('Dear ' . $notifiable->first_name . ',')
-                    ->line('')
-                    ->line('Click link below to verify your account.')
-                    ->line(url('customer/activation/' . $notifiable->verified_token));
+                    ->view('emails.verify', [
+                        'first_name' => $notifiable->first_name,
+                        'verified_token' => $notifiable->verified_token
+                    ]);
+                    // ->subject('Please verify your account.')
+                    // ->greeting(' ')
+                    // ->line('Dear ' . $notifiable->first_name . ',')
+                    // ->line('')
+                    // ->line('Click link below to verify your account.')
+                    // ->line(url('customer/activation/' . $notifiable->verified_token))
+                    // ->salutation('Regards, Gold Fund Trading');
                     //->action('Notification Action', url('/'))
                     
                     // ->line('Dear Aliza paul,')
