@@ -258,6 +258,22 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                 }]
             }
         })
+        .state('change_password', {
+            url: "/change_password.html",
+            templateUrl: "views/user_change_password.html",
+            data: {pageTitle: 'Change Password User Profile'},
+            controller: "ChangePasswordController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'MetronicApp',
+                        files: [
+                            'js/controllers/ChangePasswordController.js'
+                        ]
+                    }]);
+                }]
+            }
+        })
         //// Tree View
         //.state('tree', {
         //    url: "/tree",
