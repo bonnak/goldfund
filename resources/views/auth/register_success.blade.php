@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <section class="focus" id="focus">
-        <div class="container">
-            <h1>Welcome to BitComapanyTrading.com</h1>
-            <p>Please check your mail and verify your account<p>
-        </div>
-    </section>
+<section class="focus" id="verify_email">
+    <div class="container">
+    	<div class="text">
+        <h2>Please verify your email</h2>
+        <p>We sent a verification email to <b>{{ $user->email }}</b>.</p>
+      </div>
+    </div>
+</section>
 @endsection

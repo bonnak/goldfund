@@ -44,6 +44,8 @@
            'csrfToken' => csrf_token(),
        ]) !!};
      </script>
+
+     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
     <div id="app">
