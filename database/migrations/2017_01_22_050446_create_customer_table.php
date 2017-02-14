@@ -19,6 +19,7 @@ class CreateCustomerTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('trans_password');
             $table->string('first_name');
             $table->string('last_name');
             $table->char('gender', 1);
