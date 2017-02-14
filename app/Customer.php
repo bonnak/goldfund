@@ -21,7 +21,7 @@ class Customer extends Authenticatable
   ];
 
   protected $hidden = [
-    'password', 'remember_token',
+    'password', 'trans_password', 'remember_token',
   ];
 
   public function sponsor()

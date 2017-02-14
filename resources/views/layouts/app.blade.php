@@ -44,6 +44,8 @@
            'csrfToken' => csrf_token(),
        ]) !!};
      </script>
+
+     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
     <div id="app">
@@ -60,7 +62,7 @@
                         </button>
                         <div class="navbar-brand">
                             <a href="/home">
-                                <img src="images/logo.png" alt="Zerif">
+                                <img src="/images/logo.png" alt="Zerif">
                             </a>
                         </div>
                     </div>

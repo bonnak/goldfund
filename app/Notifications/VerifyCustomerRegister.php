@@ -42,7 +42,7 @@ class VerifyCustomerRegister extends Notification
         return (new MailMessage)
                     ->view('emails.verify', [
                         'first_name' => $notifiable->first_name,
-                        'verified_token' => $notifiable->verified_token
+                        'verified_token' => $notifiable->verified_token,
                     ]);
                     // ->subject('Please verify your account.')
                     // ->greeting(' ')

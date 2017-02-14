@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use App\Country;
 use App\Customer;
 use Validator;
@@ -10,6 +12,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Carbon\Carbon;
 use App\Acme\Binary;
 use App\Notifications\VerifyCustomerRegister;
+use App\Notifications\SendCustomerRegisterInfo;
 use App\Exceptions\InvalidConfirmationCodeException;
 
 class RegisterController extends Controller
@@ -42,6 +45,15 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        return view('auth.register_success', compact('user'));
     }
 
     public function showRegistrationForm()
@@ -89,6 +101,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => $data['password'],
+            'trans_password' => str_random(8),
             'first_name' => $data['first_name'],
             'country_id' => $data['country_id'],
             'is_active' => false,
@@ -108,7 +121,7 @@ class RegisterController extends Controller
         event(new \App\Events\NewMemberRegistered($customer));
 
         // Notify user must activate their account.
-        //$customer->notify(new VerifyCustomerRegister());
+        $customer->notify(new VerifyCustomerRegister());
 
         return $customer;
     }
@@ -116,18 +129,21 @@ class RegisterController extends Controller
 
     public function confirm($token)
     {       
-        $user = Customer::whereVerifiedToken($token)->first();
+        $customer = Customer::whereVerifiedToken($token)->first();
 
-        if (!$user)
+        if (!$customer)
         {
             throw new InvalidConfirmationCodeException;
         }
         
-        $user->is_active = true;
-        $user->verified_date = Carbon::now();
-        $user->save();
+        $customer->is_active = true;
+        $customer->verified_date = Carbon::now();
+        $customer->save();
 
-        session()->flash('message', 'You have successfully verified your account.');
+        $customer = Customer::with('sponsor')->find($customer->id);
+
+        // Notify user must activate their account.
+        $customer->notify(new SendCustomerRegisterInfo());
 
         return view('auth.confirm');        
     }
