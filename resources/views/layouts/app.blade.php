@@ -62,7 +62,7 @@
                         </button>
                         <div class="navbar-brand">
                             <a href="/home">
-                                <img src="images/logo.png" alt="Zerif">
+                                <img src="/images/logo.png" alt="Zerif">
                             </a>
                         </div>
                     </div>
