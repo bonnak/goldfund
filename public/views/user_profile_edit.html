@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-globe theme-font hide"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase">
+                        Edit User Profile
+                    </span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form role="form" novalidate class="form-horizontal" name="profileForm" ng-submit="vm.save()">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">First Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" ng-model="vm.model.first_name" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Last Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" ng-model="vm.model.last_name" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Gender</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-control"
+                                    ng-model="vm.model.gender"
+                                    ng-options="x.code as x.name for x in vm.genders"
+                            ></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Country</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-control"
+                                    ng-model="vm.model.country_id"
+                                    ng-options="x.id as x.name for x in vm.countries">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Date of birth</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <input type="text" ng-model="vm.model.date_of_birth"  class="form-control" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Username</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="username" required ng-model="vm.model.username"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Email</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="email" class="form-control" name="email" required ng-model="vm.model.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label class="control-label">Address Bitcoin</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" ng-model="vm.model.bitcoin_account">
+                        </div>
+                    </div>
+                    <div class="margiv-top-10">
+                        <button class="btn blue" type="submit" ng-disable="vm.loading">
+                            <i class="fa fa-save" ng-if="!vm.loading"></i>
+                            <i class="fa fa-spin fa-spinner" ng-if="vm.loading"></i>
+                            Save Changes
+                        </button>
+                        <a ui-sref="user_profile" class="btn default">
+                            <i class="fa fa-close"></i>
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

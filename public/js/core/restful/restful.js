@@ -1,4 +1,4 @@
-app.factory("Restful", [
+MetronicApp.factory("Restful", [
  	'$http',
  	function ($http) {
         var obj = {};

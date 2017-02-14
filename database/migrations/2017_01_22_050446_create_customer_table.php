@@ -24,14 +24,14 @@ class CreateCustomerTable extends Migration
             $table->char('gender', 1);
             $table->date('date_of_birth');    
             $table->integer('country_id')->unsigned();        
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(0);
             $table->string('bitcoin_account')->unique();
             $table->integer('sponsor_id')->unsigned()->nullable();
             $table->integer('placement_id')->unsigned()->nullable();
             $table->char('direction', 1)->nullable();
             $table->boolean('agree_term_condition');
-            $table->boolean('email_verified')->default(false);
-            $table->string('verified_token')->nullable();
+            $table->string('verified_token');
+            $table->string('verified_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

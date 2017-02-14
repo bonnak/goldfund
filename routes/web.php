@@ -33,12 +33,12 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 
+Route::get('/customer/activation/{token}', 'Auth\RegisterController@confirm')->middleware('guest');
+
+Route::get('/getCountry', 'CountryController@get');
+
 Route::get('/', function(){
 	return view('home');
-
-	//dd($customer = \App\Customer::find(1)->toArray());
-
-	//$customer->notify(new \App\Notifications\VerifyCustomerRegister());
 });
 
 Route::get('/home', 'HomeController@index');
@@ -65,8 +65,4 @@ Route::get('/faq', function(){
 
 Route::get('/support', function(){
 	return view('support');
-});
-
-Route::get('live', function(){
-    event(new \App\Events\NewMemberRegistered(\App\Customer::find(1)));
 });

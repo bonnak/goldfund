@@ -1,10 +1,22 @@
-angular.module('MetronicApp').controller('UserProfileController', function($rootScope, $scope, $http, $timeout) {
-    $scope.$on('$viewContentLoaded', function() {   
-        App.initAjax(); // initialize core components
-        Layout.setSidebarMenuActiveLink('set', $('#sidebar_menu_link_profile')); // set profile link active in sidebar menu 
-    });
+/* Setup general page controller */
+angular.module('MetronicApp').controller('UserProfileController', [
+    '$rootScope', '$scope',
+    function($rootScope, $scope) {
+        var vm = this;
+        vm.model = $scope.userProfile;
 
-    // set sidebar closed and body solid layout mode
-    $rootScope.settings.layout.pageBodySolid = true;
-    $rootScope.settings.layout.pageSidebarClosed = true;
-}); 
+        console.log(vm.model);
+        $scope.$on('$viewContentLoaded', function() {
+            // initialize core components
+            App.initAjax();
+        });
+
+        //when model from outside is changed, update local data
+        $scope.$watch('userProfile', function (newValue, oldValue) {
+            //check to make sure no loop cycle
+            if (newValue != vm.localSelected) {
+                vm.model = newValue;
+            }
+        });
+    }
+]);
