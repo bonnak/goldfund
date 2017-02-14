@@ -16,13 +16,13 @@
 
                                     <div class="col-md-6">
                                         <div class="input-group">
-                                            <input id="username" type="text" class="form-control"
-                                                   name="username" value="{{ old('username') }}" required autofocus>
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default" type="button">
                                                     <i class="fa fa-user"></i>
                                                 </button>
                                             </span>
+                                            <input id="username" type="text" class="form-control"
+                                                   name="username" value="{{ old('username') }}" required autofocus>
                                         </div>
                                         @if ($errors->has('username'))
                                             <span class="help-block">
@@ -37,12 +37,12 @@
 
                                     <div class="col-md-6">
                                         <div class="input-group">
-                                            <input id="password" type="password" class="form-control" name="password" required>
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default" type="button">
                                                     <i class="fa fa-key"></i>
                                                 </button>
                                             </span>
+                                            <input id="password" type="password" class="form-control" name="password" required>
                                         </div>
                                         @if ($errors->has('password'))
                                             <span class="help-block">

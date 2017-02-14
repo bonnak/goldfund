@@ -1,7 +1,7 @@
 /* Setup general page controller */
 angular.module('MetronicApp').controller('UserProfileEditController', [
-    '$rootScope', '$scope', 'Restful',
-    function($rootScope, $scope, restful) {
+    '$rootScope', '$scope', 'Restful', '$state',
+    function($rootScope, $scope, restful, $state) {
         var vm = this;
         vm.model = $scope.userProfile;
         vm.genders = [{
@@ -36,9 +36,14 @@ angular.module('MetronicApp').controller('UserProfileEditController', [
         vm.getInit();
 
         vm.save = function(){
-            console.log('save');
-            restful.put('/user/updateProfile', vm.model).success(function(result){
+            vm.loading= true;
+            restful.put('/api/user/updateProfile', vm.model).success(function(result){
                 console.log(result);
+                // call from parent scope function in main.js
+                $rootScope.$emit("InitSettingMethod", {});
+                $state.go('user_profile');
+            }).finally(function () {
+                vm.loading= false;
             });
         };
 

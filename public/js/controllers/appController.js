@@ -17,5 +17,9 @@ MetronicApp.controller('AppController', [
             });
         };
         $scope.initSetting();
+
+        $rootScope.$on("InitSettingMethod", function(){
+            $scope.initSetting();
+        });
     }
 ]);

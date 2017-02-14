@@ -80,30 +80,18 @@
                             <input type="email" class="form-control" name="email" required ng-model="vm.model.email">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-md-3">
-                            <label class="control-label">Sponsor</label>
+                            <label class="control-label">Address Bitcoin</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="email" class="form-control" readonly ng-model="vm.model.sponsor">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <label class="control-label">Direction</label>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-control"
-                                    ng-model="vm.model.direction"
-                                    ng-options="x.code as x.name for x in vm.directions"
-                            ></select>
+                            <input type="text" class="form-control" ng-model="vm.model.bitcoin_account">
                         </div>
                     </div>
                     <div class="margiv-top-10">
-                        <button class="btn blue" type="submit">
-                            <i class="fa fa-save"></i>
+                        <button class="btn blue" type="submit" ng-disable="vm.loading">
+                            <i class="fa fa-save" ng-if="!vm.loading"></i>
+                            <i class="fa fa-spin fa-spinner" ng-if="vm.loading"></i>
                             Save Changes
                         </button>
                         <a ui-sref="user_profile" class="btn default">
