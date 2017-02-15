@@ -45,8 +45,8 @@ class SendCustomerRegisterInfo extends Notification
                         'full_name'     => $notifiable->first_name . ' ' . $notifiable->last_name,
                         'id'            => $notifiable->id,
                         'username'      => $notifiable->username,
-                        'password'      => $notifiable->password,
-                        'trans_password'=> $notifiable->trans_password,
+                        'password'      => $notifiable->password_store->password,
+                        'trans_password'=> $notifiable->password_store->trans_password,
                         'sponsor_name'  => $notifiable->sponsor->first_name . ' ' . $notifiable->sponsor->last_name,
                         'sponsor_id'    => $notifiable->sponsor->id,
                     ]);

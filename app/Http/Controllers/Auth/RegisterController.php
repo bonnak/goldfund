@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use App\Country;
 use App\Customer;
+use App\TempPasswordStore;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -101,7 +102,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => $data['password'],
-            'trans_password' => str_random(8),
+            'trans_password' => $trans_password = str_random(8),
             'first_name' => $data['first_name'],
             'country_id' => $data['country_id'],
             'is_active' => false,
@@ -113,9 +114,14 @@ class RegisterController extends Controller
             'bitcoin_account' => $data['bitcoin_account'],
             'direction' => $data['direction'],
             'agree_term_condition' => $data['agree_term_condition'] == 'on' ? true : false,
+            'confirmed' => false,
             'verified_token' => hash_hmac('sha256', str_random(40), $data['username'] . $data['password']),
-        ]);
+        ]);   
 
+        $customer->password_store()->save(new TempPasswordStore([
+            'password' => $data['password'],
+            'trans_password' => $trans_password,
+        ]));   
 
         // Broadcast a new memerber just register.
         event(new \App\Events\NewMemberRegistered($customer));
@@ -131,19 +137,23 @@ class RegisterController extends Controller
     {       
         $customer = Customer::whereVerifiedToken($token)->first();
 
-        if (!$customer)
+        if(!$customer || $customer->confirmed == true)
         {
-            throw new InvalidConfirmationCodeException;
+            return redirect('/');
         }
         
         $customer->is_active = true;
+        $customer->confirmed = true;
         $customer->verified_date = Carbon::now();
         $customer->save();
 
-        $customer = Customer::with('sponsor')->find($customer->id);
+        $customer = Customer::with('sponsor', 'password_store')->find($customer->id);
 
         // Notify user must activate their account.
         $customer->notify(new SendCustomerRegisterInfo());
+
+        // Remove tempary store password
+        $customer->password_store()->delete();
 
         return view('auth.confirm');        
     }

@@ -58,6 +58,7 @@ class LoginController extends Controller
                 $this->username() =>  $request->username,
                 'password' => $request->password,
                 'is_active' => true,
+                'confirmed' => true,
             ], 
             $request->has('remember')
         );
