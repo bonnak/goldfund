@@ -66,7 +66,3 @@ Route::get('/faq', function(){
 Route::get('/support', function(){
 	return view('support');
 });
-
-Route::get('v', function(){
-	return view('auth.register_success');
-});
