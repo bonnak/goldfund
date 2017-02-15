@@ -35,6 +35,8 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400|Homemade+Apple'
           rel='stylesheet' type='text/css'>
 
+    <link rel="stylesheet" href="/css/app.css">
+
     <script src="/js-template/jquery.min.js"></script>
 
     <!-- CSRF Token -->
@@ -44,8 +46,6 @@
            'csrfToken' => csrf_token(),
        ]) !!};
      </script>
-
-     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
     <div id="app">

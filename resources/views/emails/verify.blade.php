@@ -5,5 +5,6 @@ Click link below to verify your account.<br>
 </p>
 <p>
 Regard,<br>
-Gold Trading Fund
+Bit Company Trading<br>
+<a href="www.bitcompanytrading.com">www.bitcompanytrading.com</a><br>
 </p>

@@ -1,17 +1,2 @@
+@import "front/navbar";
 @import "front/register";
-
-.navbar.navbar-inverse.bs-docs-nav.fixed {
-	height: 95px;
-
-	.navbar-brand {
-		margin-top: -13px;
-
-		img {
-			height: 70px;
-		}
-	}
-
-	.main-nav-list{
-		margin-top: 13px;
-	}
-}

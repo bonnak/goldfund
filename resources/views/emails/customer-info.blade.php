@@ -14,6 +14,6 @@ Sponsor ID: - {{ $sponsor_id }}<br>
 </p>
 <p>
 Regards<br>
-Gold Fund Trading<br>
-www.goldfundtrading.com<br>
+Bit Company Trading<br>
+<a href="www.bitcompanytrading.com">www.bitcompanytrading.com</a><br>
 </p>
