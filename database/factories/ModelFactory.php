@@ -35,8 +35,17 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'placement_id' => null,
         'direction' => $faker->randomElement(['L', 'R']),
         'agree_term_condition' => true,
+        'confirmed' => true,
         'verified_token' => $faker->uuid,
         'verified_date' => Carbon::now(),
+    ];
+});
+
+$factory->define(App\TempPasswordStore::class, function (Faker\Generator $faker) {
+    return [
+        'cust_id' => 1,
+        'password' => null,
+        'trans_password' => null,
     ];
 });
 

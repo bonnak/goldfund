@@ -31,6 +31,7 @@ class CreateCustomerTable extends Migration
             $table->integer('placement_id')->unsigned()->nullable();
             $table->char('direction', 1)->nullable();
             $table->boolean('agree_term_condition');
+            $table->boolean('confirmed')->default(0);
             $table->string('verified_token');
             $table->string('verified_date')->nullable();
             $table->rememberToken();

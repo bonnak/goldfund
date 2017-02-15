@@ -18,6 +18,7 @@ class Customer extends Authenticatable
   	'date_of_birth', 'bitcoin_account', 'sponsor_id', 
     'placement_id', 'direction', 'agree_term_condition',
     'email_verified', 'verified_token', 'trans_password',
+    'confirmed',
   ];
 
   protected $hidden = [
@@ -29,6 +30,11 @@ class Customer extends Authenticatable
   	 return $this->belongsTo('App\Customer');
   }
 
+  public function password_store()
+  {
+    return $this->hasOne(TempPasswordStore::class, 'cust_id');
+  }
+
   public function scopeAdmin($query)
   {
     return $query->where('username', 'admin')->first();
@@ -37,6 +43,11 @@ class Customer extends Authenticatable
   public function setPasswordAttribute($password)
   {
     $this->attributes['password'] = bcrypt($password);
+  }
+
+  public function setTransPasswordAttribute($trans_password)
+  {
+    $this->attributes['trans_password'] = bcrypt($trans_password);
   }
 
   public function country(){
