@@ -9,8 +9,8 @@ Member ID : {{ $id }}<br>
 User Name : {{ $username }}<br>
 Login Password : {{ $password }}<br>
 Transaction Password : {{ $trans_password }}<br>
-Sponsor Name: - {{ $sponsor_name }}<br> 
-Sponsor ID: - {{ $sponsor_id }}<br>
+Sponsor Name: {{ $sponsor_name }}<br> 
+Sponsor ID: {{ $sponsor_id }}<br>
 </p>
 <p>
 Click link below to verify your account.<br>
