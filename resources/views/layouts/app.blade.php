@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Welcome') | {{env('APP_TITLE')}}</title>
+    <title>@yield('title', 'Welcome') - {{ config('app.name') }}</title>
 
     <!-- =========================
      FAV AND TOUCH ICONSbackgrounds/bg3.jpg
     ============================== -->
-    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link rel="shortcut icon" href="images/icons/favicon.png">
     <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72"
           href="http://demo.templateocean.com/wrapbootstrap/zerif-html/v1.3.1/images/icons/apple-touch-icon-72x72.png">
