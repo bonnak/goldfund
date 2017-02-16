@@ -1,2 +1,32 @@
+.container{
+	padding: 0;
+
+	@media (max-width: 992px){
+	    width: 900px;
+	}
+
+	@media (max-width: 950px){
+	    width: 800;
+	}
+
+	@media (max-width: 900px){
+	    width: 750px;
+	}
+
+	@media (max-width: 800px){
+	    width: 650px;
+	}
+
+	@media (max-width: 750px){
+	    width: 600px;
+	}
+}
+
+// @media(max-width: 1000px){
+// 	.container{
+// 		width: 850px;
+// 	}
+// }
+
 @import "front/navbar";
 @import "front/register";

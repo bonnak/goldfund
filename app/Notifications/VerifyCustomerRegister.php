@@ -45,6 +45,7 @@ class VerifyCustomerRegister extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->subject('Please verify your account')
                     ->view('emails.verify', [
                         'full_name'     => $notifiable->first_name . ' ' . $notifiable->last_name,
                         'id'            => $notifiable->id,
