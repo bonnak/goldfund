@@ -11,13 +11,18 @@ class VerifyCustomerRegister extends Notification
 {
     use Queueable;
 
+    public $password;
+    public $trans_password;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($password, $trans_password)
     {
+        $this->password = $password;
+        $this->trans_password = $trans_password;
     }
 
     /**
@@ -41,7 +46,13 @@ class VerifyCustomerRegister extends Notification
     {
         return (new MailMessage)
                     ->view('emails.verify', [
-                        'first_name' => $notifiable->first_name,
+                        'full_name'     => $notifiable->first_name . ' ' . $notifiable->last_name,
+                        'id'            => $notifiable->id,
+                        'username'      => $notifiable->username,
+                        'password'      => $this->password,
+                        'trans_password'=> $this->trans_password,
+                        'sponsor_name'  => $notifiable->sponsor->first_name . ' ' . $notifiable->sponsor->last_name,
+                        'sponsor_id'    => $notifiable->sponsor->id,                    
                         'verified_token' => $notifiable->verified_token,
                     ]);
                     // ->subject('Please verify your account.')

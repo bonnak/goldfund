@@ -118,16 +118,18 @@ class RegisterController extends Controller
             'verified_token' => hash_hmac('sha256', str_random(40), $data['username'] . $data['password']),
         ]);   
 
-        $customer->password_store()->save(new TempPasswordStore([
-            'password' => $data['password'],
-            'trans_password' => $trans_password,
-        ]));   
+        // $customer->password_store()->save(new TempPasswordStore([
+        //     'password' => $data['password'],
+        //     'trans_password' => $trans_password,
+        // ]));   
 
         // Broadcast a new memerber just register.
         event(new \App\Events\NewMemberRegistered($customer));
 
         // Notify user must activate their account.
-        $customer->notify(new VerifyCustomerRegister());
+        $customer->with('sponsor')
+                ->find($customer->id)
+                ->notify(new VerifyCustomerRegister($data['password'], $trans_password));
 
         return $customer;
     }
@@ -147,13 +149,11 @@ class RegisterController extends Controller
         $customer->verified_date = Carbon::now();
         $customer->save();
 
-        $customer = Customer::with('sponsor', 'password_store')->find($customer->id);
-
         // Notify user must activate their account.
-        $customer->notify(new SendCustomerRegisterInfo());
+        //$customer->notify(new SendCustomerRegisterInfo());
 
         // Remove tempary store password
-        $customer->password_store()->delete();
+        //$customer->password_store()->delete();
 
         return view('auth.confirm');        
     }
