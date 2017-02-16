@@ -156,6 +156,10 @@
             todayHighlight: true,
             format: 'yyyy-mm-dd'
         });
+
+        $('#main-nav .navbar-toggle').click(function(){
+            $('#bs-navbar-collapse').toggleClass('open');
+        });
     </script>
 </body>
 </html>
