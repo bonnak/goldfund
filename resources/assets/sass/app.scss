@@ -1,8 +1,24 @@
 .container{
 	padding: 0;
 
-	@media (min-width: 992px){
-	    width: 950px;
+	@media (max-width: 992px){
+	    width: 900px;
+	}
+
+	@media (max-width: 950px){
+	    width: 800;
+	}
+
+	@media (max-width: 900px){
+	    width: 750px;
+	}
+
+	@media (max-width: 800px){
+	    width: 650px;
+	}
+
+	@media (max-width: 750px){
+	    width: 600px;
 	}
 }
 

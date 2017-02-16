@@ -148,7 +148,6 @@
     <script src="/js-template/smoothscroll.js"></script>
     <script src="/js-template/jquery.vegas.min.js"></script>
     <script src="/js-template/zerif.js"></script>
-    <script src="/js/app.js"></script>
 
     <script>
         $('.date').datepicker({
