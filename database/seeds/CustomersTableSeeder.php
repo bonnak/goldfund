@@ -52,11 +52,11 @@ class CustomersTableSeeder extends Seeder
       'confirmed' => false,
     ]);      
 
-    factory(TempPasswordStore::class)->create([
-      'cust_id' => 11,
-      'password' => '12345678',
-      'trans_password' => 'abcdefgh',
-    ]);
+    // factory(TempPasswordStore::class)->create([
+    //   'cust_id' => 11,
+    //   'password' => '12345678',
+    //   'trans_password' => 'abcdefgh',
+    // ]);
     
   }
 }
