@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row wow fadeInRight animated">
                 <div class="col-md-8" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
-                    <h2 class="intro" style="margin-top: 12%;">Fundcrpto Trader</h2>
+                    <h2 class="intro" style="margin-top: 17%;">Fundcrpto Trader</h2>
                     <p class="content-company">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
