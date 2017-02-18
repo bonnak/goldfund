@@ -23,8 +23,8 @@
                 </div>
                 <div class="col-md-4" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                     <!-- HEADING -->
-                    <h2 class="intro">Who we are?</h2>
-                    <div class="content-company">
+                    {{-- <h2 class="intro">Who we are?</h2> --}}
+                    {{-- <div class="content-company">
                         <p>
                             Elizion - a new era of passive earnings. Accuracy and efficiency of our work in the cryptoforeign exchange
                             markets creates prerequisites for expansion of growth of our platform around the world and provides high profit for investors.
@@ -90,6 +90,51 @@
                                 </div>
                             </div>
                         </form>
+                        <p>
+                            <a href="/password/reset">Forget your password?</a>
+                        </p>
+                    </div> --}}
+                    <div class="form-login-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Member login</h3>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            @if ($errors->has('username'))
+                                <div class="has-error">
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                </div>
+                            @endif
+                            <form role="form" method="POST" action="{{ url('/login') }}" class="login-form">
+                                {{ csrf_field() }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span> 
+                                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username or email address" autofocus>                                  
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                                </div>
+                                <div class="input-group rf">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input id="login-remember" type="checkbox" name="remember"> Remember me
+                                    </label>
+                                  </div>
+                                  <a href="/password/reset">Forgot your password?</a>
+                                </div>
+                                <button type="submit" class="btn">Sign in</button>
+                                <div class="form-group signup">
+                                    Don't have an account! <a href="/register">Register</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 </div>
