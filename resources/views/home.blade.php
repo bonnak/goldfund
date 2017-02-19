@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<section>
+<section class="intro-section">
   <div class="container">
     <div class="row wow fadeInRight animated">
       <div class="col-md-8 intro-wrap" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
@@ -59,7 +59,7 @@
 <section>
     <div class="container">
       <div class="row wow fadeInRight animated">
-          <h2 class="color-white">Statistics</h2>
+          <h2>Statistics</h2>
           <div data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
               <portfolio></portfolio>
           </div>
@@ -69,8 +69,8 @@
 
 <section>
     <div class="container">
-            <h2 class="color-white">Advantage of company</h2>
-            <div class="col-md-6 col-sm-6 wow fadeInLeft animated content-company"
+            <h2>Advantage of company</h2>
+            <div class="col-md-6 col-sm-6 wow fadeInLeft animated"
                  data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                 <!-- FEATURE -->
                 <div class="feature">
@@ -110,7 +110,7 @@
             </div> <!-- / FEATURES COLUMN LEFT -->
 
             <!-- FEATURES COLUMN RIGHT -->
-            <div class="col-md-6 col-sm-6 wow fadeInRight animated content-company"
+            <div class="col-md-6 col-sm-6 wow fadeInRight animated"
                  data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                 <!-- FEATURE -->
                 <div class="feature">
