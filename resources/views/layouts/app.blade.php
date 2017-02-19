@@ -49,7 +49,7 @@
 </head>
 <body>
     <div id="app">
-        <header id="home" class="header">
+        <header id="home" class="header-nav">
             <!-- TOP BAR -->
             <div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
                 <div class="container">
@@ -89,10 +89,12 @@
             <!-- / END TOP BAR -->
             <!-- / END HOME SECTION  -->
             <!-- BIG HEADING WITH CALL TO ACTION BUTTONS AND SHORT MESSAGES -->
-            <div class="">
+            
+        </header>
+
+        <div class="middle-wrapper">
                 @yield('content')
             </div>
-        </header>
         <!-- =========================
            FOOTER
         ============================== -->
