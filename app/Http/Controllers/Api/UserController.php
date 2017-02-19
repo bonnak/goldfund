@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Customer;
+use App\Exceptions\InvalidPasswordException;
+use App\Http\Requests\ChangePasswordRequest;
 
 class UserController extends Controller
 {
@@ -38,5 +40,24 @@ class UserController extends Controller
   		$user->bitcoin_account = $request->bitcoin_account;
         $user->save();
         return 'update success';
+    }
+
+    protected function guard()
+    {
+        return \Illuminate\Support\Facades\Auth::guard('customer');
+    }
+
+    public function changePassword(ChangePasswordRequest $request)
+    {
+      $user = Customer::find($request->id);
+
+      if(! \Hash::check($request->current_password, $user->password))
+      {
+        throw new InvalidPasswordException('Current password is incorrect');
+      }
+
+      $user->password = $request->new_password;
+
+      return (int) $user->save();
     }
 }
