@@ -8,8 +8,6 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use App\Exceptions\AdminAuthenticationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-use App\Exceptions\InvalidConfirmationCodeException;
-
 class Handler extends ExceptionHandler
 {
     /**
@@ -27,6 +25,7 @@ class Handler extends ExceptionHandler
         \Symfony\Component\HttpKernel\Exception\NotFoundHttpException::class,
 
         \App\Exceptions\InvalidConfirmationCodeException::class,
+        \App\Exceptions\InvalidPasswordException::class,
     ];
 
     /**
@@ -53,6 +52,11 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof NotFoundHttpException) {
             return response()->view('errors.404', [], 404);
+        }
+        elseif ($exception instanceof InvalidPasswordException) {            
+            if ($request->expectsJson()) {
+                return response()->json([ 'error' => $exception->getMessage() ], $exception->getStatusCode());
+            }    
         }
 
         return parent::render($request, $exception);
