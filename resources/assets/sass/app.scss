@@ -30,11 +30,6 @@
 	}
 }
 
-// @media(max-width: 1000px){
-// 	.container{
-// 		width: 850px;
-// 	}
-// }
-
+@import "front/home";
 @import "front/navbar";
 @import "front/register";
