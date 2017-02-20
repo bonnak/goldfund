@@ -30,15 +30,17 @@ class Customer extends Authenticatable
   	 return $this->belongsTo('App\Customer');
   }
 
-  public function password_store()
+  public function country()
   {
-    return $this->hasOne(TempPasswordStore::class, 'cust_id');
+    return $this->belongsTo(Country::class, 'country_id')->select('id', 'name');
   }
 
-  public function scopeAdmin($query)
-  {
-    return $query->where('username', 'admin')->first();
-  }
+  // public function password_store()
+  // {
+  //   return $this->hasOne(TempPasswordStore::class, 'cust_id');
+  // }
+
+  
 
   public function setPasswordAttribute($password)
   {
@@ -50,8 +52,23 @@ class Customer extends Authenticatable
     $this->attributes['trans_password'] = bcrypt($trans_password);
   }
 
-  public function country(){
-    return $this->belongsTo(Country::class, 'country_id')->select('id', 'name');
+
+
+  public function scopeAdmin($query)
+  {
+    return $query->where('username', 'admin')->first();
+  }
+
+  public function scopeQueryPlacements($query, $direction, $sponser_id)
+  {
+    return $query->where('sponsor_id', $sponser_id)
+                  ->Where('direction', $direction)
+                  ->orderBy('placement_id', 'desc');
+  }
+
+  public function scopeLastPlacement($query, $direction, $sponser_id = 1)
+  {
+    return $query->queryPlacements($direction, $sponser_id)->first();
   }
 
 }
