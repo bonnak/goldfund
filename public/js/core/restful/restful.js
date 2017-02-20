@@ -12,7 +12,7 @@ MetronicApp.factory("Restful", [
             });
         };
 
-		obj.save = function(url, params) {;
+		obj.save = function(url, params) {
 			return $http({
 				url: url,
 				method: 'POST',
