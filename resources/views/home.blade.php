@@ -56,12 +56,56 @@
   </div>
 </section>
 
-<section>
+<section data-ng-controller="liveUser as vm" ng-cloak>
     <div class="container">
       <div class="row wow fadeInRight animated">
           <h2>Statistics</h2>
           <div data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
-              <portfolio></portfolio>
+              <div class="row">
+                  <div class="col-md-4">
+                      <h4>Last Registrations</h4>
+                      <br/>
+                      <dl>
+                          <div data-ng-repeat="customer in vm.customers">
+                              <div class="col-md-6 col-xs-6 align-left">
+                                  <span am-time-ago="customer.created_at"></span>
+                                </div>
+                                <div class="col-md-6 col-xs-6 align-left">
+                                   <% customer.username %>
+                                </div>
+                          </div>
+                    </dl>
+                </div>
+                <div class="col-md-4">
+                    <br/>
+                    <div class="stat">
+                        <p class="num">95</p>
+                        <p class="text">Days Online</p>
+                    </div>
+                    <div class="stat">
+                        <p class="num"><% vm.totalMember %></p>
+                        <p class="text">Members</p>
+                    </div>
+                    <div class="stat">
+                        <p class="num"><% vm.investedCapital | currency %></p>
+                        <p class="text">Invested</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Last Investments</h4>
+                    <br/>
+                    <dl>
+                        <div ng-repeat="last_deposit in vm.lastDeposits">
+                            <div class="col-md-6 col-xs-6 align-left">
+                                <% last_deposit.owner.username %>
+                            </div>
+                            <div class="col-md-6 col-xs-6 align-left">
+                                <% last_deposit.amount | currency%>
+                            </div>
+                        </div>
+                    </dl>
+                </div>
+            </div>
           </div>
       </div>
     </div>
@@ -153,4 +197,11 @@
     </div> <!-- / END CONTAINER -->
 </section> 
 
+@endsection
+
+@section('script')
+<script src="/angular/angular-moment/moment.min.js"></script>
+<script src="/angular/1.5.6/angular.min.js"></script>
+<script src="/angular/angular-moment/angular-moment.min.js"></script>
+<script src="/js/controllers/liveUserController.js"></script>
 @endsection
