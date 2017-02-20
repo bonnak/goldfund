@@ -85,6 +85,7 @@ class RegisterController extends Controller
             'gender' => 'required',
             'bitcoin_account' => 'required',
             'date_of_birth' => 'required',
+            'sponsor_id' => 'required',
             'direction' => 'required',
             'agree_term_condition' => 'required',
         ]);
@@ -98,6 +99,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        var_dump(Customer::lastPlacement($data['direction'], $data['sponsor_id'])->id);
         $customer = Customer::create([
             'username' => $data['username'],
             'email' => $data['email'],
@@ -110,18 +112,13 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'date_of_birth' => Carbon::createFromFormat('Y-m-d', $data['date_of_birth'])->toDateTimeString(),
             'sponsor_id' => $data['sponsor_id'],
-            'placement_id' => Binary::lastPlacement($data['direction'], $data['sponsor_id'])->id,
+            'placement_id' => Customer::lastPlacement($data['direction'], $data['sponsor_id'])->id,
             'bitcoin_account' => $data['bitcoin_account'],
             'direction' => $data['direction'],
             'agree_term_condition' => $data['agree_term_condition'] == 'on' ? true : false,
             'confirmed' => false,
             'verified_token' => hash_hmac('sha256', str_random(40), $data['username'] . $data['password']),
-        ]);   
-
-        // $customer->password_store()->save(new TempPasswordStore([
-        //     'password' => $data['password'],
-        //     'trans_password' => $trans_password,
-        // ]));   
+        ]);    
 
         // Broadcast a new memerber just register.
         event(new \App\Events\NewMemberRegistered($customer));
@@ -148,12 +145,6 @@ class RegisterController extends Controller
         $customer->confirmed = true;
         $customer->verified_date = Carbon::now();
         $customer->save();
-
-        // Notify user must activate their account.
-        //$customer->notify(new SendCustomerRegisterInfo());
-
-        // Remove tempary store password
-        //$customer->password_store()->delete();
 
         return view('auth.confirm');        
     }
