@@ -53,8 +53,12 @@ $factory->define(App\Plan::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->unique()->randomElement(['Plan 1', 'Plan 2', 'Plan 3']),
         'description' => null,
-        'min_price' => null,
-        'max_price' => null,
+        'min_cost' => 0,
+        'max_cost' => 0,
+        'sponsor' => 0, 
+        'paring' => 0, 
+        'daily' => 0, 
+        'duration_exp' => 0, 
     ];
 });
 

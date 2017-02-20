@@ -42,11 +42,6 @@ class UserController extends Controller
         return 'update success';
     }
 
-    protected function guard()
-    {
-        return \Illuminate\Support\Facades\Auth::guard('customer');
-    }
-
     public function changePassword(ChangePasswordRequest $request)
     {
       $user = Customer::find($request->id);
