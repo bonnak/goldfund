@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -94,8 +94,8 @@
         </header>
 
         <div class="middle-wrapper">
-                @yield('content')
-            </div>
+            @yield('content')
+        </div>
         <!-- =========================
            FOOTER
         ============================== -->
@@ -163,5 +163,6 @@
             $('#bs-navbar-collapse').toggleClass('open');
         });
     </script>
+    @yield('script')
 </body>
 </html>
