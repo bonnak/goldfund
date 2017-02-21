@@ -26,15 +26,13 @@ class DepositController extends Controller
 
     public function create(DepositRequest $request)
     {
-        //return '<img src="' . Storage::url($request->invoice_attachment->store('public/images/invoices')) . '">';
-
-    	$deposit = Deposit::create([
+        $deposit = Deposit::create([
     		'cust_id' => auth()->user()->id, 
     		'plan_id' => $request->input('plan_id'), 
     		'amount' => $request->input('amount'), 
     		'issue_date' => Carbon::now(),  
     		'expire_date' => Carbon::now()->addDay(30),
-            'invoice_attachment' => $request->invoice_attachment->store('public/images/invoices')
+            //'invoice_attachment' => $request->invoice_attachment->store('public/images/invoices')
     	]);
 
     	// Broadcast a memerber just deposit.
