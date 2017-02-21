@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-ng-app="MetronicApp">
 <head>
-    <title data-ng-bind="'{{env('APP_TITLE')}} | ' + $state.current.data.pageTitle"></title>
+    <title data-ng-bind="$state.current.data.pageTitle"></title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
