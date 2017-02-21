@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Plan;
 
 class DepositRequest extends FormRequest
 {
@@ -23,10 +24,12 @@ class DepositRequest extends FormRequest
      */
     public function rules()
     {
+        $plan = Plan::find($this->plan_id);
+
         return [
             'plan_id' => 'required',
-            'amount' => 'required|numeric',
-            'invoice_attachment' => 'required|file'
+            'amount' => 'required|numeric|min:' . $plan->min_cost . '|max:' . $plan->max_cost,
+            //'invoice_attachment' => 'required|file'
         ];
     }
 }
