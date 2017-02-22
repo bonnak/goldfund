@@ -62,3 +62,24 @@ Route::get('/faq', function(){
 Route::get('/support', function(){
 	return view('support');
 });
+
+Route::get('/binary', function(){
+	return view('binary');
+});
+
+Route::get('/binary/json', function(){
+	$bn = \App\customer::with('binary')
+						->where('username', 'admin')
+						->select('username', 'id', 'sponsor_id')
+						->first();
+
+	dd($bn->binary->toArray());
+	
+	// $collection = collect($bn->toArray())->map(function ($el) {
+	//     return strtoupper($el['name']);
+	// });
+
+	// dd($collection->toArray());
+
+	return $collection;
+});

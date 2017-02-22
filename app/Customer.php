@@ -39,6 +39,11 @@ class Customer extends Authenticatable
   // {
   //   return $this->hasOne(TempPasswordStore::class, 'cust_id');
   // }
+   
+  public function binary()
+  {
+    return $this->hasMany(Customer::class, 'sponsor_id', 'id');
+  }
 
   
 

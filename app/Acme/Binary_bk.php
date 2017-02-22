@@ -3,7 +3,7 @@ namespace App\Acme;
 
 use App\Customer;
 
-class Binary
+class Binary_BK
 {	
 	public static function queryPlacements($direction, $sponser_id)
 	{
