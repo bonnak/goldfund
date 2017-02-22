@@ -37,11 +37,7 @@ Route::get('/customer/activation/{token}', 'Auth\RegisterController@confirm')->m
 
 Route::get('/getCountry', 'CountryController@get');
 
-Route::get('/', function(){
-	return view('home');
-});
-
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('/about-us', function(){
 	return view('about-us');
