@@ -62,3 +62,7 @@ Route::get('/faq', function(){
 Route::get('/support', function(){
 	return view('support');
 });
+
+Route::get('/binary', function(){
+	return view('binary');
+});
