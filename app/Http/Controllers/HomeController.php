@@ -13,7 +13,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(auth()->check())
+        {
+            return redirect('account');
+        }
         return view('home');
-        //return view('home');
     }
 }
