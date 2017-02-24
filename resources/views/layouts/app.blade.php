@@ -63,13 +63,13 @@
                         </button>
                         <div class="navbar-brand">
                             <a href="/home">
-                                <img src="/images/logo.png" alt="Zerif">
+                                <img src="/images/logo.png" alt="Bit Company Trading">
                             </a>
                         </div>
                     </div>
                     <nav class="navbar-collapse collapse" role="navigation" id="bs-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
-                            <li><a href="/home">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             @if(!auth()->check())
                                 <li><a href="/register">Register</a></li>
                             @endif
