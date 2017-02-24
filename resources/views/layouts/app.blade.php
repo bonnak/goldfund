@@ -62,7 +62,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <div class="navbar-brand">
-                            <a href="/home">
+                            <a href="/">
                                 <img src="/images/logo.png" alt="Bit Company Trading">
                             </a>
                         </div>
