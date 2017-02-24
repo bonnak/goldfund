@@ -11,7 +11,6 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Carbon\Carbon;
-use App\Acme\Binary;
 use App\Notifications\VerifyCustomerRegister;
 use App\Notifications\SendCustomerRegisterInfo;
 use App\Exceptions\InvalidConfirmationCodeException;
