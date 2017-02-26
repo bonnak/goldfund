@@ -36,6 +36,9 @@ angular.module('MetronicApp').controller('UserProfileEditController', [
         vm.getInit();
 
         vm.save = function(){
+            if($scope.profileForm.$invalid){
+                return;
+            }
             vm.loading= true;
             restful.put('/api/user/updateProfile', vm.model).success(function(result){
                 console.log(result);
