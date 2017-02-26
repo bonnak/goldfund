@@ -22,6 +22,7 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         $placement = Customer::lastPlacement($direction = $directions[array_rand($directions)], 1)->id;
     } catch (Exception $e) {
         $placement = null;
+        $direction = null;
     }
 
     return [
@@ -69,7 +70,6 @@ $factory->define(App\Plan::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Deposit::class, function (Faker\Generator $faker) {
-    var_dump(Customer::lastPlacement('L', 1)->id);
     return [
         'cust_id' => factory(App\Customer::class)->create([ 
             'placement_id' => Customer::lastPlacement('L', 1)->id 

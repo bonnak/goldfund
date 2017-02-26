@@ -16,36 +16,66 @@ class BinaryTreeTest extends TestCase
     /**
      * @test
      */
-    public function example()
+    public function geneology()
     {
-    	$parent = factory(Customer::class)->create([
+    	$root = factory(Customer::class)->create([
     		'sponsor_id' => null, 
 	    	'placement_id' => null,
 	    	'direction' => null,
     	]); 
 
-	    $child1 = factory(Customer::class)->create([
-	      'sponsor_id' => $parent->id, 
-	      'placement_id' => $parent->id,
+	    $child1L = factory(Customer::class)->create([
+	      'sponsor_id' => $root->id, 
+	      'placement_id' => $root->id,
 	      'direction' => 'L',
 	    ]); 
 
-	    $child2 = factory(Customer::class)->create([
-	      'sponsor_id' => $parent->id, 
-	      'placement_id' => $parent->id,
+	    $child2R = factory(Customer::class)->create([
+	      'sponsor_id' => $root->id, 
+	      'placement_id' => $root->id,
 	      'direction' => 'R',
 	    ]); 
 
+	    $child3L = factory(Customer::class)->create([
+	      'sponsor_id' => $root->id, 
+	      'placement_id' => $child1L->id,
+	      'direction' => 'R',
+	    ]); 
 
-	    $binary = new BinaryTree();
-	    //$binary->add($parent);
-	    $binary->add($child1, function($item){
-	    	dd($item);
-	    	return tue;
-	    });
+	    $child4R = factory(Customer::class)->create([
+	      'sponsor_id' => $root->id, 
+	      'placement_id' => $child2R->id,
+	      'direction' => 'R',
+	    ]); 
 
-	    //$binary->toArray();
+	    $child5L = factory(Customer::class)->create([
+	      'sponsor_id' => $root->id, 
+	      'placement_id' => $child3L->id,
+	      'direction' => 'R',
+	    ]); 
 
-        $this->assertTrue(true);
+	    $child1_1 = factory(Customer::class)->create([
+	      'sponsor_id' => $child1L->id, 
+	      'placement_id' => $child1L->id,
+	      'direction' => 'L',
+	    ]); 
+
+
+	    $binary_tree = new BinaryTree();
+	    $binary_tree->render($root);
+
+	    $this->assertArrayStructure(
+	    	[ '*' => 
+	    		[
+	    			'placement_id',
+	    			'sponsor_id',
+	    		]
+	    	], 
+	    	$binary_tree->headChildren()->toArray()
+	    );
+    }
+
+    public function order_placement_ascending()
+    {
     }
 }

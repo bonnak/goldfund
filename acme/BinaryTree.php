@@ -8,9 +8,9 @@ class BinaryNode
     public $left;
     public $right;
 
-    public function __construct($item) 
+    public function __construct($data) 
     {
-        $this->data = $item;        
+        $this->data = $data;        
         $this->left = null;
         $this->right = null;
     }
@@ -18,15 +18,11 @@ class BinaryNode
 
 class BinaryTree
 {
-    protected $head;
-    protected $placement;
-    protected $direction;   
+    protected $head;   
 
-    public function __construct($data = null, $placement = null, $direction = null) 
+    public function __construct($data = null) 
     {
-        $this->head = $data !== null ? new BinaryNode($data) : null;
-        $this->placement = $placement;
-        $this->direction = $direction;
+        $this->head = $data;
     } 
  
     public function add($item, $direction = null)
@@ -68,20 +64,29 @@ class BinaryTree
         }
     }
 
-    public function render()
+    public function render($root)
     {
-        if($this->head === null) throw new \Exception('Root cannot be null');
+        $this->head = new BinaryNode($root);
 
-        $children = $this->head->data->children->sortByDesc($this->placement);
+        $this->orderPlacementAscending();
 
-        dd($children->map(function($item, $key){ return [$item->username, $item->placement_id]; }));
+    }
 
-        $children->each(function($item, $key) {
-            var_dump($item->placement_id);
+    public function level($number)
+    {
+        
+    }
+
+    public function headChildren()
+    {
+        return $this->orderPlacementAscending();
+    }
+
+    protected function orderPlacementAscending()
+    {
+        return $this->head->data->children
+                ->sortBy('placement_id');
         });
     }
 
-    public function toArray()
-    {
-    }
 }
