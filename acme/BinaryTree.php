@@ -30,30 +30,19 @@ class BinaryTree
         $this->addTo($this->head, $item);
     }
 
-
     protected function addTo($node, $item)
     {
-        if ($item->direction == 'L')
+        $direction = $item->direction === 'L' ? 'left' : 'right';
+
+        if($node->data->id == $item->placement_id)
         {
-            if ($node->left == null)
-            {
-                $node->left = new BinaryNode($item);
-            }
-            else
-            {
-                $this->addTo($node->left, $item);
-            }
+            $node->{$direction} = new BinaryNode($item);            
         }
-        elseif($item->direction == 'R')
-        {
-            if ($node->right == null)
+        else{
+            if($node->{$direction} !== null)
             {
-                $node->right = new BinaryNode($item);
-            }
-            else
-            {
-                $this->addTo($node->right, $item);
-            }
+                $this->addTo($node->{$direction}, $item);
+            }            
         }
     }
 
@@ -61,11 +50,20 @@ class BinaryTree
     {
         $this->head = new BinaryNode($root);
 
-        $children = $this->orderPlacementAscending();
-        
-        $children->each(function($child){
-            $this->add($child);
+        $this->orderPlacementAscending()->each(function($el){
+            $this->add($el);
         });
+    }
+
+    public function level($number)
+    {
+        // $node = $this->head;
+        
+        // for($i=0; $i<$number; $i++)
+        // {
+        //     if($node->)
+        // }
+        // return 
     }
 
     public function headChildren()
@@ -81,18 +79,45 @@ class BinaryTree
 
     public function toArray()
     {
-        $node = $this->head;
-        $array = [];
+        $data = [
+            'id'            => $this->head->data->id,
+            'sponsor_id'    => $this->head->data->sponsor_id,
+            'placement_id'  => $this->head->data->placement_id,
+            'username'      => $this->head->data->username,
+            'left' => null,
+            'right' => null,
+        ];        
 
-        do
+        $node_left = $this->head->left;
+        $data_l = &$data['left'];
+        while($node_left !== null)
         {
-            array_push($array, [ 'data' => $node->data->toArray() ]);
-            $node = $node->left;
+            $data_l = [ 
+                'id'            => $node_left->data->id,
+                'sponsor_id'    => $node_left->data->sponsor_id,
+                'placement_id'  => $node_left->data->placement_id,
+                'username'      => $node_left->data->username,
+            ];
 
-            array_push($array, [ 'left' => []]);
-            $array = $array['left'];
-        }while($node !== null);
+            $data_l = &$data_l['left'];
+            $node_left = $node_left->left;
+        }
 
-        return $array;
+        $node_right = $this->head->right;
+        $data_r = &$data['right'];
+        while($node_right !== null)
+        {
+            $data_r = [
+                'id'            => $node_right->data->id,
+                'sponsor_id'    => $node_right->data->sponsor_id,
+                'placement_id'  => $node_right->data->placement_id,
+                'username'      => $node_right->data->username,
+            ];
+
+            $data_r = &$data_r['right'];
+            $node_right = $node_right->right;
+        }
+
+        return $data;
     }
 }

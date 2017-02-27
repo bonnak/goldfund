@@ -68,13 +68,13 @@ Route::get('/binary', function(){
 });
 
 Route::get('/binary/json', function(){
-	$bn = \App\customer::with('children')
+	$bn = \App\Customer::with('children')
 						->where('username', 'admin')
 						//->select('username', 'id', 'sponsor_id')
 						->first();
 
-	$tree = new \Acme\BinaryTree($bn, 'placement_id', 'direction');
-	$tree->render();
+	$tree = new \Acme\BinaryTree();
+	$tree->render($bn); 
 
-	//return $collection;     
+	return $tree->toArray();
 });

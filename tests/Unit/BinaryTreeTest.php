@@ -64,22 +64,36 @@ class BinaryTreeTest extends TestCase
 	    $binary_tree = new BinaryTree();
 	    $binary_tree->render($root);
 
-	    $this->assertEquals([
-		    	[ 'id' => 2, 'placement_id' => '1', 'direction' => 'L'],
-		    	[ 'id' => 3, 'placement_id' => '1', 'direction' => 'R'],
-		    	[ 'id' => 4, 'placement_id' => '2', 'direction' => 'L'],
-		    	[ 'id' => 5, 'placement_id' => '3', 'direction' => 'R'],
-		    	[ 'id' => 6, 'placement_id' => '4', 'direction' => 'L'],
-		    ],
-				$binary_tree->headChildren()->map(function($el){
-		    	return [ 
-		    		'id' => $el->id, 
-		    		'placement_id' => $el->placement_id,
-		    		'direction' =>$el->direction,
-		    	];
-		    })->toArray()
+	    $this->assertEquals(
+	    	[ 
+	    		[ 'id' => 2, 'placement_id' => 1, 'sponsor_id' => 1, 'direction' => 'L' ],
+	    		[ 'id' => 3, 'placement_id' => 1, 'sponsor_id' => 1, 'direction' => 'R' ],
+	    		[ 'id' => 4, 'placement_id' => 2, 'sponsor_id' => 1, 'direction' => 'L' ],
+	    		[ 'id' => 5, 'placement_id' => 3, 'sponsor_id' => 1, 'direction' => 'R' ],
+	    		[ 'id' => 6, 'placement_id' => 4, 'sponsor_id' => 1, 'direction' => 'L' ],
+	    	], 
+	    	$binary_tree->headChildren()->map(function($el){
+	    		return [
+	    			'id' => $el->id,
+	    			'placement_id' => $el->placement_id,
+	    			'sponsor_id' => $el->sponsor_id,
+	    			'direction' => $el->direction,
+	    		];
+	    	})->toArray()
 	    );
 
-	    dd($binary_tree->toArray());
+	    
+
+	    $this->assertArrayStructure(
+	    	[
+	    		'left' => [
+	    			'left' => []
+	    		],
+	    		'right' => [
+	    			'right' => []
+	    		]
+	    	],
+	    	$binary_tree->toArray()
+	    );
     }
 }
