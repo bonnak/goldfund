@@ -68,7 +68,7 @@ Route::get('/binary', function(){
 });
 
 Route::get('/binary/json', function(){
-	$bn = \App\customer::with('children')
+	$bn = \App\Customer::with('children')
 						->where('username', 'admin')
 						//->select('username', 'id', 'sponsor_id')
 						->first();
