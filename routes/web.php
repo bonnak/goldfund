@@ -76,5 +76,5 @@ Route::get('/binary/json', function(){
 	$tree = new \Acme\BinaryTree();
 	$tree->render($bn); 
 
-	dd($tree->toArray());
+	return $tree->toArray();
 });
