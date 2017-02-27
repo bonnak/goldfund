@@ -73,8 +73,8 @@ Route::get('/binary/json', function(){
 						//->select('username', 'id', 'sponsor_id')
 						->first();
 
-	$tree = new \Acme\BinaryTree($bn, 'placement_id', 'direction');
-	$tree->render();
+	$tree = new \Acme\BinaryTree();
+	$tree->render($bn); 
 
-	//return $collection;     
+	dd($tree->toArray());
 });

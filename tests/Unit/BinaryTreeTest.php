@@ -81,5 +81,19 @@ class BinaryTreeTest extends TestCase
 	    		];
 	    	})->toArray()
 	    );
+
+	    
+
+	    $this->assertArrayStructure(
+	    	[
+	    		'left' => [
+	    			'left' => []
+	    		],
+	    		'right' => [
+	    			'right' => []
+	    		]
+	    	],
+	    	$binary_tree->toArray()
+	    );
     }
 }
