@@ -1,7 +1,7 @@
 <?php
 
 use Carbon\Carbon;
-use App\Acme\Binary;
+use App\Customer;
 
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
@@ -16,7 +16,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Customer::class, function (Faker\Generator $faker) {
+$factory->define(App\Customer::class, function (Faker\Generator $faker) {    
+    try {
+        $directions = ['L', 'R'];
+        $placement = Customer::lastPlacement($direction = $directions[array_rand($directions)], 1)->id;
+    } catch (Exception $e) {
+        $placement = null;
+        $direction = null;
+    }
 
     return [
         'username' => $faker->username,
@@ -32,8 +39,8 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'date_of_birth' => $faker->dateTime,
         'bitcoin_account' => $faker->uuid,
         'sponsor_id' => 1,
-        'placement_id' => null,
-        'direction' => $faker->randomElement(['L', 'R']),
+        'placement_id' => $placement,
+        'direction' => $direction,
         'agree_term_condition' => true,
         'confirmed' => true,
         'verified_token' => $faker->uuid,
@@ -63,10 +70,10 @@ $factory->define(App\Plan::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Deposit::class, function (Faker\Generator $faker) {
-    $last_placement_id = Binary::lastPlacement('L', 1)->id;
-
     return [
-        'cust_id' => factory(App\Customer::class)->create([ 'placement_id' => $last_placement_id ])->id,
+        'cust_id' => factory(App\Customer::class)->create([ 
+            'placement_id' => Customer::lastPlacement('L', 1)->id 
+        ])->id,
         'plan_id' => 1,
         'amount' => 300,
         'issue_date' => Carbon::now(),

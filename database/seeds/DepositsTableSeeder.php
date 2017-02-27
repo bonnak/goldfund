@@ -14,6 +14,6 @@ class DepositsTableSeeder extends Seeder
     {
         Deposit::truncate();
 
-        factory(Deposit::class, 5)->create();
+        factory(Deposit::class, 2)->create();
     }
 }

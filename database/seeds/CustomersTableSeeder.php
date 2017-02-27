@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory;
 use App\Customer;
-use App\TempPasswordStore;
 
 class CustomersTableSeeder extends Seeder
 {
@@ -15,7 +14,6 @@ class CustomersTableSeeder extends Seeder
   public function run()
   {
     Customer::truncate();
-    TempPasswordStore::truncate();
 
     factory(Customer::class)->create([
       'username' => 'admin', 
@@ -26,6 +24,8 @@ class CustomersTableSeeder extends Seeder
       'bitcoin_account' => '1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu',
     ]);
 
+    $directions = ['L', 'R'];
+
     foreach (range(2, 10) as $i) 
     {
       factory(Customer::class)->create([
@@ -33,8 +33,9 @@ class CustomersTableSeeder extends Seeder
         'sponsor_id' => 1, 
         'password' => '12345678',
         'trans_password' => 'abcdefgh',
-        'placement_id' => $i, 
+        //'placement_id' => Customer::lastPlacement($direction = $directions[array_rand($directions)], 1)->id, 
         'country_id' => 1, 
+        //'direction' => $direction,
       ]);      
     }
 
@@ -42,14 +43,15 @@ class CustomersTableSeeder extends Seeder
 
     // User not yet verify.
     factory(Customer::class)->create([
-      'id' => 11,
+      'username' => 'unconfirmed',
       'sponsor_id' => 1, 
       'password' => '12345678',
       'trans_password' => 'abcdefgh',
       'is_active' => false,
-      'placement_id' => 10, 
+      'placement_id' => Customer::lastPlacement('L', 1)->id, 
       'country_id' => 1, 
       'confirmed' => false,
+      'direction' => 'L',
     ]);      
 
     // factory(TempPasswordStore::class)->create([
