@@ -68,18 +68,13 @@ Route::get('/binary', function(){
 });
 
 Route::get('/binary/json', function(){
-	$bn = \App\customer::with('binary')
+	$bn = \App\customer::with('children')
 						->where('username', 'admin')
-						->select('username', 'id', 'sponsor_id')
+						//->select('username', 'id', 'sponsor_id')
 						->first();
 
-	dd($bn->binary->toArray());
-	
-	// $collection = collect($bn->toArray())->map(function ($el) {
-	//     return strtoupper($el['name']);
-	// });
+	$tree = new \Acme\BinaryTree();
+	$tree->render($bn); 
 
-	// dd($collection->toArray());
-
-	return $collection;
+	return $tree->toArray();
 });

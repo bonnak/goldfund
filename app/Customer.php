@@ -40,7 +40,7 @@ class Customer extends Authenticatable
   //   return $this->hasOne(TempPasswordStore::class, 'cust_id');
   // }
    
-  public function binary()
+  public function children()
   {
     return $this->hasMany(Customer::class, 'sponsor_id', 'id');
   }
@@ -71,9 +71,11 @@ class Customer extends Authenticatable
                   ->orderBy('placement_id', 'desc');
   }
 
-  public function scopeLastPlacement($query, $direction, $sponser_id = 1)
+  public function scopeLastPlacement($query, $direction, $sponsor_id = 1)
   {
-    return $query->queryPlacements($direction, $sponser_id)->first();
+    $result = $this->queryPlacements($direction, $sponsor_id)->first();
+
+    return  $result === null ? $this->whereNull('sponsor_id')->first() : $result;
   }
 
 }
