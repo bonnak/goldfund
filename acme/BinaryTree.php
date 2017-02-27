@@ -68,7 +68,11 @@ class BinaryTree
     {
         $this->head = new BinaryNode($root);
 
-        $this->orderPlacementAscending();
+        $this->orderPlacementAscending()->each(function($el){
+            //$this->add($el);
+        });
+
+
 
     }
 
@@ -86,7 +90,6 @@ class BinaryTree
     {
         return $this->head->data->children
                 ->sortBy('placement_id');
-        });
     }
 
 }

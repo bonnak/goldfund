@@ -39,7 +39,7 @@ class BinaryTreeTest extends TestCase
 	    $child3L = factory(Customer::class)->create([
 	      'sponsor_id' => $root->id, 
 	      'placement_id' => $child1L->id,
-	      'direction' => 'R',
+	      'direction' => 'L',
 	    ]); 
 
 	    $child4R = factory(Customer::class)->create([
@@ -51,31 +51,35 @@ class BinaryTreeTest extends TestCase
 	    $child5L = factory(Customer::class)->create([
 	      'sponsor_id' => $root->id, 
 	      'placement_id' => $child3L->id,
-	      'direction' => 'R',
+	      'direction' => 'L',
 	    ]); 
 
 	    $child1_1 = factory(Customer::class)->create([
 	      'sponsor_id' => $child1L->id, 
 	      'placement_id' => $child1L->id,
-	      'direction' => 'L',
+	      'direction' => 'R',
 	    ]); 
 
 
 	    $binary_tree = new BinaryTree();
 	    $binary_tree->render($root);
 
-	    $this->assertArrayStructure(
-	    	[ '*' => 
-	    		[
-	    			'placement_id',
-	    			'sponsor_id',
-	    		]
+	    $this->assertEquals(
+	    	[ 
+	    		[ 'id' => 2, 'placement_id' => 1, 'sponsor_id' => 1, 'direction' => 'L' ],
+	    		[ 'id' => 3, 'placement_id' => 1, 'sponsor_id' => 1, 'direction' => 'R' ],
+	    		[ 'id' => 4, 'placement_id' => 2, 'sponsor_id' => 1, 'direction' => 'L' ],
+	    		[ 'id' => 5, 'placement_id' => 3, 'sponsor_id' => 1, 'direction' => 'R' ],
+	    		[ 'id' => 6, 'placement_id' => 4, 'sponsor_id' => 1, 'direction' => 'L' ],
 	    	], 
-	    	$binary_tree->headChildren()->toArray()
+	    	$binary_tree->headChildren()->map(function($el){
+	    		return [
+	    			'id' => $el->id,
+	    			'placement_id' => $el->placement_id,
+	    			'sponsor_id' => $el->sponsor_id,
+	    			'direction' => $el->direction,
+	    		];
+	    	})->toArray()
 	    );
-    }
-
-    public function order_placement_ascending()
-    {
     }
 }
