@@ -25,22 +25,15 @@ class BinaryTree
         $this->head = $data;
     } 
  
-    public function add($item, $direction = null)
-    {     
-        if ($this->head == null)
-        {
-            $this->head = new BinaryNode($item);
-        }
-        else
-        {
-            addTo($this->head, $item, $direction);
-        }
+    public function add($item)
+    {   
+        $this->addTo($this->head, $item);
     }
 
 
-    protected function addTo($node, $item, $direction)
+    protected function addTo($node, $item)
     {
-        if ($direction == 'L')
+        if ($item->direction == 'L')
         {
             if ($node->left == null)
             {
@@ -51,7 +44,7 @@ class BinaryTree
                 $this->addTo($node->left, $item);
             }
         }
-        elseif($direction == 'R')
+        elseif($item->direction == 'R')
         {
             if ($node->right == null)
             {
@@ -68,13 +61,11 @@ class BinaryTree
     {
         $this->head = new BinaryNode($root);
 
-        $this->orderPlacementAscending();
-
-    }
-
-    public function level($number)
-    {
+        $children = $this->orderPlacementAscending();
         
+        $children->each(function($child){
+            $this->add($child);
+        });
     }
 
     public function headChildren()
@@ -86,7 +77,22 @@ class BinaryTree
     {
         return $this->head->data->children
                 ->sortBy('placement_id');
-        });
     }
 
+    public function toArray()
+    {
+        $node = $this->head;
+        $array = [];
+
+        do
+        {
+            array_push($array, [ 'data' => $node->data->toArray() ]);
+            $node = $node->left;
+
+            array_push($array, [ 'left' => []]);
+            $array = $array['left'];
+        }while($node !== null);
+
+        return $array;
+    }
 }
