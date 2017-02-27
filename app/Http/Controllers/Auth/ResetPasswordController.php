@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Str;
+use App\Notifications\CustomerResetPassword;
 
 class ResetPasswordController extends Controller
 {
@@ -44,6 +45,10 @@ class ResetPasswordController extends Controller
             'password' => $password,
             'remember_token' => Str::random(60),
         ])->save();
+
+        $user->with('sponsor')
+                ->find($user->id)
+                ->notify(new CustomerResetPassword(request()->password));
 
         //$this->guard()->login($user);
     }
