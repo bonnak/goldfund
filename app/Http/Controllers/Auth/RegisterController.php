@@ -58,8 +58,12 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $ref = request()->query('ref');        
-        $sponsor = Customer::find(($ref === null || $ref < 1) ? 1 : $ref);
+        $sponsor = Customer::whereUsername(
+                        request()->query('ref')
+                    )->first();     
+        if($sponsor == null){
+            $sponsor = Customer::find(1);
+        }
         $countries = Country::all();
 
 
