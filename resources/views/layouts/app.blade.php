@@ -103,11 +103,14 @@
             <div class="container">
                 <div class="row">
                     <!-- COMPANY ADDRESS-->
-                    <div class="col-md-3 company-details">
+                    <div class="col-md-3 sec-block">
                         <ul>
                             <li>News</li>
                             <li>Support</li>
                             <li>FAQ</li>
+                            <li>About Us</li>
+                            <li>Contact</li>
+                            <li>Term & Condition</li>
                         </ul>
                         {{-- <div class="icon-top red-text">
                             <i class="icon-fontawesome-webfont-302"></i>
@@ -116,23 +119,31 @@
                     </div>
 
                     <!-- COMPANY EMAIL-->
-                    <div class="col-md-2 company-details">
-                        <div class="icon-top green-text">
-                            <i class="icon-fontawesome-webfont-329"></i>
-                        </div>
-                        contact@designlab.co
+                    <div class="col-md-4 sec-block">
+                        <dl class="dl-horizontal">
+                          <dt><i class="icon-fontawesome-webfont-302 red-text"></i></dt>
+                          <dd>PO Box 16122 Collins Street West, Victoria 8007 Australia</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                          <dt><i class="icon-fontawesome-webfont-329 green-text"></i></dt>
+                          <dd>contact@designlab.co</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                          <dt><i class="icon-fontawesome-webfont-101 blue-text"></i></dt>
+                          <dd>+613 0000 0000</dd>
+                        </dl>
                     </div>
 
                     <!-- COMPANY PHONE NUMBER -->
-                    <div class="col-md-2 company-details">
+                    {{-- <div class="col-md-2 sec-block">
                         <div class="icon-top blue-text">
                             <i class="icon-fontawesome-webfont-101"></i>
                         </div>
                         +613 0000 0000
-                    </div>
+                    </div> --}}
 
                     <!-- SOCIAL ICON AND COPYRIGHT -->
-                    <div class="col-md-5 col-sm-5 contact">
+                    <div class="col-md-5 col-sm-5 sec-block contact">
                         <div class="row">
                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/guest/message') }}">
                                 {{ csrf_field() }}
@@ -177,7 +188,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-md-12 col-md-offset-2">
+                                    <div class="col-md-4 col-md-offset-6 btn-submit-wrap">
                                         <button type="submit" class="btn btn-primary">
                                             Send
                                         </button>
