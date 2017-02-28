@@ -26,6 +26,13 @@
     <link href="{{ URL::asset('assets/layouts/layout4/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+     <script>
+       window.Laravel = {!! json_encode([
+           'csrfToken' => csrf_token(),
+       ]) !!};
+     </script>
 </head>
 <body ng-controller="AppController"
       class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo page-on-load"
