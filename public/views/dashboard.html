@@ -11,7 +11,10 @@
             <div class="widget-thumb-wrap">  
                 <i class="widget-thumb-icon fa fa-sun-o"></i>               
                 <div class="widget-thumb-body">                    
-                    <span class="widget-thumb-body-stat" ng-class="{'color-red' : vm.model.day_left <= 5 }">{{ vm.model.day_left }}</span>
+                    <span class="widget-thumb-body-stat" 
+                        ng-class="{'color-red' : (vm.model.day_left <= 5 && vm.model.day_left !== 0)}">
+                        {{ vm.model.day_left }}
+                    </span>
                 </div>
             </div>
         </div>
