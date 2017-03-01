@@ -23,13 +23,14 @@ class DepositRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
-        $plan = Plan::find($this->plan_id);
+    {       
+        if(is_null($plan = Plan::find($this->plan_id)))
+            app()->abort(422, 'No such a plan');
+
 
         return [
             'plan_id' => 'required',
-            'amount' => 'required|numeric|min:' . $plan->min_cost . '|max:' . $plan->max_cost,
-            //'invoice_attachment' => 'required|file'
+            'amount' => 'required|numeric|min:' . $plan->min_deposit . '|max:' . $plan->max_deposit,
         ];
     }
 }

@@ -30,9 +30,7 @@ class DepositController extends Controller
     		'cust_id' => auth()->user()->id, 
     		'plan_id' => $request->input('plan_id'), 
     		'amount' => $request->input('amount'), 
-    		'issue_date' => Carbon::now(),  
-    		'expire_date' => Carbon::now()->addDay(30),
-            //'invoice_attachment' => $request->invoice_attachment->store('public/images/invoices')
+            'status' => 0,
     	]);
 
     	// Broadcast a memerber just deposit.
@@ -40,6 +38,6 @@ class DepositController extends Controller
             Deposit::with('owner')->where('id', $deposit->id)->first()
         ));
 
-        return redirect()->back();
+        return response()->json([ 'msg' => 'Deposit successfully']);
     }
 }
