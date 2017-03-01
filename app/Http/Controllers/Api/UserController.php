@@ -19,15 +19,6 @@ class UserController extends Controller
 
     public function updateProfile(Request $request)
     {
-//        if (User::where('email', '=', $request->email)->count() > 0) {
-//            // user found
-//            return 'email exist';
-//        }
-//        if (User::where('username', '=', $request->username)->count() > 0) {
-//            // user found
-//            return 'user exist';
-//        }
-
         $user = Customer::find($request->id);
 
         $user->email = $request->email;
@@ -39,7 +30,8 @@ class UserController extends Controller
   		$user->date_of_birth = $request->date_of_birth; 
   		$user->bitcoin_account = $request->bitcoin_account;
         $user->save();
-        return 'update success';
+
+        return response()->json(['msg' => 'Update successfully']);
     }
 
     public function changePassword(ChangePasswordRequest $request)
