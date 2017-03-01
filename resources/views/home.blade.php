@@ -56,6 +56,32 @@
   </div>
 </section>
 
+<section class="section-2">
+    <div class="container">
+        <div class="row wow fadeInRight animated">
+            <div data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="/images/icons/icon-register.gif">
+                        <h2 class="caption">REGISTER ACCOUNT</h2>
+                        <p class="description">Register an account to start making money with bitcompanytradingJust fill out registration form.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/images/icons/icon-deposit.gif">
+                        <h2 class="caption">MAKE DEPOSIT</h2>
+                        <p class="description">To make a deposit you have to log into your personal account. You can do this after registration and use make deposit function in your account.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/images/icons/icon-earn.gif">
+                        <h2 class="caption">RECEIVE EARNING</h2>
+                        <p class="description">Once you collected certain amount on your account balance. You can make withdrawal request. Withdrawals processes within 24 hours on business days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section data-ng-controller="liveUser as vm" ng-cloak>
     <div class="container">
       <div class="row wow fadeInRight animated">

@@ -48,24 +48,16 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\TempPasswordStore::class, function (Faker\Generator $faker) {
-    return [
-        'cust_id' => 1,
-        'password' => null,
-        'trans_password' => null,
-    ];
-});
-
 $factory->define(App\Plan::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->unique()->randomElement(['Plan 1', 'Plan 2', 'Plan 3']),
         'description' => null,
-        'min_cost' => 0,
-        'max_cost' => 0,
+        'min_deposit' => 0,
+        'max_deposit' => 0,
         'sponsor' => 0, 
         'paring' => 0, 
         'daily' => 0, 
-        'duration_exp' => 0, 
+        'duration' => 0, 
     ];
 });
 
@@ -78,6 +70,5 @@ $factory->define(App\Deposit::class, function (Faker\Generator $faker) {
         'amount' => 300,
         'issue_date' => Carbon::now(),
         'expire_date' => Carbon::now()->addDay(30),
-        'invoice_attachment' => substr($faker->image('public/images/invoices'), 6),
     ];
 });

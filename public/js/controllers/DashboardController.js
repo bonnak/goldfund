@@ -4,6 +4,6 @@ angular.module('MetronicApp').controller('DashboardController', [
     function($scope, $location) {
         var vm = this;
         vm.link = $location.protocol() + "://" + $location.host() + ":" + 
-                $location.port() + '/register?ref=' + $scope.userProfile.username;
+                ($location.port() !== 80 ? $location.port() : '') + '/register?ref=' + $scope.userProfile.username;
     }
 ]);

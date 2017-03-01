@@ -369,7 +369,12 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 }]);
 
 /* Init global settings and run the app */
-MetronicApp.run(["$rootScope", "settings", "$state", function($rootScope, settings, $state) {
+MetronicApp.run(["$rootScope", "settings", "$state", "$http", function($rootScope, settings, $state, $http) {
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
+
+    $http.defaults.headers.common = {
+        'X-CSRF-TOKEN': window.Laravel.csrfToken,
+        'X-Requested-With': 'XMLHttpRequest'
+    };
 }]);
