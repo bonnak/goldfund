@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepositsTable extends Migration
+class CreatePlanLevelSponsorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateDepositsTable extends Migration
      */
     public function up()
     {
-        Schema::create('deposits', function (Blueprint $table) {
+        Schema::create('plan_level_sponsors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cust_id')->unsigned();
             $table->integer('plan_id')->unsigned();
-            $table->decimal('amount');
-            $table->date('issue_date');
-            $table->date('expire_date');
-            $table->timestamps();
+            $table->char('type', 1);
+            $table->decimal('commission');
         });
     }
 
@@ -31,6 +28,6 @@ class CreateDepositsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deposits');
+        Schema::dropIfExists('plan_level_sponsors');
     }
 }
