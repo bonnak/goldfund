@@ -16,8 +16,8 @@ class CreatePlanLevelSponsorsTable extends Migration
         Schema::create('plan_level_sponsors', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('plan_id')->unsigned();
-            $table->char('sponsor', 1);
-            $table->decimal('amount');
+            $table->char('type', 1);
+            $table->decimal('commission');
         });
     }
 

@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	//Deposit
 	Route::get('/deposit', 'DepositController@showForm')->name('deposit');
-	Route::post('/deposit', 'DepositController@create');
+	Route::post('/deposit', 'DepositController@create');	
 });
 
 
