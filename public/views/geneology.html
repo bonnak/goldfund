@@ -45,7 +45,7 @@
                     <h4 class="modal-title">Register New Downline</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.first_name.length > 0 }">
                         <label for="first_name" class="col-md-4 control-label">First name</label>
                         <div class="col-md-6">
                             <div class="input-group">
@@ -56,9 +56,12 @@
                                 </span>
                                 <input id="first_name" type="text" class="form-control" name="first_name" ng-model="vm.model.first_name">
                             </div>
+                            <span class="help-block" ng-if="vm.errors.first_name.length > 0">
+                                {{ vm.errors.first_name[0] }}
+                            </span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.last_name.length > 0 }">
                         <label for="last_name" class="col-md-4 control-label">Last name</label>
 
                         <div class="col-md-6">
@@ -70,9 +73,12 @@
                                 </span>
                                 <input id="last_name" type="text" class="form-control" name="last_name" ng-model="vm.model.last_name">
                             </div>
+                            <span class="help-block" ng-if="vm.errors.last_name.length > 0">
+                                {{ vm.errors.last_name[0] }}
+                            </span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.gender.length > 0 }">
                         <label for="gender" class="col-md-4 control-label">Gender</label>
                         <div class="col-md-6">
                             <div class="input-group">
@@ -87,9 +93,12 @@
                                     <option value="F">Female</option>
                                 </select>
                             </div>
+                            <span class="help-block" ng-if="vm.errors.gender.length > 0">
+                                {{ vm.errors.gender[0] }}
+                            </span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.country_id.length > 0 }">
                         <label for="country_id" class="col-md-4 control-label">
                             Country
                         </label>
@@ -105,9 +114,12 @@
                                     <option value="{{ country.id }}" ng-repeat="country in vm.countries">{{ country.name }}</option>                                  
                                 </select>
                             </div>
+                            <span class="help-block" ng-if="vm.errors.country_id.length > 0">
+                                {{ vm.errors.country_id[0] }}
+                            </span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.date_of_birth.length > 0 }">
                         <label for="date_of_birth" class="col-md-4 control-label">Date of birth</label>
                         <div class="col-md-6">
                             <div class="input-group">
@@ -118,6 +130,9 @@
                                 </span>
                                 <input type="text" class="form-control date" placeholder="yyyy-mm-dd" value="" name="date_of_birth" ng-model="vm.model.date_of_birth">
                             </div>
+                            <span class="help-block" ng-if="vm.errors.date_of_birth.length > 0">
+                                {{ vm.errors.date_of_birth[0] }}
+                            </span>
                         </div>
                     </div>
                     <div class="form-group" ng-class="{ 'has-error' : vm.errors.username.length > 0 }">
@@ -137,7 +152,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.email.length > 0 }">
                         <label for="email" class="col-md-4 control-label">E-Mail Address</label>
                         <div class="col-md-6">
                             <div class="input-group">
@@ -147,11 +162,13 @@
                                     </button>
                                 </span>
                                 <input id="email" type="email" class="form-control" name="email" ng-model="vm.model.email">
-
                             </div>
+                            <span class="help-block" ng-if="vm.errors.email.length > 0">
+                                {{ vm.errors.email[0] }}
+                            </span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.password.length > 0 }">
                         <label for="password" class="col-md-4 control-label">Password</label>
                         <div class="col-md-6">
                             <div class="input-group">
@@ -161,11 +178,13 @@
                                     </button>
                                 </span>
                                 <input id="password" type="password" class="form-control" name="password" ng-model="vm.model.password">
-
                             </div>
+                            <span class="help-block" ng-if="vm.errors.password.length > 0">
+                                {{ vm.errors.password[0] }}
+                            </span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.password_confirmation.length > 0 }">
                         <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
                         <div class="col-md-6">
                             <div class="input-group">
@@ -176,9 +195,12 @@
                                 </span>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" ng-model="vm.model.password_confirmation">
                             </div>
+                            <span class="help-block" ng-if="vm.errors.password_confirmation.length > 0">
+                                {{ vm.errors.password_confirmation[0] }}
+                            </span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.bitcoin_account.length > 0 }">
                         <label for="bitcoin_account" class="col-md-4 control-label">Bitcoin account</label>
                         <div class="col-md-6">
                             <div class="input-group">
@@ -189,6 +211,9 @@
                                 </span>
                                 <input id="bitcoin_account" type="text" class="form-control" name="bitcoin_account" ng-model="vm.model.bitcoin_account">
                             </div>
+                            <span class="help-block" ng-if="vm.errors.bitcoin_account.length > 0">
+                                {{ vm.errors.bitcoin_account[0] }}
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -210,12 +235,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.agree_term_condition.length > 0 }">
                         <label for="agree_term_condition" class="col-md-4 control-label"></label>
                         <div class="col-md-6">
                             <input type="checkbox" id="agree_term_condition" name="agree_term_condition" ng-model="vm.model.agree_term_condition">                                        
-                            I agree with Terms and conditions
+                            I agree with Terms and conditions<br>
                         </div>
+                        <span class="help-block" ng-if="vm.errors.agree_term_condition.length > 0">
+                            {{ vm.errors.agree_term_condition[0] }}
+                        </span>
                     </div>                    
                 </div>
                 <div class="modal-footer">
