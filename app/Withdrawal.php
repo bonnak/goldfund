@@ -9,7 +9,7 @@ class Withdrawal extends Model
 {
     protected $table = 'withdrawals';
 
-    protected $fillable = ['cust_id', 'amount'];
+    protected $fillable = ['cust_id', 'amount', 'status'];
 
     public function owner()
     {

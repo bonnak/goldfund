@@ -5,11 +5,7 @@ export default {
     return Api.get('deposit/history',  pagination);
   },
 
-  approve(id){
-  	return Api.post('deposit/' + id + '/approve');
-  },
-
-  sendMoney(data){
-  	return Api.post('earning/money/daily', data);
+  approve(data){
+  	return Api.post('deposit/approve', data);
   }
 }

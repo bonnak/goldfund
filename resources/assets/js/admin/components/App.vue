@@ -22,6 +22,11 @@
 	  					</router-link>
 	  				</md-list-item>
 	  				<md-list-item>
+	  					<router-link :to="{ path: '/withdrawal' }">
+							<i class="fa fa-dollar"></i><span>Withdrawal History</span>
+	  					</router-link>
+	  				</md-list-item>
+	  				<md-list-item>
 	  					<router-link :to="{ path: '/plan' }">
 							<i class="fa fa-tint"></i><span>Plan</span>
 	  					</router-link>

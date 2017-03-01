@@ -33,9 +33,9 @@ class DepositController extends Controller
                     ->paginate(request()->input('size'));
     }
 
-    public function approve($id)
+    public function approve(Request $request)
     {
-      	$deposit = $this->activateDepositAccount($id);              
+      	$deposit = $this->activateDepositAccount($request->id);              
         $this->ownerReceiveDailyEarning($deposit);
         $this->sponsorReceiveCommission($deposit); 
         $this->levelsReceiveCommission($deposit); 
