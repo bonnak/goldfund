@@ -87,6 +87,7 @@ trait DepositEarningTrait
             return $item->id == $owner->id;
         });
 
+
         // Not allow to add more commission the same pair.
         if($sponsor->binary_earning_commissions()
                 ->where(function ($query) use ($deposit_owner_side, $current_level){
@@ -98,7 +99,15 @@ trait DepositEarningTrait
         	return;
         }
 
-        if($other_side->count() < $current_level + 1) return;       
+        // No another side pair
+        if($other_side->count() < $current_level + 1) return;  
+
+
+        //Pair counted within one month.
+        $deposit_owner_created_date = Carbon::createFromFormat('Y-m-d H:i:s', $deposit_owner_side[$current_level]->created_at);
+        if($deposit_owner_created_date->diffInMonths(Carbon::today()) > 0) return;
+        $other_side_created_date = Carbon::createFromFormat('Y-m-d H:i:s', $other_side[$current_level]->created_at);
+        if($other_side_created_date->diffInMonths(Carbon::today()) > 0) return;     
         
         
         // does both right and left children deposited and deposit is active?
