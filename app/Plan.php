@@ -12,4 +12,9 @@ class Plan extends Model
 	  	'name', 'description', 'min_cost', 'max_cost', 
 	  	'sponsor', 'paring', 'daily', 'duration_exp'
 	];
+
+	public function levels()
+	{
+		return $this->hasMany(PlanLevelSponsor::class);
+	}
 }
