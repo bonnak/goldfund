@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFaqTable extends Migration
+class CreateFaqsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFaqTable extends Migration
      */
     public function up()
     {
-        Schema::create('faq', function($table) {
+        Schema::create('faqs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('question');
             $table->text('answer');
@@ -27,6 +27,6 @@ class CreateFaqTable extends Migration
      */
     public function down()
     {
-        Schema::drop('countries');
+        Schema::dropIfExists('faqs');
     }
 }
