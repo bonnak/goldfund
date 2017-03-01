@@ -40,8 +40,7 @@ angular.module('MetronicApp').controller('UserProfileEditController', [
                 return;
             }
             vm.loading= true;
-            restful.put('/api/user/updateProfile', vm.model).success(function(result){
-                console.log(result);
+            restful.put('/api/user/updateProfile', vm.model).success(function(response){
                 // call from parent scope function in main.js
                 $rootScope.$emit("InitSettingMethod", {});
                 $state.go('user_profile');
