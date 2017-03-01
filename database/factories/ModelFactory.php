@@ -68,6 +68,7 @@ $factory->define(App\Deposit::class, function (Faker\Generator $faker) {
         ])->id,
         'plan_id' => 1,
         'amount' => 300,
+        'status' => 1,
         'issue_date' => Carbon::now(),
         'expire_date' => Carbon::now()->addDay(30),
     ];

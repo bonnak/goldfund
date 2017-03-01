@@ -17,7 +17,7 @@
                                 <div class="bs-five-area">
 
                                     <div class="col-md-4 no-padding" ng-repeat="(key, plan) in vm.plans">
-                                        <div class="bs-five" ng-class="{ 'active': vm.model.plan == plan.id }">
+                                        <div class="bs-five" ng-class="{ 'active': vm.model.plan_id == plan.id }">
                                             <h3 class="text-uppercase">{{ plan.name }}</h3>
                                             <h1 class="bs-caption">{{ plan.daily * 100 }}<sup>%</sup></h1>
                                             <p>Daily for {{ plan.duration }} days</p>
@@ -26,7 +26,7 @@
                                                 <li>Profit: {{ plan.daily * 100 * plan.duration }}%</li>
                                                 <li>24/7 Customer Support</li>
                                             </ul>
-                                            <a ng-click="vm.model.plan = plan.id;vm.model.amount = plan.min_deposit;" class="btn btn-success btn-round m-top-40">Select</a>
+                                            <a ng-click="vm.model.plan_id = plan.id;vm.model.amount = plan.min_deposit;" class="btn btn-success btn-round m-top-40">Select</a>
                                         </div>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                     </section>
                 </div>
             </div>
-            <div class="portlet light bordered" ng-if="vm.model.plan">
+            <div class="portlet light bordered" ng-if="vm.model.plan_id">
                 <div class="portlet-title">
                     <div class="caption font-green-sharp">
                         <span class="caption-subject bold uppercase">
@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="portlet light bordered" ng-if="vm.model.plan">
+            <!-- <div class="portlet light bordered" ng-if="vm.model.plan_id">
                 <div class="portlet-title">
                     <div class="caption font-green-sharp">
                         <span class="caption-subject bold uppercase">

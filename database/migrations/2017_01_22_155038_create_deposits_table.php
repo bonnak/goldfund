@@ -18,8 +18,9 @@ class CreateDepositsTable extends Migration
             $table->integer('cust_id')->unsigned();
             $table->integer('plan_id')->unsigned();
             $table->decimal('amount');
-            $table->date('issue_date');
-            $table->date('expire_date');
+            $table->smallInteger('status'); // 0: pending, 1: activated
+            $table->date('issue_date')->nullable();
+            $table->date('expire_date')->nullable();
             $table->timestamps();
         });
     }
