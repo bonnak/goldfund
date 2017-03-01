@@ -1,36 +1,28 @@
-MetronicApp.constant("CSRF_TOKEN", '{{ csrf_token() }}');
 MetronicApp.factory("Restful", [
  	'$http',
-	'CSRF_TOKEN',
- 	function ($http, CSRF_TOKEN) {
-		 console.log(CSRF_TOKEN);
-		var data = {'_token':CSRF_TOKEN};
+ 	function ($http) {
         var obj = {};
         // start get 
         obj.get = function(url, params) {
             return $http({
         		url: url,
     			method: 'GET',
-				headers: { 'Content-Type' : 'application/x-www-form-urlencoded'},
-				// headers: {
-				// 	'X-CSRF-TOKEN': CSRF_TOKEN,
-				// 	'X-Requested-With': 'XMLHttpRequest'
-				// },
 				//cache : true,
-    			//params: params,
-				data: $.param(data)
+    			params: params
             });
         };
 
 		obj.save = function(url, params) {
-			console.log(CSRF_TOKEN);
 			return $http({
 				url: url,
 				method: 'POST',
-				headers: {
-					'X-CSRF-TOKEN': CSRF_TOKEN,
-					'X-Requested-With': 'XMLHttpRequest'
-				},
+				//cache : false,
+				//transformRequest: angular.identity,
+				//transformResponse: angular.identity,
+				contentType: "application/json; charset=utf-8",
+
+				//headers:  { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+				//transformRequest: transform,
 				data: params
 			});
 		};
@@ -39,11 +31,6 @@ MetronicApp.factory("Restful", [
         	return $http({
         		url: url,
     			method: 'PUT',
-				headers: { 'Content-Type' : 'application/x-www-form-urlencoded'},
-				// headers: {
-				// 	'X-CSRF-TOKEN': CSRF_TOKEN,
-				// 	'X-Requested-With': 'XMLHttpRequest'
-				// },
     			data: params
         	});
         };
@@ -52,12 +39,7 @@ MetronicApp.factory("Restful", [
         	return $http({
         		url: url,
     			method: 'PATCH',
-				headers: {
-					'X-CSRF-TOKEN': CSRF_TOKEN,
-					'X-Requested-With': 'XMLHttpRequest'
-				},
-				data: $.param(data)
-    			// data: params
+    			data: params
         	});
         };
         
@@ -65,10 +47,6 @@ MetronicApp.factory("Restful", [
         	return $http({
         		url: url,
     			method: 'DELETE',
-				headers: {
-					'X-CSRF-TOKEN': CSRF_TOKEN,
-					'X-Requested-With': 'XMLHttpRequest'
-				},
     			data: params
         	});
         };
