@@ -53,10 +53,9 @@ class Handler extends ExceptionHandler
         if ($exception instanceof NotFoundHttpException) {
             return response()->view('errors.404', [], 404);
         }
-        elseif ($exception instanceof InvalidPasswordException) {            
-            if ($request->expectsJson()) {
-                return response()->json([ 'error' => $exception->getMessage() ], $exception->getStatusCode());
-            }    
+
+        if ($request->expectsJson()) {
+            return response()->json(['error' => $exception->getMessage()], $exception->getStatusCode());
         }
 
         return parent::render($request, $exception);

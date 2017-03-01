@@ -4,7 +4,10 @@ angular.module('MetronicApp').controller('DepositController', [
     'Restful',
     function($scope, $anchorScroll, Restful) {
         var vm = this;
-        vm.model = {};
+        vm.model = {
+            plan_id: null,
+            amount: null
+        };
         vm.plans = [];
 
         vm.save = function(){
@@ -13,6 +16,11 @@ angular.module('MetronicApp').controller('DepositController', [
                 return;
             }
             vm.loading = true;
+
+            Restful.save('api/deposit', vm.model).success(function(data){
+            }).finally(function () {
+                vm.loading= false;
+            });;
         };
         vm.getQrCode = function(params){
             Restful.get('api/qr/admin/bitcoin').success(function(data){
