@@ -21,4 +21,6 @@ Route::get('qr/admin/bitcoin', 'Api\QrController@adminBitCoinAccountQrImage');
 Route::group(['middleware' => 'auth:api'], function(){
 	Route::put('/user/updateProfile', 'Api\UserController@updateProfile');
 	Route::put('/password/change', 'Api\UserController@changePassword');
+
+	Route::get('/plans', 'Api\PlanController@all');
 });

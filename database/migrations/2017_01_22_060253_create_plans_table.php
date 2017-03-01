@@ -17,12 +17,12 @@ class CreatePlansTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->double('min_cost', 15, 8);
-            $table->double('max_cost', 15, 8);
-            $table->double('sponsor', 15, 8);
-            $table->double('paring', 15, 8);
-            $table->double('daily', 15, 8);
-            $table->integer('duration_exp');
+            $table->double('min_deposit', 15, 8);
+            $table->double('max_deposit', 15, 8);
+            $table->decimal('sponsor');
+            $table->decimal('paring');
+            $table->decimal('daily');
+            $table->integer('duration');
             $table->timestamps();
         });
     }
