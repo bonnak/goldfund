@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use App\Notifications\VerifyCustomerRegister;
 use App\Notifications\SendCustomerRegisterInfo;
 use App\Exceptions\InvalidConfirmationCodeException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class RegisterController extends Controller
 {
@@ -49,7 +50,24 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $this->validator($request->all())->validate();
+        if($request->ajax())
+        {
+            $validator = $this->validator($request->all());
+
+            if($validator->fails())
+            {
+                return response()->json([
+                    'errors' => $validator->getMessageBag()->toArray()
+                ], 422);
+            }
+        }
+        else
+        {
+            $this->validator($request->all())->validate();
+        }
+        
+        
+        
 
         $user = $this->create($request->all());
         //event(new Registered($user = $this->create($request->all())));

@@ -120,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : vm.errors.username.length > 0 }">
                         <label for="username" class="col-md-4 control-label">Username</label>
                         <div class="col-md-6">
                             <div class="input-group">
@@ -132,6 +132,9 @@
                                 <input id="username" type="text" class="form-control" name="username" ng-model="vm.model.username">
 
                             </div>
+                            <span class="help-block" ng-if="vm.errors.username.length > 0">
+                                {{ vm.errors.username[0] }}
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">

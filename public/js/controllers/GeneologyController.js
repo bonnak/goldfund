@@ -22,6 +22,7 @@ angular.module('MetronicApp')
             sponsor_id              : $rootScope.user.id,
             direction               : ''
         };
+        vm.errors = [];
 
         Restful.get('/getCountry').success(function(data){
             vm.countries = data;
@@ -34,6 +35,8 @@ angular.module('MetronicApp')
                 $('#register_modal').modal('hide');
                 vm.resetModel();
                 vm.loadTree();                
+            }).error(function(err_response){
+                vm.errors = err_response.errors;
             }).finally(function () {
                 vm.loading= false;
             });
