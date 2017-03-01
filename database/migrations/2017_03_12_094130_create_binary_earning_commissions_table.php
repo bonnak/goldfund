@@ -19,6 +19,7 @@ class CreateBinaryEarningCommissionsTable extends Migration
             $table->integer('left_child_id')->unsigned();
             $table->integer('right_child_id')->unsigned();
             $table->float('amount');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

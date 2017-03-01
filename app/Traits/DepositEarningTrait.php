@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Deposit;
 use App\SponsorEarningCommission;
 use App\Earning;
+use App\DailyEarningTaskLog;
 
 trait DepositEarningTrait
 {
@@ -21,18 +22,12 @@ trait DepositEarningTrait
     }
 
     protected function ownerReceiveDailyEarning($deposit)
-    {
-        // $earning = $deposit->owner->daily_earning_commission()
-        //                     ->where('created_at', '>=', Carbon::today())
-        //                     ->first();
-
-        // if(!is_null($earning)) return;       
-        
-
+    {    
         $deposit->owner->daily_earning_commission()->create([
             'plan_id'       => $deposit->plan->id,
             'deposit_id'    => $deposit->id,
             'amount'        => $deposit->amount * $deposit->plan->daily, 
+            'status'        => 0,
         ]);
     }
 
@@ -44,6 +39,7 @@ trait DepositEarningTrait
         $deposit->sponsor_earning_commission()->create([
             'sponsor_id' => $deposit->owner->sponsor->id,
             'amount' => $deposit->amount * $deposit->plan->sponsor,
+            'status'        => 0,
         ]);        
     }
 
@@ -60,7 +56,8 @@ trait DepositEarningTrait
             $deposit->level_earning_commission()->create([
                 'cust_id' => $upline->id,
                 'amount' => $deposit->amount * $sponsor_level->commission,
-                'level_number' => $level_number
+                'level_number' => $level_number,
+                'status'        => 0,
             ]);
         });
     }
@@ -123,6 +120,7 @@ trait DepositEarningTrait
                 'left_child_id'     => $deposit_owner_side[$current_level]->direction == 'L' ? $deposit_owner_side[$current_level]->id : $other_side[$current_level]->id,
                 'right_child_id'    => $deposit_owner_side[$current_level]->direction == 'R' ? $deposit_owner_side[$current_level]->id : $other_side[$current_level]->id,
                 'amount'            => $deposit_amount * $deposit->plan->pairing,
+                'status'        => 0,
             ]);
         }
         

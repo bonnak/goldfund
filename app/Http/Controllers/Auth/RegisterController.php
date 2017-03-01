@@ -129,7 +129,7 @@ class RegisterController extends Controller
         ]);    
 
         // Broadcast a new memerber just register.
-        event(new \App\Events\NewMemberRegistered($customer));
+        //event(new \App\Events\NewMemberRegistered($customer));
 
         // Notify user must activate their account.
         $customer->with('sponsor')
