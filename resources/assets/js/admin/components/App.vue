@@ -6,11 +6,14 @@
       </div>
       <div class="main-sidebar-links">
 	      <md-list>
-  				<router-link :to="{ path: '/user'}" tag="md-list-item">
-						<md-icon><i class="fa fa-user"></i></md-icon><span>User</span>
+  				<router-link :to="{ path: '/user' }" tag="md-list-item">
+					<md-icon><i class="fa fa-user"></i></md-icon><span>User</span>
   				</router-link>
-		      <router-link :to="{ path: '/customer'}" tag="md-list-item">
-						<md-icon><i class="fa fa-users"></i></md-icon><span>Customer</span>
+		      	<router-link :to="{ path: '/customer' }" tag="md-list-item">
+					<md-icon><i class="fa fa-users"></i></md-icon><span>Customer</span>
+  				</router-link>
+  				<router-link :to="{ path: '/deposit/history' }" tag="md-list-item">
+					<md-icon><i class="fa fa-money"></i></md-icon><span>Deposit History</span>
   				</router-link>
 
 			    <md-list-item>

@@ -15,7 +15,7 @@
 		  </md-table-header>
 
 		  <md-table-body>
-		    <md-table-row v-for="(el, rowIndex) in customers" :key="rowIndex" :md-item="el">
+		    <md-table-row v-for="(el, rowIndex) in data_grid" :key="rowIndex" :md-item="el">
 			    <md-table-cell>{{ el.username }}</md-table-cell>
 		        <md-table-cell>{{ el.first_name }}</md-table-cell>
 		        <md-table-cell>{{ el.last_name }}</md-table-cell>
@@ -45,13 +45,13 @@ export default{
 
 	computed: {
 	    ...mapGetters({
-	      customers: 'customer/data',
+	      data_grid: 'customer/data',
 	      pagination: 'customer/pagination'
 	    })
 	},
 
 	created(){
-		this.getCustomers({ size : 5, page: 1});
+		this.fetchData({ size : 5, page: 1});
 	},
 
 	mounted(){
@@ -71,7 +71,7 @@ export default{
 		},
 
 		...mapActions({
-	  		getCustomers: 'customer/fetchData'
+	  		fetchData: 'customer/fetchData'
 	  	})
 	}
 }
