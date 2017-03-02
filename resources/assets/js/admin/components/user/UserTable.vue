@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import Api from '../../api/RestApi'
+import Api from '../../api/Api'
 
 export default{
 	data(){
