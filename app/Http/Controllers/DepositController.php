@@ -38,6 +38,14 @@ class DepositController extends Controller
             Deposit::with('owner')->where('id', $deposit->id)->first()
         ));
 
-        return response()->json([ 'msg' => 'Deposit successfully']);
+        return response()->json($deposit->toArray());
+    }
+
+    public function history()
+    {
+        return Deposit::with('plan')
+                        ->where('cust_id', auth()->user()->id)
+                        ->orderBy('created_at', 'desc')
+                        ->get();
     }
 }

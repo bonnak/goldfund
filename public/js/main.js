@@ -139,13 +139,13 @@ MetronicApp.controller('FooterController', ['$scope', function($scope) {
 /* Setup Rounting For All Pages */
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("dashboard.html");
+    $urlRouterProvider.otherwise("dashboard");
     
     $stateProvider
 
         // Dashboard
         .state('dashboard', {
-            url: "/dashboard.html",
+            url: "/dashboard",
             templateUrl: "views/dashboard.html",
             data: {pageTitle: 'User Dashboard'},
             controller: "DashboardController as vm",
@@ -165,7 +165,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 
         // Blank Page
         .state('deposit', {
-            url: "/deposit.html",
+            url: "/deposit",
             templateUrl: "views/deposit.html",
             data: {pageTitle: 'Make Deposit'},
             controller: "DepositController as vm",
@@ -183,9 +183,28 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
 
+        .state('deposit/history', {
+            url: "/deposit/history",
+            templateUrl: "views/deposit_history.html",
+            data: {pageTitle: 'Deposit History'},
+            controller: "DepositController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css-template/plan_style.css',
+                            'js/controllers/DepositController.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
         // AngularJS plugins
         .state('request_payment', {
-            url: "/request_payment.html",
+            url: "/request_payment",
             templateUrl: "views/request_payment.html",
             data: {pageTitle: 'Request Payment'},
             controller: "RequestPaymentController as vm",
@@ -201,33 +220,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
 
-        // UI Select
-        .state('deposit_list', {
-            url: "/deposit_list.html",
-            templateUrl: "views/deposit_list.html",
-            data: {pageTitle: 'Deposit Information'},
-            controller: "DepositListController",
-            resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load([{
-                        name: 'ui.select',
-                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
-                        files: [
-                            '../assets/global/plugins/angularjs/plugins/ui-select/select.min.css',
-                            '../assets/global/plugins/angularjs/plugins/ui-select/select.min.js'
-                        ] 
-                    }, {
-                        name: 'MetronicApp',
-                        files: [
-                            'js/controllers/UISelectController.js'
-                        ] 
-                    }]);
-                }]
-            }
-        })
-
         .state('user_profile', {
-            url: "/user_profile.html",
+            url: "/user_profile",
             templateUrl: "views/user_profile.html",
             data: {pageTitle: 'User Profile'},
             controller: "UserProfileController as vm",
@@ -243,7 +237,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
         .state('user_profile_edit', {
-            url: "/user_profile_edit.html",
+            url: "/user_profile_edit",
             templateUrl: "views/user_profile_edit.html",
             data: {pageTitle: 'Edit User Profile'},
             controller: "UserProfileEditController as vm",
@@ -259,7 +253,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
         .state('change_password', {
-            url: "/change_password.html",
+            url: "/change_password",
             templateUrl: "views/user_change_password.html",
             data: {pageTitle: 'Change Password User Profile'},
             controller: "ChangePasswordController as vm",

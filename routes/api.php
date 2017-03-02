@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 	Route::get('/plans', 'Api\PlanController@all');
 
-
 	//Deposit
 	Route::post('/deposit', 'DepositController@create');
+	Route::get('/deposit/history', 'DepositController@history');
 });
