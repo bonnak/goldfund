@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Customer;
+use App\Plan;
 
 class Deposit extends Model
 {
@@ -14,6 +16,11 @@ class Deposit extends Model
 
 	public function owner()
 	{
-		return $this->belongsTo('App\Customer', 'cust_id', 'id');
+		return $this->belongsTo(Customer::class, 'cust_id', 'id');
+	}
+
+	public function plan()
+	{
+		return $this->belongsTo(Plan::class, 'plan_id', 'id');
 	}
 }
