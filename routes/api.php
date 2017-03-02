@@ -9,6 +9,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function(){
 
 	Route::get('/customers', 'Admin\CustomerController@customers');
 
+	Route::get('/deposit/history', 'Admin\DepositController@history');
+	Route::post('/deposit/{id}/approve', 'Admin\DepositController@approve');
 });
 
 
