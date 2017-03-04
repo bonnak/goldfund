@@ -18,7 +18,7 @@
 
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/admin_dir/css/admin.css">
 </head>
 <body {{ Auth::guest() ? 'class=login' : ''}}>
 	@if (Auth::guest())
@@ -27,7 +27,7 @@
 	  <div id="admin-app">
 	  </div>
 
-	  <script src="/js/admin.js"></script>
+	  <script src="/admin_dir/js/app.js"></script>
 	@endif
 </body>
 </html>

@@ -1,0 +1,1 @@
+﻿//export const getToken = state => state.authorize.token.token_type + ' ' + state.authorize.token.access_token
