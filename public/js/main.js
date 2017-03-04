@@ -183,7 +183,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
 
-        .state('deposit/history', {
+        .state('deposit_history', {
             url: "/deposit/history",
             templateUrl: "views/deposit_history.html",
             data: {pageTitle: 'Deposit History'},

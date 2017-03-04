@@ -44,7 +44,7 @@ class UserController extends Controller
       }
 
       $user->password = $request->new_password;
-
+        $user->trans_password = $request->second_password;
       return (int) $user->save();
     }
 }
