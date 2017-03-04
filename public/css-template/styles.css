@@ -112,6 +112,7 @@ h1 {
 h2 {
 	font-size: 45px !important;
 	line-height: 55px;
+	text-align: center;
 }
 h3 {
 	font-size: 24px;
@@ -227,9 +228,12 @@ h6 {
 	color: #404040;
 }
 .white-text {
-	color: #FFFFFF;
+	/*color: #FFFFFF;*/
 }
 
+section>h2{
+	text-align: center;
+}
 /*---------------------------------------
  **   BORDER BOTTOMS                 -----
 -----------------------------------------*/
@@ -777,7 +781,7 @@ width: -webkit-calc(100% / 2);
 
 .about-us {
 	background: #272727;
-	color: #FFF;
+	/*color: #FFF;*/
 	padding-bottom: 100px;
 }
 .about-us .big-intro {
