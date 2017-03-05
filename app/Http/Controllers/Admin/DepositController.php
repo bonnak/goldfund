@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Deposit;
 
 class DepositController extends Controller
@@ -19,6 +20,8 @@ class DepositController extends Controller
     {
     	$deposit = Deposit::find($id);
     	$deposit->status = 1;
+        $deposit->issue_date = Carbon::today();
+        $deposit->expire_date = Carbon::today()->addDays($deposit->plan->duration); 
     	$deposit->save();
 
     	return response()->json($deposit->toArray());

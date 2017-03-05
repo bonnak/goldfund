@@ -23,7 +23,7 @@ angular.module('MetronicApp').controller('DepositController', [
                 $state.go('deposit_history');
             }).finally(function () {
                 vm.loading= false;
-            });;
+            });
         };
 
         vm.getHistory = function(params){
