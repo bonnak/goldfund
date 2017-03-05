@@ -3,7 +3,7 @@
 /***
  * Back-end
  */
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function(){
 
 	Route::get('/users', 'Admin\UserController@users');
 

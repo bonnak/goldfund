@@ -31,6 +31,8 @@ class DepositController extends Controller
     		'plan_id' => $request->input('plan_id'), 
     		'amount' => $request->input('amount'), 
             'status' => 0,
+            'issue_date' => null,
+            'expire_date' => null,
     	]);
 
     	// Broadcast a memerber just deposit.

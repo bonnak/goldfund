@@ -52,24 +52,25 @@ $factory->define(App\Plan::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->unique()->randomElement(['Plan 1', 'Plan 2', 'Plan 3']),
         'description' => null,
-        'min_deposit' => 0,
-        'max_deposit' => 0,
+        'min_deposit' => 50,
+        'max_deposit' => 100,
         'sponsor' => 0, 
         'paring' => 0, 
-        'daily' => 0, 
-        'duration' => 0, 
+        'daily' => 0.03, 
+        'duration' => 60, 
     ];
 });
 
 $factory->define(App\Deposit::class, function (Faker\Generator $faker) {
     return [
-        'cust_id' => factory(App\Customer::class)->create([ 
-            'placement_id' => Customer::lastPlacement('L', 1)->id 
-        ])->id,
+        'cust_id' => function () { 
+                return factory(App\Customer::class)->create(['placement_id' => Customer::lastPlacement('L', 1)->id 
+            ])->id;
+        },
         'plan_id' => 1,
-        'amount' => 300,
-        'status' => 1,
-        'issue_date' => Carbon::now(),
-        'expire_date' => Carbon::now()->addDay(30),
+        'amount' => 50,
+        'status' => 0,
+        'issue_date' => null,
+        'expire_date' => null,
     ];
 });
