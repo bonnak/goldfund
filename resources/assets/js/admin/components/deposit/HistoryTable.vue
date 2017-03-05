@@ -30,6 +30,12 @@
 		        		v-if="el.status == 0">
 		        		Approve
 		        	</md-button>
+		        	<md-button 
+		        		class="md-raised md-accent" 
+		        		@click="approveDeposit(el)"
+		        		v-if="el.status == 1">
+		        		Send money
+		        	</md-button>
 		        </md-table-cell>
 		    </md-table-row>
 		  </md-table-body>
