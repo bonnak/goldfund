@@ -20,17 +20,18 @@ angular.module('MetronicApp').controller('DepositController', [
             vm.loading = true;
 
             Restful.save('api/deposit', vm.model).success(function(data){
-                $state.go('deposit/history');
+                $state.go('deposit_history');
             }).finally(function () {
                 vm.loading= false;
             });;
         };
 
         vm.getHistory = function(params){
+            vm.loading = true;
             Restful.get('api/deposit/history').success(function(data){
-                data.forEach(function(el){
-                    vm.deposits.push(el);
-                });
+                vm.deposits = data;
+            }).finally(function(){
+                vm.loading = false;
             });
         };
 
@@ -42,9 +43,7 @@ angular.module('MetronicApp').controller('DepositController', [
 
         vm.getPlans = function(){
             Restful.get('/api/plans').success(function(data){
-                data.forEach(function(el){
-                    vm.plans.push(el);
-                });
+                vm.plans = data;
             });
         }
         vm.getQrCode();

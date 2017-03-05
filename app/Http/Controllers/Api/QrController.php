@@ -9,10 +9,11 @@ use chillerlan\QRCode\QRCode;
 
 class QrController extends Controller
 {
-  public function adminBitCoinAccountQrImage()
-  {
-		$data = '1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu';
+    public function adminBitCoinAccountQrImage()
+    {
+        // return ['a', 'b'];
+        $data = '1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu';
 
-		return (new QRCode($data, new QRImage))->output();
-  }
+        return (new QRCode($data, new QRImage))->output();
+    }
 }
