@@ -12,6 +12,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function(){
 	//Deposit
 	Route::get('/deposit/history', 'Admin\DepositController@history');
 	Route::post('/deposit/{id}/approve', 'Admin\DepositController@approve');
+
+	Route::post('/earning/money/daily', 'Admin\EarningController@sendDailyMoney');
 });
 
 

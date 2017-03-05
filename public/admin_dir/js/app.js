@@ -50670,7 +50670,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		}
 	}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
 		fetchData: 'deposit/fetchData',
-		approveDeposit: 'deposit/approve'
+		approveDeposit: 'deposit/approve',
+		sendMoney: 'deposit/sendMoney'
 	}))
 };
 
@@ -50803,6 +50804,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   approve: function approve(id) {
     return __WEBPACK_IMPORTED_MODULE_0__Api__["a" /* default */].post('deposit/' + id + '/approve');
+  },
+  sendMoney: function sendMoney(data) {
+    return __WEBPACK_IMPORTED_MODULE_0__Api__["a" /* default */].post('earning/money/daily', data);
   }
 };
 
@@ -51027,6 +51031,13 @@ var actions = {
 
     __WEBPACK_IMPORTED_MODULE_0__api_ApiDeposit__["a" /* default */].approve(data.id).then(function (response) {
       commit('EDIT', response);
+    });
+  },
+  sendMoney: function sendMoney(_ref5, data) {
+    var commit = _ref5.commit;
+
+    __WEBPACK_IMPORTED_MODULE_0__api_ApiDeposit__["a" /* default */].sendMoney(data).then(function (response) {
+      console.log(response);
     });
   }
 };
@@ -51358,7 +51369,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "md-raised md-accent",
       on: {
         "click": function($event) {
-          _vm.approveDeposit(el)
+          _vm.sendMoney(el)
         }
       }
     }, [_vm._v("\n\t\t        \t\tSend money\n\t\t        \t")]) : _vm._e()], 1)], 1)

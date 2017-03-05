@@ -32,7 +32,7 @@
 		        	</md-button>
 		        	<md-button 
 		        		class="md-raised md-accent" 
-		        		@click="approveDeposit(el)"
+		        		@click="sendMoney(el)"
 		        		v-if="el.status == 1">
 		        		Send money
 		        	</md-button>
@@ -85,7 +85,8 @@ export default{
 
 		...mapActions({
 	  		fetchData: 'deposit/fetchData',
-	  		approveDeposit: 'deposit/approve'
+	  		approveDeposit: 'deposit/approve',
+	  		sendMoney: 'deposit/sendMoney'
 	  	})
 	}
 }
