@@ -27,6 +27,9 @@ class DepositRequest extends FormRequest
         if(is_null($plan = Plan::find($this->plan_id)))
             app()->abort(422, 'No such a plan');
 
+        if(!$this->user()->allowDeposit())
+            app()->abort(422, 'Wait until your current deposit expire.');
+
 
         return [
             'plan_id' => 'required',

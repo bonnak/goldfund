@@ -34,9 +34,9 @@ class UserController extends Controller
         return response()->json(['msg' => 'Update successfully']);
     }
 
-    public function changePassword(ChangePasswordRequest $request)
-    {
-      $user = Customer::find($request->id);
+    public function changePassword(Request $request)
+    {      
+      $user = Customer::find(auth()->user()->id);
 
       if(! \Hash::check($request->current_password, $user->password))
       {
@@ -45,6 +45,12 @@ class UserController extends Controller
 
       $user->password = $request->new_password;
 
-      return (int) $user->save();
+      if($request->has('second_password') && trim($request->second_password) !== ''){
+        $user->trans_password = $request->second_password;
+      }      
+
+      return (int) $user->save() === 1 ? 
+                  response(['msg' => 'Password change successfully'], 200) :
+                  response(['msg' => 'Failed to change password'], 422);
     }
 }
