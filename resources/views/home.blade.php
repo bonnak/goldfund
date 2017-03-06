@@ -136,7 +136,7 @@
           </div>
       </div>
         <div class="row">
-            <h2>Plan</h2>
+            <h2>investment Plan</h2>
             <div>
                 <div class="row">
                     <div class="bs-five-area">
