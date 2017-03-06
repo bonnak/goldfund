@@ -82,7 +82,6 @@
         </div>
     </div>
 </section>
-
 <section data-ng-controller="liveUser as vm" ng-cloak>
     <div class="container">
       <div class="row wow fadeInRight animated">
@@ -135,6 +134,10 @@
             </div>
           </div>
       </div>
+    </div>
+</section>
+<section data-ng-controller="liveUser as vm" ng-cloak>
+    <div class="container">
         <div class="row">
             <h2>investment Plan</h2>
             <div>
@@ -158,9 +161,11 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12 text-center">
+            <img src="images/plan.png" class="img-reponsive" style="margin: 0 auto;"/>
+        </div>
     </div>
-</section> 
-
+</section>
 <section>
     <div class="container">
             <h2>Advantage of company</h2>

@@ -17,7 +17,7 @@ class PlansTableSeeder extends Seeder
         PlanLevelSponsor::truncate();
 
         $plan1 = factory(Plan::class)->create([ 
-            'name' => 'Plan 1', 
+            'name' => 'Basic',
             'min_deposit' => 50,
             'max_deposit' => 300,
             'sponsor' => 0.05, 
@@ -30,7 +30,7 @@ class PlansTableSeeder extends Seeder
         $plan1->sponsor_levels()->create([ 'type' => 'D', 'commission' => 0.07 ]);
 
         $plan2 = factory(Plan::class)->create([ 
-            'name' => 'Plan 2', 
+            'name' => 'Gold',
             'min_deposit' => 400,
             'max_deposit' => 1000,
             'sponsor' => 0.08, 
@@ -46,7 +46,7 @@ class PlansTableSeeder extends Seeder
         ]);
 
         $plan3 = factory(Plan::class)->create([ 
-            'name' => 'Plan 3', 
+            'name' => 'Platinum',
             'min_deposit' => 3000,
             'max_deposit' => 10000,
             'sponsor' => 0.1, 
