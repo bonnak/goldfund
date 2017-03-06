@@ -15,9 +15,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="bs-five-area">
-
-                                    <div class="col-md-4 no-padding" ng-repeat="(key, plan) in vm.plans">
-                                        <div class="bs-five" ng-class="{ 'active': vm.model.plan_id == plan.id }">
+                                    <div class="col-md-4 no-padding" data-ng-repeat="(key, plan) in vm.plans">
+                                        <div class="bs-five" data-ng-class="{ 'active': vm.model.plan_id == plan.id }">
+                                            <img src="{{plan.image}}" alt="logo">
                                             <h3 class="text-uppercase">{{ plan.name }}</h3>
                                             <h1 class="bs-caption">{{ plan.daily * 100 }}<sup>%</sup></h1>
                                             <p>Daily for {{ plan.duration }} days</p>
@@ -27,7 +27,7 @@
                                                 <li>24/7 Customer Support</li>
                                             </ul>
                                             <a ng-click="vm.model.plan_id = plan.id;vm.model.amount = plan.min_deposit;"
-                                               class="btn blue btn-success btn-round m-top-40">Select</a>
+                                               class="btn blue btn-success btn-round m-top-40">Deposit</a>
                                         </div>
                                     </div>
                                 </div>

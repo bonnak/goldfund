@@ -23,7 +23,8 @@ class PlansTableSeeder extends Seeder
             'sponsor' => 0.05, 
             'paring' => 0.05, 
             'daily' => 0.03, 
-            'duration' => 60, 
+            'duration' => 60,
+            'image' => 'images/logo/1.png'
         ]);
 
         $plan1->sponsor_levels()->create([ 'type' => 'D', 'commission' => 0.07 ]);
@@ -35,7 +36,8 @@ class PlansTableSeeder extends Seeder
             'sponsor' => 0.08, 
             'paring' => 0.08, 
             'daily' => 0.03, 
-            'duration' => 60, 
+            'duration' => 60,
+            'image' => 'images/logo/2.png'
         ]);
 
         $plan2->sponsor_levels()->createMany([
@@ -50,7 +52,8 @@ class PlansTableSeeder extends Seeder
             'sponsor' => 0.1, 
             'paring' => 0.1, 
             'daily' => 0.03, 
-            'duration' => 60, 
+            'duration' => 60,
+            'image' => 'images/logo/3.png'
         ]);
 
         $plan3->sponsor_levels()->createMany([

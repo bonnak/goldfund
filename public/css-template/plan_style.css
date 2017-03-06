@@ -27,7 +27,7 @@ Pricint fiv
 .bs-five-area{
     width:100%;
     display: inline-block;
-    box-shadow: 0px 0px 6px 0px #ddd;
+    /*box-shadow: 0px 0px 6px 0px #ddd;*/
     overflow: hidden;
     position: relative;
     font-family: 'Open Sans', sans-serif;
@@ -111,7 +111,10 @@ Pricint fiv
     background: #f2f6f9;
     color: #5b9bd1;
 }
-
+.plan-name{
+    font-size: 24px;
+    padding: 20px;
+}
 
 
 
