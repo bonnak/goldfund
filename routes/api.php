@@ -24,8 +24,9 @@ Route::group(['middleware' => 'auth:api'], function(){
 	Route::put('/user/updateProfile', 'Api\UserController@updateProfile');
 	Route::put('/password/change', 'Api\UserController@changePassword');
 
+	Route::get('/plans', 'Api\PlanController@all');
+
 	//Deposit
 	Route::post('/deposit', 'DepositController@create');
 	Route::get('/deposit/history', 'DepositController@history');
 });
-Route::get('/plans', 'Api\PlanController@all');

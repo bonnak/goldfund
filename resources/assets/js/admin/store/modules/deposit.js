@@ -44,6 +44,14 @@ const actions = {
         commit('EDIT', response);
       }
     );
+  },
+
+  sendMoney({ commit }, data){
+    Api.sendMoney(data).then(
+      (response) => {
+        console.log(response);
+      }
+    );
   }
 }
 
