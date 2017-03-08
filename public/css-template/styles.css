@@ -113,6 +113,7 @@ h2 {
 	font-size: 45px !important;
 	line-height: 55px;
 	text-align: center;
+	margin-bottom: 30px;
 }
 h3 {
 	font-size: 24px;
@@ -792,7 +793,7 @@ width: -webkit-calc(100% / 2);
 	margin-top: -15px;
 }
 .about-us p {
-	text-align: left;
+	text-align: justify;
 	color: #939393;
 }
 .about-us .column {
@@ -886,6 +887,7 @@ width: -webkit-calc(100% / 2);
 }
 .stat {
 	margin-bottom: 40px;
+	text-align: center;
 }
 .stat .icon-top {
 	font-size: 40px;

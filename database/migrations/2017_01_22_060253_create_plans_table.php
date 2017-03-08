@@ -23,6 +23,7 @@ class CreatePlansTable extends Migration
             $table->decimal('paring');
             $table->decimal('daily');
             $table->integer('duration');
+            $table->string('image');
             $table->timestamps();
         });
     }
