@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" href="/css-template/plan_style.css">
 <section class="intro-section">
   <div class="container">
     <div class="row wow fadeInRight animated">
@@ -61,17 +62,17 @@
         <div class="row wow fadeInRight animated">
             <div data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 text-center">
                         <img src="/images/icons/icon-register.gif">
                         <h2 class="caption">REGISTER ACCOUNT</h2>
                         <p class="description">Register an account to start making money with bitcompanytradingJust fill out registration form.</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 text-center">
                         <img src="/images/icons/icon-deposit.gif">
                         <h2 class="caption">MAKE DEPOSIT</h2>
                         <p class="description">To make a deposit you have to log into your personal account. You can do this after registration and use make deposit function in your account.</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 text-center">
                         <img src="/images/icons/icon-earn.gif">
                         <h2 class="caption">RECEIVE EARNING</h2>
                         <p class="description">Once you collected certain amount on your account balance. You can make withdrawal request. Withdrawals processes within 24 hours on business days.</p>
@@ -81,7 +82,6 @@
         </div>
     </div>
 </section>
-
 <section data-ng-controller="liveUser as vm" ng-cloak>
     <div class="container">
       <div class="row wow fadeInRight animated">
@@ -135,8 +135,37 @@
           </div>
       </div>
     </div>
-</section> 
-
+</section>
+<section data-ng-controller="liveUser as vm" ng-cloak>
+    <div class="container">
+        <div class="row">
+            <h2>investment Plan</h2>
+            <div>
+                <div class="row">
+                    <div class="bs-five-area">
+                        <div class="col-md-4 no-padding" data-ng-repeat="(key, plan) in vm.plans">
+                            <div class="bs-five">
+                                <img src="<% plan.image %>" alt="logo">
+                                <div class="text-uppercase plan-name"><%  plan.name %></div>
+                                <h1 class="bs-caption" style="margin: 30px;"><% plan.daily * 100 %><sup>%</sup></h1>
+                                <p>Daily for <% plan.duration %> days</p>
+                                <ul>
+                                    <li><b>Deposit: <% plan.min_deposit %>$ - <% plan.max_deposit %>$</b></li>
+                                    <li>Profit: <% plan.daily * 100 * plan.duration %>%</li>
+                                    <li>24/7 Customer Support</li>
+                                </ul>
+                                <a class="btn blue btn-success btn-round m-top-40">Deposit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <img src="images/plan.png" class="img-reponsive" style="margin: 0 auto;"/>
+        </div>
+    </div>
+</section>
 <section>
     <div class="container">
             <h2>Advantage of company</h2>

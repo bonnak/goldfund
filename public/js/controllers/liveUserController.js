@@ -39,8 +39,17 @@ app.controller(
             $interval(function() {
                 vm.getUserLive();
             }, 2000);
-            
-            
+            vm.model = {};
+            vm.getPlan = function(){
+                $http({
+                    method: 'GET',
+                    url: '/api/plans'
+                }).success(function(data){
+                    vm.plans = data;
+                    console.log(data);
+                });
+            };
+            vm.getPlan();
         }
     ]
 );
