@@ -74,3 +74,19 @@ $factory->define(App\Deposit::class, function (Faker\Generator $faker) {
         'expire_date' => null,
     ];
 });
+
+$factory->define(App\Earning::class, function (Faker\Generator $faker) {
+    return [
+        'cust_id' => function () { 
+                return factory(App\Customer::class)->create(['placement_id' => Customer::lastPlacement('L', 1)->id 
+            ])->id;
+        },
+        'plan_id' => function () { 
+            return factory(App\Plan::class)->create()->id;
+        },
+        'deposit_id' =>function () { 
+            return factory(App\Deposit::class)->create()->id;
+        },
+        'amount' => 50,
+    ];
+});
