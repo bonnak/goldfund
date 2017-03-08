@@ -1,7 +1,7 @@
 /* Setup general page controller */
 angular.module('MetronicApp').controller('ChangePasswordController', [
-    '$rootScope', '$scope', 'Restful',
-    function($rootScope, $scope, restful) {
+    '$rootScope', '$scope', 'Restful', '$state',
+    function($rootScope, $scope, restful, $state) {
         var vm = this;
         $scope.$on('$viewContentLoaded', function() {
             // initialize core components
@@ -13,8 +13,9 @@ angular.module('MetronicApp').controller('ChangePasswordController', [
                 return;
             }
             vm.loading= true;
-            restful.put('/api/user/password/change', vm.model).success(function(response){
+            restful.put('/api/password/change', vm.model).success(function(response){
                 console.log(response);
+                $state.go('user_profile');
             }).finally(function () {
                 vm.loading= false;
             });

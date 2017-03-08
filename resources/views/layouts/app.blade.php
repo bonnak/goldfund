@@ -74,7 +74,6 @@
                                 <li><a href="/register">Register</a></li>
                             @endif
                             <li><a href="{{url('faq')}}">FAQ</a></li>
-                            <li><a href="{{url('term')}}">Term</a></li>
                             <li><a href="{{url('news')}}">News</a></li>
                             <li><a href="{{url('support')}}">Support</a></li>
                             <li><a href="{{url('about-us')}}">About Us</a></li>
