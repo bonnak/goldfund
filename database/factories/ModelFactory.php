@@ -18,9 +18,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Customer::class, function (Faker\Generator $faker) {    
     try {
+        $sponsor_id = 1;
         $directions = ['L', 'R'];
-        $placement = Customer::lastPlacement($direction = $directions[array_rand($directions)], 1)->id;
+        $placement = Customer::lastPlacement($direction = $directions[array_rand($directions)], $sponsor_id)->id;
     } catch (Exception $e) {
+        $sponsor_id = null;
         $placement = null;
         $direction = null;
     }
@@ -38,7 +40,7 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'gender' => $faker->randomElement(['M', 'F']),
         'date_of_birth' => $faker->dateTime,
         'bitcoin_account' => $faker->uuid,
-        'sponsor_id' => 1,
+        'sponsor_id' => $sponsor_id,
         'placement_id' => $placement,
         'direction' => $direction,
         'agree_term_condition' => true,
