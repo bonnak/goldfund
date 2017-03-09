@@ -102,6 +102,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //dd($data['direction'], $data['sponsor_id']);
         $customer = Customer::create([
             'username' => $data['username'],
             'email' => $data['email'],

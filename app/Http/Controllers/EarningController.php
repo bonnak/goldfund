@@ -14,6 +14,7 @@ class EarningController extends Controller
 
     	$day_left = $deposit !== null ? Carbon::createFromFormat('Y-m-d', $deposit->expire_date)->diffInDays(Carbon::today()) : 0;
     	$earning = Earning::where('cust_id', auth()->user()->id)->sum('amount');
+        //$sponsor = 
 
 
     	return [
