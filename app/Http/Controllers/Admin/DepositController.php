@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Deposit;
+use App\SponsorEarningCommission;
 
 class DepositController extends Controller
 {
@@ -23,6 +24,11 @@ class DepositController extends Controller
         $deposit->issue_date = Carbon::today();
         $deposit->expire_date = Carbon::today()->addDays($deposit->plan->duration); 
     	$deposit->save();
+
+        $deposit->sponsor_earning_commission()->create([
+            'sponsor_id' => $deposit->owner->sponsor_id,
+            'amount' => 4,
+        ]);
 
     	return response()->json($deposit->toArray());
     }
