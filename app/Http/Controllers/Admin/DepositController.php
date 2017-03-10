@@ -19,17 +19,45 @@ class DepositController extends Controller
 
     public function approve($id)
     {
-    	$deposit = Deposit::find($id);
-    	$deposit->status = 1;
+    	$deposit = $this->activateDepositAccount($id);
+        $this->sponsorReceiveCommission($deposit);
+        
+    	return response()->json($deposit->toArray());
+    }
+
+
+    private function activateDepositAccount($deposit_id)
+    {
+        $deposit = Deposit::find($deposit_id);
+        $deposit->status = 1;
         $deposit->issue_date = Carbon::today();
         $deposit->expire_date = Carbon::today()->addDays($deposit->plan->duration); 
-    	$deposit->save();
+        $deposit->save();
 
-        $deposit->sponsor_earning_commission()->create([
-            'sponsor_id' => $deposit->owner->sponsor_id,
-            'amount' => 4,
-        ]);
+        return $deposit;
+    }
 
-    	return response()->json($deposit->toArray());
+
+    private function sponsorReceiveCommission($deposit)
+    {
+        if(($level = $deposit
+                        ->owner->sponsor->children
+                        ->where('direction', $deposit->owner->direction)
+                        ->sortBy('placement_id')
+                        ->pluck('id')
+                        ->search($deposit->owner->id)) !== false)
+        {
+            $sponsor_level = $deposit
+                ->plan
+                ->sponsor_levels()
+                ->where('level', $level + 1)
+                ->first();
+        
+
+            $deposit->sponsor_earning_commission()->create([
+                'sponsor_id' => $deposit->owner->sponsor_id,
+                'amount' => $deposit->amount * $sponsor_level->commission,
+            ]);
+        }
     }
 }
