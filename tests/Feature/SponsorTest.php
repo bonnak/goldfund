@@ -22,7 +22,7 @@ class SponsorTest extends TestCase
   	public function sponsor_receive_money_after_child_deposit_approve()
   	{
         $this->seed('PlansTableSeeder');
-        $plan = Plan::first();
+        $plan = Plan::find(3);
         $backend_admin = factory(User::class)->create(['username' => 'admin_backend']);
 
         $cust_admin = factory(Customer::class)->create([ 'username' => 'admin']);
@@ -38,7 +38,7 @@ class SponsorTest extends TestCase
         ]);
         $direct_right_deposit = factory(Deposit::class)->create([ 
         	'cust_id' => $direct_right->id, 
-        	'plan_id' => $plan->id 
+        	'plan_id' => $plan->id, 
         ]);
 
         $response = $this->actingAs($backend_admin, 'api_admin')
