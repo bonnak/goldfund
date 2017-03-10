@@ -80,8 +80,9 @@ class Customer extends Authenticatable
 
   public function scopeLastPlacement($query, $direction, $sponsor_id = 1)
   {
-    dd($sponsor_id);
     $result = $this->queryPlacements($direction, $sponsor_id)->first();
+
+    echo ($result === null ? 'null' : $result->id);
 
     return  $result === null ? $this->whereNull('sponsor_id')->first() : $result;
   }
