@@ -24,15 +24,15 @@ class DepositTest extends TestCase
     {
         $this->seed('PlansTableSeeder');
 
-    	$user = factory(Customer::class)->create();
+    	$backend_admin = factory(Customer::class)->create();
     	$plan = Plan::find(1);
 
-    	$response = $this->actingAs($user, 'api')
+    	$response = $this->actingAs($backend_admin, 'api')
     					->post('/api/deposit', [ 'plan_id' => $plan->id, 'amount' => $plan->min_deposit ]); 
 
     	$response->assertStatus(200)
     		->assertJson([
-    			'cust_id' => $user->id,
+    			'cust_id' => $backend_admin->id,
     			'plan_id' => $plan->id,
     			'amount' => $plan->min_deposit,
     			'status' => 0,
@@ -62,13 +62,19 @@ class DepositTest extends TestCase
     public function admin_approve_deposit()
     {
         $plan = factory(Plan::class)->create();
-        $user = factory(User::class)->create(['username' => 'admin']);
-        $customer = factory(Customer::class)->create();
+        $backend_admin = factory(User::class)->create(['username' => 'admin']);
+
+        $cust_admin = factory(Customer::class)->create([ 'username' => 'admin']);
+        $customer = factory(Customer::class)->create([
+            'sponsor_id' => $cust_admin->id,
+            'placement_id' => $cust_admin->id,
+            'direction' => 'R',
+        ]);
         $deposit = factory(Deposit::class)->create([ 'cust_id' => $customer->id, 'plan_id' => $plan->id ]);
 
         $this->assertTrue($customer->id === $deposit->cust_id);
 
-        $response = $this->actingAs($user, 'api_admin')
+        $response = $this->actingAs($backend_admin, 'api_admin')
                         ->post('api/admin/deposit/' . $deposit->id . '/approve');
 
         $response->assertStatus(200);

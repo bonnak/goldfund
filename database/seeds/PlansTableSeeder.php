@@ -27,7 +27,7 @@ class PlansTableSeeder extends Seeder
             'image' => 'images/logo/1.png'
         ]);
 
-        $plan1->sponsor_levels()->create([ 'type' => 'D', 'commission' => 0.07 ]);
+        $plan1->sponsor_levels()->create([ 'level' => 1, 'type' => 'D', 'commission' => 0.07 ]);
 
         $plan2 = factory(Plan::class)->create([ 
             'name' => 'Gold',
@@ -41,8 +41,8 @@ class PlansTableSeeder extends Seeder
         ]);
 
         $plan2->sponsor_levels()->createMany([
-            [ 'type' => 'D', 'commission' => 0.07 ],
-            [ 'type' => 'I', 'commission' => 0.05 ],
+            [ 'level' => 1, 'type' => 'D', 'commission' => 0.07 ],
+            [ 'level' => 2, 'type' => 'I', 'commission' => 0.05 ],
         ]);
 
         $plan3 = factory(Plan::class)->create([ 
@@ -57,11 +57,11 @@ class PlansTableSeeder extends Seeder
         ]);
 
         $plan3->sponsor_levels()->createMany([
-            [ 'type' => 'D', 'commission' => 0.07 ],
-            [ 'type' => 'I', 'commission' => 0.05 ],
-            [ 'type' => 'I', 'commission' => 0.03 ],
-            [ 'type' => 'I', 'commission' => 0.02 ],
-            [ 'type' => 'I', 'commission' => 0.01 ],
+            [ 'level' => 1, 'type' => 'D', 'commission' => 0.07 ],
+            [ 'level' => 2, 'type' => 'I', 'commission' => 0.05 ],
+            [ 'level' => 3, 'type' => 'I', 'commission' => 0.03 ],
+            [ 'level' => 4, 'type' => 'I', 'commission' => 0.02 ],
+            [ 'level' => 5, 'type' => 'I', 'commission' => 0.01 ],
         ]);
     }
 }

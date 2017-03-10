@@ -49,45 +49,8 @@ class EarningTest extends TestCase
     /**
      * @test
      */
-    public function customer_receive_level_1_sponsoring()
-	  {
-	  	$admin = factory(Customer::class)->create();
-	    $parent = factory(Customer::class)->create([
-	    	'sponsor_id' => $admin->id,
-	    	'placement_id' => $admin->id,
-	    	'direction' => 'R',
-	    ]);
+    public function customer_receive_level_sponsoring()
+    {
 
-	    //dd($parent->id);
-
-	    $customer2 = [
-	      'username' => 'vong_tach2',
-	      'first_name' => 'Vong2',
-	      'last_name' => 'Tach2',
-	      'gender' => 'M',
-	      'country_id' => '12',
-	      'date_of_birth' => '2017-02-08',
-	      'email' => 'vong_tach2@mail.com',
-	      'password' => '123456',
-	      'password_confirmation' => '123456',
-	      'bitcoin_account' => 'rgfegfref',
-	      'sponsor_id' => $parent->id,
-	      'direction' => 'R',
-	      'agree_term_condition' => 'on',
-	    ]; 
-
-	    $response = $this->post('/register', $customer2);
-
-
-	    //dd(Customer::all()->toArray());
-
-	    // $response->assertStatus(200);
-	    // $this->assertDatabaseHas('customers', [
-	    //   'username' => 'vong_tach2',
-	    //   'email' => 'vong_tach2@mail.com',
-	    //   'sponsor_id' => $parent->id,
-	    //   'placement_id' => $parent->id,
-	    //   'direction' => 'R',
-	    // ]);
-	  }
+    }
 }

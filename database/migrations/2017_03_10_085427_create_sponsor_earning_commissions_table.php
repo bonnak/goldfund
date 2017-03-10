@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlanLevelSponsorsTable extends Migration
+class CreateSponsorEarningCommissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePlanLevelSponsorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('plan_level_sponsors', function (Blueprint $table) {
+        Schema::create('sponsor_earning_commissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('plan_id')->unsigned();
-            $table->integer('level');
-            $table->char('type', 1);
-            $table->decimal('commission');
+            $table->integer('sponsor_id')->unsigned();
+            $table->integer('deposit_id')->unsigned();
+            $table->float('amount');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +29,6 @@ class CreatePlanLevelSponsorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plan_level_sponsors');
+        Schema::dropIfExists('sponsor_earning_commissions');
     }
 }

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Customer;
 use App\Plan;
+use App\SponsorEarningCommission;
 
 class Deposit extends Model
 {
@@ -22,5 +23,10 @@ class Deposit extends Model
 	public function plan()
 	{
 		return $this->belongsTo(Plan::class, 'plan_id', 'id');
+	}
+
+	public function sponsor_earning_commission()
+	{
+		return $this->hasOne(SponsorEarningCommission::class, 'deposit_id', 'id');
 	}
 }
