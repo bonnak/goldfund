@@ -8,7 +8,7 @@ class PlanLevelSponsor extends Model
 {
     protected $table = 'plan_level_sponsors';
 
-    protected $fillable = [ 'type', 'commission'];
+    protected $fillable = [ 'level', 'type', 'commission'];
 
     public $timestamps = false;
 }

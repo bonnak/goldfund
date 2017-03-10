@@ -82,9 +82,16 @@ class Customer extends Authenticatable
   {
     $result = $this->queryPlacements($direction, $sponsor_id)->first();
 
-    echo ($result === null ? 'null' : $result->id);
+    if($result === null){
+      $result = $this->where('id', $sponsor_id)->first();
 
-    return  $result === null ? $this->whereNull('sponsor_id')->first() : $result;
+      if($result === null)
+      {
+        $result = $this->whereNull('sponsor_id')->first();
+      }
+    }
+
+    return  $result;
   }
 
   /**
