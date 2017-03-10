@@ -12,157 +12,213 @@ use Carbon\Carbon;
 class CustomerRegistrationTest extends TestCase
 {  
 	use DatabaseMigrations;
-  use DatabaseTransactions;
+    use DatabaseTransactions;    
 
-  public function testBinaryPlacement()
-  {
-    $admin = factory(Customer::class)->create(['username' => 'admin']); 
+   /**
+     * @test
+     */
+    public function register_direct_children_without_sponsor()
+    {
+        $admin = factory(Customer::class)->create([ 'username' => 'admin']);
 
-    $child1 = factory(Customer::class)->create([
-      'sponsor_id' => $admin->id, 
-      'placement_id' => $admin->id,
-      'direction' => 'L',
-    ]); 
+        $direct_right = [
+            'username' => 'vong_tach3',
+            'first_name' => 'Vong2',
+            'last_name' => 'Tach2',
+            'gender' => 'M',
+            'country_id' => '12',
+            'date_of_birth' => '2017-02-08',
+            'email' => 'vong_tach2@mail.com',
+            'password' => '123456',
+            'password_confirmation' => '123456',
+            'bitcoin_account' => 'rgfegfref',
+            'sponsor_id' => $admin->id,
+            'direction' => 'R',
+            'agree_term_condition' => 'on',
+        ]; 
 
-    $child2 = factory(Customer::class)->create([
-      'sponsor_id' => $admin->id, 
-      'placement_id' => $admin->id,
-      'direction' => 'R',
-    ]); 
+        $response = $this->post('/register', $direct_right);
 
-    $placement_child1_id = Customer::lastPlacement('L', $admin->id)->id;
-    $placement_child2_id = Customer::lastPlacement('R', $admin->id)->id;    
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('customers', [
+            'username' => 'vong_tach3',
+            'sponsor_id' => $admin->id,
+            'placement_id' => $admin->id,
+            'direction' => 'R',
+        ]);
+   }
 
-    $this->assertTrue($child1->id === $placement_child1_id);
-    $this->assertTrue($child2->id === $placement_child2_id);
+   /**
+     * @test
+     */
+    public function register_indirect_children_without_sponsor()
+    {
+        $admin = factory(Customer::class)->create([ 'username' => 'admin']);
+        $direct_right = factory(Customer::class)->create([
+            'sponsor_id' => $admin->id,
+            'placement_id' => $admin->id,
+            'direction' => 'R',
+        ]);
 
-    $child3 = factory(Customer::class)->create([
-      'sponsor_id' => $admin->id, 
-      'placement_id' => $child1->id,
-      'direction' => 'L',
-    ]); 
+        $indirect_right_1 = [
+            'username' => 'indirect_right_1',
+            'first_name' => 'Vong2',
+            'last_name' => 'Tach2',
+            'gender' => 'M',
+            'country_id' => '12',
+            'date_of_birth' => '2017-02-08',
+            'email' => 'indirect_right_1@mail.com',
+            'password' => '123456',
+            'password_confirmation' => '123456',
+            'bitcoin_account' => 'rgfegfref',
+            'sponsor_id' => $admin->id,
+            'direction' => 'R',
+            'agree_term_condition' => 'on',
+        ]; 
 
-    $child4 = factory(Customer::class)->create([
-      'sponsor_id' => $admin->id, 
-      'placement_id' => $child2->id,
-      'direction' => 'R',
-    ]); 
+        $response = $this->post('/register', $indirect_right_1);
 
-    $placement_child3_id = Customer::lastPlacement('L', $admin->id)->id;
-    $placement_child4_id = Customer::lastPlacement('R', $admin->id)->id;    
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('customers', [
+            'username' => 'indirect_right_1',
+            'sponsor_id' => $admin->id,
+            'placement_id' => $direct_right->id,
+            'direction' => 'R',
+        ]);
 
-    $this->assertTrue($child3->id === $placement_child3_id);
-    $this->assertTrue($child4->id === $placement_child4_id);
-  }
+        $indirect_right_2 = [
+            'username' => 'indirect_right_2',
+            'first_name' => 'Vong2',
+            'last_name' => 'Tach2',
+            'gender' => 'M',
+            'country_id' => '12',
+            'date_of_birth' => '2017-02-08',
+            'email' => 'indirect_right_2@mail.com',
+            'password' => '123456',
+            'password_confirmation' => '123456',
+            'bitcoin_account' => 'rgfegfrefdfdfd',
+            'sponsor_id' => $admin->id,
+            'direction' => 'R',
+            'agree_term_condition' => 'on',
+        ]; 
 
-  public function testBinaryPlacementFails()
-  {
-    $admin = factory(Customer::class)->create(['username' => 'admin']); 
+        $response = $this->post('/register', $indirect_right_2);
 
-    $child1 = factory(Customer::class)->create([
-      'sponsor_id' => $admin->id, 
-      'placement_id' => $admin->id,
-      'direction' => 'L',
-    ]); 
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('customers', [
+            'username' => 'indirect_right_2',
+            'sponsor_id' => $admin->id,
+            'placement_id' => Customer::where('username', 'indirect_right_1')->first()->id,
+            'direction' => 'R',
+        ]);
+   }
 
-    $child2 = factory(Customer::class)->create([
-      'sponsor_id' => $admin->id, 
-      'placement_id' => $admin->id,
-      'direction' => 'R',
-    ]); 
+    /**
+     * @test
+     */
+    public function register_direct_children_from_sponsor()
+    {
+        $admin = factory(Customer::class)->create([ 'username' => 'admin']);
+        $parent = factory(Customer::class)->create([
+            'sponsor_id' => $admin->id,
+            'placement_id' => $admin->id,
+            'direction' => 'R',
+        ]);
 
-    $child3 = factory(Customer::class)->create([
-      'sponsor_id' => $admin->id, 
-      'placement_id' => $child2->id,
-      'direction' => 'L',
-    ]); 
+        $direct_right = [
+            'username' => 'vong_tach2',
+            'first_name' => 'Vong2',
+            'last_name' => 'Tach2',
+            'gender' => 'M',
+            'country_id' => '12',
+            'date_of_birth' => '2017-02-08',
+            'email' => 'vong_tach2@mail.com',
+            'password' => '123456',
+            'password_confirmation' => '123456',
+            'bitcoin_account' => 'rgfegfref',
+            'sponsor_id' => $parent->id,
+            'direction' => 'R',
+            'agree_term_condition' => 'on',
+        ]; 
 
-    $child4 = factory(Customer::class)->create([
-      'sponsor_id' => $admin->id, 
-      'placement_id' => $child1->id,
-      'direction' => 'R',
-    ]); 
+        $response = $this->post('/register', $direct_right);
 
-    $placement_child3_id = Customer::lastPlacement('L', $admin->id)->id;
-    $placement_child4_id = Customer::lastPlacement('R', $admin->id)->id;    
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('customers', [
+            'username' => 'vong_tach2',
+            'sponsor_id' => $parent->id,
+            'placement_id' => $parent->id,
+            'direction' => 'R',
+        ]);
+   }
 
-    $this->assertFalse($child3->id !== $placement_child3_id);
-    $this->assertFalse($child4->id !== $placement_child4_id);
-  }
+   /**
+     * @test
+     */
+    public function register_indirect_children_with_sponsor()
+    {
+        $admin = factory(Customer::class)->create([ 'username' => 'admin']);
+        $parent = factory(Customer::class)->create([
+            'sponsor_id' => $admin->id,
+            'placement_id' => $admin->id,
+            'direction' => 'R',
+        ]);
+        $direct_right = factory(Customer::class)->create([
+            'sponsor_id' => $parent->id,
+            'placement_id' => $parent->id,
+            'direction' => 'R',
+        ]);
 
-  public function testRegisterCustomerLeft()
-  {
-    $admin = factory(Customer::class)->create(['username' => 'admin']);
+        $indirect_right_1 = [
+            'username' => 'indirect_right_1',
+            'first_name' => 'Vong2',
+            'last_name' => 'Tach2',
+            'gender' => 'M',
+            'country_id' => '12',
+            'date_of_birth' => '2017-02-08',
+            'email' => 'indirect_right_1@mail.com',
+            'password' => '123456',
+            'password_confirmation' => '123456',
+            'bitcoin_account' => 'rgfegfref',
+            'sponsor_id' => $parent->id,
+            'direction' => 'R',
+            'agree_term_condition' => 'on',
+        ]; 
 
-    $c1 = factory(Customer::class)->create([
-      'direction' => 'L', 
-      'sponsor_id' => $admin->id, 
-      'placement_id' => $admin->id,
-    ]);
+        $response = $this->post('/register', $indirect_right_1);
 
-    $customer = [
-      'username' => 'vong_tach',
-      'first_name' => 'Vong',
-      'last_name' => 'Tach',
-      'gender' => 'M',
-      'country_id' => '12',
-      'date_of_birth' => '2017-02-08',
-      'email' => 'vong_tach@mail.com',
-      'password' => '123456',
-      'password_confirmation' => '123456',
-      'bitcoin_account' => 'rgfegfref',
-      'sponsor_id' => $admin->id,
-      'direction' => 'L',
-      'agree_term_condition' => 'on',
-    ]; 
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('customers', [
+            'username' => 'indirect_right_1',
+            'sponsor_id' => $parent->id,
+            'placement_id' => $direct_right->id,
+            'direction' => 'R',
+        ]);
 
-    $response = $this->post('/register', $customer);
+        $indirect_right_2 = [
+            'username' => 'indirect_right_2',
+            'first_name' => 'Vong2',
+            'last_name' => 'Tach2',
+            'gender' => 'M',
+            'country_id' => '12',
+            'date_of_birth' => '2017-02-08',
+            'email' => 'indirect_right_2@mail.com',
+            'password' => '123456',
+            'password_confirmation' => '123456',
+            'bitcoin_account' => 'rgfegfrefdfdfd',
+            'sponsor_id' => $parent->id,
+            'direction' => 'R',
+            'agree_term_condition' => 'on',
+        ]; 
 
-    $response->assertStatus(200);
-    $this->assertDatabaseHas('customers', [
-      'username' => 'vong_tach',
-      'email' => 'vong_tach@mail.com',
-      'sponsor_id' => $admin->id,
-      'placement_id' => $c1->id,
-      'direction' => 'L',
-    ]);
-  }
+        $response = $this->post('/register', $indirect_right_2);
 
-  public function testRegisterCustomerRight()
-  {
-    $parent = factory(Customer::class)->create(['username' => 'admin2']);
-
-    $cu1 = factory(Customer::class)->create([
-      'direction' => 'R', 
-      'sponsor_id' => $parent->id,
-      'placement_id' => $parent->id,
-    ]);
-
-    $customer2 = [
-      'username' => 'vong_tach2',
-      'first_name' => 'Vong2',
-      'last_name' => 'Tach2',
-      'gender' => 'M',
-      'country_id' => '12',
-      'date_of_birth' => '2017-02-08',
-      'email' => 'vong_tach2@mail.com',
-      'password' => '123456',
-      'password_confirmation' => '123456',
-      'bitcoin_account' => 'rgfegfref',
-      'sponsor_id' => $parent->id,
-      'direction' => 'R',
-      'agree_term_condition' => 'on',
-    ]; 
-
-    $response = $this->post('/register', $customer2);
-
-    $response->assertStatus(200);
-    $this->assertDatabaseHas('customers', [
-      'username' => 'vong_tach2',
-      'email' => 'vong_tach2@mail.com',
-      'sponsor_id' => $parent->id,
-      'placement_id' => $cu1->id,
-      'direction' => 'R',
-    ]);
-  }
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('customers', [
+            'username' => 'indirect_right_2',
+            'sponsor_id' => $parent->id,
+            'placement_id' => Customer::where('username', 'indirect_right_1')->first()->id,
+            'direction' => 'R',
+        ]);
+   }
 }

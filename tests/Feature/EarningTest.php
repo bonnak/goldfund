@@ -51,16 +51,14 @@ class EarningTest extends TestCase
      */
     public function customer_receive_level_1_sponsoring()
 	  {
-	  	$admin = factory(Customer::class)->create();
+	  	$admin = factory(Customer::class)->create([ 'username' => 'admin']);
 	    $parent = factory(Customer::class)->create([
 	    	'sponsor_id' => $admin->id,
 	    	'placement_id' => $admin->id,
 	    	'direction' => 'R',
 	    ]);
 
-	    //dd($parent->id);
-
-	    $customer2 = [
+	    $direct_right = [
 	      'username' => 'vong_tach2',
 	      'first_name' => 'Vong2',
 	      'last_name' => 'Tach2',
@@ -76,12 +74,12 @@ class EarningTest extends TestCase
 	      'agree_term_condition' => 'on',
 	    ]; 
 
-	    $response = $this->post('/register', $customer2);
+	    $response = $this->post('/register', $direct_right);
 
 
 	    //dd(Customer::all()->toArray());
 
-	    // $response->assertStatus(200);
+	    //$response->assertStatus(200);
 	    // $this->assertDatabaseHas('customers', [
 	    //   'username' => 'vong_tach2',
 	    //   'email' => 'vong_tach2@mail.com',
