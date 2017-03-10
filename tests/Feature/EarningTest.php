@@ -79,7 +79,7 @@ class EarningTest extends TestCase
 	    $response = $this->post('/register', $customer2);
 
 
-	    dd(Customer::all()->toArray());
+	    //dd(Customer::all()->toArray());
 
 	    // $response->assertStatus(200);
 	    // $this->assertDatabaseHas('customers', [
