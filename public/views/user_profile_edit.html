@@ -8,118 +8,150 @@
                         Edit User Profile
                     </span>
                 </div>
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" aria-expanded="true" ng-click="vm.changeTab('#tab_1_1')">Personal Info</a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" aria-expanded="false" ng-click="vm.changeTab('#tab_1_2')">Change Avatar</a>
+                    </li>
+                </ul>
             </div>
             <div class="portlet-body">
-                <form role="form" novalidate class="form-horizontal" name="profileForm" ng-submit="vm.save()">
-                    <div class="form-group" 
-                        data-ng-class="{ 'has-error': profileForm.first_name.$invalid && profileForm.$submitted }">
-                        <div class="col-md-3">
-                            <label class="control-label">First Name</label>
-                            <span class="required">* </span>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" 
-                                ng-model="vm.model.first_name" 
-                                required
-                                name="first_name"
-                                class="form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group"
-                        data-ng-class="{ 'has-error': profileForm.last_name.$invalid && profileForm.$submitted }">
-                        <div class="col-md-3">
-                            <label class="control-label">Last Name</label>
-                            <span class="required">* </span>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" 
-                                ng-model="vm.model.last_name" 
-                                class="form-control"
-                                name="last_name"
-                                required />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <label class="control-label">Gender</label>
-                            <span class="required">* </span>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-control"
-                                    ng-model="vm.model.gender"
-                                    ng-options="x.code as x.name for x in vm.genders"
-                            ></select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <label class="control-label">Country</label>
-                            <span class="required">* </span>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-control"
-                                    ng-model="vm.model.country_id"
-                                    ng-options="x.id as x.name for x in vm.countries">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group"
-                        data-ng-class="{ 'has-error': profileForm.dob.$invalid && profileForm.$submitted }">
-                        <div class="col-md-3">
-                            <label class="control-label">Date of birth</label>
-                            <span class="required">* </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="input-group">
-                                <input type="text" ng-model="vm.model.date_of_birth" required name="dob" class="form-control" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-calendar"></i>
-                                    </button>
-                                </span>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1_1">
+                        <form role="form" novalidate class="form-horizontal" name="profileForm" ng-submit="vm.save()">
+                            <div class="form-group" 
+                                data-ng-class="{ 'has-error': profileForm.first_name.$invalid && profileForm.$submitted }">
+                                <div class="col-md-3">
+                                    <label class="control-label">First Name</label>
+                                    <span class="required">* </span>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="text" 
+                                        ng-model="vm.model.first_name" 
+                                        required
+                                        name="first_name"
+                                        class="form-control" />
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group"
+                                data-ng-class="{ 'has-error': profileForm.last_name.$invalid && profileForm.$submitted }">
+                                <div class="col-md-3">
+                                    <label class="control-label">Last Name</label>
+                                    <span class="required">* </span>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="text" 
+                                        ng-model="vm.model.last_name" 
+                                        class="form-control"
+                                        name="last_name"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label class="control-label">Gender</label>
+                                    <span class="required">* </span>
+                                </div>
+                                <div class="col-md-9">
+                                    <select class="form-control"
+                                            ng-model="vm.model.gender"
+                                            ng-options="x.code as x.name for x in vm.genders"
+                                    ></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label class="control-label">Country</label>
+                                    <span class="required">* </span>
+                                </div>
+                                <div class="col-md-9">
+                                    <select class="form-control"
+                                            ng-model="vm.model.country_id"
+                                            ng-options="x.id as x.name for x in vm.countries">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group"
+                                data-ng-class="{ 'has-error': profileForm.dob.$invalid && profileForm.$submitted }">
+                                <div class="col-md-3">
+                                    <label class="control-label">Date of birth</label>
+                                    <span class="required">* </span>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <input type="text" ng-model="vm.model.date_of_birth" required name="dob" class="form-control" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" data-ng-class="{ 'has-error': profileForm.email.$invalid && profileForm.$submitted }">
+                                <div class="col-md-3">
+                                    <label class="control-label">Email</label>
+                                    <span class="required">* </span>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="email" class="form-control" name="email" required ng-model="vm.model.email">
+                                </div>
+                            </div>
+                            <div class="form-group"
+                                data-ng-class="{ 'has-error': profileForm.bitcoin_account.$invalid && profileForm.$submitted }">
+                                <div class="col-md-3">
+                                    <label class="control-label">Address Bitcoin</label>
+                                    <span class="required">* </span>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="bitcoin_account" required ng-model="vm.model.bitcoin_account">
+                                </div>
+                            </div>
+                            <div class="margiv-top-10">
+                                <button class="btn blue" type="submit" ng-disable="vm.loading">
+                                    <i class="fa fa-save" ng-if="!vm.loading"></i>
+                                    <i class="fa fa-spin fa-spinner" ng-if="vm.loading"></i>
+                                    Save Changes
+                                </button>
+                                <a ui-sref="user_profile" class="btn default">
+                                    <i class="fa fa-close"></i>
+                                    Cancel
+                                </a>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group" data-ng-class="{ 'has-error': profileForm.user_name.$invalid && profileForm.$submitted }">
-                        <div class="col-md-3">
-                            <label class="control-label">Username</label>
-                            <span class="required">* </span>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="user_name" required ng-model="vm.model.username"/>
-                        </div>
+                    <div class="tab-pane" id="tab_1_2">
+                        <form action="#" role="form">
+                            <div class="form-group">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""> </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                    <div>
+                                        <span class="btn default btn-file">
+                                            <span class="fileinput-new"> Select image </span>
+                                            <span class="fileinput-exists"> Change </span>
+                                            <input name="..." type="file"> </span>
+                                        <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="margin-top-10">
+                                <button class="btn blue" type="submit" ng-disable="vm.loading">
+                                    <i class="fa fa-save" ng-if="!vm.loading"></i>
+                                    <i class="fa fa-spin fa-spinner" ng-if="vm.loading"></i>
+                                    Save Changes
+                                </button>
+                                <a ui-sref="user_profile" class="btn default">
+                                    <i class="fa fa-close"></i>
+                                    Cancel
+                                </a>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group" data-ng-class="{ 'has-error': profileForm.email.$invalid && profileForm.$submitted }">
-                        <div class="col-md-3">
-                            <label class="control-label">Email</label>
-                            <span class="required">* </span>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="email" class="form-control" name="email" required ng-model="vm.model.email">
-                        </div>
-                    </div>
-                    <div class="form-group"
-                        data-ng-class="{ 'has-error': profileForm.bitcoin_account.$invalid && profileForm.$submitted }">
-                        <div class="col-md-3">
-                            <label class="control-label">Address Bitcoin</label>
-                            <span class="required">* </span>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="bitcoin_account" required ng-model="vm.model.bitcoin_account">
-                        </div>
-                    </div>
-                    <div class="margiv-top-10">
-                        <button class="btn blue" type="submit" ng-disable="vm.loading">
-                            <i class="fa fa-save" ng-if="!vm.loading"></i>
-                            <i class="fa fa-spin fa-spinner" ng-if="vm.loading"></i>
-                            Save Changes
-                        </button>
-                        <a ui-sref="user_profile" class="btn default">
-                            <i class="fa fa-close"></i>
-                            Cancel
-                        </a>
-                    </div>
-                </form>
+                </div>                
             </div>
         </div>
     </div>
