@@ -61,7 +61,8 @@ class DepositTest extends TestCase
      */
     public function admin_approve_deposit()
     {
-        $plan = factory(Plan::class)->create();
+        $this->seed('PlansTableSeeder');
+        $plan = Plan::find(1);
         $backend_admin = factory(User::class)->create(['username' => 'admin']);
 
         $cust_admin = factory(Customer::class)->create([ 'username' => 'admin']);
