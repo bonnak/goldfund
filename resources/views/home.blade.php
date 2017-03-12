@@ -57,6 +57,17 @@
   </div>
 </section>
 
+<section class="quotes-string" data-ng-controller="PriceQuoteController as vm" ng-cloak>
+    <div class="container">
+        <ul class="bxslider">
+            <li class="quote" ng-repeat="quote in vm.quotes" on-finish-render="renderBxSlider">
+                <span class="name">@{{ quote.name }}</span>
+                <span class="rate">@{{ quote.rate }}</span>
+            </li>
+        </ul>
+    </div>  
+</section>
+
 <section class="section-2">
     <div class="container">
         <div class="row wow fadeInRight animated">
@@ -97,7 +108,7 @@
                                   <span am-time-ago="customer.created_at"></span>
                                 </div>
                                 <div class="col-md-6 col-xs-6 align-left">
-                                   <% customer.username %>
+                                   @{{customer.username }}
                                 </div>
                           </div>
                     </dl>
@@ -109,11 +120,11 @@
                         <p class="text">Days Online</p>
                     </div>
                     <div class="stat">
-                        <p class="num"><% vm.totalMember %></p>
+                        <p class="num">@{{vm.totalMember }}</p>
                         <p class="text">Members</p>
                     </div>
                     <div class="stat">
-                        <p class="num"><% vm.investedCapital | currency %></p>
+                        <p class="num">@{{vm.investedCapital | currency }}</p>
                         <p class="text">Invested</p>
                     </div>
                 </div>
@@ -123,10 +134,10 @@
                     <dl>
                         <div ng-repeat="last_deposit in vm.lastDeposits">
                             <div class="col-md-6 col-xs-6 align-left">
-                                <% last_deposit.owner.username %>
+                                @{{last_deposit.owner.username }}
                             </div>
                             <div class="col-md-6 col-xs-6 align-left">
-                                <% last_deposit.amount | currency%>
+                                @{{last_deposit.amount | currency}}
                             </div>
                         </div>
                     </dl>
@@ -145,13 +156,13 @@
                     <div class="bs-five-area">
                         <div class="col-md-4 no-padding" data-ng-repeat="(key, plan) in vm.plans">
                             <div class="bs-five">
-                                <img src="<% plan.image %>" alt="logo">
-                                <div class="text-uppercase plan-name"><%  plan.name %></div>
-                                <h1 class="bs-caption" style="margin: 30px;"><% plan.daily * 100 %><sup>%</sup></h1>
-                                <p>Daily for <% plan.duration %> days</p>
+                                <img src="@{{plan.image }}" alt="logo">
+                                <div class="text-uppercase plan-name">@{{ plan.name }}</div>
+                                <h1 class="bs-caption" style="margin: 30px;">@{{plan.daily * 100 }}<sup>%</sup></h1>
+                                <p>Daily for @{{plan.duration }} days</p>
                                 <ul>
-                                    <li><b>Deposit: <% plan.min_deposit %>$ - <% plan.max_deposit %>$</b></li>
-                                    <li>Profit: <% plan.daily * 100 * plan.duration %>%</li>
+                                    <li><b>Deposit: @{{plan.min_deposit }}$ - @{{plan.max_deposit }}$</b></li>
+                                    <li>Profit: @{{plan.daily * 100 * plan.duration }}%</li>
                                     <li>24/7 Customer Support</li>
                                 </ul>
                                 <a class="btn blue btn-success btn-round m-top-40">Deposit</a>
@@ -259,4 +270,5 @@
 <script src="/angular/1.5.6/angular.min.js"></script>
 <script src="/angular/angular-moment/angular-moment.min.js"></script>
 <script src="/js/controllers/liveUserController.js"></script>
+<script src="/js/controllers/PriceQuoteController.js"></script>
 @endsection

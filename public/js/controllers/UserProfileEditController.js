@@ -49,5 +49,10 @@ angular.module('MetronicApp').controller('UserProfileEditController', [
             });
         };
 
+        vm.changeTab = function(id){
+            $(id).siblings().removeClass('active');
+            $(id).addClass('active');
+        }
+
     }
 ]);

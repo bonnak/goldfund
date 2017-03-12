@@ -3,12 +3,12 @@ var app = angular.module(
     [
         // @todo add
         'angularMoment'
-    ],
-    function($interpolateProvider) {
-        // change express angular snytax to avoid conflict with laravel expression
-        $interpolateProvider.startSymbol('<%');
-        $interpolateProvider.endSymbol('%>');
-    }
+    ]
+    // function($interpolateProvider) {
+    //     // change express angular snytax to avoid conflict with laravel expression
+    //     $interpolateProvider.startSymbol('<%');
+    //     $interpolateProvider.endSymbol('%>');
+    // }
 );
 //var sampleApp = angular.module('sampleApp', [], );
 app.controller(
@@ -46,7 +46,6 @@ app.controller(
                     url: '/api/plans'
                 }).success(function(data){
                     vm.plans = data;
-                    console.log(data);
                 });
             };
             vm.getPlan();

@@ -52,7 +52,7 @@ class VerifyCustomerRegister extends Notification
                         'username'      => $notifiable->username,
                         'password'      => $this->password,
                         'trans_password'=> $this->trans_password,
-                        'sponsor_name'  => $notifiable->sponsor->first_name . ' ' . $notifiable->sponsor->last_name,
+                        'sponsor_name'  => $notifiable->sponsor->username,
                         'sponsor_id'    => $notifiable->sponsor->id,                    
                         'verified_token' => $notifiable->verified_token,
                     ]);

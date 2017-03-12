@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 
-Route::get('/customer/activation/{token}', 'Auth\RegisterController@confirm')->middleware('guest');
+Route::get('/customer/activation/{token}', 'Auth\RegisterController@confirm');
 
 Route::get('/getCountry', 'CountryController@get');
 

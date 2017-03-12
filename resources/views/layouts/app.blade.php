@@ -35,7 +35,7 @@
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400|Homemade+Apple'
           rel='stylesheet' type='text/css'>
-
+          
     <link rel="stylesheet" href="/css/app.css">
 
     <script src="/js-template/jquery.min.js"></script>
@@ -211,6 +211,8 @@
     <script src="/js-template/smoothscroll.js"></script>
     <script src="/js-template/jquery.vegas.min.js"></script>
     <script src="/js-template/zerif.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
     <script>
         $('.date').datepicker({
