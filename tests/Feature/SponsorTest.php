@@ -16,45 +16,6 @@ class SponsorTest extends TestCase
     use DatabaseMigrations;
   	use DatabaseTransactions;
 
-    protected $plan;
-    protected $backend_admin;
-    protected $cust_admin;
-
-    public function setUp()
-    {        
-        parent::setUp();
-
-        $this->plan = $this->getPlan();
-        $this->backend_admin = factory(User::class)->create(['username' => 'admin_backend']);
-        $this->cust_admin = factory(Customer::class)->create([ 'username' => 'admin']);
-    }
-
-
-    private function getPlan()
-    {
-      $plan = factory(Plan::class)->create([ 
-            'name' => 'Platinum',
-            'min_deposit' => 3000,
-            'max_deposit' => 10000,
-            'sponsor' => 0.1, 
-            'paring' => 0.1, 
-            'daily' => 0.03, 
-            'duration' => 60,
-            'image' => 'images/logo/3.png'
-        ]);
-
-        $plan->sponsor_levels()->createMany([
-            [ 'level' => 1, 'type' => 'D', 'commission' => 0.07 ],
-            [ 'level' => 2, 'type' => 'I', 'commission' => 0.05 ],
-            [ 'level' => 3, 'type' => 'I', 'commission' => 0.03 ],
-            [ 'level' => 4, 'type' => 'I', 'commission' => 0.02 ],
-            [ 'level' => 5, 'type' => 'I', 'commission' => 0.01 ],
-        ]);
-
-        return $plan;
-    }
-
-
     /**
      * @test
      */
@@ -97,7 +58,7 @@ class SponsorTest extends TestCase
             'deposit_id' => $child_deposit->id,
         ]);                      
     }
-    
+
 
     /**
      * @test
