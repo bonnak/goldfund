@@ -18,9 +18,7 @@ class CustomerRegistrationTest extends TestCase
      * @test
      */
     public function register_direct_children_without_sponsor()
-    {
-        $admin = factory(Customer::class)->create([ 'username' => 'admin']);
-
+    {       
         $direct_right = [
             'username' => 'vong_tach3',
             'first_name' => 'Vong2',
@@ -32,7 +30,7 @@ class CustomerRegistrationTest extends TestCase
             'password' => '123456',
             'password_confirmation' => '123456',
             'bitcoin_account' => 'rgfegfref',
-            'sponsor_id' => $admin->id,
+            'sponsor_id' => $this->cust_admin->id,
             'direction' => 'R',
             'agree_term_condition' => 'on',
         ]; 
@@ -42,8 +40,8 @@ class CustomerRegistrationTest extends TestCase
         $response->assertStatus(200);
         $this->assertDatabaseHas('customers', [
             'username' => 'vong_tach3',
-            'sponsor_id' => $admin->id,
-            'placement_id' => $admin->id,
+            'sponsor_id' => $this->cust_admin->id,
+            'placement_id' => $this->cust_admin->id,
             'direction' => 'R',
         ]);
    }
@@ -53,10 +51,9 @@ class CustomerRegistrationTest extends TestCase
      */
     public function register_indirect_children_without_sponsor()
     {
-        $admin = factory(Customer::class)->create([ 'username' => 'admin']);
         $direct_right = factory(Customer::class)->create([
-            'sponsor_id' => $admin->id,
-            'placement_id' => $admin->id,
+            'sponsor_id' => $this->cust_admin->id,
+            'placement_id' => $this->cust_admin->id,
             'direction' => 'R',
         ]);
 
@@ -71,7 +68,7 @@ class CustomerRegistrationTest extends TestCase
             'password' => '123456',
             'password_confirmation' => '123456',
             'bitcoin_account' => 'rgfegfref',
-            'sponsor_id' => $admin->id,
+            'sponsor_id' => $this->cust_admin->id,
             'direction' => 'R',
             'agree_term_condition' => 'on',
         ]; 
@@ -81,7 +78,7 @@ class CustomerRegistrationTest extends TestCase
         $response->assertStatus(200);
         $this->assertDatabaseHas('customers', [
             'username' => 'indirect_right_1',
-            'sponsor_id' => $admin->id,
+            'sponsor_id' => $this->cust_admin->id,
             'placement_id' => $direct_right->id,
             'direction' => 'R',
         ]);
@@ -97,7 +94,7 @@ class CustomerRegistrationTest extends TestCase
             'password' => '123456',
             'password_confirmation' => '123456',
             'bitcoin_account' => 'rgfegfrefdfdfd',
-            'sponsor_id' => $admin->id,
+            'sponsor_id' => $this->cust_admin->id,
             'direction' => 'R',
             'agree_term_condition' => 'on',
         ]; 
@@ -107,7 +104,7 @@ class CustomerRegistrationTest extends TestCase
         $response->assertStatus(200);
         $this->assertDatabaseHas('customers', [
             'username' => 'indirect_right_2',
-            'sponsor_id' => $admin->id,
+            'sponsor_id' => $this->cust_admin->id,
             'placement_id' => Customer::where('username', 'indirect_right_1')->first()->id,
             'direction' => 'R',
         ]);
@@ -118,10 +115,9 @@ class CustomerRegistrationTest extends TestCase
      */
     public function register_direct_children_from_sponsor()
     {
-        $admin = factory(Customer::class)->create([ 'username' => 'admin']);
         $parent = factory(Customer::class)->create([
-            'sponsor_id' => $admin->id,
-            'placement_id' => $admin->id,
+            'sponsor_id' => $this->cust_admin->id,
+            'placement_id' => $this->cust_admin->id,
             'direction' => 'R',
         ]);
 
@@ -157,10 +153,9 @@ class CustomerRegistrationTest extends TestCase
      */
     public function register_indirect_children_with_sponsor()
     {
-        $admin = factory(Customer::class)->create([ 'username' => 'admin']);
         $parent = factory(Customer::class)->create([
-            'sponsor_id' => $admin->id,
-            'placement_id' => $admin->id,
+            'sponsor_id' => $this->cust_admin->id,
+            'placement_id' => $this->cust_admin->id,
             'direction' => 'R',
         ]);
         $direct_right = factory(Customer::class)->create([

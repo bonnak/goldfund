@@ -22,8 +22,6 @@ class DepositTest extends TestCase
      */
     public function customer_deposit_expect_pending_and_wait_for_payment_confirm_success()
     {
-        $this->seed('PlansTableSeeder');
-
     	$backend_admin = factory(Customer::class)->create();
     	$plan = Plan::find(1);
 
@@ -46,12 +44,11 @@ class DepositTest extends TestCase
      */
     public function customer_allow_to_deposit_once_until_expiration()
     {
-        $plan = factory(Plan::class)->create();
         $customer = factory(Customer::class)->create();
-        $deposit = factory(Deposit::class)->create([ 'cust_id' => $customer->id, 'plan_id' => $plan->id ]);
+        $deposit = factory(Deposit::class)->create([ 'cust_id' => $customer->id, 'plan_id' => $this->plan->id ]);
 
         $response = $this->actingAs($customer, 'api')
-                        ->post('/api/deposit', [ 'plan_id' => $plan->id, 'amount' => $plan->min_deposit ]); 
+                        ->post('/api/deposit', [ 'plan_id' => $this->plan->id, 'amount' => $this->plan->min_deposit ]); 
 
         $response->assertStatus(422);     
     }
@@ -61,21 +58,16 @@ class DepositTest extends TestCase
      */
     public function admin_approve_deposit()
     {
-        $this->seed('PlansTableSeeder');
-        $plan = Plan::find(1);
-        $backend_admin = factory(User::class)->create(['username' => 'admin']);
-
-        $cust_admin = factory(Customer::class)->create([ 'username' => 'admin']);
         $customer = factory(Customer::class)->create([
-            'sponsor_id' => $cust_admin->id,
-            'placement_id' => $cust_admin->id,
+            'sponsor_id' => $this->cust_admin->id,
+            'placement_id' => $this->cust_admin->id,
             'direction' => 'R',
         ]);
-        $deposit = factory(Deposit::class)->create([ 'cust_id' => $customer->id, 'plan_id' => $plan->id ]);
+        $deposit = factory(Deposit::class)->create([ 'cust_id' => $customer->id, 'plan_id' => $this->plan->id ]);
 
         $this->assertTrue($customer->id === $deposit->cust_id);
 
-        $response = $this->actingAs($backend_admin, 'api_admin')
+        $response = $this->actingAs($this->backend_admin, 'api_admin')
                         ->post('api/admin/deposit/' . $deposit->id . '/approve');
 
         $response->assertStatus(200);
@@ -85,7 +77,7 @@ class DepositTest extends TestCase
         $this->assertTrue($deposit_after_approved->status == 1); //approved
         $this->assertTrue($deposit_after_approved->issue_date !== null);
         $this->assertTrue(
-            $deposit_after_approved->expire_date == Carbon::createFromFormat('Y-m-d H:i:s', $deposit_after_approved->issue_date)->addDays($plan->duration)
+            $deposit_after_approved->expire_date == Carbon::createFromFormat('Y-m-d H:i:s', $deposit_after_approved->issue_date)->addDays($this->plan->duration)
         );
     }
 }

@@ -18,7 +18,6 @@ class PlanTest extends TestCase
      */
     public function api_receive_plans()
     {
-    	$this->seed('PlansTableSeeder');
     	$user = factory(Customer::class)->create();
 
     	$response = $this->actingAs($user, 'api')->get('/api/plans');  

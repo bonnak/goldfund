@@ -1,6 +1,6 @@
 <!-- BEGIN DASHBOARD STATS -->
 <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="dashboard-stat blue">
             <div class="visual">
                 <i class="fa fa-dollar"></i>
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="dashboard-stat yellow">
             <div class="visual">
                 <i class="fa fa-dollar"></i>
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="dashboard-stat red">
             <div class="visual">
                 <i class="fa fa-dollar"></i>
@@ -32,6 +32,17 @@
             <div class="details">
                 <div class="number">{{ vm.model.sponsor | currency }}</div>
                 <div class="desc"> Sponsor</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat green">
+            <div class="visual">
+                <i class="fa fa-dollar"></i>
+            </div>
+            <div class="details">
+                <div class="number">{{ vm.model.binary | currency }}</div>
+                <div class="desc"> Binary</div>
             </div>
         </div>
     </div>

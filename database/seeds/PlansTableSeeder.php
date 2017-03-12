@@ -21,7 +21,7 @@ class PlansTableSeeder extends Seeder
             'min_deposit' => 50,
             'max_deposit' => 300,
             'sponsor' => 0.05, 
-            'paring' => 0.05, 
+            'pairing' => 0.05, 
             'daily' => 0.03, 
             'duration' => 60,
             'image' => 'images/logo/1.png'
@@ -34,7 +34,7 @@ class PlansTableSeeder extends Seeder
             'min_deposit' => 400,
             'max_deposit' => 1000,
             'sponsor' => 0.08, 
-            'paring' => 0.08, 
+            'pairing' => 0.05, 
             'daily' => 0.03, 
             'duration' => 60,
             'image' => 'images/logo/2.png'
@@ -50,7 +50,7 @@ class PlansTableSeeder extends Seeder
             'min_deposit' => 3000,
             'max_deposit' => 10000,
             'sponsor' => 0.1, 
-            'paring' => 0.1, 
+            'pairing' => 0.05, 
             'daily' => 0.03, 
             'duration' => 60,
             'image' => 'images/logo/3.png'
