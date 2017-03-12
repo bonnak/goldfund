@@ -63,6 +63,9 @@ class DepositController extends Controller
         $owner = $deposit->owner;
         $sponsor = $owner->sponsor;
 
+        if(is_null($sponsor->deposit)) return;
+        if($sponsor->deposit->status != 1) return;
+
         // does the number of left children equal to right children?
         $deposit_owner_side = $sponsor->children()->where('direction', $owner->direction)->orderBy('placement_id')->get();
         $other_side = $sponsor->children()->where('direction', ($owner->direction == 'L' ? 'R' : 'L'))->orderBy('placement_id')->get();
