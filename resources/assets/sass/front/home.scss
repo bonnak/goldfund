@@ -16,6 +16,31 @@
 			padding-top: 30px;
 			background: transparent;
 		}
+
+		&.quotes-string{
+			padding: 10px 0;
+
+			.name{
+				font-weight: 600;
+			}
+
+			.rate{
+				position: relative;
+				color: #de615e;
+
+				&:after{
+					content: '';
+					width: 0;
+					height: 0;
+					border-left: 5px solid transparent;
+					border-right: 5px solid transparent;
+					border-top: 5px solid #de615e;
+					position: absolute;
+					top: 5px;
+					right: -15px;
+				}
+			}
+		}
 	}
 
 	.intro {

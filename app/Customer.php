@@ -29,7 +29,7 @@ class Customer extends Authenticatable
 
   public function sponsor()
   {
-  	 return $this->belongsTo('App\Customer');
+  	 return $this->belongsTo('App\Customer', 'sponsor_id', 'id');
   }
 
   public function country()
@@ -107,6 +107,32 @@ class Customer extends Authenticatable
     }
 
     return true;
+  }
+
+  public function hierachy()
+  {    
+
+    // $sponsor = function( $el ) use ( &$sponsor ) {
+    //     if(is_null($el->sponsor->sponsor_id)) 
+    //     {
+    //         return;
+    //     }
+
+    //     return $sponsor($el->sponsor);
+    // }; 
+    // 
+    // return $sponsor($this->sponsor);
+    
+    $collection = collect([]);
+    $up_line = $this->sponsor;
+
+    while(!is_null($up_line->sponsor_id))
+    {      
+      $collection->push($up_line);
+      $up_line = $up_line->sponsor;
+    }
+
+    return $collection; 
   }
 
 }
