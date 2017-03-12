@@ -19,9 +19,9 @@ class CreatePlansTable extends Migration
             $table->text('description')->nullable();
             $table->double('min_deposit', 15, 8);
             $table->double('max_deposit', 15, 8);
-            $table->decimal('sponsor');
-            $table->decimal('paring');
-            $table->decimal('daily');
+            $table->float('sponsor');
+            $table->float('pairing');
+            $table->float('daily');
             $table->integer('duration');
             $table->string('image')->nullable();
             $table->timestamps();

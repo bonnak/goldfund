@@ -63,12 +63,11 @@ class DepositController extends Controller
         $owner = $deposit->owner;
         $sponsor = $owner->sponsor;
 
-        //dd($sponsor->children->toArray());
-
         // does the number of left children equal to right children?
         $deposit_owner_side = $sponsor->children()->where('direction', $owner->direction)->orderBy('placement_id')->get();
         $other_side = $sponsor->children()->where('direction', ($owner->direction == 'L' ? 'R' : 'L'))->orderBy('placement_id')->get();
         
+
         if($deposit_owner_side->count() === $other_side->count())
         {
             // Current level.
@@ -77,8 +76,8 @@ class DepositController extends Controller
             });
             
             // does both right and left children deposited and deposit is active?
-            if($deposit_owner_side[$current_level]->deposit->status == 1 &&
-               $other_side[$current_level]->deposit->status == 1 )
+            if(($deposit_owner_side[$current_level]->deposit !== null && $deposit_owner_side[$current_level]->deposit->status == 1) &&
+               ($other_side[$current_level]->deposit !== null && $other_side[$current_level]->deposit->status == 1 ))
             {
                 $deposit_amount = $deposit_owner_side[$current_level]->deposit->amount < $other_side[$current_level]->deposit->amount ?
                                 $deposit_owner_side[$current_level]->deposit->amount : $other_side[$current_level]->deposit->amount;
@@ -86,7 +85,7 @@ class DepositController extends Controller
                 $sponsor->binary_earning_commissions()->create([
                     'left_child_id'     => $deposit_owner_side[$current_level]->direction == 'L' ? $deposit_owner_side[$current_level]->id : $other_side[$current_level]->id,
                     'right_child_id'    => $deposit_owner_side[$current_level]->direction == 'R' ? $deposit_owner_side[$current_level]->id : $other_side[$current_level]->id,
-                    'amount'            => $deposit_amount * 0.05,
+                    'amount'            => $deposit_amount * $deposit->plan->pairing,
                 ]);
             }
         }

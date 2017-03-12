@@ -57,7 +57,7 @@ $factory->define(App\Plan::class, function (Faker\Generator $faker) {
         'min_deposit' => 50,
         'max_deposit' => 100,
         'sponsor' => 0, 
-        'paring' => 0, 
+        'pairing' => 0.05, 
         'daily' => 0.03, 
         'duration' => 60, 
     ];

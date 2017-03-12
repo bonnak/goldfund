@@ -44,7 +44,7 @@ class BinaryPairEarningTest extends TestCase
         $child_l_deposit = factory(Deposit::class)->create([ 
             'cust_id' => $child_l->id, 
             'plan_id' => $this->plan->id, 
-            'amount' => 100,
+            'amount' => 80,
             'status' => 1,
         ]);
 
@@ -70,6 +70,7 @@ class BinaryPairEarningTest extends TestCase
             'cust_id'			=> $parent->id,
             'left_child_id'		=> $child_l->id,
             'right_child_id'	=> $child_r->id,
+            'amount'			=> $child_l_deposit->amount * $child_r_deposit->plan->pairing,
         ]);
 
     }

@@ -32,7 +32,7 @@ abstract class TestCase extends BaseTestCase
             'min_deposit' => 3000,
             'max_deposit' => 10000,
             'sponsor' => 0.1, 
-            'paring' => 0.1, 
+            'pairing' => 0.05, 
             'daily' => 0.03, 
             'duration' => 60,
             'image' => 'images/logo/3.png'
