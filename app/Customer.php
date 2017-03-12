@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use App\Deposit;
+use App\BinaryEarningCommission;
 
 class Customer extends Authenticatable
 {
@@ -50,6 +51,11 @@ class Customer extends Authenticatable
   public function deposit()
   {
     return $this->hasOne(Deposit::class, 'cust_id', 'id');
+  }
+
+  public function binary_earning_commissions()
+  {
+    return $this->hasMany(BinaryEarningCommission::class, 'cust_id', 'id');
   }
 
   

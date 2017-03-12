@@ -45,12 +45,4 @@ class EarningTest extends TestCase
 
         $response->assertStatus(422);
     }
-
-    /**
-     * @test
-     */
-    public function customer_receive_level_sponsoring()
-    {
-
-    }
 }
