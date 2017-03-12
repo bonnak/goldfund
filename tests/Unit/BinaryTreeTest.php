@@ -18,11 +18,7 @@ class BinaryTreeTest extends TestCase
      */
     public function geneology()
     {
-    	$root = factory(Customer::class)->create([
-    		'sponsor_id' => null, 
-	    	'placement_id' => null,
-	    	'direction' => null,
-    	]); 
+    	$root = $this->cust_admin; 
 
 	    $child1L = factory(Customer::class)->create([
 	      'sponsor_id' => $root->id, 

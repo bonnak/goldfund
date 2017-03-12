@@ -10,7 +10,7 @@ class Plan extends Model
 
 	protected $fillable = [ 
 	  	'name', 'description', 'min_deposit', 'max_deposit', 
-	  	'sponsor', 'paring', 'daily', 'duration'
+	  	'sponsor', 'pairing', 'daily', 'duration'
 	];
 
 	public function sponsor_levels()
