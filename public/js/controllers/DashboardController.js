@@ -16,6 +16,14 @@ angular.module('MetronicApp').controller('DashboardController', [
             });
         }  
 
+        vm.fetchTransactions = function()
+        {
+            Restful.get('/api/transactions').success(function(data){
+                vm.transactions = data;
+            });
+        } 
+
         vm.fetchData();  
+        vm.fetchTransactions();
     }
 ]);

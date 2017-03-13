@@ -69,3 +69,29 @@
         </div>
     </div>
 </div>
+
+<div class="row">    
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cursor font-dark hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">
+                        History
+                    </span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li data-ng-repeat="(key, tran) in vm.transactions">
+                                <span>{{ tran }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
