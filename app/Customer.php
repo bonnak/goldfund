@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use App\Deposit;
 use App\BinaryEarningCommission;
+use App\SponsorEarningCommission;
 
 class Customer extends Authenticatable
 {
@@ -56,6 +57,11 @@ class Customer extends Authenticatable
   public function binary_earning_commissions()
   {
     return $this->hasMany(BinaryEarningCommission::class, 'cust_id', 'id');
+  }
+
+  public function sponsor_earning_commission()
+  {
+    return $this->hasMany(SponsorEarningCommission::class, 'sponsor_id', 'id');
   }
 
   
