@@ -52,8 +52,7 @@ class VerifyCustomerRegister extends Notification
                         'username'      => $notifiable->username,
                         'password'      => $this->password,
                         'trans_password'=> $this->trans_password,
-                        'sponsor_name'  => $notifiable->sponsor->username,
-                        'sponsor_id'    => $notifiable->sponsor->id,                    
+                        'sponsor_name'  => $notifiable->sponsor->username,             
                         'verified_token' => $notifiable->verified_token,
                     ]);
                     // ->subject('Please verify your account.')
