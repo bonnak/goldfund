@@ -202,6 +202,63 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
 
+        .state('earning_history', {
+            url: "/earning/history",
+            templateUrl: "views/earning_history.html",
+            data: {pageTitle: 'Earning History'},
+            controller: "EarningController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css-template/plan_style.css',
+                            'js/controllers/EarningController.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
+        .state('level_history', {
+            url: "/Level/history",
+            templateUrl: "views/level_history.html",
+            data: {pageTitle: 'Level History'},
+            controller: "LevelController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css-template/plan_style.css',
+                            'js/controllers/LevelController.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
+        .state('binary_history', {
+            url: "/binary/history",
+            templateUrl: "views/binary_history.html",
+            data: {pageTitle: 'Binary History'},
+            controller: "BinaryController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css-template/plan_style.css',
+                            'js/controllers/BinaryController.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
         // AngularJS plugins
         .state('request_payment', {
             url: "/request_payment",

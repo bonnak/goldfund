@@ -54,4 +54,29 @@ class EarningController extends Controller
         
         return collect([$level, $binary, $earning])->flatten();
     }
+
+    public function daily_earning()
+    {
+        return Earning::with('plan')
+                    ->where('cust_id', auth()->user()->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+    }
+
+
+    public function level_earning()
+    {
+        return SponsorEarningCommission::with('deposit.owner')
+                                        ->where('sponsor_id', auth()->user()->id)
+                                        ->orderBy('created_at', 'desc')
+                                        ->get();
+    }
+
+    public function binary_earning()
+    {
+        return BinaryEarningCommission::with(['left_child', 'right_child'])
+                        ->where('cust_id', auth()->user()->id)
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+    }
 }
