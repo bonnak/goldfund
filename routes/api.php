@@ -34,5 +34,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 	//Earning
 	Route::get('/earning/data', 'EarningController@getData');
 	Route::get('/transactions', 'EarningController@transactions');
+	Route::get('/earning/daily', 'EarningController@daily_earning');
+	Route::get('/earning/level', 'EarningController@level_earning');
+	Route::get('/earning/binary', 'EarningController@binary_earning');
 });
 Route::get('/plans', 'Api\PlanController@all');
