@@ -109,3 +109,9 @@
 		}
 	}
 }
+
+@media(max-width: 1000px){
+	section.quotes-string{
+		opacity: 0;
+	}
+}
