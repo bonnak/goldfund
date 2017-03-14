@@ -62,7 +62,7 @@
         <ul class="bxslider">
             <li class="quote" ng-repeat="quote in vm.quotes" on-finish-render="renderBxSlider">
                 <span class="name">@{{ quote.name }}</span>
-                <span class="rate">@{{ quote.rate }}</span>
+                <span class="rate" ng-class="{'down': (quote.rate - quote.old_rate < 0), 'up': (quote.rate - quote.old_rate >= 0) }">@{{ quote.rate }}</span>
             </li>
         </ul>
     </div>  

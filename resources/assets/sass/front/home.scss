@@ -20,6 +20,10 @@
 		&.quotes-string{
 			padding: 10px 0;
 
+			.container{
+				width: 100%;
+			}
+
 			.name{
 				font-weight: 600;
 			}
@@ -34,10 +38,27 @@
 					height: 0;
 					border-left: 5px solid transparent;
 					border-right: 5px solid transparent;
-					border-top: 5px solid #de615e;
+					border-top: 5px solid transparent;
 					position: absolute;
-					top: 5px;
 					right: -15px;
+				}
+
+				&.down{
+					color: #de615e;
+
+					&:after{
+						border-top: 5px solid #de615e;
+						top: 8px;
+					}
+				}
+
+				&.up{
+					color: #09c95f;
+
+					&:after{
+						border-bottom: 5px solid #09c95f;
+						top: 1px;
+					}
 				}
 			}
 		}

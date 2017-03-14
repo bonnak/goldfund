@@ -25452,12 +25452,6 @@ var PusherChannel = function (_Channel) {
             return this;
         }
     }, {
-        key: 'stopListening',
-        value: function stopListening(event) {
-            this.subscription.unbind(this.eventFormatter.format(event));
-            return this;
-        }
-    }, {
         key: 'on',
         value: function on(event, callback) {
             this.subscription.bind(event, callback);
@@ -47166,7 +47160,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\components\\passport\\AuthorizedClients.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\passport\\AuthorizedClients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AuthorizedClients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47204,7 +47198,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\components\\passport\\Clients.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\passport\\Clients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Clients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47242,7 +47236,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\components\\passport\\PersonalAccessTokens.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\passport\\PersonalAccessTokens.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PersonalAccessTokens.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47842,7 +47836,7 @@ input:function(e){t.currentSize=e}}},t._l(t.mdPageOptions,(function(e){return n(
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
-  * vue-router v2.2.1
+  * vue-router v2.2.0
   * (c) 2017 Evan You
   * @license MIT
   */
@@ -49223,11 +49217,12 @@ var positionStore = Object.create(null);
 
 function setupScroll () {
   window.addEventListener('popstate', function (e) {
-    saveScrollPosition();
     if (e.state && e.state.key) {
       setStateKey(e.state.key);
     }
   });
+
+  window.addEventListener('scroll', saveScrollPosition);
 }
 
 function handleScroll (
@@ -49352,7 +49347,6 @@ function setStateKey (key) {
 }
 
 function pushState (url, replace) {
-  saveScrollPosition();
   // try...catch the pushState call to get around Safari
   // DOM Exception 18 where it limits to 100 pushState calls
   var history = window.history;
@@ -49363,6 +49357,7 @@ function pushState (url, replace) {
       _key = genKey();
       history.pushState({ key: _key }, '', url);
     }
+    saveScrollPosition();
   } catch (e) {
     window.location[replace ? 'replace' : 'assign'](url);
   }
@@ -50112,7 +50107,7 @@ function createHref (base, fullPath, mode) {
 }
 
 VueRouter.install = install;
-VueRouter.version = '2.2.1';
+VueRouter.version = '2.2.0';
 
 if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
@@ -51098,7 +51093,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\App.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\App.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51132,7 +51127,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\CustomerTable.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\CustomerTable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CustomerTable.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51170,7 +51165,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\deposit\\HistoryTable.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\deposit\\HistoryTable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] HistoryTable.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51204,7 +51199,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\user\\UserTable.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\user\\UserTable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] UserTable.vue: functional components are not supported with templates, they should use render functions.")}
 
