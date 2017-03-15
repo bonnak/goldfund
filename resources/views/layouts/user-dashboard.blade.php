@@ -26,6 +26,7 @@
     <link href="{{ URL::asset('assets/layouts/layout4/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <link rel="stylesheet" href="/css/app.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
      <script>
@@ -56,7 +57,7 @@
     <div class="page-content-wrapper">
         <div class="page-content">
             <!-- BEGIN PAGE HEAD -->
-            <div data-ng-include="'tpl/page-head.html'" data-ng-controller="PageHeadController" class="page-head"> </div>
+            {{-- <div data-ng-include="'tpl/page-head.html'" data-ng-controller="PageHeadController" class="page-head"> </div> --}}
             <!-- END PAGE HEAD -->
             <!-- BEGIN ACTUAL CONTENT -->
             <div ui-view class="fade-in-up"> </div>
