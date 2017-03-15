@@ -1,0 +1,42 @@
+<div class="row" loading-if="vm.loading">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-globe theme-font hide"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase">Make Withdrawal</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-body">
+                                <div class="form-group " ng-class="{'has-error' : vm.withdraw_amount > vm.balance}">
+                                    <label class="col-md-2 control-label">Amount</label>
+                                    <div class="col-md-6">
+                                        <div class="input-icon right">
+                                            <i class="fa fa-warning tooltips" data-original-title="Out of your maximum balance" ng-show="vm.withdraw_amount > vm.balance"></i>
+                                            <input type="text" class="form-control" ng-model="vm.withdraw_amount">
+                                        </div>
+                                        <span class="help-block" style="color: black; font-size: 12px;">The available balance is <b>{{ vm.balance | currency }}</b>.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <button class="btn blue" ng-click="vm.save();" ng-disabled="vm.loading">
+                                            <i class="fa fa-spinner fa-spin ng-hide" ng-show="vm.loading"></i>
+                                            Cash out
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

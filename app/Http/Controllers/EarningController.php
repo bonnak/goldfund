@@ -10,25 +10,7 @@ use App\BinaryEarningCommission;
 use App\Customer;
 
 class EarningController extends Controller
-{
-    public function getData()
-    {
-    	$deposit = auth()->user()->deposit;
-
-    	$day_left = $deposit !== null ? Carbon::createFromFormat('Y-m-d', $deposit->expire_date)->diffInDays(Carbon::today()) : 0;
-    	$earning = Earning::where('cust_id', auth()->user()->id)->sum('amount');
-        $sponsor = SponsorEarningCommission::where('sponsor_id', auth()->user()->id)->sum('amount');
-        $binary = BinaryEarningCommission::where('cust_id', auth()->user()->id)->sum('amount');
-
-
-    	return [
-    		'day_left'  => $day_left,
-    		'earning'   => $earning,
-            'sponsor'   => $sponsor,
-            'binary'    => $binary,
-    	];    	
-    }
-
+{   
     public function transactions()
     {
         $binary = BinaryEarningCommission::with(['sponsor', 'left_child', 'right_child'])
