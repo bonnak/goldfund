@@ -183,6 +183,25 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
 
+        .state('withdrawal', {
+            url: "/withdrawal",
+            templateUrl: "views/withdrawal.html",
+            data: {pageTitle: 'Make Withdrawal'},
+            controller: "WithdrawalController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css-template/plan_style.css',
+                            'js/controllers/WithdrawalController.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
         .state('deposit_history', {
             url: "/deposit/history",
             templateUrl: "views/deposit_history.html",
@@ -196,6 +215,25 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                         files: [
                             'css-template/plan_style.css',
                             'js/controllers/DepositController.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
+        .state('withdrawal_history', {
+            url: "/withdrawal_history",
+            templateUrl: "views/withdrawal_history.html",
+            data: {pageTitle: 'Withdrawal History'},
+            controller: "WithdrawalController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css-template/plan_style.css',
+                            'js/controllers/WithdrawalController.js',
                         ] 
                     });
                 }]

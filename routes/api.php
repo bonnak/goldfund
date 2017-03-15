@@ -32,10 +32,17 @@ Route::group(['middleware' => 'auth:api'], function(){
 	Route::get('/deposit/history', 'DepositController@history');
 
 	//Earning
-	Route::get('/earning/data', 'EarningController@getData');
 	Route::get('/transactions', 'EarningController@transactions');
 	Route::get('/earning/daily', 'EarningController@daily_earning');
 	Route::get('/earning/level', 'EarningController@level_earning');
 	Route::get('/earning/binary', 'EarningController@binary_earning');
+
+	//Withdrawal
+	Route::get('/withdrawal/balance', 'WithdrawalController@getData');
+	Route::post('/withdrawal/cashout', 'WithdrawalController@cashOut');
+	Route::get('/withdrawal/history', 'WithdrawalController@history');
+
+	//Dashboard	
+	Route::get('/earning/data', 'DashboardController@getData');
 });
 Route::get('/plans', 'Api\PlanController@all');
