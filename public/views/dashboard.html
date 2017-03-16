@@ -1,9 +1,10 @@
 <!-- BEGIN DASHBOARD STATS -->
-<div class="row">
+<div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Daily Earning</h4>
-            <div class="widget-thumb-wrap" style="text-align: center;">                
+            <div class="widget-thumb-wrap">                
+                <i class="widget-thumb-icon"><img src="/images/icons/dollar_tick.png"></i> 
                 <div class="widget-thumb-body">                    
                     <span class="widget-thumb-body-stat">{{ vm.model.earning | currency }}</span>
                 </div>
@@ -13,7 +14,8 @@
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Sponsor Level</h4>
-            <div class="widget-thumb-wrap" style="text-align: center;">                
+            <div class="widget-thumb-wrap">                
+                <i class="widget-thumb-icon fa fa-users"></i> 
                 <div class="widget-thumb-body">                    
                     <span class="widget-thumb-body-stat">{{ vm.model.sponsor | currency }}</span>
                 </div>
@@ -23,7 +25,8 @@
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Binary</h4>
-            <div class="widget-thumb-wrap" style="text-align: center;">                
+            <div class="widget-thumb-wrap">  
+                <i class="widget-thumb-icon fa fa-tree"></i>                
                 <div class="widget-thumb-body">                    
                     <span class="widget-thumb-body-stat">{{ vm.model.binary | currency }}</span>
                 </div>
@@ -32,11 +35,12 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Days Left</h4>
-            <div class="widget-thumb-wrap" style="text-align: center;">                
+            <div class="widget-thumb-wrap">  
+                <i class="widget-thumb-icon fa fa-sun-o"></i>               
                 <div class="widget-thumb-body">                    
                     <span class="widget-thumb-body-stat">{{ vm.model.day_left }}</span>
                 </div>
@@ -46,7 +50,8 @@
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Available Balance</h4>
-            <div class="widget-thumb-wrap" style="text-align: center;">                
+            <div class="widget-thumb-wrap">  
+                <i class="widget-thumb-icon"><img src="/images/icons/wallet.png"></i>              
                 <div class="widget-thumb-body">                    
                     <span class="widget-thumb-body-stat">{{ (vm.model.sponsor + vm.model.binary) - vm.model.withdrawal | currency }}</span>
                 </div>
@@ -56,10 +61,9 @@
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Withdrawal</h4>
-            <div class="widget-thumb-wrap" style="text-align: center;">
-                
-                <div class="widget-thumb-body">
-                    
+            <div class="widget-thumb-wrap">   
+                <i class="widget-thumb-icon fa fa-credit-card"></i>             
+                <div class="widget-thumb-body">                    
                     <span class="widget-thumb-body-stat">{{ vm.model.withdrawal | currency }}</span>
                 </div>
             </div>

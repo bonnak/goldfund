@@ -9,12 +9,15 @@ use App\SponsorEarningCommission;
 use App\BinaryEarningCommission;
 use App\Customer;
 use App\Withdrawal;
+use App\Deposit;
 
 class DashboardController extends Controller
 {
     public function getData()
     {
-    	$deposit = auth()->user()->deposit;
+    	$deposit = Deposit::where('cust_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->first();
 
     	$day_left = $deposit !== null ? Carbon::createFromFormat('Y-m-d', $deposit->expire_date)->diffInDays(Carbon::today()) : 0;
     	$earning = Earning::where('cust_id', auth()->user()->id)->sum('amount');

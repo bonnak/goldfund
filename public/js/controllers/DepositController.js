@@ -46,6 +46,12 @@ angular.module('MetronicApp').controller('DepositController', [
                 vm.plans = data;
             });
         }
+
+        vm.inValid = function()
+        {
+            return vm.model.amount < vm.model.min_deposit  || vm.model.amount > vm.model.max_deposit;
+        }
+        
         vm.getQrCode();
         vm.getPlans();
         vm.getHistory();

@@ -61,6 +61,6 @@ Route::get('/support', function(){
 	return view('support');
 });
 
-Route::get('/binary', function(){
-	return view('binary');
-});
+// Route::get('/test', function(){
+// 	return view('auth.register_success');
+// });
