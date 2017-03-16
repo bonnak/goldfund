@@ -297,6 +297,25 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
 
+        .state('geneology', {
+            url: "/geneology",
+            templateUrl: "views/geneology.html",
+            data: {pageTitle: 'Geneology'},
+            controller: "GeneologyController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css-template/plan_style.css',
+                            'js/controllers/GeneologyController.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
         // AngularJS plugins
         .state('request_payment', {
             url: "/request_payment",

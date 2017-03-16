@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="MetronicApp">
+<html lang="en" data-ng-app="MetronicApp" ng-init="user =  { id: {{ auth()->user()->id }}, username : '{{ auth()->user()->username }}' }">
 <head>
     <title data-ng-bind="$state.current.data.pageTitle"></title>
     <meta charset="utf-8" />
@@ -77,8 +77,6 @@
 <!-- END FOOTER -->
 
 
-
-
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE JQUERY PLUGINS -->
 <!--[if lt IE 9]>
@@ -93,6 +91,7 @@
 <script src="{{ URL::asset('assets/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
+<script src="/js-template/bootstrap-datepicker.min.js"></script>
 <!-- END CORE JQUERY PLUGINS -->
 <!-- BEGIN CORE ANGULARJS PLUGINS -->
 <script src="{{ URL::asset('assets/global/plugins/angularjs/angular.min.js') }}" type="text/javascript"></script>
@@ -102,6 +101,10 @@
 <script src="{{ URL::asset('assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js') }}" type="text/javascript"></script>
 <!-- END CORE ANGULARJS PLUGINS -->
+
+<script type="text/javascript" src="/bn/paper-full.js"></script>
+
+
 <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
 <script src="{{ URL::asset('js/main.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/core/restful/restful.js') }}" type="text/javascript"></script>

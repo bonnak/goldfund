@@ -19,14 +19,12 @@
     axios.defaults.headers.common = {
         'X-CSRF-TOKEN': window.Laravel.csrfToken,
         'X-Requested-With': 'XMLHttpRequest'
-    };
-    axios.get('/api/plans').then(function(response){
-        console.log(response);
-    });
+    };    
 </script>
 <script type="text/javascript" src="bn/paper-full.js"></script>
-<script type="text/paperscript" canvas="myCanvas">
+<script type="text/javascript">
     paper.install(window);
+    paper.setup('canvas');
 </script>
 <script type="text/paperscript" src="bn/mycanvas.js" canvas="myCanvas"></script>
 <script type="text/paperscript" src="bn/zoomTest.js" canvas="myCanvas"></script>

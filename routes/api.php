@@ -44,5 +44,17 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 	//Dashboard	
 	Route::get('/earning/data', 'DashboardController@getData');
+
+	//Binary
+	Route::get('/binary/json', function(){
+		$bn = \App\Customer::with('children')
+							->where('username', auth()->user()->username)
+							->first();
+
+		$tree = new \Acme\BinaryTree();
+		$tree->render($bn); 
+
+		return $tree->toArray();
+	});
 });
 Route::get('/plans', 'Api\PlanController@all');
