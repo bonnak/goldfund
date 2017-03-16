@@ -25,8 +25,8 @@
                                                 <li>Profit: {{ plan.daily * 100 * plan.duration }}%</li>
                                                 <li>24/7 Customer Support</li>
                                             </ul>
-                                            <a ng-click="vm.model.plan_id = plan.id;vm.model.amount = plan.min_deposit;"
-                                               class="btn blue btn-success btn-round m-top-40">Deposit</a>
+                                            <a ng-click="vm.model.plan_id = plan.id; vm.model.amount = plan.min_deposit; vm.model.min_deposit = plan.min_deposit; vm.model.max_deposit = plan.max_deposit"
+                                               class="btn blue btn-success btn-round m-top-40">Select</a>
                                         </div>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                     </section>
                 </div>
             </div>
-            <div class="portlet light bordered" ng-if="vm.model.plan_id">
+            <div class="portlet light bordered" ng-show="vm.model.plan_id">
                 <div class="portlet-title">
                     <div class="caption font-blue-sharp">
                         <span class="caption-subject bold uppercase">
@@ -44,28 +44,36 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <div class="form-group"
-                         ng-class="{ 'has-error': depositForm.amount.$invalid && depositForm.$submitted }">
+                    <div class="form-group">
                         <label class="col-md-2 control-label">
-                            Amount to spend($)
+                            Amount
                             <span class="required">* </span>
                         </label>
-                        <div class="col-md-4">
-                            <input type="number"
-                                   required
-                                   ng-model="vm.model.amount"
-                                   name="amount"
-                                   placeholder="amount"
-                                   class="form-control" />
+                        <div class="col-md-4" ng-class="{'has-error' : vm.inValid() }">    
+                            <div class="input-icon right">  
+                                <i class="fa fa-warning tooltips" data-original-title="Range between {{ vm.model.min_deposit }} and {{ vm.model.max_deposit }}" ng-show="vm.inValid()"></i>                      
+                                <div class="input-group">                                
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="fa fa-dollar"></i>
+                                        </button>
+                                    </span>
+                                    <input type="text"
+                                       required
+                                       ng-model="vm.model.amount"
+                                       name="amount"
+                                       class="form-control" 
+                                       only-number/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2">
                         </label>
                         <div class="col-md-4">
-                            <button class="btn blue" ng-click="vm.save();" ng-disabled="vm.loading">
+                            <button class="btn blue" ng-click="vm.save();" ng-disabled="vm.loading || vm.inValid()">
                                 <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
-                                <i class="fa fa-money" ng-show="!vm.loading"></i>
                                 Deposit
                             </button>
                         </div>
