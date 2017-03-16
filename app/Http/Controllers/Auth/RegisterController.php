@@ -51,9 +51,12 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->create($request->all())));
+        $user = $this->create($request->all());
+        //event(new Registered($user = $this->create($request->all())));
 
-        return view('auth.register_success', compact('user'));
+        return $request->ajax() ? 
+                    ['msg' => 'Register successfully.'] : 
+                    view('auth.register_success', compact('user'));
     }
 
     public function showRegistrationForm()
@@ -117,7 +120,7 @@ class RegisterController extends Controller
             'placement_id' => Customer::lastPlacement($data['direction'], $data['sponsor_id'])->id,
             'bitcoin_account' => $data['bitcoin_account'],
             'direction' => $data['direction'],
-            'agree_term_condition' => $data['agree_term_condition'] == 'on' ? true : false,
+            'agree_term_condition' => $data['agree_term_condition'] == 'on' || $data['agree_term_condition'] === true ? true : false,
             'confirmed' => false,
             'verified_token' => hash_hmac('sha256', str_random(40), $data['username'] . $data['password']),
         ]);    

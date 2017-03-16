@@ -64,15 +64,3 @@ Route::get('/support', function(){
 Route::get('/binary', function(){
 	return view('binary');
 });
-
-Route::get('/binary/json', function(){
-	$bn = \App\Customer::with('children')
-						->where('username', 'admin')
-						//->select('username', 'id', 'sponsor_id')
-						->first();
-
-	$tree = new \Acme\BinaryTree();
-	$tree->render($bn); 
-
-	return $tree->toArray();
-});

@@ -5,8 +5,8 @@ angular.module('MetronicApp').controller('DashboardController', [
     function($scope, $location, Restful) {
         var vm = this;
         vm.model = {};
-        vm.link = $location.protocol() + "://" + $location.host() + ":" + 
-                ($location.port() !== 80 ? $location.port() : '') + '/register?ref=' + $scope.userProfile.username;
+        vm.link = $location.protocol() + "://" + $location.host() + 
+                ($location.port() !== 80 ? (':' + $location.port()) : '') + '/register?ref=' + $scope.userProfile.username;
 
 
         vm.fetchData = function()
