@@ -27,12 +27,16 @@ angular.module('MetronicApp')
             vm.countries = data;
         }); 
 
-        vm.submit = function(){
+        vm.submitRegister = function(){
+            vm.loading = true;
+
             Restful.save('/register', vm.model).success(function(response){
-                $('#register_modal').hide();
+                $('#register_modal').modal('hide');
                 vm.resetModel();
                 vm.loadTree();                
-            }); 
+            }).finally(function () {
+                vm.loading= false;
+            });
         }
 
         vm.loadTree = function(){
@@ -266,6 +270,8 @@ angular.module('MetronicApp')
                     }   
                 });
                 group.addChild(add_new_node_r);
+
+                paper.view.scale(0.4);
 
 
                 paper.view.onMouseDrag = function(event){
