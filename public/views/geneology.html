@@ -17,3 +17,197 @@
         </div>
     </div>
 </div>
+
+<div id="register_modal" class="modal fade in" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" role="form" ng-submit="vm.submit()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Register New Downline</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="first_name" class="col-md-4 control-label">First name</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-user"></i>
+                                    </button>
+                                </span>
+                                <input id="first_name" type="text" class="form-control" name="first_name" ng-model="vm.model.first_name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name" class="col-md-4 control-label">Last name</label>
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-user"></i>
+                                    </button>
+                                </span>
+                                <input id="last_name" type="text" class="form-control" name="last_name" ng-model="vm.model.last_name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender" class="col-md-4 control-label">Gender</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-mars-stroke"></i>
+                                    </button>
+                                </span>
+                                <select id="gender" class="form-control" name="gender" ng-model="vm.model.gender">
+                                    <option value="">--Select--</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="country_id" class="col-md-4 control-label">
+                            Country
+                        </label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-globe"></i>
+                                    </button>
+                                </span>
+                                <select name="country_id" class="form-control" id="country_id" ng-model="vm.model.country_id">
+                                    <option value="">--Select--</option>  
+                                    <option value="{{ country.id }}" ng-repeat="country in vm.countries">{{ country.code }}</option>                                  
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="date_of_birth" class="col-md-4 control-label">Date of birth</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                 <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                                <input type="text" class="form-control date" placeholder="yyyy-mm-dd" value="" name="date_of_birth" ng-model="vm.model.date_of_birth">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-md-4 control-label">Username</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-user"></i>
+                                    </button>
+                                </span>
+                                <input id="username" type="text" class="form-control" name="username" ng-model="vm.model.username">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-envelope"></i>
+                                    </button>
+                                </span>
+                                <input id="email" type="email" class="form-control" name="email" ng-model="vm.model.email">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-4 control-label">Password</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-key"></i>
+                                    </button>
+                                </span>
+                                <input id="password" type="password" class="form-control" name="password" ng-model="vm.model.password">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-key"></i>
+                                    </button>
+                                </span>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" ng-model="vm.model.password_confirmation">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bitcoin_account" class="col-md-4 control-label">Bitcoin account</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                 <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-btc"></i>
+                                    </button>
+                                </span>
+                                <input id="bitcoin_account" type="text" class="form-control" name="bitcoin_account" ng-model="vm.model.bitcoin_account">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sponsor_id" class="col-md-4 control-label">Sponsor</label>
+                        <div class="col-md-6">
+                            <input type="text" disabled value="{{ vm.model.sponsor_name }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="direction" class="col-md-4 control-label">Direction</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-sitemap"></i>
+                                    </button>
+                                </span>
+                                <input type="text" disabled value="{{ vm.model.direction == 'R' ? 'Right' : 'Left' }}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="agree_term_condition" class="col-md-4 control-label"></label>
+                        <div class="col-md-6">
+                            <input type="checkbox" id="agree_term_condition" name="agree_term_condition" ng-model="vm.model.agree_term_condition">                                        
+                            I agree with Terms and conditions
+                        </div>
+                    </div>                    
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn blue" id="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.date').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: 'yyyy-mm-dd'
+    });
+</script>

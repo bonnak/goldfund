@@ -1,75 +1,123 @@
 angular.module('MetronicApp')
 .controller('GeneologyController', [
+    '$rootScope',
     '$scope',
     '$location',
     'Restful',
-    function($scope, $location, Restful) {
+    function($rootScope, $scope, $location, Restful) {
         var vm = this;
-        vm.drawing = 'Drawing';
+        vm.countries = [];
+        vm.model = {
+            username                : '',
+            email                   : '',
+            password                : '',
+            first_name              : '',
+            last_name               : '',
+            country_id              : '',
+            gender                  : '',
+            bitcoin_account         : '',
+            date_of_birth           : '',
+            agree_term_condition    : '',
+            sponsor_name            : $rootScope.user.username,
+            sponsor_id              : $rootScope.user.id,
+            direction               : ''
+        };
 
-        // Restful.get('/binary/json').success(function(data){
-        //     console.log(data);
-        // }); 
+        Restful.get('/getCountry').success(function(data){
+            vm.countries = data;
+        }); 
+
+        vm.submit = function(){
+            Restful.save('/register', vm.model).success(function(response){
+                $('#register_modal').hide();
+                vm.resetModel();
+                vm.loadTree();                
+            }); 
+        }
+
+        vm.loadTree = function(){
+            Restful.get('api/binary/json').success(function(data){
+                vm.binary_tree = data;
+            });
+        }
+
+        vm.resetModel = function(){
+            vm.model.username = '';
+            vm.model.email = '';
+            vm.model.password = '';
+            vm.model.first_name = '';
+            vm.model.last_name = '';
+            vm.model.country_id = '';
+            vm.model.gender = '';
+            vm.model.bitcoin_account = '';
+            vm.model.date_of_birth = '';
+            vm.model.agree_term_condition = '';
+        }
+
+        vm.loadTree();
     }
 ])
-.directive('draw', ['Restful', function (Restful) {
+.directive('draw', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
-            var path;
-            paper.setup(element.get(0));
-            // var tool = new paper.Tool();
-            // tool.onMouseDown = function (event) {
-            //     path = new paper.Path();
-            //     path.strokeColor = 'black';
-            // };
-            // tool.onMouseDrag = function (event) {
-            //     path.add(event.point);
-            // };
-            // tool.onMouseUp = function (event) {
-            //     //nothing special here
-            // };
+            scope.$watch('vm.binary_tree',function(treeValue) {
+                if(treeValue === undefined) return;
 
-            var internalHandler = function(event)
-            {
-                // From http://www.adomas.org/javascript-mouse-wheel/
-                var delta = 0;
-                if (!event) /* For IE. */
-                    event = window.event;
-                if (event.wheelDelta) { /* IE/Opera. */
-                    delta = event.wheelDelta/120;
-                } else if (event.detail) { /** Mozilla case. */
-                    /** In Mozilla, sign of delta is different than in IE.
-                    * Also, delta is multiple of 3.
+                var path;
+                paper.setup(element.get(0));
+                // var tool = new paper.Tool();
+                // tool.onMouseDown = function (event) {
+                //     path = new paper.Path();
+                //     path.strokeColor = 'black';
+                // };
+                // tool.onMouseDrag = function (event) {
+                //     path.add(event.point);
+                // };
+                // tool.onMouseUp = function (event) {
+                //     //nothing special here
+                // };
+
+                var internalHandler = function(event)
+                {
+                    // From http://www.adomas.org/javascript-mouse-wheel/
+                    var delta = 0;
+                    if (!event) /* For IE. */
+                        event = window.event;
+                    if (event.wheelDelta) { /* IE/Opera. */
+                        delta = event.wheelDelta/120;
+                    } else if (event.detail) { /** Mozilla case. */
+                        /** In Mozilla, sign of delta is different than in IE.
+                        * Also, delta is multiple of 3.
+                        */
+                        delta = -event.detail/3;
+                    }
+                    /** If delta is nonzero, handle it.
+                    * Basically, delta is now positive if wheel was scrolled up,
+                    * and negative, if wheel was scrolled down.
                     */
-                    delta = -event.detail/3;
+                    if (delta > 0)
+                        paper.view.scale(1.1);
+                    else
+                        paper.view.scale(0.9);
+                    /** Prevent default actions caused by mouse wheel.
+                    * That might be ugly, but we handle scrolls somehow
+                    * anyway, so don't bother here..
+                    */
+                    if (event.preventDefault)
+                        event.preventDefault();
+
+                    event.returnValue = false;
                 }
-                /** If delta is nonzero, handle it.
-                * Basically, delta is now positive if wheel was scrolled up,
-                * and negative, if wheel was scrolled down.
-                */
-                if (delta > 0)
-                    paper.view.scale(1.1);
-                else
-                    paper.view.scale(0.9);
-                /** Prevent default actions caused by mouse wheel.
-                * That might be ugly, but we handle scrolls somehow
-                * anyway, so don't bother here..
-                */
-                if (event.preventDefault)
-                    event.preventDefault();
 
-                event.returnValue = false;
-            }
+                /** DOMMouseScroll is for mozilla. */
+                if (window.addEventListener)
+                        window.addEventListener('DOMMouseScroll', function(){ paper.view.scale(0.9);}, false);
+                /** IE/Opera. */
+                window.onmousewheel = document.onmousewheel = internalHandler;
 
-            /** DOMMouseScroll is for mozilla. */
-            if (window.addEventListener)
-                    window.addEventListener('DOMMouseScroll', function(){ paper.view.scale(0.9);}, false);
-            /** IE/Opera. */
-            window.onmousewheel = document.onmousewheel = internalHandler;
-
-            Restful.get('api/binary/json').success(function(response){
-                var data = response;
+                
+                var data = treeValue;
 
                 var group = new paper.Group();
                 var x_position_org = 500;
@@ -139,14 +187,24 @@ angular.module('MetronicApp')
                 add_new_node_l.on('load', function() {
                     this.size = new paper.Size(width, height);
                     this.onClick = function(e){
-                        alert('Add a new child');
+                        scope.$apply(function () {
+                            scope.vm.model.direction = 'L';
+                        });
+
+                        $('#register_modal').on('hidden.bs.modal', function () {
+                            scope.$apply(function () {
+                                scope.vm.resetModel();
+                            });
+                        });
+
+                        $('#register_modal').modal();
                     }   
                 });
                 group.addChild(add_new_node_l);
 
 
 
-                data = response;
+                data = treeValue;
                 x_position = x_position_org;
                 y_position = y_position_org;
 
@@ -194,7 +252,17 @@ angular.module('MetronicApp')
                 add_new_node_r.on('load', function() {
                     this.size = new paper.Size(width, height);
                     this.onClick = function(e){
-                        alert('Add a new child');
+                        scope.$apply(function () {
+                            scope.vm.model.direction = 'R';
+                        });
+
+                        $('#register_modal').on('hidden.bs.modal', function () {
+                            scope.$apply(function () {
+                                scope.vm.resetModel();
+                            });
+                        });
+
+                        $('#register_modal').modal();                        
                     }   
                 });
                 group.addChild(add_new_node_r);
@@ -204,7 +272,7 @@ angular.module('MetronicApp')
                     group.position.x += event.delta.x;
                     group.position.y += event.delta.y;                    
                 }
-            });
+            });            
         }
     };
-}]);
+});

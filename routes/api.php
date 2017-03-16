@@ -49,7 +49,6 @@ Route::group(['middleware' => 'auth:api'], function(){
 	Route::get('/binary/json', function(){
 		$bn = \App\Customer::with('children')
 							->where('username', auth()->user()->username)
-							//->select('username', 'id', 'sponsor_id')
 							->first();
 
 		$tree = new \Acme\BinaryTree();

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="MetronicApp">
+<html lang="en" data-ng-app="MetronicApp" ng-init="user =  { id: {{ auth()->user()->id }}, username : '{{ auth()->user()->username }}' }">
 <head>
     <title data-ng-bind="$state.current.data.pageTitle"></title>
     <meta charset="utf-8" />
@@ -91,6 +91,7 @@
 <script src="{{ URL::asset('assets/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
+<script src="/js-template/bootstrap-datepicker.min.js"></script>
 <!-- END CORE JQUERY PLUGINS -->
 <!-- BEGIN CORE ANGULARJS PLUGINS -->
 <script src="{{ URL::asset('assets/global/plugins/angularjs/angular.min.js') }}" type="text/javascript"></script>
