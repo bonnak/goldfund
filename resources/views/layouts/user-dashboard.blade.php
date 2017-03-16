@@ -77,8 +77,6 @@
 <!-- END FOOTER -->
 
 
-
-
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE JQUERY PLUGINS -->
 <!--[if lt IE 9]>
@@ -102,6 +100,10 @@
 <script src="{{ URL::asset('assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js') }}" type="text/javascript"></script>
 <!-- END CORE ANGULARJS PLUGINS -->
+
+<script type="text/javascript" src="/bn/paper-full.js"></script>
+
+
 <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
 <script src="{{ URL::asset('js/main.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/core/restful/restful.js') }}" type="text/javascript"></script>
