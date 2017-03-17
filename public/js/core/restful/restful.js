@@ -12,7 +12,7 @@ MetronicApp.factory("Restful", [
             });
         };
 
-		obj.save = function(url, params) {
+		obj.post = function(url, params) {
 			return $http({
 				url: url,
 				method: 'POST',
@@ -26,6 +26,21 @@ MetronicApp.factory("Restful", [
 				data: params
 			});
 		};
+
+        obj.save = function(url, params) {
+            return $http({
+                url: url,
+                method: 'POST',
+                //cache : false,
+                //transformRequest: angular.identity,
+                //transformResponse: angular.identity,
+                contentType: "application/json; charset=utf-8",
+
+                //headers:  { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                //transformRequest: transform,
+                data: params
+            });
+        };
 
         obj.put = function(url, params){
         	return $http({

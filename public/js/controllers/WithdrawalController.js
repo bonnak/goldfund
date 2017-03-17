@@ -5,8 +5,8 @@ angular.module('MetronicApp').controller('WithdrawalController', [
     'Restful',
     function($scope, $anchorScroll, $state, Restful) {
         var vm = this;
-        vm.withdraw_amount = null;
-        vm.balance = null;
+        vm.withdraw_amount = '';
+        vm.balance = '';
         vm.withdrawals = [];
 
         vm.save = function(){

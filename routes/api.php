@@ -22,10 +22,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
  */
 Route::get('/portfolio/live', 'PortfolioController@live');
 Route::get('qr/admin/bitcoin', 'Api\QrController@adminBitCoinAccountQrImage');
+Route::get('/plans', 'Api\PlanController@all');
 
 Route::group(['middleware' => 'auth:api'], function(){
 	Route::put('/user/updateProfile', 'Api\UserController@updateProfile');
 	Route::put('/password/change', 'Api\UserController@changePassword');
+	Route::post('/transaction/auth', 'UserController@authorizeTransaction');
 
 	//Deposit
 	Route::post('/deposit', 'DepositController@create');
@@ -46,15 +48,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 	Route::get('/earning/data', 'DashboardController@getData');
 
 	//Binary
-	Route::get('/binary/json', function(){
-		$bn = \App\Customer::with('children')
-							->where('username', auth()->user()->username)
-							->first();
+	Route::get('/binary/json', 'BinaryController@getData');
 
-		$tree = new \Acme\BinaryTree();
-		$tree->render($bn); 
 
-		return $tree->toArray();
-	});
+	Route::post('/photo/upload', 'DepositController@upload');
 });
-Route::get('/plans', 'Api\PlanController@all');

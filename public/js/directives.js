@@ -2,6 +2,8 @@
 GLobal Directives
 ***/
 
+//var MetronicApp = angular.module("MetronicApp"); 
+
 // Route State Load Spinner(used on page or content load)
 MetronicApp.directive('ngSpinnerBar', ['$rootScope',
     function($rootScope) {
@@ -63,3 +65,56 @@ MetronicApp.directive('dropdownMenuHover', function () {
     }
   };  
 });
+
+
+MetronicApp.directive("onlyNumber", function () {
+    return {
+        restrict: "A",
+        link: function (scope, element, attr) {
+            element.bind('input', function () {
+                var position = this.selectionStart - 1;
+
+                //remove all but number and .
+                var fixed = this.value.replace(/[^0-9\.]/g, '');  
+                if (fixed.charAt(0) === '.')                  //can't start with .
+                    fixed = fixed.slice(1);
+
+                var pos = fixed.indexOf(".") + 1;
+                if (pos >= 0)               //avoid more than one .
+                    fixed = fixed.substr(0, pos) + fixed.slice(pos).replace('.', '');  
+
+                if (this.value !== fixed) {
+                    this.value = fixed;
+                    this.selectionStart = position;
+                    this.selectionEnd = position;
+                }
+            });
+        }
+    };
+});
+
+MetronicApp.directive('upload', ['uploadManager', function factory(uploadManager) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            $(element).fileupload({
+                dataType: 'text',
+                headers: { 'X-CSRF-TOKEN': window.Laravel.csrfToken },
+                add: function (e, data) {
+                    if(!attrs.hasOwnProperty('multiple')) uploadManager.clear();
+
+                    uploadManager.add(data);
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    uploadManager.setProgress(progress);
+                },
+                done: function (e, data) {
+                    //uploadManager.setProgress(0);
+                    uploadManager.setCompleted(true);
+                    uploadManager.setResponse(data);
+                }
+            });
+        }
+    };
+}]);

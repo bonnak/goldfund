@@ -64,3 +64,7 @@ Route::get('/support', function(){
 // Route::get('/test', function(){
 // 	return view('auth.register_success');
 // });
+
+Route::get('/test-file', function(){
+	return view('test');
+});

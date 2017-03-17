@@ -44,6 +44,7 @@ class CustomerResetPassword extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->subject('Reset Password')
                     ->line('Your password has been reset successfully.')
                     ->line('username: ' . $notifiable->username)
                     ->line('password: ' . $this->password)
