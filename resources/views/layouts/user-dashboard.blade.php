@@ -104,12 +104,12 @@
 
 <script type="text/javascript" src="/bn/paper-full.js"></script>
 
-
 <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
 <script src="{{ URL::asset('js/main.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/core/restful/restful.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/controllers/appController.js') }}" type="text/javascript"></script>
-<script src="js/directives.js" type="text/javascript"></script>
+<script src="/js/factories.js" type="text/javascript"></script>
+<script src="/js/directives.js" type="text/javascript"></script>
 <!-- END APP LEVEL ANGULARJS SCRIPTS -->
 <!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
 <script src="{{ URL::asset('assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
@@ -118,6 +118,21 @@
 <script src="{{ URL::asset('assets/layouts/layout4/scripts/demo.min.js') }}" type="text/javascript"></script>
 <!-- END APP LEVEL JQUERY SCRIPTS -->
 <!-- END JAVASCRIPTS -->
+<!-- <script src="/js/fileupload/jquery.fileupload.js"></script> -->
 
+<script src="/js/fileupload/vendor/jquery.ui.widget.js"></script>
+<script src="/js/fileupload/jquery.iframe-transport.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="/js/fileupload/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/js/fileupload/jquery.fileupload.js"></script>
+<!-- The File Upload processing plugin -->
+<script src="/js/fileupload/jquery.fileupload-process.js"></script>
+<!-- The File Upload image preview & resize plugin -->
+<script src="/js/fileupload/jquery.fileupload-image.js"></script>
+<!-- The File Upload validation plugin -->
+<script src="/js/fileupload/jquery.fileupload-validate.js"></script>
+<!-- The File Upload Angular JS module -->
+<script src="/js/fileupload/jquery.fileupload-angular.js"></script>
 </body>
 </html>
