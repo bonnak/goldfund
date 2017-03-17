@@ -1,4 +1,4 @@
-angular.module('MetronicApp', ['blueimp.fileupload']).controller('DepositController', [
+angular.module('MetronicApp').controller('DepositController', [
     '$scope',
     '$anchorScroll',
     '$state',
@@ -82,68 +82,72 @@ angular.module('MetronicApp', ['blueimp.fileupload']).controller('DepositControl
         
 
         $scope.files = [];
-        $scope.percentage = 0;
+        vm.upload = {
+            photo : null,
+            percentage : 0,
+            is_completed : false,
+            in_progress : false
+        }
 
-        $scope.upload = function () {
+        $rootScope.$on('fileAdded', function (e, call) {            
             uploadManager.upload();
-            $scope.files = [];
-        };
-
-        $rootScope.$on('fileAdded', function (e, call) {
             $scope.files.push(call);
             $scope.$apply();
+
+            // Preview photo.
+            vm.previewFiles();
+
+            // Clear uploaded files.
+            $scope.files = [];
+            $("#bankslip-file").val('');
         });
 
         $rootScope.$on('uploadProgress', function (e, call) {
-            $scope.percentage = call;
+            $scope.vm.upload.percentage = call;
+            $scope.vm.upload.in_progress = true;
             $scope.$apply();
         });
+
+        $rootScope.$on('uploadResponseResult', function (e, result) {
+            $scope.vm.upload.photo = result;
+            setTimeout(function(){
+                $scope.vm.upload.is_completed = true;
+                $scope.vm.upload.in_progress = false;
+                $scope.$apply();
+            }, 200);
+            $scope.$apply();
+        });
+
+
+        vm.previewFiles = function () {
+
+          var preview = document.querySelector('#preview');
+          var files   = document.querySelector('input[type=file]').files;
+
+          $(preview).find('img').remove();
+
+          function readAndPreview(file) {
+
+            // Make sure `file.name` matches our extensions criteria
+            if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+              var reader = new FileReader();
+
+              reader.addEventListener("load", function () {
+                var image = new Image();
+                image.title = file.name;
+                image.src = this.result;
+                preview.appendChild( image );
+              }, false);
+
+              reader.readAsDataURL(file);
+            }
+
+          }
+
+          if (files) {
+            [].forEach.call(files, readAndPreview);
+          }
+
+        }
     }
-]).factory('uploadManager', function ($rootScope) {
-    var _files = [];
-    return {
-        add: function (file) {
-            _files.push(file);
-            $rootScope.$broadcast('fileAdded', file.files[0].name);
-        },
-        clear: function () {
-            _files = [];
-        },
-        files: function () {
-            var fileNames = [];
-            $.each(_files, function (index, file) {
-                fileNames.push(file.files[0].name);
-            });
-            return fileNames;
-        },
-        upload: function () {
-            $.each(_files, function (index, file) {
-                file.submit();
-            });
-            this.clear();
-        },
-        setProgress: function (percentage) {
-            $rootScope.$broadcast('uploadProgress', percentage);
-        }
-    };
-}).directive('upload', ['uploadManager', function factory(uploadManager) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            $(element).fileupload({
-                dataType: 'text',
-                headers: { 'X-CSRF-TOKEN': window.Laravel.csrfToken },
-                add: function (e, data) {
-                    uploadManager.add(data);
-                },
-                progressall: function (e, data) {
-                    var progress = parseInt(data.loaded / data.total * 100, 10);
-                    uploadManager.setProgress(progress);
-                },
-                done: function (e, data) {
-                    uploadManager.setProgress(0);
-                }
-            });
-        }
-    };
-}]);
+]);

@@ -12,6 +12,7 @@ use App\Http\Requests\DepositRequest;
 use chillerlan\QRCode\Output\QRImage;
 use chillerlan\QRCode\QRCode;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class DepositController extends Controller
 {
@@ -53,6 +54,17 @@ class DepositController extends Controller
 
     public function upload(Request $request)
     {
-        return $request->all();
+        $photo = $request->file('file');
+
+        if( is_null($photo) || !$photo->isValid()) 
+        {
+            throw new HttpException(400, 'uploaded file is corrupted.');
+        }
+
+        //$photo->store('images/deposit/bankslip');
+
+        //return  'data:image/jpeg;base64,' . base64_encode(\Storage::get($photo->store('images/deposit/bankslip')));
+        
+        return $photo->store('images/deposit/bankslip');
     }
 }

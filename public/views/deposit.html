@@ -101,17 +101,28 @@
                         <img ng-src="{{vm.qrcode}}">
                         <span>1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu</span>
                     </div>
-                    <div class="form-group bankslip">
-                        <span class="btn green fileinput-button">
+                    <div class="bankslip">
+                        <span class="btn green fileinput-button" onClick="document.getElementById('bankslip-file').click()">
                             <i class="fa fa-upload"></i>
                             <span>Upload your bankslip</span>
-                            <!-- <input type="file" name="file" id="bankslip-file">  -->
-                            <input type="file" name="file" data-url="/api/photo/upload" upload style="display: block;"><span>Add files...</span>
+                            <input type="file" 
+                                    id="bankslip-file" 
+                                    name="file" 
+                                    data-url="/api/photo/upload" 
+                                    upload>
                         </span>
-                    </div>        
+                        <div class="img-bankslip" id="preview">  
+                            <div class="progress" ng-show="vm.upload.in_progress">
+                                <div class="progress-bar progress-bar-success" 
+                                    role="progressbar" 
+                                    ng-style="{'width': vm.upload.percentage + '%' }">
+                                    <span class="sr-only"> {{ vm.upload.percentage }}% Complete (success) </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary pull-left" ng-click="upload()">Upload</button>
                     <button class="btn blue" ng-click="vm.save();" ng-disabled="vm.loading || vm.inValid()">
                         <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
                         Submit

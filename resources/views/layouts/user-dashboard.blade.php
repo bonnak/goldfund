@@ -108,7 +108,8 @@
 <script src="{{ URL::asset('js/main.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/core/restful/restful.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/controllers/appController.js') }}" type="text/javascript"></script>
-<script src="js/directives.js" type="text/javascript"></script>
+<script src="/js/factories.js" type="text/javascript"></script>
+<script src="/js/directives.js" type="text/javascript"></script>
 <!-- END APP LEVEL ANGULARJS SCRIPTS -->
 <!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
 <script src="{{ URL::asset('assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
