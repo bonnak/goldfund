@@ -12,6 +12,6 @@ class InvalidPasswordException extends HttpException
      */
     public function __construct($message = null)
     { 
-      parent::__construct(422, $message);
+      parent::__construct(403, $message);
     }
 }

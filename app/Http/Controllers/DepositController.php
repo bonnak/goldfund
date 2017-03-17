@@ -50,4 +50,9 @@ class DepositController extends Controller
                         ->orderBy('created_at', 'desc')
                         ->get();
     }
+
+    public function upload(Request $request)
+    {
+        return $request->all();
+    }
 }

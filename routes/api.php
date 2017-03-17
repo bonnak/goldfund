@@ -27,6 +27,7 @@ Route::get('/plans', 'Api\PlanController@all');
 Route::group(['middleware' => 'auth:api'], function(){
 	Route::put('/user/updateProfile', 'Api\UserController@updateProfile');
 	Route::put('/password/change', 'Api\UserController@changePassword');
+	Route::post('/transaction/auth', 'UserController@authorizeTransaction');
 
 	//Deposit
 	Route::post('/deposit', 'DepositController@create');
@@ -48,4 +49,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 	//Binary
 	Route::get('/binary/json', 'BinaryController@getData');
+
+
+	Route::post('/photo/upload', 'DepositController@upload');
 });

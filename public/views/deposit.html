@@ -44,74 +44,80 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">
-                            Amount
-                            <span class="required">* </span>
-                        </label>
-                        <div class="col-md-4" ng-class="{'has-error' : vm.inValid() }">    
+                    <div class="form-group" ng-class="{'has-error' : vm.inValid() }">
+                        <label class="col-md-2 control-label"><span class="required">* </span>Amount</label>
+                        <div class="col-md-4">    
                             <div class="input-icon right">  
-                                <i class="fa fa-warning tooltips" data-original-title="Range between {{ vm.model.min_deposit }} and {{ vm.model.max_deposit }}" ng-show="vm.inValid()"></i>                      
+                                <i class="fa fa-check tooltips" style="color: #36c6d3;" ng-hide="vm.inValid()"></i>                      
                                 <div class="input-group">                                
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-dollar"></i>
-                                        </button>
-                                    </span>
-                                    <input type="text"
-                                       required
-                                       ng-model="vm.model.amount"
-                                       name="amount"
-                                       class="form-control" 
-                                       only-number/>
+                                    <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                                    <input type="text" ng-model="vm.model.amount" class="form-control" only-number/>
                                 </div>
+                                <span id="input_group-error" class="help-block help-block-error" ng-show="vm.inValid()">Range between {{ vm.model.min_deposit }} and {{ vm.model.max_deposit }}</span>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error' : vm.validation.trans_password !== '' }">
+                        <label class="control-label col-md-2"><span class="required"> * </span>Transaction Password</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <input type="password" class="form-control" ng-model="vm.model.trans_password"> 
+                            </div>
+                            <span id="input_group-error" class="help-block help-block-error" ng-show="vm.validation.trans_password != ''">{{ vm.validation.trans_password }}</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2">
                         </label>
                         <div class="col-md-4">
-                            <button class="btn blue" ng-click="vm.save();" ng-disabled="vm.loading || vm.inValid()">
-                                <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
+                            <button class="btn blue" ng-click="vm.showDepositModal()" ng-disabled="vm.inValid() || vm.model.trans_password == ''">
                                 Deposit
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="portlet light bordered" ng-if="vm.model.plan_id">
-                <div class="portlet-title">
-                    <div class="caption font-green-sharp">
-                        <span class="caption-subject bold uppercase">
-                            Deposit fund from
-                        </span>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">
-                            Blockchain Information
-                            <span class="required">* </span>
-                        </label>
-                        <div class="col-md-4">
-                            <img ng-src="{{vm.qrcode}}">
-                            <b>1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu</b>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-2">
-                    </label>
-                    <div class="col-md-4">
-                        <button class="btn blue" ng-click="vm.save();" ng-disabled="vm.loading">
-                            <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
-                            <i class="fa fa-save" ng-show="!vm.loading"></i>
-                            Send
-                        </button>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 </form>
+
+
+
+
+<div id="deposit_modal" class="modal fade in" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Deposit Fund</h4>
+                </div>
+                <div class="modal-body">               
+                    <div class="note note-warning">
+                        <p>After you deposit. Please upload your blank slip (Bitcoin transaction) for us to verify your deposit.</p>
+                    </div>
+                    <div class="block-chain">
+                        <img ng-src="{{vm.qrcode}}">
+                        <span>1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu</span>
+                    </div>
+                    <div class="form-group bankslip">
+                        <span class="btn green fileinput-button">
+                            <i class="fa fa-upload"></i>
+                            <span>Upload your bankslip</span>
+                            <!-- <input type="file" name="file" id="bankslip-file">  -->
+                            <input type="file" name="file" data-url="/api/photo/upload" upload style="display: block;"><span>Add files...</span>
+                        </span>
+                    </div>        
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary pull-left" ng-click="upload()">Upload</button>
+                    <button class="btn blue" ng-click="vm.save();" ng-disabled="vm.loading || vm.inValid()">
+                        <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
