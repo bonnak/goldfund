@@ -2,19 +2,51 @@ const root = 'api/admin/';
 
 export default{
 	get(uri, options = null){
-		return Axios.get(root + uri, { params: options });
+		return new Promise((resolve, reject) => {
+			Axios.get(root + uri, { params: options })
+			.then((response) => {
+		    resolve(response);
+		  })
+		  .catch((error) => {
+		    reject(error.response);
+		  });
+		});
 	},
 
 	post(uri, data = null, options = null){
-		return Axios.post(root + uri, data);
+		return new Promise((resolve, reject) => {
+			Axios.post(root + uri, data)
+			.then((response) => {
+		    resolve(response);
+		  })
+		  .catch((error) => {
+		    reject(error.response);
+		  });
+		});
 	},
 
 	put(uri, data = null, options = null){
-		return Axios.put(root + uri, data);
+		return new Promise((resolve, reject) => {
+			Axios.put(root + uri, data)
+			.then((response) => {
+		    resolve(response);
+		  })
+		  .catch((error) => {
+		    reject(error.response);
+		  });
+		});
 	},
 
 	delete(uri, options = null){
-		return Axios.delete(root + uri, { params: options });
+		return new Promise((resolve, reject) => {
+			Axios.delete(root + uri, { params: options })
+			.then((response) => {
+		    resolve(response);
+		  })
+		  .catch((error) => {
+		    reject(error.response);
+		  });
+		});
 	}
 }
 

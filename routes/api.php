@@ -14,6 +14,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 
 	//Route::post('/earning/money/daily', 'Admin\EarningController@sendDailyMoney');
 	Route::post('/earning/money/daily', 'Admin\EarningController@sendDailyMoney');
+
+	//Customer
+	Route::put('/customer/email', 'Admin\CustomerController@editEmail');
+	Route::put('/customer/bitcoin/address', 'Admin\CustomerController@editBitcoinAddress');
 });
 
 

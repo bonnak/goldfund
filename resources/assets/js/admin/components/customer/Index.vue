@@ -30,16 +30,7 @@ export default{
 		showInfoView(data){
 			this.data = data;
 			this.current_view = '_Info';
-		},
-
-	 //  	...mapActions({
-	 //  		clearStore: 'language/clearStore'
-		// })
-	},
-
-	// beforeRouteLeave (to, from, next){
- //    	this.clearStore();
- //    	next();
-	// }
+		}
+	}
 }
 </script>

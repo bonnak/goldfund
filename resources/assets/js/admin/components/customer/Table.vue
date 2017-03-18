@@ -38,8 +38,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import _mixin from '../../core/mixins'
 
 export default{
+
+	mixins: [_mixin],
 
 	computed: {
 	    ...mapGetters({
@@ -56,18 +59,6 @@ export default{
 	},
 
 	methods:{
-		onSelect(data){
-		 	console.log(data);
-		},
-
-		onSort(data){
-		 	console.log(data);
-		},
-
-		onPagination(pagination){
-			this.loadData(pagination);
-		},
-
 		showViewInfo(data){
 			this.$emit('show-view-info', data);
 		},
