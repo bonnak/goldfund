@@ -10,6 +10,6 @@ class CustomerController extends Controller
 {
   public function customers()
   {
-  	return Customer::with('sponsor')->paginate(request()->input('size'));
+  	return Customer::with(['sponsor', 'country'])->paginate(request()->input('size'));
   }
 }
