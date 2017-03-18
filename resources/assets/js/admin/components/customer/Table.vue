@@ -6,11 +6,9 @@
 		    	<md-table-head>Username</md-table-head>
 		        <md-table-head>First Name</md-table-head>
 		        <md-table-head>Last Name</md-table-head>
-		        <md-table-head>Gender</md-table-head>
-		        <md-table-head>Date of birth</md-table-head>
-		        <md-table-head>Bitcoin Account</md-table-head>
 		        <md-table-head>Sponsor By</md-table-head>
 		        <md-table-head>Created Date</md-table-head>
+		        <md-table-head>Action</md-table-head>
 		    </md-table-row>
 		  </md-table-header>
 
@@ -19,11 +17,11 @@
 			    <md-table-cell>{{ el.username }}</md-table-cell>
 		        <md-table-cell>{{ el.first_name }}</md-table-cell>
 		        <md-table-cell>{{ el.last_name }}</md-table-cell>
-		        <md-table-cell>{{ el.gender | sex }}</md-table-cell>
-		        <md-table-cell>{{ el.date_of_birth }}</md-table-cell>
-		        <md-table-cell>{{ el.bitcoin_account }}</md-table-cell>
 		        <md-table-cell>{{ el.sponsor !== null ? el.sponsor.username : '' }}</md-table-cell>
 		        <md-table-cell>{{ el.created_at }}</md-table-cell>
+		        <md-table-cell>
+			        <a href="" class="btn" @click.stop.prevent="showViewInfo(el)"><i class="fa fa-eye" aria-hidden="true"></i></a>
+		        </md-table-cell>
 		    </md-table-row>
 		  </md-table-body>
 		</md-table>
@@ -68,6 +66,10 @@ export default{
 
 		onPagination(pagination){
 			this.loadData(pagination);
+		},
+
+		showViewInfo(data){
+			this.$emit('show-view-info', data);
 		},
 
 		...mapActions({
