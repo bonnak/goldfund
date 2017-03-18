@@ -13,7 +13,7 @@ export default{
 		},
 
 		onPagination(pagination){
-			this.loadData(pagination);
+			this.fetchData({ per_page: pagination.size, current_page: pagination.page });
 		}
 	}
 }

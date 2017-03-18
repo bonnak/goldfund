@@ -3,7 +3,7 @@ import { Pagination } from '../../core/classes'
 
 const state = {
 	data: [],
-  pagination: {}
+  pagination: new Pagination()
 }
 
 const getters = {
@@ -12,7 +12,7 @@ const getters = {
 }
 
 const mutations = {
-	RECEIVE_LANGUAGES (state, { body }) {
+	RECEIVE_DATA (state, { body }) {
     state.pagination = new Pagination(body);
     body.data.forEach(p => {
       state.data.push(p);
@@ -25,11 +25,14 @@ const mutations = {
 }
 
 const actions = {
-	fetchData({ commit }, pagination = null){
-		Api.fetchData(pagination).then(
+	fetchData({ commit, state }, pagination = state.pagination){
+		Api.fetchData({ 
+      per_page : pagination.per_page,
+      page     : pagination.current_page
+    }).then(
 			(response) => {
         commit('CLEAR_STORE');
-        commit('RECEIVE_LANGUAGES', { body: response.data });
+        commit('RECEIVE_DATA', { body: response.data });
       }
 		);
 	},

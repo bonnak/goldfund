@@ -52,7 +52,7 @@ export default{
 	},
 
 	created(){
-		this.fetchData({ size : 5, page: 1});
+		this.fetchData();
 	},
 
 	mounted(){
@@ -64,8 +64,8 @@ export default{
 		},
 
 		...mapActions({
-	  		fetchData: 'customer/fetchData'
-	  	})
+  		fetchData: 'customer/fetchData'
+  	})
 	}
 }
 </script>
