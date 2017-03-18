@@ -20,3 +20,4 @@ Regards<br>
 {{ config('app.name')}}<br>
 <a href="www.bitcompanytrading.com">www.bitcompanytrading.com</a><br>
 </p>
+<img src="{{ url('/images/logo.png') }}">

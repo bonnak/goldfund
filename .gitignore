@@ -9,3 +9,4 @@ Homestead.yaml
 .env
 /public/images/invoices
 database.sqlite
+/.vagrant
