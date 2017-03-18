@@ -26,7 +26,11 @@ angular.module('MetronicApp').controller('DepositController', [
             vm.loading = true;
 
             Restful.save('api/deposit', vm.model).success(function(data){
-                $state.go('deposit_history');
+                $('#deposit_modal').on('hidden.bs.modal', function () {
+                    $state.go('deposit_history');
+                });
+                
+                $('#deposit_modal').modal('hide');
             }).finally(function () {
                 vm.loading= false;
             });
