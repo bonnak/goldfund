@@ -1,6 +1,7 @@
 MetronicApp.factory('uploadManager', function ($rootScope) {
     var _files = [];
     var _is_completed = false;
+    var _is_failed = false;
 
     return {
         add: function (file) {
@@ -37,6 +38,7 @@ MetronicApp.factory('uploadManager', function ($rootScope) {
 
         setCompleted: function(status){
             _is_completed = status;
+            _is_failed = false;
         },
 
         isCompleted: function(){

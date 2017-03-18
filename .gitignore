@@ -10,3 +10,8 @@ Homestead.yaml
 /public/images/invoices
 database.sqlite
 /.vagrant
+/.vagrant/machines/goldfund/virtualbox/action_provision
+/.vagrant/machines/goldfund/virtualbox/action_set_name
+/.vagrant/machines/goldfund/virtualbox/id
+/.vagrant/machines/goldfund/virtualbox/index_uuid
+/.vagrant/machines/goldfund/virtualbox/private_key
