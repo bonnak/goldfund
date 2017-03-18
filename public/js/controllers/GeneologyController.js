@@ -116,7 +116,7 @@ angular.module('MetronicApp')
 
                 /** DOMMouseScroll is for mozilla. */
                 if (window.addEventListener)
-                        window.addEventListener('DOMMouseScroll', function(){ paper.view.scale(0.9);}, false);
+                        window.addEventListener('DOMMouseScroll', internalHandler, false);
                 /** IE/Opera. */
                 window.onmousewheel = document.onmousewheel = internalHandler;
 
