@@ -8,6 +8,7 @@ use Laravel\Passport\HasApiTokens;
 use App\Deposit;
 use App\BinaryEarningCommission;
 use App\SponsorEarningCommission;
+use App\Earning;
 
 class Customer extends Authenticatable
 {
@@ -62,6 +63,11 @@ class Customer extends Authenticatable
   public function sponsor_earning_commission()
   {
     return $this->hasMany(SponsorEarningCommission::class, 'sponsor_id', 'id');
+  }
+
+  public function daily_earning_commission()
+  {
+    return $this->hasMany(Earning::class, 'cust_id', 'id');
   }
 
   
@@ -121,22 +127,10 @@ class Customer extends Authenticatable
     return true;
   }
 
-  public function hierachy()
-  {    
-
-    // $sponsor = function( $el ) use ( &$sponsor ) {
-    //     if(is_null($el->sponsor->sponsor_id)) 
-    //     {
-    //         return;
-    //     }
-
-    //     return $sponsor($el->sponsor);
-    // }; 
-    // 
-    // return $sponsor($this->sponsor);
-    
+  public function levels()
+  {        
     $collection = collect([]);
-    $up_line = $this->sponsor;
+    $up_line = $this->sponsor->sponsor;
 
     while(!is_null($up_line->sponsor_id))
     {      

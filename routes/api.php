@@ -42,9 +42,10 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 	//Earning
 	Route::get('/transactions', 'EarningController@transactions');
-	Route::get('/earning/daily', 'EarningController@daily_earning');
-	Route::get('/earning/level', 'EarningController@level_earning');
-	Route::get('/earning/binary', 'EarningController@binary_earning');
+	Route::get('/earning/daily', 'EarningController@dailyEarning');
+	Route::get('/earning/level', 'EarningController@levelEarning');
+	Route::get('/earning/binary', 'EarningController@binaryEarning');
+	Route::get('/earning/direct', 'EarningController@directEarning');
 
 	//Withdrawal
 	Route::get('/withdrawal/balance', 'WithdrawalController@getData');

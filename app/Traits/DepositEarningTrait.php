@@ -5,6 +5,7 @@ namespace App\Traits;
 use Carbon\Carbon;
 use App\Deposit;
 use App\SponsorEarningCommission;
+use App\Earning;
 
 trait DepositEarningTrait
 {
@@ -19,22 +20,51 @@ trait DepositEarningTrait
         return $deposit;
     }
 
+    protected function ownerReceiveDailyEarning($deposit)
+    {
+        // $earning = $deposit->owner->daily_earning_commission()
+        //                     ->where('created_at', '>=', Carbon::today())
+        //                     ->first();
+
+        // if(!is_null($earning)) return;
+        
+        
+        // throw new \Symfony\Component\HttpKernel\Exception\HttpException(
+        //     422, 
+        //     $deposit->owner->daily_earning_commission()->first()->cust_id
+        // );
+
+        $deposit->owner->daily_earning_commission()->create([
+            'plan_id'       => $deposit->plan->id,
+            'deposit_id'    => $deposit->id,
+            'amount'        => $deposit->amount * $deposit->plan->daily, 
+        ]);
+    }
+
 
     protected function sponsorReceiveCommission($deposit)
-    {
-        $deposit->owner->hierachy()->each(function ($upline, $key) use ($deposit){
+    {        
+        if(is_null($deposit->owner->deposit) || $deposit->owner->deposit->status != 1) return;        
 
-            $sponsor_level = $deposit->plan->sponsor_levels()->where('level', $key + 1)->first();
+        $deposit->sponsor_earning_commission()->create([
+            'sponsor_id' => $deposit->owner->id,
+            'amount' => $deposit->amount * $deposit->plan->sponsor,
+        ]);        
+    }
+
+    protected function levelsReceiveCommission($deposit)
+    {
+        $deposit->owner->levels()->each(function ($upline, $key) use ($deposit){
+
+            $sponsor_level = $deposit->plan->sponsor_levels()->where('level', $key + 1)->first();            
 
             if($sponsor_level === null) return false;
+            if(is_null($upline->deposit) || $upline->deposit->status != 1) return;    
 
-            if($upline->deposit !== null && $upline->deposit->status == 1)
-            {
-                $deposit->sponsor_earning_commission()->create([
-                    'sponsor_id' => $upline->id,
-                    'amount' => $deposit->amount * $sponsor_level->commission,
-                ]);
-            }
+            $deposit->level_earning_commission()->create([
+                'cust_id' => $upline->id,
+                'amount' => $deposit->amount * $sponsor_level->commission,
+            ]);
         });
     }
 
