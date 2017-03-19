@@ -23,25 +23,11 @@ class DepositController extends Controller
     public function approve($id)
     {
       	$deposit = $this->activateDepositAccount($id);
-
-
-        $earning = Earning::where('cust_id', $deposit->owner->id)
-                            ->where('created_at', '>=', Carbon::today())
-                            ->first();
-
-
-        // if(is_null($earning))
-        // {
-        //     Earning::create([
-        //         'cust_id'       => $deposit->owner->id,
-        //         'plan_id'       => $deposit->plan->id,
-        //         'deposit_id'    => $deposit->id,
-        //         'amount'        => $deposit->amount * $deposit->plan->daily,
-        //     ]);
-        // }        
-
+              
+        $this->ownerReceiveDailyEarning($deposit);
         $this->sponsorReceiveCommission($deposit); 
-        // $this->sponsorReceiveBinaryPairCommission($deposit);       
+        $this->levelsReceiveCommission($deposit); 
+        $this->sponsorReceiveBinaryPairCommission($deposit);       
         
     	return response()->json($deposit->toArray());
     }

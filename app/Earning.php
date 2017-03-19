@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Plan;
+use App\Customer;
 
 class Earning extends Model
 {
@@ -14,7 +15,12 @@ class Earning extends Model
     ];
 
     public function plan()
-	{
-		return $this->belongsTo(Plan::class, 'plan_id', 'id');
-	}
+		{
+			return $this->belongsTo(Plan::class, 'plan_id', 'id');
+		}
+
+		public function owner()
+		{
+			return $this->belongsTo(Customer::class, 'cust_id', 'id');
+		}
 }

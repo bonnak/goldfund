@@ -13,7 +13,7 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading">Sponsor Level</h4>
+            <h4 class="widget-thumb-heading">Sponsor</h4>
             <div class="widget-thumb-wrap">                
                 <i class="widget-thumb-icon fa fa-users"></i> 
                 <div class="widget-thumb-body">                    
@@ -24,11 +24,11 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading">Binary</h4>
+            <h4 class="widget-thumb-heading">Level</h4>
             <div class="widget-thumb-wrap">  
                 <i class="widget-thumb-icon fa fa-tree"></i>                
                 <div class="widget-thumb-body">                    
-                    <span class="widget-thumb-body-stat">{{ vm.model.binary | currency }}</span>
+                    <span class="widget-thumb-body-stat">{{ vm.model.level | currency }}</span>
                 </div>
             </div>
         </div>
@@ -38,11 +38,11 @@
 <div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading">Days Left</h4>
+            <h4 class="widget-thumb-heading">Binary</h4>
             <div class="widget-thumb-wrap">  
-                <i class="widget-thumb-icon fa fa-sun-o"></i>               
+                <i class="widget-thumb-icon fa fa-tree"></i>                
                 <div class="widget-thumb-body">                    
-                    <span class="widget-thumb-body-stat">{{ vm.model.day_left }}</span>
+                    <span class="widget-thumb-body-stat">{{ vm.model.binary | currency }}</span>
                 </div>
             </div>
         </div>
@@ -69,6 +69,19 @@
             </div>
         </div>
     </div>   
+</div>
+<div class="row box-dash">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+            <h4 class="widget-thumb-heading">Days Left</h4>
+            <div class="widget-thumb-wrap">  
+                <i class="widget-thumb-icon fa fa-sun-o"></i>               
+                <div class="widget-thumb-body">                    
+                    <span class="widget-thumb-body-stat">{{ vm.model.day_left }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">    

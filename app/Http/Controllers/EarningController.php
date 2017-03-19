@@ -8,6 +8,7 @@ use App\Earning;
 use App\SponsorEarningCommission;
 use App\BinaryEarningCommission;
 use App\Customer;
+use App\LevelEarningCommission;
 
 class EarningController extends Controller
 {   
@@ -22,7 +23,7 @@ class EarningController extends Controller
                                     ' on ' . $item->created_at;
                         });
 
-        $level = SponsorEarningCommission::where('sponsor_id', auth()->user()->id)->get()
+        $sponsor = SponsorEarningCommission::where('sponsor_id', auth()->user()->id)->get()
                      ->map(function($item, $key){
                         return 'You receive $' . $item->amount . ' from sponsor level on ' . $item->created_at . '.'; 
                      });
@@ -34,10 +35,10 @@ class EarningController extends Controller
                     });
 
         
-        return collect([$level, $binary, $earning])->flatten();
+        return collect([$sponsor, $binary, $earning])->flatten();
     }
 
-    public function daily_earning()
+    public function dailyEarning()
     {
         return Earning::with('plan')
                     ->where('cust_id', auth()->user()->id)
@@ -46,19 +47,27 @@ class EarningController extends Controller
     }
 
 
-    public function level_earning()
+    public function levelEarning()
     {
-        return SponsorEarningCommission::with('deposit.owner')
-                                        ->where('sponsor_id', auth()->user()->id)
+        return LevelEarningCommission::with('deposit.owner')
+                                        ->where('cust_id', auth()->user()->id)
                                         ->orderBy('created_at', 'desc')
                                         ->get();
     }
 
-    public function binary_earning()
+    public function binaryEarning()
     {
         return BinaryEarningCommission::with(['left_child', 'right_child'])
                         ->where('cust_id', auth()->user()->id)
                         ->orderBy('created_at', 'desc')
                         ->get();
+    }
+
+    public function directEarning()
+    {
+        return SponsorEarningCommission::with('deposit.owner')
+                                        ->where('sponsor_id', auth()->user()->id)
+                                        ->orderBy('created_at', 'desc')
+                                        ->get();
     }
 }

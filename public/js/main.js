@@ -259,8 +259,28 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
 
+
+        .state('direct_history', {
+            url: "/direct/history",
+            templateUrl: "views/direct_history.html",
+            data: {pageTitle: 'Direct History'},
+            controller: "DirectController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css-template/plan_style.css',
+                            'js/controllers/DirectController.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
         .state('level_history', {
-            url: "/Level/history",
+            url: "/level/history",
             templateUrl: "views/level_history.html",
             data: {pageTitle: 'Level History'},
             controller: "LevelController as vm",
