@@ -34,6 +34,7 @@ class DepositController extends Controller
             'status' => 0,
             'issue_date' => null,
             'expire_date' => null,
+            'bankslip' => $request->bankslip
     	]);
 
     	// Broadcast a memerber just deposit.
@@ -58,7 +59,7 @@ class DepositController extends Controller
 
         if( is_null($photo) || !$photo->isValid()) 
         {
-            throw new HttpException(400, 'uploaded file is corrupted.');
+            throw new HttpException(403, 'uploaded file is corrupted.');
         }
 
         //$photo->store('images/deposit/bankslip');

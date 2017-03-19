@@ -14,6 +14,9 @@ class UserController extends Controller
     public function getProfile(){
         $user_id = auth()->user()->id;
         $user = Customer::with('country')->where('customers.id', $user_id)->first();
+        if($user->image) {
+            $user->image = 'data:image/jpeg;base64,' . base64_encode(\Storage::get($user->image));
+        }
         return $user->toArray();
     }
 
@@ -29,6 +32,7 @@ class UserController extends Controller
   		$user->country_id = $request->country_id;
   		$user->date_of_birth = $request->date_of_birth; 
   		$user->bitcoin_account = $request->bitcoin_account;
+        $user->image = $request->image;
         $user->save();
 
         return response()->json(['msg' => 'Update successfully']);
@@ -53,4 +57,15 @@ class UserController extends Controller
                   response(['msg' => 'Password change successfully'], 200) :
                   response(['msg' => 'Failed to change password'], 422);
     }
+
+    public function upload(Request $request)
+    {
+        $photo = $request->file('file');
+        if( is_null($photo) || !$photo->isValid())
+        {
+            throw new HttpException(403, 'uploaded file is corrupted.');
+        }
+        return $photo->store('images/users');
+    }
+
 }

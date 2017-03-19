@@ -21,6 +21,7 @@ class CreateDepositsTable extends Migration
             $table->smallInteger('status'); // 0: pending, 1: activated
             $table->date('issue_date')->nullable();
             $table->date('expire_date')->nullable();
+            $table->string('bankslip')->nullable();
             $table->timestamps();
         });
     }
