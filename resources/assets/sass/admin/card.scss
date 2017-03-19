@@ -8,6 +8,10 @@
   }
 
   .md-card-content.content-body{
-  	padding: 20px;
+  	padding: 20px;  	
+  }
+
+  .md-card-actions.space-between{
+  	justify-content: space-between;
   }
 }

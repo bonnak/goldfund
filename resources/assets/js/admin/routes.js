@@ -1,7 +1,8 @@
 const routes = [
-  { path: '/user', component: require('./components/user/UserTable.vue') },
+  { path: '/user', component: require('./components/user/Index.vue') },
   { path: '/customer', component: require('./components/customer/Index.vue') },
   { path: '/deposit/history', component: require('./components/deposit/HistoryTable.vue') },
+  { path: '/plan', component: require('./components/plan/Index.vue') },
 ]
 
 export default routes ;

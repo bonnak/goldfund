@@ -1,19 +1,13 @@
 export default{
 	methods: {
-		closeForm(){
-			this.$emit('close-form-message');
+		showInfoView(data){
+			this.data = data;
+			this.current_view = '_Info';
 		},
-
-		onSelect(data){
-		 	console.log(data);
-		},
-
-		onSort(data){
-		 	console.log(data);
-		},
-
-		onPagination(pagination){
-			this.fetchData({ per_page: pagination.size, current_page: pagination.page });
+		
+		showEditView(data){
+			this.data = data;
+			this.current_view = '_Edit';
 		}
 	}
 }

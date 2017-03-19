@@ -67,7 +67,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import _mixin from '../../core/mixins'
+import _mixin from '../../core/mixins/table'
 
 export default{
 

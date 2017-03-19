@@ -18,6 +18,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 	//Customer
 	Route::put('/customer/email', 'Admin\CustomerController@editEmail');
 	Route::put('/customer/bitcoin/address', 'Admin\CustomerController@editBitcoinAddress');
+
+	//Plan
+	Route::get('/plans', 'Admin\PlanController@get');
 });
 
 
