@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Customer;
 use App\Plan;
 use App\SponsorEarningCommission;
+use App\LevelEarningCommission;
 
 class Deposit extends Model
 {
@@ -28,5 +29,10 @@ class Deposit extends Model
 	public function sponsor_earning_commission()
 	{
 		return $this->hasOne(SponsorEarningCommission::class, 'deposit_id', 'id');
+	}
+
+	public function level_earning_commission()
+	{
+		return $this->hasOne(LevelEarningCommission::class, 'deposit_id', 'id');
 	}
 }
