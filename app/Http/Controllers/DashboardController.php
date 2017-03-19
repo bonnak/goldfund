@@ -26,15 +26,19 @@ class DashboardController extends Controller
         $level = LevelEarningCommission::where('cust_id', auth()->user()->id)->sum('amount');
         $binary = BinaryEarningCommission::where('cust_id', auth()->user()->id)->sum('amount');
         $withdrawal = Withdrawal::where('cust_id', auth()->user()->id)->sum('amount');
+        $active_deposit = Deposit::where('cust_id', auth()->user()->id)
+                                ->where('status', 1)
+                                ->sum('amount');
 
 
     	return [
-    		'day_left'  => $day_left,
-    		'earning'   => $earning,
-            'sponsor'   => $sponsor,
-            'level'     => $level,
-            'binary'    => $binary,
-            'withdrawal' => $withdrawal,
+    		'day_left'        => $day_left,
+    		'earning'         => $earning,
+            'sponsor'         => $sponsor,
+            'level'           => $level,
+            'binary'          => $binary,
+            'active_deposit'  => $active_deposit,
+            'withdrawal'      => $withdrawal,
     	];    	
     }
 }

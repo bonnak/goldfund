@@ -132,7 +132,7 @@ class Customer extends Authenticatable
     $collection = collect([]);
     $up_line = $this->sponsor->sponsor;
 
-    while(!is_null($up_line->sponsor_id))
+    while(!is_null($up_line))
     {      
       $collection->push($up_line);
       $up_line = $up_line->sponsor;
