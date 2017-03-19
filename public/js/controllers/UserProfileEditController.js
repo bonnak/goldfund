@@ -47,13 +47,17 @@ angular.module('MetronicApp').controller('UserProfileEditController', [
                 return;
             }
             vm.loading= true;
-            restful.put('/api/user/updateProfile', vm.model).success(function(response){
+            restful.put('/api/user/update', vm.model).success(function(response){
                 // call from parent scope function in main.js
                 $rootScope.$emit("InitSettingMethod", {});
                 $state.go('user_profile');
             }).finally(function () {
                 vm.loading= false;
             });
+        };
+
+        vm.savePhoto = function(){            
+            uploadManager.upload();
         };
 
         vm.changeTab = function(id){
@@ -64,7 +68,6 @@ angular.module('MetronicApp').controller('UserProfileEditController', [
         vm.initialConfigUpload = function(){
             $rootScope.$on('fileAdded', function (e, call) {
                 $scope.vm.upload.percentage = 0;
-                uploadManager.upload();
 
                 // Clear uploaded files.
                 $("#bankslip-file").val('');
@@ -78,10 +81,9 @@ angular.module('MetronicApp').controller('UserProfileEditController', [
             });
 
             $rootScope.$on('uploadResponseResult', function (e, result) {
-                $scope.vm.upload.photo = result;
-                vm.model.image = result;
+                $scope.vm.model.image = result;
+                $scope.userProfile.image = result;
                 
-                console.log(result);
                 setTimeout(function(){
                     $scope.vm.upload.is_completed = true;
                     $scope.vm.upload.in_progress = false;
@@ -92,26 +94,14 @@ angular.module('MetronicApp').controller('UserProfileEditController', [
 
 
             var previewImage =  function(input) {
-                //$('#preview').find('img').remove();
-
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
-                        // var image = new Image();
-                        // image.title = e.target.name;
-                        // image.src = e.target.result;
-                        // $('#preview').append( image );
-                        console.log(e);
-                        //$('#preview #blah').attr('src', e.target.result);
                         vm.src_upload = e.target.result;//true;
                     };
                     reader.readAsDataURL(input.files[0]);
                 }
             };
-
-            $("#bankslip-file").change(function(){
-                previewImage(this);
-            });
         };
 
         vm.initialConfigUpload();
