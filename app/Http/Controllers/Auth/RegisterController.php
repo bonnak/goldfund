@@ -84,7 +84,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username' => 'required|max:255|unique:customers',
             'email' => 'required|email|max:255|unique:customers',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:8|confirmed|regex:/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/',
             'first_name' => 'required',
             'last_name' => 'required',
             'country_id' => 'required',
@@ -94,6 +94,9 @@ class RegisterController extends Controller
             'sponsor_id' => 'required',
             'direction' => 'required',
             'agree_term_condition' => 'required',
+        ], 
+        [
+            'password.regex' => 'Your password must contain 1 lowercase, 1 uppercase character and 1 number.',
         ]);
     }
 
