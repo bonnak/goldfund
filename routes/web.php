@@ -65,6 +65,9 @@ Route::get('/support', function(){
 // 	return view('auth.register_success');
 // });
 
-Route::get('/test-file', function(){
-	return view('test');
+Route::get('/test', function(){
+	return config('app.timezone');
 });
+
+
+
