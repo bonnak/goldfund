@@ -26,13 +26,8 @@ trait DepositEarningTrait
         //                     ->where('created_at', '>=', Carbon::today())
         //                     ->first();
 
-        // if(!is_null($earning)) return;
+        // if(!is_null($earning)) return;       
         
-        
-        // throw new \Symfony\Component\HttpKernel\Exception\HttpException(
-        //     422, 
-        //     $deposit->owner->daily_earning_commission()->first()->cust_id
-        // );
 
         $deposit->owner->daily_earning_commission()->create([
             'plan_id'       => $deposit->plan->id,
@@ -47,7 +42,7 @@ trait DepositEarningTrait
         if(is_null($deposit->owner->deposit) || $deposit->owner->deposit->status != 1) return;        
 
         $deposit->sponsor_earning_commission()->create([
-            'sponsor_id' => $deposit->owner->id,
+            'sponsor_id' => $deposit->owner->sponsor->id,
             'amount' => $deposit->amount * $deposit->plan->sponsor,
         ]);        
     }
@@ -56,7 +51,7 @@ trait DepositEarningTrait
     {
         $deposit->owner->levels()->each(function ($upline, $key) use ($deposit){
 
-            $sponsor_level = $deposit->plan->sponsor_levels()->where('level', $key + 1)->first();            
+            $sponsor_level = $deposit->plan->sponsor_levels()->where('level', $key + 1)->first();           
 
             if($sponsor_level === null) return false;
             if(is_null($upline->deposit) || $upline->deposit->status != 1) return;    

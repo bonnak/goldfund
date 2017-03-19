@@ -2,6 +2,28 @@
 <div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+            <h4 class="widget-thumb-heading">Days Left</h4>
+            <div class="widget-thumb-wrap">  
+                <i class="widget-thumb-icon fa fa-sun-o"></i>               
+                <div class="widget-thumb-body">                    
+                    <span class="widget-thumb-body-stat">{{ vm.model.day_left }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+            <h4 class="widget-thumb-heading">Active Deposit</h4>
+            <div class="widget-thumb-wrap">  
+                <i class="widget-thumb-icon fa fa-dollar"></i>               
+                <div class="widget-thumb-body">                    
+                    <span class="widget-thumb-body-stat">{{ vm.model.active_deposit }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Daily Earning</h4>
             <div class="widget-thumb-wrap">                
                 <i class="widget-thumb-icon"><img src="/images/icons/dollar_tick.png"></i> 
@@ -11,6 +33,8 @@
             </div>
         </div>
     </div>
+</div>
+<div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Sponsor</h4>
@@ -33,9 +57,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Binary</h4>
@@ -47,6 +68,9 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
             <h4 class="widget-thumb-heading">Available Balance</h4>
@@ -69,19 +93,6 @@
             </div>
         </div>
     </div>   
-</div>
-<div class="row box-dash">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading">Days Left</h4>
-            <div class="widget-thumb-wrap">  
-                <i class="widget-thumb-icon fa fa-sun-o"></i>               
-                <div class="widget-thumb-body">                    
-                    <span class="widget-thumb-body-stat">{{ vm.model.day_left }}</span>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="row">    
