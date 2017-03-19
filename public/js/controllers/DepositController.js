@@ -22,7 +22,7 @@ angular.module('MetronicApp').controller('DepositController', [
             percentage : 0,
             is_completed : false,
             in_progress : false
-        }
+        };
 
         vm.save = function(){
             if (!$scope.depositForm.$valid) {
@@ -61,11 +61,11 @@ angular.module('MetronicApp').controller('DepositController', [
             Restful.get('/api/plans').success(function(data){
                 vm.plans = data;
             });
-        }
+        };
 
         vm.inValid = function(){
             return vm.model.amount < vm.model.min_deposit  || vm.model.amount > vm.model.max_deposit;
-        }
+        };
 
         vm.showDepositModal = function(){
             Restful.post('/api/transaction/auth', { trans_password: vm.model.trans_password })
@@ -81,7 +81,7 @@ angular.module('MetronicApp').controller('DepositController', [
                     }
                 }
             );           
-        }
+        };
 
         vm.initialConfigUpload = function(){
             $rootScope.$on('fileAdded', function (e, call) { 
@@ -101,6 +101,7 @@ angular.module('MetronicApp').controller('DepositController', [
 
             $rootScope.$on('uploadResponseResult', function (e, result) {
                 $scope.vm.upload.photo = result;
+                vm.model.bankslip = result;
                 setTimeout(function(){
                     $scope.vm.upload.is_completed = true;
                     $scope.vm.upload.in_progress = false;
@@ -121,18 +122,19 @@ angular.module('MetronicApp').controller('DepositController', [
                         // image.title = e.target.name;
                         // image.src = e.target.result;
                         // $('#preview').append( image );
-
-                        $('#preview #blah').attr('src', e.target.result);
-                    }
+                        console.log(e);
+                        //$('#preview #blah').attr('src', e.target.result);
+                        vm.src_upload = e.target.result;//true;
+                    };
 
                     reader.readAsDataURL(input.files[0]);
                 }
-            }
+            };
 
             $("#bankslip-file").change(function(){
                 previewImage(this);
             });
-        }
+        };
         
         vm.getQrCode();
         vm.getPlans();

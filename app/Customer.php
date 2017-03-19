@@ -23,7 +23,7 @@ class Customer extends Authenticatable
   	'date_of_birth', 'bitcoin_account', 'sponsor_id', 
     'placement_id', 'direction', 'agree_term_condition',
     'email_verified', 'verified_token', 'trans_password',
-    'confirmed',
+    'confirmed', 'image',
   ];
 
   protected $hidden = [
