@@ -1,4 +1,4 @@
-<form role="form" novalidate class="form-horizontal" name="profileForm" ng-submit="vm.save()">
+<form role="form" novalidate class="form-horizontal" name="profileForm">
     <div class="row">
     <div class="col-md-12">
         <div class="portlet light">
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="margiv-top-10">
-                            <button class="btn blue" type="submit" ng-disable="vm.loading">
+                            <button class="btn blue" ng-disable="vm.loading" ng-click="vm.save()">
                                 <i class="fa fa-save" ng-if="!vm.loading"></i>
                                 <i class="fa fa-spin fa-spinner" ng-if="vm.loading"></i>
                                 Save Changes
@@ -139,37 +139,16 @@
                                 <input type="file" accept="image/*"
                                        id="bankslip-file"
                                        name="file"
-                                       data-url="/api/user/upload_image"
+                                       data-url="/api/user/photo/upload"
                                        upload />
                             </div>
                         </div>
 
-
-                        <!--<span class="btn green fileinput-button" onClick="document.getElementById('bankslip-file').click()">-->
-                            <!--<i class="fa fa-upload"></i>-->
-                            <!--<span>Upload your bankslip</span>-->
-                            <!--<input type="file" accept="image/*"-->
-                                   <!--id="bankslip-file"-->
-                                   <!--name="file"-->
-                                   <!--data-url="/api/user/upload_image"-->
-                                   <!--upload>-->
-                        <!--</span>-->
-                        <!--<div class="img-bankslip" id="preview">-->
-                            <!--<img id="blah" ng-src="{{vm.src_upload}}" alt="your image" data-ng-if="vm.src_upload"/>-->
-                            <!--<div class="progress" ng-show="vm.upload.in_progress">-->
-                                <!--<div class="progress-bar progress-bar-success"-->
-                                     <!--role="progressbar"-->
-                                     <!--ng-style="{'width': vm.upload.percentage + '%' }">-->
-                                    <!--<span class="sr-only"> {{ vm.upload.percentage }}% Complete (success) </span>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
                         <div class="margin-top-10">
-                            <button class="btn blue" type="submit" ng-disable="vm.loading">
+                            <button class="btn blue" ng-disable="vm.loading" ng-click="vm.savePhoto()">
                                 <i class="fa fa-save" ng-if="!vm.loading"></i>
                                 <i class="fa fa-spin fa-spinner" ng-if="vm.loading"></i>
-                                Save Changes
+                                Upload Photo
                             </button>
                             <a ui-sref="user_profile" class="btn default">
                                 <i class="fa fa-close"></i>

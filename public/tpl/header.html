@@ -35,11 +35,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                        data-hover="dropdown"
                        data-close-others="true">
-                        Welcome
-                        <i class="icon-user"></i>
                         <span class="username username-hide-on-mobile"> {{userProfile.username}} </span>
                         <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                        <!--<img alt="" class="img-circle" src="{{settings.layoutPath}}/img/avatar9.jpg" /> -->
+                        <i class="icon-user" ng-if="userProfile.image == null"></i>
+                        <img alt="" class="img-circle" src="{{userProfile.image}}" ng-if="userProfile.image != null"/> 
 
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
