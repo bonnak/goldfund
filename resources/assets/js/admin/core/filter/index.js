@@ -33,3 +33,11 @@ export function isActive(val){
 export function sex(val){
   return val === 'M' ? 'Male' : ( val === 'F' ? 'Female' : '' );
 }
+
+export function percentage(val){
+  return (val * 100) + '%';
+}
+
+export function currency(val){
+  return '$' + val.toLocaleString();
+}

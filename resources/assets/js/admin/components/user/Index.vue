@@ -12,7 +12,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import _mixin from '../../core/mixins'
 import _Table from './Table.vue'
-import _Info from './Info.vue'
+//import _Info from './Info.vue'
 
 export default{
 	
@@ -20,7 +20,7 @@ export default{
 	
 	components: {
 		_Table,
-		_Info
+		//_Info
 	},
 
 	data(){

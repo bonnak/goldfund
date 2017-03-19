@@ -40,7 +40,7 @@
 		    </md-table-row>
 		  </md-table-body>
 		</md-table>
-		<md-table-pagination
+		<md-table-pagination v-if="pagination.per_page <= pagination.total"
 	    :md-size="pagination.per_page"
 	    :md-total="pagination.total"
 	    :md-page="pagination.current_page"

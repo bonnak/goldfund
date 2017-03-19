@@ -1,0 +1,17 @@
+.md-card.content-form {
+	.md-card-header{
+  	border-bottom: solid 1px #ece8e8;
+
+  	.md-title{
+  		font-size: 20px;
+  	}
+  }
+
+  .md-card-content.content-body{
+  	padding: 20px;  	
+  }
+
+  .md-card-actions.space-between{
+  	justify-content: space-between;
+  }
+}

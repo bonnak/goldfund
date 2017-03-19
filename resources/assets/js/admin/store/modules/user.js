@@ -1,4 +1,4 @@
-import Api from '../../api/ApiCustomer'
+import Api from '../../api/ApiUser'
 import { Pagination } from '../../core/classes'
 
 const state = {
@@ -35,41 +35,7 @@ const actions = {
         commit('RECEIVE_DATA', { body: response.data });
       }
 		);
-	},
-
-  editEmail({ commit }, data){ 
-    return new Promise((resolve, reject) => {
-        Api.editEmail({
-          id: data.id,
-          email: data.email
-        }).then(
-          (response) => {           
-            resolve(response);
-          },
-
-          (err_response) => {
-            reject(err_response);
-          }
-        );
-    });
-  },
-
-  editBitCoinAddress({ commit }, data){
-    return new Promise((resolve, reject) => {
-        Api.editBitCoinAddress({
-          id: data.id,
-          bitcoin_account: data.bitcoin_account
-        }).then(
-          (response) => {
-            resolve(response);
-          },
-
-          (err_response) => {
-            reject(err_response);
-          }
-        );
-    });
-  }
+	}
 }
 
 export default {
