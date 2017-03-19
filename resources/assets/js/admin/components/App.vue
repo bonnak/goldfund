@@ -7,27 +7,17 @@
       <div class="main-sidebar-links">
 	      <md-list>
   				<router-link :to="{ path: '/user' }" tag="md-list-item">
-					<md-icon><i class="fa fa-user"></i></md-icon><span>User</span>
+						<md-icon><i class="fa fa-user"></i></md-icon><span>User</span>
   				</router-link>
-		      	<router-link :to="{ path: '/customer' }" tag="md-list-item">
-					<md-icon><i class="fa fa-users"></i></md-icon><span>Customer</span>
+		      <router-link :to="{ path: '/customer' }" tag="md-list-item">
+						<md-icon><i class="fa fa-users"></i></md-icon><span>Customer</span>
   				</router-link>
   				<router-link :to="{ path: '/deposit/history' }" tag="md-list-item">
-					<md-icon><i class="fa fa-money"></i></md-icon><span>Deposit History</span>
+						<md-icon><i class="fa fa-money"></i></md-icon><span>Deposit History</span>
   				</router-link>
-
-			    <md-list-item>
-			      <md-icon>whatshot</md-icon>
-			      <span>Plans</span>
-
-			      <md-list-expand>
-			        <md-list>
-			          <md-list-item class="md-inset">Plan 1</md-list-item>
-			          <md-list-item class="md-inset">Plan 2</md-list-item>
-			          <md-list-item class="md-inset">Plan 3</md-list-item>
-			        </md-list>
-			      </md-list-expand>
-			    </md-list-item>
+  				<router-link :to="{ path: '/plan' }" tag="md-list-item">
+						<md-icon><i class="fa fa-tint"></i></md-icon><span>Plan</span>
+  				</router-link>
 			  </md-list>
 			</div>
 	  </md-sidenav>
@@ -43,9 +33,9 @@
 
 			    <div class="dropdown user-dropdown">
 				    <a href="#" class="dropdown-toggle user-link" data-toggle="dropdown" aria-expanded="true">
-					  	<md-avatar class="user-avatar">
+					  	<!-- <md-avatar class="user-avatar">
 							  <img src="https://placeimg.com/40/40/people/5" alt="Avatar">
-							</md-avatar>
+							</md-avatar> -->
 							<span class="user-name">administrator</span>
 						</a>
 	          <ul class="dropdown-menu">

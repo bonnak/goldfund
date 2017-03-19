@@ -25,7 +25,7 @@
 		    </md-table-row>
 		  </md-table-body>
 		</md-table>
-		<md-table-pagination
+		<md-table-pagination v-if="pagination.per_page <= pagination.total"
 	    :md-size="pagination.per_page"
 	    :md-total="pagination.total"
 	    :md-page="pagination.current_page"
@@ -38,8 +38,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import _mixin from '../../core/mixins/table'
 
 export default{
+
+	mixins: [_mixin],
 
 	computed: {
 	    ...mapGetters({
@@ -49,32 +52,16 @@ export default{
 	},
 
 	created(){
-		this.fetchData({ size : 5, page: 1});
+		this.fetchData();
 	},
 
 	mounted(){
 	},
 
 	methods:{
-		onSelect(data){
-		 	console.log(data);
-		},
-
-		onSort(data){
-		 	console.log(data);
-		},
-
-		onPagination(pagination){
-			this.loadData(pagination);
-		},
-
-		showViewInfo(data){
-			this.$emit('show-view-info', data);
-		},
-
 		...mapActions({
-	  		fetchData: 'customer/fetchData'
-	  	})
+  		fetchData: 'customer/fetchData'
+  	})
 	}
 }
 </script>

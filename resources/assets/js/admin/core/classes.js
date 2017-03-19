@@ -1,5 +1,11 @@
 export class Pagination {
-	constructor(data) {
+	constructor(data = null) {
+        if(data === null){
+            this.per_page = 5;
+            this.current_page = 1;
+            return;
+        }
+
         this.total = data.total;
         this.per_page = data.per_page;
         this.current_page = data.current_page;
@@ -8,5 +14,5 @@ export class Pagination {
         this.prev_page_url = data.prev_page_url;
         this.from = data.from;
         this.to = data.to;
-      }
+    }
 }

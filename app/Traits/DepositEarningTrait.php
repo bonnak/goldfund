@@ -50,6 +50,9 @@ trait DepositEarningTrait
         // does the number of left children equal to right children?
         $deposit_owner_side = $sponsor->children()->where('direction', $owner->direction)->orderBy('placement_id')->get();
         $other_side = $sponsor->children()->where('direction', ($owner->direction == 'L' ? 'R' : 'L'))->orderBy('placement_id')->get();
+
+        if($deposit_owner_side->isEmpty()) return;
+        if($other_side->isEmpty()) return;
         
         
         // Current level.
@@ -67,13 +70,17 @@ trait DepositEarningTrait
         {
         	return;
         }
+
+        if($other_side->count() < $current_level + 1) return;       
+        
         
         // does both right and left children deposited and deposit is active?
-        if(($deposit_owner_side[$current_level]->deposit !== null && $deposit_owner_side[$current_level]->deposit->status == 1) &&
-           ($other_side[$current_level]->deposit !== null && $other_side[$current_level]->deposit->status == 1 ))
+        if(!is_null($deposit_owner_side[$current_level]->deposit()->where('status', 1)->first()) &&
+           !is_null($other_side[$current_level]->deposit()->where('status', 1)->first()))
         {
             $deposit_amount = $deposit_owner_side[$current_level]->deposit->amount < $other_side[$current_level]->deposit->amount ?
-                            $deposit_owner_side[$current_level]->deposit->amount : $other_side[$current_level]->deposit->amount;
+                                                    $deposit_owner_side[$current_level]->deposit->amount : 
+                                                    $other_side[$current_level]->deposit->amount;
 
             // Add commission.
             $sponsor->binary_earning_commissions()->create([

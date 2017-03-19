@@ -50,13 +50,13 @@ Vue.prototype.$http = Axios
  * allows your team to easily build robust real-time web applications.
  */
 
-import Echo from "laravel-echo"
+// import Echo from "laravel-echo"
 
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: 'e283fce33a446bb48093',
-    cluster: 'ap1'
-});
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: 'e283fce33a446bb48093',
+//     cluster: 'ap1'
+// });
 
 
 
