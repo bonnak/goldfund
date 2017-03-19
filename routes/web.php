@@ -60,14 +60,3 @@ Route::get('/faq', 'FaqController@get');
 Route::get('/support', function(){
 	return view('support');
 });
-
-// Route::get('/test', function(){
-// 	return view('auth.register_success');
-// });
-
-Route::get('/test', function(){
-	return config('app.timezone');
-});
-
-
-
