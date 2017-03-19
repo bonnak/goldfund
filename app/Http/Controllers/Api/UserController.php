@@ -14,9 +14,9 @@ class UserController extends Controller
     public function getProfile(){
         $user_id = auth()->user()->id;
         $user = Customer::with('country')->where('customers.id', $user_id)->first();
-        if($user->image) {
-            $user->image = 'data:image/jpeg;base64,' . base64_encode(\Storage::get($user->image));
-        }
+        $user->image = !is_null($user->image) ? 
+                            'data:image/jpeg;base64,' . base64_encode(\Storage::get($user->image)) : null;
+
         return $user->toArray();
     }
 
@@ -25,14 +25,13 @@ class UserController extends Controller
         $user = Customer::find($request->id);
 
         $user->email = $request->email;
-        $user->password = $request->password;
   		$user->first_name = $request->first_name; 
   		$user->last_name = $request->last_name; 
   		$user->gender = $request->gender; 
   		$user->country_id = $request->country_id;
   		$user->date_of_birth = $request->date_of_birth; 
   		$user->bitcoin_account = $request->bitcoin_account;
-        $user->image = $request->image;
+        //$user->image = $request->image;
         $user->save();
 
         return response()->json(['msg' => 'Update successfully']);
@@ -65,7 +64,11 @@ class UserController extends Controller
         {
             throw new HttpException(403, 'uploaded file is corrupted.');
         }
-        return $photo->store('images/users');
+
+        auth()->user()->image = $photo->store('images/users');
+        auth()->user()->save();
+
+        return 'data:image/jpeg;base64,' . base64_encode(\Storage::get(auth()->user()->image));
     }
 
 }

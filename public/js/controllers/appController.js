@@ -13,7 +13,6 @@ MetronicApp.controller('AppController', [
         $scope.initSetting = function(){
             restful.get('/user/getProfile').success(function(result){
                 $scope.userProfile = result;
-                console.log($scope.userProfile);
             });
         };
         $scope.initSetting();
