@@ -95,7 +95,8 @@
                 </div>
                 <div class="modal-body">               
                     <div class="note note-warning">
-                        <p>After you deposit. Please upload your blank slip (Bitcoin transaction) for us to verify your deposit.</p>
+                        <p>After you deposit. Please upload your blank slip (Bitcoin transaction)
+                            for us to verify your deposit.</p>
                     </div>
                     <div class="block-chain">
                         <img ng-src="{{vm.qrcode}}">
@@ -105,14 +106,14 @@
                         <span class="btn green fileinput-button" onClick="document.getElementById('bankslip-file').click()">
                             <i class="fa fa-upload"></i>
                             <span>Upload your bankslip</span>
-                            <input type="file" 
+                            <input type="file" accept="image/*"
                                     id="bankslip-file" 
                                     name="file" 
                                     data-url="/api/photo/upload" 
                                     upload>
                         </span>
                         <div class="img-bankslip" id="preview">                              
-                            <img id="blah" src="#" alt="your image" style="display: none;"/>
+                            <img id="blah" ng-src="{{vm.src_upload}}" alt="your image" data-ng-if="vm.src_upload"/>
                             <div class="progress" ng-show="vm.upload.in_progress">
                                 <div class="progress-bar progress-bar-success" 
                                     role="progressbar" 
@@ -124,7 +125,7 @@
                     </div> 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn blue" ng-click="vm.save();" ng-disabled="vm.loading || vm.inValid()">
+                    <button class="btn blue" ng-click="vm.save();" ng-disabled="!vm.src_upload || vm.loading || vm.inValid()">
                         <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
                         Submit
                     </button>
