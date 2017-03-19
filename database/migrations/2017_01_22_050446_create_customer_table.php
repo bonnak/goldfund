@@ -34,6 +34,7 @@ class CreateCustomerTable extends Migration
             $table->boolean('confirmed')->default(0);
             $table->string('verified_token');
             $table->string('verified_date')->nullable();
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
