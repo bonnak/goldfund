@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-Vue.use(require('vue-moment'));
+//Vue.use(require('vue-moment'));
 
 Vue.component('passport-clients', require('./components/passport/Clients.vue'));
 Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));

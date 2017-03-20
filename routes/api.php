@@ -21,6 +21,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 
 	//Plan
 	Route::get('/plans', 'Admin\PlanController@get');
+
+	//Geneology
+	Route::get('/geneology/json', 'Admin\GeneologyController@getData');
 });
 
 
@@ -56,7 +59,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 	//Dashboard	
 	Route::get('/earning/data', 'DashboardController@getData');
 
-	//Binary
+	//Geneology
 	Route::get('/binary/json', 'BinaryController@getData');
 
 
