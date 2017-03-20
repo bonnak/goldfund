@@ -1,0 +1,23 @@
+.graph-geneology{
+	position: absolute;
+	width: 300px;
+	z-index: 1;
+	background: rgba(40,10,0,.2);
+	padding: 5px;
+	border-radius: 5px;
+
+	.block{
+		width: 70px;
+
+		.p-note-img{
+			width: 100%;
+		}
+
+		.caption{
+			display: inline-block;
+			text-align: center;
+			width: 100%;
+			font-size: 12px;
+		}
+	}
+}
