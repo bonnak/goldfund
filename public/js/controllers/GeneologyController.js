@@ -128,10 +128,12 @@ angular.module('MetronicApp')
                 var y_position_org = 0;
                 var x_position = x_position_org;
                 var y_position = y_position_org;
+                var x_gap = 300;
+                var y_gap = 300;
                 var width = 100;
                 var height = 100;
 
-                var parent_node = new paper.Raster('bn/img/p1.png');
+                var parent_node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
                 parent_node.position = new paper.Point(x_position + width/2, y_position + height/2);
                 parent_node.on('load', function() {
                     this.size = new paper.Size(width, height);    
@@ -151,16 +153,16 @@ angular.module('MetronicApp')
                     var path_l = new paper.Path();
                     path_l.strokeColor = '#000';
                     path_l.add(new paper.Point(x_position + width/2, y_position + height));   
-                    path_l.add(new paper.Point((x_position + width/2) - 200, (y_position + height/2) + 200));             
+                    path_l.add(new paper.Point((x_position + width/2) - x_gap, (y_position + height/2) + y_gap));             
                     group.addChild(path_l);
 
                     data = data.left;
 
-                    x_position = (x_position) - 200;
-                    y_position = (y_position + height/2) + 200;
+                    x_position = (x_position) - x_gap;
+                    y_position = (y_position + height/2) + y_gap;
 
 
-                    var node = new paper.Raster('bn/img/p1.png');
+                    var node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
                     node.position = new paper.Point(x_position + width/2, y_position + height/2);
                     node.on('load', function() {
                         this.size = new paper.Size(width, height);    
@@ -174,17 +176,35 @@ angular.module('MetronicApp')
                     caption.shadowBlur = 10;
                     caption.shadowOffset = new paper.Point(0, 0);
                     caption.content = data.username;
-                    group.addChild(caption);            
+                    group.addChild(caption);    
+
+                    //Unknown Right
+                    var path_r = new paper.Path();
+                    path_r.strokeColor = '#000';
+                    path_r.add(new paper.Point(x_position + width/2, y_position + height));   
+                    path_r.add(new paper.Point((x_position + width/2) + x_gap - 50, (y_position + height/2) + y_gap));             
+                    group.addChild(path_r);
+
+                    var x_position_unknown = (x_position) + x_gap - 50;
+                    var y_position_unknown = (y_position + height/2) + y_gap;
+
+
+                    var node = new paper.Raster('bn/img/p.png');
+                    node.position = new paper.Point(x_position_unknown + width/2, y_position_unknown + height/2);
+                    node.on('load', function() {
+                        this.size = new paper.Size(width, height);    
+                    });
+                    group.addChild(node);         
                 }
 
                 var path_l = new paper.Path();
                 path_l.strokeColor = '#000';
                 path_l.add(new paper.Point(x_position + width/2, y_position + height));   
-                path_l.add(new paper.Point((x_position + width/2) - 200, (y_position + height/2) + 200));             
+                path_l.add(new paper.Point((x_position + width/2) - x_gap, (y_position + height/2) + y_gap));             
                 group.addChild(path_l);
 
-                x_position = (x_position) - 200;
-                y_position = (y_position + height/2) + 200;
+                x_position = (x_position) - x_gap;
+                y_position = (y_position + height/2) + y_gap;
 
                 var add_new_node_l = new paper.Raster('bn/img/add.png');
                 add_new_node_l.position = new paper.Point(x_position + width/2, y_position + height/2);
@@ -216,16 +236,16 @@ angular.module('MetronicApp')
                     var path_r = new paper.Path();
                     path_r.strokeColor = '#000';
                     path_r.add(new paper.Point(x_position + width/2, y_position + height));   
-                    path_r.add(new paper.Point((x_position + width/2) + 200, (y_position + height/2) + 200));             
+                    path_r.add(new paper.Point((x_position + width/2) + x_gap, (y_position + height/2) + y_gap));             
                     group.addChild(path_r);
 
                     data = data.right;
 
-                    x_position = (x_position) + 200;
-                    y_position = (y_position + height/2) + 200;
+                    x_position = (x_position) + x_gap;
+                    y_position = (y_position + height/2) + y_gap;
 
 
-                    var node = new paper.Raster('bn/img/p1.png');
+                    var node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
                     node.position = new paper.Point(x_position + width/2, y_position + height/2);
                     node.on('load', function() {
                         this.size = new paper.Size(width, height);    
@@ -239,17 +259,36 @@ angular.module('MetronicApp')
                     caption.shadowBlur = 10;
                     caption.shadowOffset = new paper.Point(0, 0);
                     caption.content = data.username;
-                    group.addChild(caption);            
+                    group.addChild(caption);   
+
+
+                    //Unknown Left
+                    var path_l = new paper.Path();
+                    path_l.strokeColor = '#000';
+                    path_l.add(new paper.Point(x_position + width/2, y_position + height));   
+                    path_l.add(new paper.Point((x_position + width/2) - x_gap + 50, (y_position + height/2) + y_gap));             
+                    group.addChild(path_l);
+
+                    var x_position_unknown = (x_position) - x_gap + 50;
+                    var y_position_unknown = (y_position + height/2) + y_gap;
+
+
+                    var node = new paper.Raster('bn/img/p.png');
+                    node.position = new paper.Point(x_position_unknown + width/2, y_position_unknown + height/2);
+                    node.on('load', function() {
+                        this.size = new paper.Size(width, height);    
+                    });
+                    group.addChild(node);         
                 }
 
                 var path_l = new paper.Path();
                 path_l.strokeColor = '#000';
                 path_l.add(new paper.Point(x_position + width/2, y_position + height));   
-                path_l.add(new paper.Point((x_position + width/2) + 200, (y_position + height/2) + 200));             
+                path_l.add(new paper.Point((x_position + width/2) + x_gap, (y_position + height/2) + y_gap));             
                 group.addChild(path_l);
 
-                x_position = (x_position) + 200;
-                y_position = (y_position + height/2) + 200;
+                x_position = (x_position) + x_gap;
+                y_position = (y_position + height/2) + y_gap;
 
                 var add_new_node_r = new paper.Raster('bn/img/add.png');
                 add_new_node_r.position = new paper.Point(x_position + width/2, y_position + height/2);

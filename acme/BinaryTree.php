@@ -84,6 +84,8 @@ class BinaryTree
             'sponsor_id'    => $this->head->data->sponsor_id,
             'placement_id'  => $this->head->data->placement_id,
             'username'      => $this->head->data->username,
+            'deposit_plan'  => !is_null($this->head->data->deposit) ? 
+                                        $this->head->data->deposit->plan_id : '',
             'left' => null,
             'right' => null,
         ];        
@@ -97,6 +99,8 @@ class BinaryTree
                 'sponsor_id'    => $node_left->data->sponsor_id,
                 'placement_id'  => $node_left->data->placement_id,
                 'username'      => $node_left->data->username,
+                'deposit_plan'  => !is_null($node_left->data->deposit) ? 
+                                        $node_left->data->deposit->plan_id : ''
             ];
 
             $data_l = &$data_l['left'];
@@ -112,6 +116,8 @@ class BinaryTree
                 'sponsor_id'    => $node_right->data->sponsor_id,
                 'placement_id'  => $node_right->data->placement_id,
                 'username'      => $node_right->data->username,
+                'deposit_plan'  => !is_null($node_right->data->deposit) ? 
+                                        $node_right->data->deposit->plan_id : ''
             ];
 
             $data_r = &$data_r['right'];
