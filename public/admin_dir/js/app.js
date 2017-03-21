@@ -46098,10 +46098,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
+	data: function data() {
+		return {
+			contentHtml: '<div></div>'
+		};
+	},
+
 
 	computed: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapGetters"])({
 		data_grid: 'deposit/data',
@@ -46126,9 +46139,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		}
 	}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
 		fetchData: 'deposit/fetchData',
-		approveDeposit: 'deposit/approve',
-		sendMoney: 'deposit/sendMoney'
-	}))
+		approveDeposit: 'deposit/approve'
+	}), {
+		openDialog: function openDialog(img) {
+			this.contentHtml = '<img src="storage/' + img + '" style="max-width: 800px;">';
+			this.$refs['dialog_blankslip'].open();
+		},
+		onCloseDlg: function onCloseDlg(type) {
+			this.contentHtml = '<div></div>';
+		}
+	})
 };
 
 /***/ }),
@@ -47994,33 +48014,40 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "sort": _vm.onSort
     }
-  }, [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Username")]), _vm._v(" "), _c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Bitcoin Account")]), _vm._v(" "), _c('md-table-head', [_vm._v("Deposited Date")]), _vm._v(" "), _c('md-table-head', [_vm._v("Action")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.data_grid), function(el, rowIndex) {
+  }, [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Username")]), _vm._v(" "), _c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Bitcoin Account")]), _vm._v(" "), _c('md-table-head', [_vm._v("Deposited Date")]), _vm._v(" "), _c('md-table-head', [_vm._v("Bankslip")]), _vm._v(" "), _c('md-table-head', [_vm._v("Action")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.data_grid), function(el, rowIndex) {
     return _c('md-table-row', {
       key: rowIndex,
       attrs: {
         "md-item": el
       }
-    }, [_c('md-table-cell', [_vm._v(_vm._s(el.owner.username))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.amount))]), _vm._v(" "), _c('md-table-cell', [(el.status == 0) ? _c('span', {
+    }, [_c('md-table-cell', [_vm._v(_vm._s(el.owner.username))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(el.amount)))]), _vm._v(" "), _c('md-table-cell', [(el.status == 0) ? _c('span', {
       staticClass: "label label-sm label-warning"
     }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (el.status == 1) ? _c('span', {
       staticClass: "label label-sm label-success"
     }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (el.status == 2) ? _c('span', {
       staticClass: "label label-sm label-danger"
-    }, [_vm._v("Expired")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.owner.bitcoin_account))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.created_at))]), _vm._v(" "), _c('md-table-cell', [(el.status == 0) ? _c('md-button', {
+    }, [_vm._v("Expired")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.owner.bitcoin_account))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.created_at))]), _vm._v(" "), _c('md-table-cell', [_c('a', {
+      staticClass: "btn",
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.stopPropagation();
+          $event.preventDefault();
+          _vm.openDialog(el.bankslip)
+        }
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-eye"
+    })])]), _vm._v(" "), _c('md-table-cell', [(el.status == 0) ? _c('md-button', {
       staticClass: "md-raised md-primary",
       on: {
         "click": function($event) {
           _vm.approveDeposit(el)
         }
       }
-    }, [_vm._v("\n\t\t        \t\tApprove\n\t\t        \t")]) : _vm._e(), _vm._v(" "), (el.status == 1) ? _c('md-button', {
-      staticClass: "md-raised md-accent",
-      on: {
-        "click": function($event) {
-          _vm.sendMoney(el)
-        }
-      }
-    }, [_vm._v("\n\t\t        \t\tSend money\n\t\t        \t")]) : _vm._e()], 1)], 1)
+    }, [_vm._v("\n\t\t        \t\tApprove\n\t\t        \t")]) : _vm._e()], 1)], 1)
   }))], 1), _vm._v(" "), (_vm.pagination.per_page <= _vm.pagination.total) ? _c('md-table-pagination', {
     attrs: {
       "md-size": _vm.pagination.per_page,
@@ -48032,7 +48059,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "pagination": _vm.onPagination
     }
-  }) : _vm._e()], 1)
+  }) : _vm._e(), _vm._v(" "), _c('md-dialog-alert', {
+    ref: "dialog_blankslip",
+    attrs: {
+      "md-content-html": _vm.contentHtml,
+      "md-ok-text": "Close"
+    },
+    on: {
+      "close": _vm.onCloseDlg
+    }
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
