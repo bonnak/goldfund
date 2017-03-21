@@ -5,7 +5,7 @@
     </md-card-header>
 		<md-card-content class="content-body">
       <div class="row">
-        <div class="col-md-6 sec-block">
+        <div class="col-md-4 sec-block">
         	<dl class="dl-horizontal">
         		<dt>Name</dt>
         		<dd>{{ data.name }}</dd>
@@ -19,7 +19,7 @@
         		<dd>{{ data.max_deposit | currency }}</dd>
       		</dl>
         </div>
-        <div class="col-md-6 sec-block">
+        <div class="col-md-4 sec-block">
       		<dl class="dl-horizontal">
         		<dt>Daily</dt>
         		<dd>{{ data.daily | percentage }}</dd>
@@ -32,6 +32,12 @@
         		<dt>Earning Duration</dt>
         		<dd>{{ data.duration | pluralize('day') }}</dd>
       		</dl>
+        </div>
+        <div class="col-md-4 sec-block">
+          <dl class="dl-horizontal">
+            <dt>Sponsor</dt>
+            <dd>{{ data.sponsor | percentage }}</dd>
+          </dl>
         </div>
       </div>
       <div class="row">
@@ -50,8 +56,8 @@
       </div>
     </md-card-content>
     <md-card-actions class="space-between">
-	    <md-button class="md-primary" @click="closeForm()">Edit</md-button>
-      <md-button class="md-primary" @click="closeForm()">Close</md-button>
+	    <md-button class="md-primary" @click.native="closeForm()">Edit</md-button>
+      <md-button class="md-primary" @click.native="closeForm()">Close</md-button>
 	  </md-card-actions>
   </md-card>
 </template>

@@ -6,9 +6,10 @@
 		      <md-table-head>Name</md-table-head>
 		      <md-table-head>Min Deposit</md-table-head>
 		      <md-table-head>Max Deposit</md-table-head>
-		      <md-table-head>Daily Earning</md-table-head>
-		      <md-table-head>Binary Earning</md-table-head>
-		      <md-table-head>Earning Duration</md-table-head>
+		      <md-table-head>Daily</md-table-head>
+		      <md-table-head>Sponsor</md-table-head>
+		      <md-table-head>Binary</md-table-head>
+		      <md-table-head>Duration</md-table-head>
 		      <md-table-head>Action</md-table-head>
 		    </md-table-row>
 		  </md-table-header>
@@ -19,6 +20,7 @@
 		      <md-table-cell>{{ data.min_deposit | currency }}</md-table-cell>
 		      <md-table-cell>{{ data.max_deposit | currency }}</md-table-cell>
 		      <md-table-cell>{{ data.daily | percentage }}</md-table-cell>
+		      <md-table-cell>{{ data.sponsor | percentage }}</md-table-cell>
 		      <md-table-cell>{{ data.pairing | percentage }}</md-table-cell>
 		      <md-table-cell>{{ data.duration | pluralize('day') }}</md-table-cell>
 		      <md-table-cell>
@@ -58,8 +60,13 @@ export default{
 
 	methods:{
 		...mapActions({
-  		fetchData: 'plan/fetchData'
-  	})
+	  		fetchData: 'plan/fetchData'
+	  	}),
+
+	    sponsorCommission(val){
+	    	//if(Math.round(val) > )
+	    	return Math.round(val * 100, 3) + '%';
+	    }
 	}
 }
 </script>

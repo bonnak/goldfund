@@ -29,10 +29,11 @@ Vue.material.setCurrentTheme('app');
 
 import { 
 	domain, count, prettyDate, pluralize, 
-	isActive, sex, percentage, currency } from './core/filter'
+	isActive, sex, percentage, currency, precision } from './core/filter'
 
 Vue.filter('isActive', isActive)
 Vue.filter('sex', sex)
 Vue.filter('percentage', percentage)
 Vue.filter('pluralize', pluralize)
 Vue.filter('currency', currency)
+Vue.filter('precision', precision)

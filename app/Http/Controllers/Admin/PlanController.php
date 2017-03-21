@@ -10,6 +10,10 @@ class PlanController extends Controller
 {
     public function get()
     {
-    	return Plan::with('sponsor_levels')->paginate(request()->input('per_page'));
+    	return $plans = Plan::with('sponsor_levels')->paginate(request()->input('per_page'));
+
+    	// return $plans->map(function($data){
+    	// 	return collect($data)->union(['test' => 1]);
+    	// });
     }
 }

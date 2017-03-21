@@ -60,7 +60,7 @@
       </div>
     </md-card-content>
     <md-card-actions>
-	    <md-button class="md-primary" @click="closeForm()">Close</md-button>
+	    <md-button class="md-primary" @click.native="closeForm()">Close</md-button>
 	  </md-card-actions>
   </md-card>
 </template>

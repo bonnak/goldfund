@@ -45463,6 +45463,7 @@ Vue.filter('sex', __WEBPACK_IMPORTED_MODULE_2__core_filter__["b" /* sex */]);
 Vue.filter('percentage', __WEBPACK_IMPORTED_MODULE_2__core_filter__["c" /* percentage */]);
 Vue.filter('pluralize', __WEBPACK_IMPORTED_MODULE_2__core_filter__["d" /* pluralize */]);
 Vue.filter('currency', __WEBPACK_IMPORTED_MODULE_2__core_filter__["e" /* currency */]);
+Vue.filter('precision', __WEBPACK_IMPORTED_MODULE_2__core_filter__["f" /* precision */]);
 
 /***/ }),
 /* 60 */,
@@ -45831,14 +45832,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			current_view: '_Table',
 			data: null
 		};
-	},
-
-
-	methods: {
-		showInfoView: function showInfoView(data) {
-			this.data = data;
-			this.current_view = '_Info';
-		}
 	}
 };
 
@@ -46254,6 +46247,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -46318,6 +46317,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -46337,7 +46338,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
 		fetchData: 'plan/fetchData'
-	}))
+	}), {
+		sponsorCommission: function sponsorCommission(val) {
+			//if(Math.round(val) > )
+			return Math.round(val * 100, 3) + '%';
+		}
+	})
 };
 
 /***/ }),
@@ -46538,6 +46544,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony export (immutable) */ __webpack_exports__["b"] = sex;
 /* harmony export (immutable) */ __webpack_exports__["c"] = percentage;
 /* harmony export (immutable) */ __webpack_exports__["e"] = currency;
+/* harmony export (immutable) */ __webpack_exports__["f"] = precision;
 var urlParser = document.createElement('a');
 
 function domain(url) {
@@ -46580,6 +46587,10 @@ function percentage(val) {
 
 function currency(val) {
   return '$' + val.toLocaleString();
+}
+
+function precision(val) {
+  return val.toPrecision(3);
 }
 
 /***/ }),
@@ -47681,7 +47692,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-6 sec-block"
+    staticClass: "col-md-4 sec-block"
   }, [_c('dl', {
     staticClass: "dl-horizontal"
   }, [_c('dt', [_vm._v("Name")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.name))])]), _vm._v(" "), _c('dl', {
@@ -47689,14 +47700,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('dt', [_vm._v("Min Deposit")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.min_deposit)))])]), _vm._v(" "), _c('dl', {
     staticClass: "dl-horizontal"
   }, [_c('dt', [_vm._v("Max Deposit")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.max_deposit)))])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6 sec-block"
+    staticClass: "col-md-4 sec-block"
   }, [_c('dl', {
     staticClass: "dl-horizontal"
   }, [_c('dt', [_vm._v("Daily")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("percentage")(_vm.data.daily)))])]), _vm._v(" "), _c('dl', {
     staticClass: "dl-horizontal"
   }, [_c('dt', [_vm._v("Binary Earning")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("percentage")(_vm.data.pairing)))])]), _vm._v(" "), _c('dl', {
     staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Earning Duration")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("pluralize")(_vm.data.duration, 'day')))])])])]), _vm._v(" "), _c('div', {
+  }, [_c('dt', [_vm._v("Earning Duration")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("pluralize")(_vm.data.duration, 'day')))])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Sponsor")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("percentage")(_vm.data.sponsor)))])])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12 sec-block"
@@ -47708,14 +47723,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "space-between"
   }, [_c('md-button', {
     staticClass: "md-primary",
-    on: {
+    nativeOn: {
       "click": function($event) {
         _vm.closeForm()
       }
     }
   }, [_vm._v("Edit")]), _vm._v(" "), _c('md-button', {
     staticClass: "md-primary",
-    on: {
+    nativeOn: {
       "click": function($event) {
         _vm.closeForm()
       }
@@ -47740,13 +47755,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "select": _vm.onSelect,
       "sort": _vm.onSort
     }
-  }, [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Name")]), _vm._v(" "), _c('md-table-head', [_vm._v("Min Deposit")]), _vm._v(" "), _c('md-table-head', [_vm._v("Max Deposit")]), _vm._v(" "), _c('md-table-head', [_vm._v("Daily Earning")]), _vm._v(" "), _c('md-table-head', [_vm._v("Binary Earning")]), _vm._v(" "), _c('md-table-head', [_vm._v("Earning Duration")]), _vm._v(" "), _c('md-table-head', [_vm._v("Action")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.data_grid), function(data, rowIndex) {
+  }, [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Name")]), _vm._v(" "), _c('md-table-head', [_vm._v("Min Deposit")]), _vm._v(" "), _c('md-table-head', [_vm._v("Max Deposit")]), _vm._v(" "), _c('md-table-head', [_vm._v("Daily")]), _vm._v(" "), _c('md-table-head', [_vm._v("Sponsor")]), _vm._v(" "), _c('md-table-head', [_vm._v("Binary")]), _vm._v(" "), _c('md-table-head', [_vm._v("Duration")]), _vm._v(" "), _c('md-table-head', [_vm._v("Action")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.data_grid), function(data, rowIndex) {
     return _c('md-table-row', {
       key: rowIndex,
       attrs: {
         "md-item": data
       }
-    }, [_c('md-table-cell', [_vm._v(_vm._s(data.name))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(data.min_deposit)))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(data.max_deposit)))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("percentage")(data.daily)))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("percentage")(data.pairing)))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("pluralize")(data.duration, 'day')))]), _vm._v(" "), _c('md-table-cell', [_c('a', {
+    }, [_c('md-table-cell', [_vm._v(_vm._s(data.name))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(data.min_deposit)))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(data.max_deposit)))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("percentage")(data.daily)))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("percentage")(data.sponsor)))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("percentage")(data.pairing)))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("pluralize")(data.duration, 'day')))]), _vm._v(" "), _c('md-table-cell', [_c('a', {
       staticClass: "btn",
       attrs: {
         "href": ""
@@ -47913,7 +47928,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v(_vm._s(_vm.validation.bitcoin_account))]) : _vm._e()]) : _vm._e()])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
     staticClass: "md-primary",
-    on: {
+    nativeOn: {
       "click": function($event) {
         _vm.closeForm()
       }

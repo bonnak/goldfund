@@ -60,8 +60,8 @@ export default{
 
 	methods:{
 		...mapActions({
-  		fetchData: 'customer/fetchData'
-  	})
+  			fetchData: 'customer/fetchData'
+  		})
 	}
 }
 </script>

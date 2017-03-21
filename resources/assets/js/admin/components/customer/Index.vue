@@ -28,13 +28,6 @@ export default{
 			current_view : '_Table',
 			data: null
 		}
-	},
-
-	methods: {
-		showInfoView(data){
-			this.data = data;
-			this.current_view = '_Info';
-		}
 	}
 }
 </script>
