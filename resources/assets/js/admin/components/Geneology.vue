@@ -1,11 +1,13 @@
 <template>
 	<md-card>
 		<div class="body">
-			<div class="row search">
-				<div class="input-group">
-				  <input type="text" class="form-control" placeholder="Username" v-model="Gog">
+			<div class="search">
+				  <input type="text" 
+                        class="form-control" 
+                        placeholder="Username" 
+                        v-model="search_query" 
+                        @keyup="doStuff">
 				  <span class="input-group-addon"><i class="fa fa-search"></i></span>
-				</div>
 				
 			</div>
             <div class="row graph-geneology">
@@ -36,13 +38,14 @@
 </template>
 
 <script>
+import _ from 'lodash';
 import Api from '../api/Api'
 
 export default{
 	data(){
 		return {
 			data_graph: null,
-			Gog: ''
+			search_query: ''
 		}
 	},
 
@@ -51,21 +54,16 @@ export default{
 	},
 
 	methods: {
-		loadData(){
-			Api.get('geneology/json').then((response) => {
+		loadData(query = ''){
+			Api.get('geneology/json' + (query != '' ? ('?query=' + query) : ''))
+            .then((response) => {
 	            this.data_graph = response.data;
 	        });
 		},
 
-		getAnswer(){
-			_.debounce(function(){ console.log('kdk'); }, 500);
-		}
-	},
-
-	watch: {
-		// Gog(value){
-		// 	//this.getAnswer();
-		// }
+		doStuff: _.debounce(function () {
+            this.loadData(this.search_query);
+        }, 500)
 	},
 
 	directives: {
@@ -111,16 +109,14 @@ export default{
 
 	    update: (el, binding, vnode) => {
 	    	var treeValue = binding.value;
-	    	if(treeValue === null) return;
-
-	    	console.log('update rendering tree');
-
-            var path;
-            paper.setup(el);
-
             var data = treeValue;
+            var path;
 
+            paper.setup(el);     
             var group = new paper.Group();
+
+            if(treeValue === '') return;
+
             var x_position_org = 500;
             var y_position_org = 0;
             var x_position = x_position_org;
@@ -129,7 +125,6 @@ export default{
             var y_gap = 300;
             var width = 100;
             var height = 100;
-
 
             var parent_node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
             parent_node.position = new paper.Point(x_position + width/2, y_position + height/2);
@@ -262,10 +257,25 @@ export default{
 	}
 
 	.search{
-	    position: absolute;
-	    right: 10px;
-	    font-size: 19px;
-	    width: 300px;
+        position: absolute;
+	    display: flex;
+        width: 223px;
+        align-items: center;
+        justify-content: flex-end;
+        right: 35px;
+        z-index: 1;
+
+        input{
+            border-radius: 20px;
+        }
+
+        span{
+            border: none;
+            background: transparent;
+            padding: 0 0 0 5px;
+            font-size: 22px;
+            display: inline-block;
+        }
 	}
 }
 </style>

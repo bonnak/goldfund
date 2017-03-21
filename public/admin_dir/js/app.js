@@ -42322,7 +42322,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\components\\passport\\AuthorizedClients.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\passport\\AuthorizedClients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AuthorizedClients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42360,7 +42360,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\components\\passport\\Clients.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\passport\\Clients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Clients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42398,7 +42398,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\components\\passport\\PersonalAccessTokens.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\components\\passport\\PersonalAccessTokens.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PersonalAccessTokens.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42998,7 +42998,7 @@ class:t.classes},[n("a",{staticClass:"md-list-item-container md-button",attrs:{h
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
-  * vue-router v2.2.1
+  * vue-router v2.2.0
   * (c) 2017 Evan You
   * @license MIT
   */
@@ -44379,11 +44379,12 @@ var positionStore = Object.create(null);
 
 function setupScroll () {
   window.addEventListener('popstate', function (e) {
-    saveScrollPosition();
     if (e.state && e.state.key) {
       setStateKey(e.state.key);
     }
   });
+
+  window.addEventListener('scroll', saveScrollPosition);
 }
 
 function handleScroll (
@@ -44508,7 +44509,6 @@ function setStateKey (key) {
 }
 
 function pushState (url, replace) {
-  saveScrollPosition();
   // try...catch the pushState call to get around Safari
   // DOM Exception 18 where it limits to 100 pushState calls
   var history = window.history;
@@ -44519,6 +44519,7 @@ function pushState (url, replace) {
       _key = genKey();
       history.pushState({ key: _key }, '', url);
     }
+    saveScrollPosition();
   } catch (e) {
     window.location[replace ? 'replace' : 'assign'](url);
   }
@@ -45268,7 +45269,7 @@ function createHref (base, fullPath, mode) {
 }
 
 VueRouter.install = install;
-VueRouter.version = '2.2.1';
+VueRouter.version = '2.2.0';
 
 if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
@@ -45565,7 +45566,9 @@ Vue.filter('currency', __WEBPACK_IMPORTED_MODULE_2__core_filter__["e" /* currenc
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_Api__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_Api__ = __webpack_require__(14);
 //
 //
 //
@@ -45603,188 +45606,185 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
-  data: function data() {
-    return {
-      data_graph: null,
-      Gog: ''
-    };
-  },
-  created: function created() {
-    this.loadData();
-  },
-
-
-  methods: {
-    loadData: function loadData() {
-      var _this = this;
-
-      __WEBPACK_IMPORTED_MODULE_0__api_Api__["a" /* default */].get('geneology/json').then(function (response) {
-        _this.data_graph = response.data;
-      });
+    data: function data() {
+        return {
+            data_graph: null,
+            search_query: ''
+        };
     },
-    getAnswer: function getAnswer() {
-      _.debounce(function () {
-        console.log('kdk');
-      }, 500);
-    }
-  },
+    created: function created() {
+        this.loadData();
+    },
 
-  watch: {
-    // Gog(value){
-    // 	//this.getAnswer();
-    // }
-  },
 
-  directives: {
-    geneologyGraph: {
-      bind: function bind(el, binding, vnode) {
-        var internalHandler = function internalHandler(event) {
-          // From http://www.adomas.org/javascript-mouse-wheel/
-          var delta = 0;
-          if (!event) /* For IE. */
-            event = window.event;
-          if (event.wheelDelta) {
-            /* IE/Opera. */
-            delta = event.wheelDelta / 120;
-          } else if (event.detail) {
-            /** Mozilla case. */
-            /** In Mozilla, sign of delta is different than in IE.
-            * Also, delta is multiple of 3.
-            */
-            delta = -event.detail / 3;
-          }
-          /** If delta is nonzero, handle it.
-          * Basically, delta is now positive if wheel was scrolled up,
-          * and negative, if wheel was scrolled down.
-          */
-          if (delta > 0) paper.view.scale(1.1);else paper.view.scale(0.9);
-          /** Prevent default actions caused by mouse wheel.
-          * That might be ugly, but we handle scrolls somehow
-          * anyway, so don't bother here..
-          */
-          if (event.preventDefault) event.preventDefault();
+    methods: {
+        loadData: function loadData() {
+            var _this = this;
 
-          event.returnValue = false;
-        };
+            var query = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-        /** DOMMouseScroll is for mozilla. */
-        if (window.addEventListener) window.addEventListener('DOMMouseScroll', internalHandler, false);
-        /** IE/Opera. */
-        window.onmousewheel = document.onmousewheel = internalHandler;
-      },
+            __WEBPACK_IMPORTED_MODULE_1__api_Api__["a" /* default */].get('geneology/json' + (query != '' ? '?query=' + query : '')).then(function (response) {
+                _this.data_graph = response.data;
+            });
+        },
 
-      update: function update(el, binding, vnode) {
-        var treeValue = binding.value;
-        if (treeValue === null) return;
 
-        console.log('update rendering tree');
+        doStuff: __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.debounce(function () {
+            this.loadData(this.search_query);
+        }, 500)
+    },
 
-        var path;
-        paper.setup(el);
+    directives: {
+        geneologyGraph: {
+            bind: function bind(el, binding, vnode) {
+                var internalHandler = function internalHandler(event) {
+                    // From http://www.adomas.org/javascript-mouse-wheel/
+                    var delta = 0;
+                    if (!event) /* For IE. */
+                        event = window.event;
+                    if (event.wheelDelta) {
+                        /* IE/Opera. */
+                        delta = event.wheelDelta / 120;
+                    } else if (event.detail) {
+                        /** Mozilla case. */
+                        /** In Mozilla, sign of delta is different than in IE.
+                        * Also, delta is multiple of 3.
+                        */
+                        delta = -event.detail / 3;
+                    }
+                    /** If delta is nonzero, handle it.
+                    * Basically, delta is now positive if wheel was scrolled up,
+                    * and negative, if wheel was scrolled down.
+                    */
+                    if (delta > 0) paper.view.scale(1.1);else paper.view.scale(0.9);
+                    /** Prevent default actions caused by mouse wheel.
+                    * That might be ugly, but we handle scrolls somehow
+                    * anyway, so don't bother here..
+                    */
+                    if (event.preventDefault) event.preventDefault();
 
-        var data = treeValue;
+                    event.returnValue = false;
+                };
 
-        var group = new paper.Group();
-        var x_position_org = 500;
-        var y_position_org = 0;
-        var x_position = x_position_org;
-        var y_position = y_position_org;
-        var x_gap = 300;
-        var y_gap = 300;
-        var width = 100;
-        var height = 100;
+                /** DOMMouseScroll is for mozilla. */
+                if (window.addEventListener) window.addEventListener('DOMMouseScroll', internalHandler, false);
+                /** IE/Opera. */
+                window.onmousewheel = document.onmousewheel = internalHandler;
+            },
 
-        var parent_node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
-        parent_node.position = new paper.Point(x_position + width / 2, y_position + height / 2);
-        parent_node.on('load', function () {
-          this.size = new paper.Size(width, height);
-        });
-        group.addChild(parent_node);
+            update: function update(el, binding, vnode) {
+                var treeValue = binding.value;
+                var data = treeValue;
+                var path;
 
-        var caption = new paper.PointText(new paper.Point(x_position + width / 2, y_position + height + 20));
-        caption.justification = 'center';
-        caption.fillColor = '#0f72bb';
-        caption.shadowColor = new paper.Color(0, 0, 0);
-        caption.shadowBlur = 10;
-        caption.shadowOffset = new paper.Point(0, 0);
-        caption.content = data.username;
-        group.addChild(caption);
+                paper.setup(el);
+                var group = new paper.Group();
 
-        while (data.left !== null) {
-          var path_l = new paper.Path();
-          path_l.strokeColor = '#000';
-          path_l.add(new paper.Point(x_position + width / 2, y_position + height));
-          path_l.add(new paper.Point(x_position + width / 2 - x_gap, y_position + height / 2 + y_gap));
-          group.addChild(path_l);
+                if (treeValue === '') return;
 
-          data = data.left;
+                var x_position_org = 500;
+                var y_position_org = 0;
+                var x_position = x_position_org;
+                var y_position = y_position_org;
+                var x_gap = 300;
+                var y_gap = 300;
+                var width = 100;
+                var height = 100;
 
-          x_position = x_position - x_gap;
-          y_position = y_position + height / 2 + y_gap;
+                var parent_node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
+                parent_node.position = new paper.Point(x_position + width / 2, y_position + height / 2);
+                parent_node.on('load', function () {
+                    this.size = new paper.Size(width, height);
+                });
+                group.addChild(parent_node);
 
-          var node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
-          node.position = new paper.Point(x_position + width / 2, y_position + height / 2);
-          node.on('load', function () {
-            this.size = new paper.Size(width, height);
-          });
-          group.addChild(node);
+                var caption = new paper.PointText(new paper.Point(x_position + width / 2, y_position + height + 20));
+                caption.justification = 'center';
+                caption.fillColor = '#0f72bb';
+                caption.shadowColor = new paper.Color(0, 0, 0);
+                caption.shadowBlur = 10;
+                caption.shadowOffset = new paper.Point(0, 0);
+                caption.content = data.username;
+                group.addChild(caption);
 
-          var caption = new paper.PointText(new paper.Point(x_position + width / 2, y_position + height + 20));
-          caption.justification = 'center';
-          caption.fillColor = '#0f72bb';
-          caption.shadowColor = new paper.Color(0, 0, 0);
-          caption.shadowBlur = 10;
-          caption.shadowOffset = new paper.Point(0, 0);
-          caption.content = data.username;
-          group.addChild(caption);
+                while (data.left !== null) {
+                    var path_l = new paper.Path();
+                    path_l.strokeColor = '#000';
+                    path_l.add(new paper.Point(x_position + width / 2, y_position + height));
+                    path_l.add(new paper.Point(x_position + width / 2 - x_gap, y_position + height / 2 + y_gap));
+                    group.addChild(path_l);
+
+                    data = data.left;
+
+                    x_position = x_position - x_gap;
+                    y_position = y_position + height / 2 + y_gap;
+
+                    var node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
+                    node.position = new paper.Point(x_position + width / 2, y_position + height / 2);
+                    node.on('load', function () {
+                        this.size = new paper.Size(width, height);
+                    });
+                    group.addChild(node);
+
+                    var caption = new paper.PointText(new paper.Point(x_position + width / 2, y_position + height + 20));
+                    caption.justification = 'center';
+                    caption.fillColor = '#0f72bb';
+                    caption.shadowColor = new paper.Color(0, 0, 0);
+                    caption.shadowBlur = 10;
+                    caption.shadowOffset = new paper.Point(0, 0);
+                    caption.content = data.username;
+                    group.addChild(caption);
+                }
+
+                data = treeValue;
+                x_position = x_position_org;
+                y_position = y_position_org;
+
+                while (data.right !== null) {
+                    var path_r = new paper.Path();
+                    path_r.strokeColor = '#000';
+                    path_r.add(new paper.Point(x_position + width / 2, y_position + height));
+                    path_r.add(new paper.Point(x_position + width / 2 + x_gap, y_position + height / 2 + y_gap));
+                    group.addChild(path_r);
+
+                    data = data.right;
+
+                    x_position = x_position + x_gap;
+                    y_position = y_position + height / 2 + y_gap;
+
+                    var node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
+                    node.position = new paper.Point(x_position + width / 2, y_position + height / 2);
+                    node.on('load', function () {
+                        this.size = new paper.Size(width, height);
+                    });
+                    group.addChild(node);
+
+                    var caption = new paper.PointText(new paper.Point(x_position + width / 2, y_position + height + 20));
+                    caption.justification = 'center';
+                    caption.fillColor = '#0f72bb';
+                    caption.shadowColor = new paper.Color(0, 0, 0);
+                    caption.shadowBlur = 10;
+                    caption.shadowOffset = new paper.Point(0, 0);
+                    caption.content = data.username;
+                    group.addChild(caption);
+                }
+
+                paper.view.scale(0.4);
+
+                paper.view.onMouseDrag = function (event) {
+                    group.position.x += event.delta.x;
+                    group.position.y += event.delta.y;
+                };
+            }
         }
-
-        data = treeValue;
-        x_position = x_position_org;
-        y_position = y_position_org;
-
-        while (data.right !== null) {
-          var path_r = new paper.Path();
-          path_r.strokeColor = '#000';
-          path_r.add(new paper.Point(x_position + width / 2, y_position + height));
-          path_r.add(new paper.Point(x_position + width / 2 + x_gap, y_position + height / 2 + y_gap));
-          group.addChild(path_r);
-
-          data = data.right;
-
-          x_position = x_position + x_gap;
-          y_position = y_position + height / 2 + y_gap;
-
-          var node = new paper.Raster('bn/img/p' + data.deposit_plan + '.png');
-          node.position = new paper.Point(x_position + width / 2, y_position + height / 2);
-          node.on('load', function () {
-            this.size = new paper.Size(width, height);
-          });
-          group.addChild(node);
-
-          var caption = new paper.PointText(new paper.Point(x_position + width / 2, y_position + height + 20));
-          caption.justification = 'center';
-          caption.fillColor = '#0f72bb';
-          caption.shadowColor = new paper.Color(0, 0, 0);
-          caption.shadowBlur = 10;
-          caption.shadowOffset = new paper.Point(0, 0);
-          caption.content = data.username;
-          group.addChild(caption);
-        }
-
-        paper.view.scale(0.4);
-
-        paper.view.onMouseDrag = function (event) {
-          group.position.x += event.delta.x;
-          group.position.y += event.delta.y;
-        };
-      }
     }
-  }
 
 };
 
@@ -46943,7 +46943,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n.row[data-v-48782174] {\n  margin: 0;\n}\n.body[data-v-48782174] {\n  padding: 10px;\n}\n.body .graph-geneology[data-v-48782174] {\n    position: absolute;\n    width: 300px;\n    z-index: 1;\n    background: rgba(40, 10, 0, 0.2);\n    padding: 5px;\n    border-radius: 5px;\n    margin: 0;\n}\n.body .graph-geneology .block[data-v-48782174] {\n      width: 70px;\n}\n.body .graph-geneology .block .p-note-img[data-v-48782174] {\n        width: 100%;\n}\n.body .graph-geneology .block .caption[data-v-48782174] {\n        display: inline-block;\n        text-align: center;\n        width: 100%;\n        font-size: 12px;\n}\n.body .search[data-v-48782174] {\n    position: absolute;\n    right: 10px;\n    font-size: 19px;\n    width: 300px;\n}\n", ""]);
+exports.push([module.i, "\n.row[data-v-48782174] {\n  margin: 0;\n}\n.body[data-v-48782174] {\n  padding: 10px;\n}\n.body .graph-geneology[data-v-48782174] {\n    position: absolute;\n    width: 300px;\n    z-index: 1;\n    background: rgba(40, 10, 0, 0.2);\n    padding: 5px;\n    border-radius: 5px;\n    margin: 0;\n}\n.body .graph-geneology .block[data-v-48782174] {\n      width: 70px;\n}\n.body .graph-geneology .block .p-note-img[data-v-48782174] {\n        width: 100%;\n}\n.body .graph-geneology .block .caption[data-v-48782174] {\n        display: inline-block;\n        text-align: center;\n        width: 100%;\n        font-size: 12px;\n}\n.body .search[data-v-48782174] {\n    position: absolute;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 223px;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    right: 35px;\n    z-index: 1;\n}\n.body .search input[data-v-48782174] {\n      border-radius: 20px;\n}\n.body .search span[data-v-48782174] {\n      border: none;\n      background: transparent;\n      padding: 0 0 0 5px;\n      font-size: 22px;\n      display: inline-block;\n}\n", ""]);
 
 // exports
 
@@ -46958,7 +46958,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\nbody.md-theme-app {\n  background-color: #ecf0f5 !important;\n}\n.page-content {\n  margin-left: 0;\n  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.page-content.open-nav {\n    margin-left: 280px;\n}\n.page-content .main-content {\n    padding: 15px;\n    background-color: #ecf0f5;\n}\n.main-sidebar .md-sidenav-content {\n  width: 280px;\n  left: -280px;\n  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  background-color: #222d32 !important;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  overflow: hidden;\n}\n.main-sidebar .md-sidenav-content .main-sidebar-links {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    overflow: auto;\n}\n.main-sidebar .md-sidenav-content .main-sidebar-links .md-list-expand .md-list-item .md-button {\n      padding-left: 84px;\n}\n.main-sidebar .md-sidenav-content .top-of-side-bar {\n    width: 100%;\n    min-height: 120px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    background: #fff;\n}\n.main-sidebar .md-sidenav-content .md-theme-app.md-list .md-list-item-container {\n    background-color: inherit;\n}\n.main-sidebar .md-sidenav-content .md-list-expand .md-list.md-theme-app {\n    background-color: rgba(153, 153, 153, 0.05);\n}\n.main-sidebar.md-active .md-sidenav-content {\n  left: 0;\n}\n.main-sidebar.md-active .md-sidenav-backdrop {\n  display: none;\n}\n.main-sidebar .md-theme-app.md-list {\n  background-color: #222d32;\n  color: #fff;\n}\n.main-sidebar .md-theme-app.md-list .md-list-item .md-icon {\n    color: #fff;\n}\n.main-sidebar .md-theme-app.md-list .md-list-item-expand .md-list-item-container:hover,\n.main-sidebar .md-theme-app.md-list .md-list-item-expand .md-list-item-container:focus,\n.main-sidebar .md-button:hover:not([disabled]):not(.md-raised) {\n  background-color: rgba(153, 153, 153, 0.2);\n}\n#btn-toggle-sidebar {\n  color: #fff;\n}\n.md-divider.md-inset {\n  margin-left: 0;\n}\n.top-bar {\n  z-index: 99;\n}\n.top-bar .user-link {\n    text-decoration: none !important;\n    color: #fff !important;\n    padding: 24px 10px;\n}\n.top-bar .user-link:hover {\n      background-color: rgba(0, 0, 0, 0.12);\n}\n.top-bar .user-dropdown .dropdown-menu {\n    border-radius: 0;\n    border: 1px solid rgba(0, 0, 0, 0.06);\n}\n.top-bar .user-dropdown .dropdown-menu a {\n      text-decoration: none;\n}\n.top-bar .user-dropdown .dropdown-menu a:hover {\n        background-color: rgba(0, 0, 0, 0.06);\n}\n.top-bar .user-avatar {\n    margin: inherit;\n}\n.top-bar .user-name {\n    margin-left: 10px;\n}\n", ""]);
+exports.push([module.i, "\nbody.md-theme-app {\n  background-color: #ecf0f5 !important;\n}\n.page-content {\n  margin-left: 0;\n  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.page-content.open-nav {\n    margin-left: 280px;\n}\n.page-content .main-content {\n    padding: 15px;\n    background-color: #ecf0f5;\n}\n.main-sidebar .md-sidenav-content {\n  width: 280px;\n  left: -280px;\n  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  background-color: #222d32 !important;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  overflow: hidden;\n}\n.main-sidebar .md-sidenav-content .main-sidebar-links {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    overflow: auto;\n}\n.main-sidebar .md-sidenav-content .main-sidebar-links .md-list-expand .md-list-item .md-button {\n      padding-left: 84px;\n}\n.main-sidebar .md-sidenav-content .main-sidebar-links .md-list .md-list-item i {\n      display: inline-block;\n      width: 40px;\n      font-size: 20px;\n}\n.main-sidebar .md-sidenav-content .main-sidebar-links .md-list .md-list-item a {\n      padding-top: 5px;\n      padding-bottom: 5px;\n      text-decoration: none;\n}\n.main-sidebar .md-sidenav-content .main-sidebar-links .md-list .md-list-item a:hover {\n        color: #00bcd4;\n        background: rgba(62, 78, 86, 0.56);\n}\n.main-sidebar .md-sidenav-content .top-of-side-bar {\n    width: 100%;\n    min-height: 120px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    background: #fff;\n}\n.main-sidebar .md-sidenav-content .md-theme-app.md-list .md-list-item-container {\n    background-color: inherit;\n}\n.main-sidebar .md-sidenav-content .md-list-expand .md-list.md-theme-app {\n    background-color: rgba(153, 153, 153, 0.05);\n}\n.main-sidebar.md-active .md-sidenav-content {\n  left: 0;\n}\n.main-sidebar.md-active .md-sidenav-backdrop {\n  display: none;\n}\n.main-sidebar .md-theme-app.md-list {\n  background-color: #222d32;\n  color: #fff;\n}\n.main-sidebar .md-theme-app.md-list .md-list-item .md-icon {\n    color: #fff;\n}\n.main-sidebar .md-theme-app.md-list .md-list-item-expand .md-list-item-container:hover,\n.main-sidebar .md-theme-app.md-list .md-list-item-expand .md-list-item-container:focus,\n.main-sidebar .md-button:hover:not([disabled]):not(.md-raised) {\n  background-color: rgba(153, 153, 153, 0.2);\n}\n#btn-toggle-sidebar {\n  color: #fff;\n}\n.md-divider.md-inset {\n  margin-left: 0;\n}\n.top-bar {\n  z-index: 99;\n}\n.top-bar .user-link {\n    text-decoration: none !important;\n    color: #fff !important;\n    padding: 24px 10px;\n}\n.top-bar .user-link:hover {\n      background-color: rgba(0, 0, 0, 0.12);\n}\n.top-bar .user-dropdown .dropdown-menu {\n    border-radius: 0;\n    border: 1px solid rgba(0, 0, 0, 0.06);\n}\n.top-bar .user-dropdown .dropdown-menu a {\n      text-decoration: none;\n}\n.top-bar .user-dropdown .dropdown-menu a:hover {\n        background-color: rgba(0, 0, 0, 0.06);\n}\n.top-bar .user-avatar {\n    margin: inherit;\n}\n.top-bar .user-name {\n    margin-left: 10px;\n}\n", ""]);
 
 // exports
 
@@ -47023,7 +47023,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\App.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\App.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47061,7 +47061,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\Geneology.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\Geneology.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Geneology.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47095,7 +47095,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\Index.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\Index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47133,7 +47133,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\Info.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\Info.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Info.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47167,7 +47167,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\Table.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\Table.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Table.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47205,7 +47205,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\deposit\\HistoryTable.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\deposit\\HistoryTable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] HistoryTable.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47239,7 +47239,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\plan\\Index.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\plan\\Index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47277,7 +47277,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\plan\\Info.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\plan\\Info.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Info.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47311,7 +47311,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\plan\\Table.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\plan\\Table.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Table.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47345,7 +47345,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\user\\Index.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\user\\Index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47379,7 +47379,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\user\\Table.vue"
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\user\\Table.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Table.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47466,15 +47466,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('md-card', [_c('div', {
     staticClass: "body"
   }, [_c('div', {
-    staticClass: "row search"
-  }, [_c('div', {
-    staticClass: "input-group"
+    staticClass: "search"
   }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.Gog),
-      expression: "Gog"
+      value: (_vm.search_query),
+      expression: "search_query"
     }],
     staticClass: "form-control",
     attrs: {
@@ -47482,19 +47480,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Username"
     },
     domProps: {
-      "value": _vm._s(_vm.Gog)
+      "value": _vm._s(_vm.search_query)
     },
     on: {
+      "keyup": _vm.doStuff,
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.Gog = $event.target.value
+        _vm.search_query = $event.target.value
       }
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "input-group-addon"
   }, [_c('i', {
     staticClass: "fa fa-search"
-  })])])]), _vm._v(" "), _c('div', {
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "row graph-geneology"
   }, [_c('div', {
     staticClass: "col-md-3 block"
@@ -47586,41 +47585,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         path: '/user'
       }
     }
-  }, [_c('md-icon', [_c('i', {
+  }, [_c('i', {
     staticClass: "fa fa-user"
-  })]), _c('span', [_vm._v("User")])], 1)], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
+  }), _c('span', [_vm._v("User")])])], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
     attrs: {
       "to": {
         path: '/customer'
       }
     }
-  }, [_c('md-icon', [_c('i', {
+  }, [_c('i', {
     staticClass: "fa fa-users"
-  })]), _c('span', [_vm._v("Customer")])], 1)], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
+  }), _c('span', [_vm._v("Customer")])])], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
     attrs: {
       "to": {
         path: '/deposit/history'
       }
     }
-  }, [_c('md-icon', [_c('i', {
+  }, [_c('i', {
     staticClass: "fa fa-money"
-  })]), _c('span', [_vm._v("Deposit History")])], 1)], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
+  }), _c('span', [_vm._v("Deposit History")])])], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
     attrs: {
       "to": {
         path: '/plan'
       }
     }
-  }, [_c('md-icon', [_c('i', {
+  }, [_c('i', {
     staticClass: "fa fa-tint"
-  })]), _c('span', [_vm._v("Plan")])], 1)], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
+  }), _c('span', [_vm._v("Plan")])])], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
     attrs: {
       "to": {
         path: '/geneology'
       }
     }
-  }, [_c('md-icon', [_c('i', {
+  }, [_c('i', {
     staticClass: "fa fa-sitemap"
-  })]), _c('span', [_vm._v("Geneology")])], 1)], 1)], 1)], 1)]), _vm._v(" "), _c('div', {
+  }), _c('span', [_vm._v("Geneology")])])], 1)], 1)], 1)]), _vm._v(" "), _c('div', {
     ref: "pageContent",
     staticClass: "page-content"
   }, [_c('md-toolbar', {
