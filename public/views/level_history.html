@@ -16,6 +16,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Earn Amount</th>
+                                        <th>Level</th>
                                         <th>Deposited By</th>
                                         <th>Deposited Date</th>
                                     </tr>
@@ -24,6 +25,7 @@
                                     <tr ng-repeat="(key, earning) in vm.earnings">
                                         <td>{{$index + 1}}</td>
                                         <td>{{ earning.amount | currency }}</td>
+                                        <td>{{ earning.level_number }}</td>
                                         <td>{{ earning.deposit.owner.username }}</td>
                                         <td>{{ earning.deposit.created_at }}</td>   
                                     </tr>

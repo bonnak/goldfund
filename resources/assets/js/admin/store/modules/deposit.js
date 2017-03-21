@@ -3,7 +3,7 @@ import { Pagination } from '../../core/classes'
 
 const state = {
 	data: [],
-  pagination: {}
+  pagination: new Pagination()
 }
 
 const getters = {
@@ -29,8 +29,12 @@ const mutations = {
 }
 
 const actions = {
-	fetchData({ commit }, pagination = null){
-		Api.fetchData(pagination).then(
+	fetchData({ commit }, query = '', pagination = state.pagination){
+		Api.fetchData({ 
+      per_page : pagination.per_page,
+      page     : pagination.current_page,
+      query    : query
+    }).then(
 			(response) => {
         commit('CLEAR_STORE');
         commit('RECEIVE_LANGUAGES', { body: response.data });

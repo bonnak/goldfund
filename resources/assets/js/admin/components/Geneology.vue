@@ -6,9 +6,8 @@
                         class="form-control" 
                         placeholder="Username" 
                         v-model="search_query" 
-                        @keyup="doStuff">
-				  <span class="input-group-addon"><i class="fa fa-search"></i></span>
-				
+                        @keyup="searchData">
+				  <span class="input-group-addon"><i class="fa fa-search"></i></span>				
 			</div>
             <div class="row graph-geneology">
                 <div class="col-md-3 block">
@@ -38,7 +37,7 @@
 </template>
 
 <script>
-import _ from 'lodash';
+import _ from 'lodash'
 import Api from '../api/Api'
 
 export default{
@@ -61,7 +60,7 @@ export default{
 	        });
 		},
 
-		doStuff: _.debounce(function () {
+		searchData: _.debounce(function () {
             this.loadData(this.search_query);
         }, 500)
 	},
@@ -135,10 +134,8 @@ export default{
 
             var caption = new paper.PointText(new paper.Point(x_position + width/2, y_position + height + 20));
             caption.justification = 'center';
-            caption.fillColor = '#0f72bb';
-            caption.shadowColor = new paper.Color(0, 0, 0);
-            caption.shadowBlur = 10;
-            caption.shadowOffset = new paper.Point(0, 0);
+            caption.fillColor = '#ff0000';
+            caption.fontSize = '20px';
             caption.content = data.username;
             group.addChild(caption); 
 
@@ -164,10 +161,8 @@ export default{
 
                 var caption = new paper.PointText(new paper.Point(x_position + width/2, y_position + height + 20));
                 caption.justification = 'center';
-                caption.fillColor = '#0f72bb';
-                caption.shadowColor = new paper.Color(0, 0, 0);
-                caption.shadowBlur = 10;
-                caption.shadowOffset = new paper.Point(0, 0);
+                caption.fillColor = '#ff0000';
+                caption.fontSize = '20px';
                 caption.content = data.username;
                 group.addChild(caption);            
             }
@@ -200,10 +195,8 @@ export default{
 
                 var caption = new paper.PointText(new paper.Point(x_position + width/2, y_position + height + 20));
                 caption.justification = 'center';
-                caption.fillColor = '#0f72bb';
-                caption.shadowColor = new paper.Color(0, 0, 0);
-                caption.shadowBlur = 10;
-                caption.shadowOffset = new paper.Point(0, 0);
+                caption.fillColor = '#ff0000';
+                caption.fontSize = '20px';
                 caption.content = data.username;
                 group.addChild(caption);            
             }
@@ -234,7 +227,6 @@ export default{
 		position: absolute;
 		width: 300px;
 		z-index: 1;
-		background: rgba(40,10,0,.2);
 		padding: 5px;
 		border-radius: 5px;
 		margin: 0;
