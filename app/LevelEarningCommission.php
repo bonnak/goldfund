@@ -10,7 +10,7 @@ class LevelEarningCommission extends Model
 {
     protected $table = 'level_earning_commissions';
 
-    protected $fillable = [ 'cust_id', 'deposit_id', 'amount' ];
+    protected $fillable = [ 'cust_id', 'deposit_id', 'amount', 'level_number' ];
 
     public function deposit()
 	{

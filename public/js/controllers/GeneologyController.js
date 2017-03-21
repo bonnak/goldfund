@@ -142,10 +142,8 @@ angular.module('MetronicApp')
 
                 var caption = new paper.PointText(new paper.Point(x_position + width/2, y_position + height + 20));
                 caption.justification = 'center';
-                caption.fillColor = '#0f72bb';
-                caption.shadowColor = new paper.Color(0, 0, 0);
-                caption.shadowBlur = 10;
-                caption.shadowOffset = new paper.Point(0, 0);
+                caption.fillColor = '#ff0000';
+                caption.fontSize = '20px';
                 caption.content = data.username;
                 group.addChild(caption);    
 
@@ -171,10 +169,8 @@ angular.module('MetronicApp')
 
                     var caption = new paper.PointText(new paper.Point(x_position + width/2, y_position + height + 20));
                     caption.justification = 'center';
-                    caption.fillColor = '#0f72bb';
-                    caption.shadowColor = new paper.Color(0, 0, 0);
-                    caption.shadowBlur = 10;
-                    caption.shadowOffset = new paper.Point(0, 0);
+                    caption.fillColor = '#ff0000';
+                    caption.fontSize = '20px';
                     caption.content = data.username;
                     group.addChild(caption);    
 
@@ -207,9 +203,9 @@ angular.module('MetronicApp')
                 y_position = (y_position + height/2) + y_gap;
 
                 var add_new_node_l = new paper.Raster('bn/img/add.png');
-                add_new_node_l.position = new paper.Point(x_position + width/2, y_position + height/2);
+                add_new_node_l.position = new paper.Point(x_position + width/2, y_position + height/2 - 20);
                 add_new_node_l.on('load', function() {
-                    this.size = new paper.Size(width, height);
+                    this.size = new paper.Size(60, 60);
                     this.onClick = function(e){
                         scope.$apply(function () {
                             scope.vm.model.direction = 'L';
@@ -254,10 +250,8 @@ angular.module('MetronicApp')
 
                     var caption = new paper.PointText(new paper.Point(x_position + width/2, y_position + height + 20));
                     caption.justification = 'center';
-                    caption.fillColor = '#0f72bb';
-                    caption.shadowColor = new paper.Color(0, 0, 0);
-                    caption.shadowBlur = 10;
-                    caption.shadowOffset = new paper.Point(0, 0);
+                    caption.fillColor = '#ff0000';
+                    caption.fontSize = '20px';
                     caption.content = data.username;
                     group.addChild(caption);   
 
@@ -291,9 +285,9 @@ angular.module('MetronicApp')
                 y_position = (y_position + height/2) + y_gap;
 
                 var add_new_node_r = new paper.Raster('bn/img/add.png');
-                add_new_node_r.position = new paper.Point(x_position + width/2, y_position + height/2);
+                add_new_node_r.position = new paper.Point(x_position + width/2, y_position + height/2 -20);
                 add_new_node_r.on('load', function() {
-                    this.size = new paper.Size(width, height);
+                    this.size = new paper.Size(60, 60);
                     this.onClick = function(e){
                         scope.$apply(function () {
                             scope.vm.model.direction = 'R';
