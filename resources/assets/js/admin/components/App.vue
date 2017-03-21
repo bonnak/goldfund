@@ -17,7 +17,7 @@
 	  					</router-link>
 	  				</md-list-item>
 	  				<md-list-item>
-	  					<router-link :to="{ path: '/deposit/history' }">
+	  					<router-link :to="{ path: '/deposit' }">
 							<i class="fa fa-money"></i><span>Deposit History</span>
 	  					</router-link>
 	  				</md-list-item>
