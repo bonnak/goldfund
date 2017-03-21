@@ -55,6 +55,15 @@ class EarningController extends Controller
                                         ->get();
     }
 
+    public function filterLevelEarning($level_number)
+    {
+        return LevelEarningCommission::with('deposit.owner')
+                                        ->where('cust_id', auth()->user()->id)
+                                        ->where('level_number', $level_number)
+                                        ->orderBy('created_at', 'desc')
+                                        ->get();
+    }
+
     public function binaryEarning()
     {
         return BinaryEarningCommission::with(['left_child', 'right_child'])
