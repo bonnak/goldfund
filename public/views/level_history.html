@@ -6,21 +6,23 @@
                     <i class="icon-globe theme-font hide"></i>
                     <span class="caption-subject font-blue-madison bold uppercase">Level History</span>
                 </div>
-            </div>
 
-            <div class="row filter-group">
-                <div class="form-group" style="width: 182px;">
-                    <label for="single" class="col-sm-4 control-label" style="margin-top: 6px;">Filter</label>
-                    <div class="col-sm-8">
-                        <select id="single" class="form-control" ng-model="vm.level" ng-change="vm.filterByLevel()">
-                            <option value="">All</option>
-                            <option value="1">Level 1</option>
-                            <option value="2">Level 2</option>  
-                            <option value="3">Level 3</option>                                          
-                        </select>
+                <div class="row filter-group">
+                    <div class="form-group">
+                        <label for="single" class="col-sm-3 control-label">Level</label>
+                        <div class="col-sm-9">
+                            <select id="single" class="form-control" 
+                                ng-model="vm.level_number" 
+                                ng-change="vm.filterByLevel()">
+                                <option value="">All</option>
+                                <option ng-repeat="level in vm.levels" ng-attr-value="level.id">{{ level.id }}</option>                                         
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            
 
 
             <div class="portlet-body">
