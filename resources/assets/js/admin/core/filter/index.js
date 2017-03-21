@@ -41,3 +41,7 @@ export function percentage(val){
 export function currency(val){
   return '$' + val.toLocaleString();
 }
+
+export function precision(val){
+  return val.toPrecision(3);
+}

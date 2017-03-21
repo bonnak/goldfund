@@ -20,7 +20,7 @@ class PlansTableSeeder extends Seeder
             'name' => 'Basic',
             'min_deposit' => 50,
             'max_deposit' => 300,
-            'sponsor' => 0.07, 
+            'sponsor' => 0.07876, 
             'pairing' => 0.05, 
             'daily' => 0.03, 
             'duration' => 60,

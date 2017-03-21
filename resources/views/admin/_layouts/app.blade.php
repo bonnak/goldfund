@@ -26,7 +26,7 @@
   @else
 	  <div id="admin-app">
 	  </div>
-
+    <script type="text/javascript" src="/bn/paper-full.js"></script>
 	  <script src="/admin_dir/js/app.js"></script>
 	@endif
 </body>

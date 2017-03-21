@@ -1,26 +1,39 @@
 <template>
 	<div id="app">
 		<md-sidenav class="md-fixed main-sidebar" ref="leftSidenav">
-      <div class="top-of-side-bar">
-        <md-image md-src="./images/logo.png" style="height:100px"></md-image> 
-      </div>
-      <div class="main-sidebar-links">
-	      <md-list>
-  				<router-link :to="{ path: '/user' }" tag="md-list-item">
-						<md-icon><i class="fa fa-user"></i></md-icon><span>User</span>
-  				</router-link>
-		      <router-link :to="{ path: '/customer' }" tag="md-list-item">
-						<md-icon><i class="fa fa-users"></i></md-icon><span>Customer</span>
-  				</router-link>
-  				<router-link :to="{ path: '/deposit/history' }" tag="md-list-item">
-						<md-icon><i class="fa fa-money"></i></md-icon><span>Deposit History</span>
-  				</router-link>
-  				<router-link :to="{ path: '/plan' }" tag="md-list-item">
-						<md-icon><i class="fa fa-tint"></i></md-icon><span>Plan</span>
-  				</router-link>
-			  </md-list>
+			<div class="top-of-side-bar">
+				<md-image md-src="./images/logo.png" style="height:100px"></md-image> 
 			</div>
-	  </md-sidenav>
+			<div class="main-sidebar-links phone-viewport">
+				<md-list>
+					<md-list-item>
+				    	<router-link :to="{ path: '/user' }">
+							<i class="fa fa-user"></i><span>User</span>
+		  				</router-link>
+				    </md-list-item>
+	  				<md-list-item>
+			    		<router-link :to="{ path: '/customer' }">
+							<i class="fa fa-users"></i><span>Customer</span>
+	  					</router-link>
+	  				</md-list-item>
+	  				<md-list-item>
+	  					<router-link :to="{ path: '/deposit/history' }">
+							<i class="fa fa-money"></i><span>Deposit History</span>
+	  					</router-link>
+	  				</md-list-item>
+	  				<md-list-item>
+	  					<router-link :to="{ path: '/plan' }">
+							<i class="fa fa-tint"></i><span>Plan</span>
+	  					</router-link>
+	  				</md-list-item>
+	  				<md-list-item>
+	  					<router-link :to="{ path: '/geneology' }">
+							<i class="fa fa-sitemap"></i><span>Geneology</span>
+	  					</router-link>
+  					</md-list-item>
+			  	</md-list>
+			</div>
+		</md-sidenav>
 
 		<div class="page-content" ref="pageContent">
 		  <md-toolbar class="top-bar">
@@ -111,6 +124,27 @@ body.md-theme-app{
 				.md-list-item{
 					.md-button{
 						padding-left: 84px;
+					}
+				}
+			}
+
+			.md-list{
+				.md-list-item{
+					i{
+						display: inline-block;
+					    width: 40px;
+					    font-size: 20px;
+					}
+
+					a{
+						padding-top: 5px;
+					    padding-bottom: 5px;
+					    text-decoration: none;
+
+						&:hover{
+							color: #00bcd4;
+							background: rgba(62, 78, 86, 0.56)
+						}
 					}
 				}
 			}
