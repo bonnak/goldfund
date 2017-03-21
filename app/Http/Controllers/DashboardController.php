@@ -30,6 +30,8 @@ class DashboardController extends Controller
                                 ->where('status', 1)
                                 ->sum('amount');
 
+        $downline = auth()->user()->children()->count();
+
 
     	return [
     		'day_left'        => $day_left,
@@ -39,6 +41,7 @@ class DashboardController extends Controller
             'binary'          => $binary,
             'active_deposit'  => $active_deposit,
             'withdrawal'      => $withdrawal,
+            'downline'        => $downline,
     	];    	
     }
 }
