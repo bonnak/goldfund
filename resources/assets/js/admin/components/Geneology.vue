@@ -6,9 +6,8 @@
                         class="form-control" 
                         placeholder="Username" 
                         v-model="search_query" 
-                        @keyup="doStuff">
-				  <span class="input-group-addon"><i class="fa fa-search"></i></span>
-				
+                        @keyup="searchData">
+				  <span class="input-group-addon"><i class="fa fa-search"></i></span>				
 			</div>
             <div class="row graph-geneology">
                 <div class="col-md-3 block">
@@ -38,7 +37,7 @@
 </template>
 
 <script>
-import _ from 'lodash';
+import _ from 'lodash'
 import Api from '../api/Api'
 
 export default{
@@ -61,7 +60,7 @@ export default{
 	        });
 		},
 
-		doStuff: _.debounce(function () {
+		searchData: _.debounce(function () {
             this.loadData(this.search_query);
         }, 500)
 	},

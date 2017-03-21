@@ -8,6 +8,7 @@ use App\Deposit;
 use App\Traits\DepositEarningTrait;
 use App\Earning;
 use Carbon\Carbon;
+use App\Customer;
 
 class DepositController extends Controller
 {
@@ -15,7 +16,17 @@ class DepositController extends Controller
 
     public function history()
     {
+        $query_string = request()->exists('query') ? request()->input('query') : '';
+
     	return Deposit::with(['plan', 'owner'])
+                    ->where(function($query) use ($query_string){
+                        if($query_string != ''){
+                            if(!is_null($customer = Customer::where('username', 'like', $query_string . '%')->first()))
+                            {
+                                $query->where('cust_id', $customer->id);
+                            }   
+                        }                     
+                    })
                     ->orderBy('created_at', 'desc')
                     ->paginate(request()->input('size'));
     }

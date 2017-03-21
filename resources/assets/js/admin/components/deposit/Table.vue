@@ -1,6 +1,14 @@
 <template>
 	<md-table-card>
-    <md-table @sort="onSort">
+		<div class="search">
+		  	<input type="text" 
+                class="form-control input-sm" 
+                placeholder="Search ..." 
+                v-model="search_query" 
+                @keyup="searchData">
+			<span class="input-group-addon"><i class="fa fa-search"></i></span>				
+		</div>
+    	<md-table @sort="onSort">
 		  <md-table-header>
 		    <md-table-row>
 		    	<md-table-head>Username</md-table-head>
@@ -31,7 +39,10 @@
 		        <md-table-cell>{{ el.issue_date }}</md-table-cell>
 		        <md-table-cell>{{ el.expire_date }}</md-table-cell>
 		        <md-table-cell>
-		        	<a class="btn" href="#" @click.stop.prevent="openDialog(el.bankslip)"><i class="fa fa-eye"></i></a>
+		        	<a class="btn" href="#" @click.stop.prevent="openDialog(el.bankslip)">
+		        		<i class="fa fa-eye"></i>
+		        		<md-tooltip md-direction="top">View bankslip</md-tooltip>
+		        	</a>
 		        </md-table-cell>
 		        <md-table-cell>
 		        	<md-button 
@@ -39,11 +50,13 @@
 		        		@click.native="approveDeposit(el)"
 		        		v-if="el.status == 0">
 					    	<i class="fa fa-check"></i>
+					    	<md-tooltip md-direction="top">Approve</md-tooltip>
 					</md-button>
 		        </md-table-cell>
 		    </md-table-row>
 		  </md-table-body>
 		</md-table>
+
 		<md-table-pagination v-if="pagination.per_page <= pagination.total"
 		    :md-size="pagination.per_page"
 		    :md-total="pagination.total"
@@ -64,6 +77,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import _mixin from '../../core/mixins/table'
 
@@ -73,7 +87,8 @@ export default{
 
 	data(){
 		return {
-			contentHtml : '<div></div>'
+			contentHtml : '<div></div>',
+			search_query: ''
 		}
 	},
 
@@ -105,12 +120,16 @@ export default{
 
 	    onCloseDlg(type) {
 	    	this.contentHtml = '<div></div>'
-	    }
+	    },
+
+	    searchData: _.debounce(function () {
+            this.fetchData(this.search_query);
+        }, 500)
 	}
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .md-theme-app{
 	&.md-button{
 		&.md-raised{
@@ -123,5 +142,29 @@ export default{
 		    color: #fff;
 		}
 	}
+}
+
+.search{
+    position: relative;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
+    input{
+        border-radius: 20px;
+        width: 250px;
+    }
+
+    span{
+        border: none;
+        background: transparent;
+        padding: 0 0 0 5px;
+        font-size: 22px;
+        display: inline-block;
+        margin-right: 15px;
+    }
 }
 </style>

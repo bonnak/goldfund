@@ -45608,7 +45608,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -45637,7 +45636,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
 
-        doStuff: __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.debounce(function () {
+        searchData: __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.debounce(function () {
             this.loadData(this.search_query);
         }, 500)
     },
@@ -46036,122 +46035,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 };
 
 /***/ }),
-/* 68 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(15);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = {
-
-	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
-
-	data: function data() {
-		return {
-			contentHtml: '<div></div>'
-		};
-	},
-
-
-	computed: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapGetters"])({
-		data_grid: 'deposit/data',
-		pagination: 'deposit/pagination'
-	})),
-
-	created: function created() {
-		this.fetchData();
-	},
-	mounted: function mounted() {},
-
-
-	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
-		fetchData: 'deposit/fetchData',
-		approveDeposit: 'deposit/approve'
-	}), {
-		openDialog: function openDialog(img) {
-			this.contentHtml = '<img src="storage/' + img + '" style="max-width: 800px;">';
-			this.$refs['dialog_blankslip'].open();
-		},
-		onCloseDlg: function onCloseDlg(type) {
-			this.contentHtml = '<div></div>';
-		}
-	})
-};
-
-/***/ }),
+/* 68 */,
 /* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -46618,7 +46502,7 @@ function precision(val) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var routes = [{ path: '/user', component: __webpack_require__(103) }, { path: '/customer', component: __webpack_require__(96) }, { path: '/deposit/history', component: __webpack_require__(99) }, { path: '/plan', component: __webpack_require__(100) }, { path: '/geneology', component: __webpack_require__(95) }];
+var routes = [{ path: '/user', component: __webpack_require__(103) }, { path: '/customer', component: __webpack_require__(96) }, { path: '/deposit', component: __webpack_require__(251) }, { path: '/plan', component: __webpack_require__(100) }, { path: '/geneology', component: __webpack_require__(95) }];
 
 /* harmony default export */ __webpack_exports__["a"] = routes;
 
@@ -46776,7 +46660,7 @@ var actions = {
 
 var state = {
   data: [],
-  pagination: {}
+  pagination: new __WEBPACK_IMPORTED_MODULE_1__core_classes__["a" /* Pagination */]()
 };
 
 var getters = {
@@ -46812,9 +46696,14 @@ var mutations = {
 var actions = {
   fetchData: function fetchData(_ref3) {
     var commit = _ref3.commit;
-    var pagination = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    var query = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    var pagination = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : state.pagination;
 
-    __WEBPACK_IMPORTED_MODULE_0__api_ApiDeposit__["a" /* default */].fetchData(pagination).then(function (response) {
+    __WEBPACK_IMPORTED_MODULE_0__api_ApiDeposit__["a" /* default */].fetchData({
+      per_page: pagination.per_page,
+      page: pagination.current_page,
+      query: query
+    }).then(function (response) {
       commit('CLEAR_STORE');
       commit('RECEIVE_LANGUAGES', { body: response.data });
     });
@@ -47023,20 +46912,7 @@ exports.push([module.i, "\n.sec-block[data-v-65c42396] {\n  padding: 0;\n}\n", "
 
 
 /***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)();
-// imports
-
-
-// module
-exports.push([module.i, "\n.md-theme-app.md-button.md-raised {\n  width: 100%;\n}\n.md-theme-app.md-button i {\n  display: block;\n  margin-left: -5px;\n  color: #fff;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 93 */,
 /* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -47219,44 +47095,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(123)
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(68),
-  /* template */
-  __webpack_require__(115),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\deposit\\HistoryTable.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] HistoryTable.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-94bc58b8", Component.options)
-  } else {
-    hotAPI.reload("data-v-94bc58b8", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 99 */,
 /* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -47514,7 +47353,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": _vm._s(_vm.search_query)
     },
     on: {
-      "keyup": _vm.doStuff,
+      "keyup": _vm.searchData,
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.search_query = $event.target.value
@@ -47629,7 +47468,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('span', [_vm._v("Customer")])])], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
     attrs: {
       "to": {
-        path: '/deposit/history'
+        path: '/deposit'
       }
     }
   }, [_c('i', {
@@ -48006,81 +47845,7 @@ if (false) {
 }
 
 /***/ }),
-/* 115 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('md-table-card', [_c('md-table', {
-    on: {
-      "sort": _vm.onSort
-    }
-  }, [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Username")]), _vm._v(" "), _c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Plan")]), _vm._v(" "), _c('md-table-head', [_vm._v("Bitcoin Account")]), _vm._v(" "), _c('md-table-head', [_vm._v("Deposited Date")]), _vm._v(" "), _c('md-table-head', [_vm._v("Issue Date")]), _vm._v(" "), _c('md-table-head', [_vm._v("Expire Date")]), _vm._v(" "), _c('md-table-head', [_vm._v("Bankslip")]), _vm._v(" "), _c('md-table-head', [_vm._v("Action")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.data_grid), function(el, rowIndex) {
-    return _c('md-table-row', {
-      key: rowIndex,
-      attrs: {
-        "md-item": el
-      }
-    }, [_c('md-table-cell', [_vm._v(_vm._s(el.owner.username))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(el.amount)))]), _vm._v(" "), _c('md-table-cell', [(el.status == 0) ? _c('span', {
-      staticClass: "label label-sm label-warning"
-    }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (el.status == 1) ? _c('span', {
-      staticClass: "label label-sm label-success"
-    }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (el.status == 2) ? _c('span', {
-      staticClass: "label label-sm label-danger"
-    }, [_vm._v("Expired")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.plan.name))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.owner.bitcoin_account))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.created_at))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.issue_date))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.expire_date))]), _vm._v(" "), _c('md-table-cell', [_c('a', {
-      staticClass: "btn",
-      attrs: {
-        "href": "#"
-      },
-      on: {
-        "click": function($event) {
-          $event.stopPropagation();
-          $event.preventDefault();
-          _vm.openDialog(el.bankslip)
-        }
-      }
-    }, [_c('i', {
-      staticClass: "fa fa-eye"
-    })])]), _vm._v(" "), _c('md-table-cell', [(el.status == 0) ? _c('md-button', {
-      staticClass: "md-fab md-primary md-mini",
-      nativeOn: {
-        "click": function($event) {
-          _vm.approveDeposit(el)
-        }
-      }
-    }, [_c('i', {
-      staticClass: "fa fa-check"
-    })]) : _vm._e()], 1)], 1)
-  }))], 1), _vm._v(" "), (_vm.pagination.per_page <= _vm.pagination.total) ? _c('md-table-pagination', {
-    attrs: {
-      "md-size": _vm.pagination.per_page,
-      "md-total": _vm.pagination.total,
-      "md-page": _vm.pagination.current_page,
-      "md-page-options": [5, 10, 25, 50],
-      "md-label": "Per page"
-    },
-    on: {
-      "pagination": _vm.onPagination
-    }
-  }) : _vm._e(), _vm._v(" "), _c('md-dialog-alert', {
-    ref: "dialog_blankslip",
-    attrs: {
-      "md-content-html": _vm.contentHtml,
-      "md-ok-text": "Close"
-    },
-    on: {
-      "close": _vm.onCloseDlg
-    }
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-94bc58b8", module.exports)
-  }
-}
-
-/***/ }),
+/* 115 */,
 /* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48270,23 +48035,564 @@ if(false) {
 }
 
 /***/ }),
-/* 123 */
+/* 123 */,
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(59);
+
+
+/***/ }),
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Table_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins__["a" /* default */]],
+
+	components: {
+		_Table: __WEBPACK_IMPORTED_MODULE_2__Table_vue___default.a
+	},
+
+	data: function data() {
+		return {
+			current_view: '_Table',
+			data: null
+		};
+	}
+};
+
+/***/ }),
+/* 249 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuex__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_mixins_table__ = __webpack_require__(15);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+	mixins: [__WEBPACK_IMPORTED_MODULE_2__core_mixins_table__["a" /* default */]],
+
+	data: function data() {
+		return {
+			contentHtml: '<div></div>',
+			search_query: ''
+		};
+	},
+
+
+	computed: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapGetters"])({
+		data_grid: 'deposit/data',
+		pagination: 'deposit/pagination'
+	})),
+
+	created: function created() {
+		this.fetchData();
+	},
+	mounted: function mounted() {},
+
+
+	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapActions"])({
+		fetchData: 'deposit/fetchData',
+		approveDeposit: 'deposit/approve'
+	}), {
+		openDialog: function openDialog(img) {
+			this.contentHtml = '<img src="storage/' + img + '" style="max-width: 800px;">';
+			this.$refs['dialog_blankslip'].open();
+		},
+		onCloseDlg: function onCloseDlg(type) {
+			this.contentHtml = '<div></div>';
+		},
+
+
+		searchData: __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.debounce(function () {
+			this.fetchData(this.search_query);
+		}, 500)
+	})
+};
+
+/***/ }),
+/* 250 */,
+/* 251 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(248),
+  /* template */
+  __webpack_require__(254),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\deposit\\Index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e7b27790", Component.options)
+  } else {
+    hotAPI.reload("data-v-e7b27790", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 252 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(257)
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(249),
+  /* template */
+  __webpack_require__(253),
+  /* scopeId */
+  "data-v-45c1f934",
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\deposit\\Table.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Table.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-45c1f934", Component.options)
+  } else {
+    hotAPI.reload("data-v-45c1f934", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('md-table-card', [_c('div', {
+    staticClass: "search"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.search_query),
+      expression: "search_query"
+    }],
+    staticClass: "form-control input-sm",
+    attrs: {
+      "type": "text",
+      "placeholder": "Search ..."
+    },
+    domProps: {
+      "value": _vm._s(_vm.search_query)
+    },
+    on: {
+      "keyup": _vm.searchData,
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.search_query = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-addon"
+  }, [_c('i', {
+    staticClass: "fa fa-search"
+  })])]), _vm._v(" "), _c('md-table', {
+    on: {
+      "sort": _vm.onSort
+    }
+  }, [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Username")]), _vm._v(" "), _c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Plan")]), _vm._v(" "), _c('md-table-head', [_vm._v("Bitcoin Account")]), _vm._v(" "), _c('md-table-head', [_vm._v("Deposited Date")]), _vm._v(" "), _c('md-table-head', [_vm._v("Issue Date")]), _vm._v(" "), _c('md-table-head', [_vm._v("Expire Date")]), _vm._v(" "), _c('md-table-head', [_vm._v("Bankslip")]), _vm._v(" "), _c('md-table-head', [_vm._v("Action")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.data_grid), function(el, rowIndex) {
+    return _c('md-table-row', {
+      key: rowIndex,
+      attrs: {
+        "md-item": el
+      }
+    }, [_c('md-table-cell', [_vm._v(_vm._s(el.owner.username))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(el.amount)))]), _vm._v(" "), _c('md-table-cell', [(el.status == 0) ? _c('span', {
+      staticClass: "label label-sm label-warning"
+    }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (el.status == 1) ? _c('span', {
+      staticClass: "label label-sm label-success"
+    }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (el.status == 2) ? _c('span', {
+      staticClass: "label label-sm label-danger"
+    }, [_vm._v("Expired")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.plan.name))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.owner.bitcoin_account))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.created_at))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.issue_date))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.expire_date))]), _vm._v(" "), _c('md-table-cell', [_c('a', {
+      staticClass: "btn",
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.stopPropagation();
+          $event.preventDefault();
+          _vm.openDialog(el.bankslip)
+        }
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-eye"
+    }), _vm._v(" "), _c('md-tooltip', {
+      attrs: {
+        "md-direction": "top"
+      }
+    }, [_vm._v("View bankslip")])], 1)]), _vm._v(" "), _c('md-table-cell', [(el.status == 0) ? _c('md-button', {
+      staticClass: "md-fab md-primary md-mini",
+      nativeOn: {
+        "click": function($event) {
+          _vm.approveDeposit(el)
+        }
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-check"
+    }), _vm._v(" "), _c('md-tooltip', {
+      attrs: {
+        "md-direction": "top"
+      }
+    }, [_vm._v("Approve")])], 1) : _vm._e()], 1)], 1)
+  }))], 1), _vm._v(" "), (_vm.pagination.per_page <= _vm.pagination.total) ? _c('md-table-pagination', {
+    attrs: {
+      "md-size": _vm.pagination.per_page,
+      "md-total": _vm.pagination.total,
+      "md-page": _vm.pagination.current_page,
+      "md-page-options": [5, 10, 25, 50],
+      "md-label": "Per page"
+    },
+    on: {
+      "pagination": _vm.onPagination
+    }
+  }) : _vm._e(), _vm._v(" "), _c('md-dialog-alert', {
+    ref: "dialog_blankslip",
+    attrs: {
+      "md-content-html": _vm.contentHtml,
+      "md-ok-text": "Close"
+    },
+    on: {
+      "close": _vm.onCloseDlg
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-45c1f934", module.exports)
+  }
+}
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c(_vm.current_view, {
+    tag: "component",
+    attrs: {
+      "data": _vm.data
+    },
+    on: {
+      "show-create-view": function($event) {
+        _vm.current_view = '_Create'
+      },
+      "show-view-info": _vm.showInfoView,
+      "show-edit-view": _vm.showEditView,
+      "close-form-message": function($event) {
+        _vm.current_view = '_Table'
+      }
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-e7b27790", module.exports)
+  }
+}
+
+/***/ }),
+/* 255 */,
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-theme-app.md-button.md-raised[data-v-45c1f934] {\n  width: 100%;\n}\n.md-theme-app.md-button i[data-v-45c1f934] {\n  display: block;\n  margin-left: -5px;\n  color: #fff;\n}\n.search[data-v-45c1f934] {\n  position: relative;\n  right: 0;\n  padding: 10px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  width: 100%;\n}\n.search input[data-v-45c1f934] {\n    border-radius: 20px;\n    width: 250px;\n}\n.search span[data-v-45c1f934] {\n    border: none;\n    background: transparent;\n    padding: 0 0 0 5px;\n    font-size: 22px;\n    display: inline-block;\n    margin-right: 15px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(93);
+var content = __webpack_require__(256);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("0bfc0730", content, false);
+var update = __webpack_require__(3)("630f0601", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-94bc58b8!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./HistoryTable.vue", function() {
-     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-94bc58b8!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./HistoryTable.vue");
+   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-45c1f934&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Table.vue", function() {
+     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-45c1f934&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Table.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -48294,13 +48600,6 @@ if(false) {
  // When the module is disposed, remove the <style> tags
  module.hot.dispose(function() { update(); });
 }
-
-/***/ }),
-/* 124 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(59);
-
 
 /***/ })
 /******/ ]);
