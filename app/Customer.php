@@ -119,7 +119,7 @@ class Customer extends Authenticatable
    */
   public function allowDeposit()
   {
-    if($this->deposit()->where('status', '!=', 2)->first() !== null)
+    if($this->deposit()->where('status', '!=', 1)->first() !== null)
     {
       return false;
     }
