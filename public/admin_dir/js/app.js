@@ -46104,7 +46104,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -48042,7 +48041,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "fa fa-eye"
     })])]), _vm._v(" "), _c('md-table-cell', [(el.status == 0) ? _c('md-button', {
       staticClass: "md-raised md-primary",
-      on: {
+      nativeOn: {
         "click": function($event) {
           _vm.approveDeposit(el)
         }

@@ -25,13 +25,12 @@
 		        <md-table-cell>{{ el.owner.bitcoin_account }}</md-table-cell>
 		        <md-table-cell>{{ el.created_at }}</md-table-cell>
 		        <md-table-cell>
-		        	<!-- <md-button class="md-icon-button md-primary md-raised" @click.native="openDialog(el.bankslip)">View</md-button> -->
 		        	<a class="btn" href="#" @click.stop.prevent="openDialog(el.bankslip)"><i class="fa fa-eye"></i></a>
 		        </md-table-cell>
 		        <md-table-cell>
 		        	<md-button 
 		        		class="md-raised md-primary" 
-		        		@click="approveDeposit(el)"
+		        		@click.native="approveDeposit(el)"
 		        		v-if="el.status == 0">
 		        		Approve
 		        	</md-button>
