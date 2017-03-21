@@ -35,10 +35,4 @@ class Deposit extends Model
 	{
 		return $this->hasOne(LevelEarningCommission::class, 'deposit_id', 'id');
 	}
-
-
-	public function getFullNameAttribute() 
-	{
-        return 'data:image/jpeg;base64,' . base64_encode(\Storage::get($this->bankslip));
-    }
 }
