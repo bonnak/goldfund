@@ -1,4 +1,4 @@
-<div class="row" loading-if="vm.loading">
+<div class="row level-history" loading-if="vm.loading">
     <div class="col-md-12">
         <div class="portlet light">
             <div class="portlet-title tabbable-line">
@@ -7,6 +7,22 @@
                     <span class="caption-subject font-blue-madison bold uppercase">Level History</span>
                 </div>
             </div>
+
+            <div class="row filter-group">
+                <div class="form-group" style="width: 182px;">
+                    <label for="single" class="col-sm-4 control-label" style="margin-top: 6px;">Filter</label>
+                    <div class="col-sm-8">
+                        <select id="single" class="form-control" ng-model="vm.level" ng-change="vm.filterByLevel()">
+                            <option value="">All</option>
+                            <option value="1">Level 1</option>
+                            <option value="2">Level 2</option>  
+                            <option value="3">Level 3</option>                                          
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="portlet-body">
                 <div class="row">
                     <div class="col-sm-12">

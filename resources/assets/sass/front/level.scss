@@ -1,0 +1,15 @@
+.level-history{
+	.filter-group{
+		display: flex;
+		justify-content: end;
+
+		.form-group{
+			width: 182px;
+			margin: 0;
+
+			.control-lable{
+				margin-top: 6px;
+			}
+		}
+	}
+}
