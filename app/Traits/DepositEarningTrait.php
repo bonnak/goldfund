@@ -51,7 +51,8 @@ trait DepositEarningTrait
     {
         $deposit->owner->levels()->each(function ($upline, $key) use ($deposit){
 
-            $sponsor_level = $deposit->plan->sponsor_levels()->where('level', $key + 1)->first();           
+            $level_number = $key + 1;
+            $sponsor_level = $deposit->plan->sponsor_levels()->where('level', $level_number)->first();           
 
             if($sponsor_level === null) return false;
             if(is_null($upline->deposit) || $upline->deposit->status != 1) return;    
@@ -59,6 +60,7 @@ trait DepositEarningTrait
             $deposit->level_earning_commission()->create([
                 'cust_id' => $upline->id,
                 'amount' => $deposit->amount * $sponsor_level->commission,
+                'level_number' => $level_number
             ]);
         });
     }

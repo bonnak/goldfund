@@ -134,10 +134,8 @@ export default{
 
             var caption = new paper.PointText(new paper.Point(x_position + width/2, y_position + height + 20));
             caption.justification = 'center';
-            caption.fillColor = '#0f72bb';
-            caption.shadowColor = new paper.Color(0, 0, 0);
-            caption.shadowBlur = 10;
-            caption.shadowOffset = new paper.Point(0, 0);
+            caption.fillColor = '#ff0000';
+            caption.fontSize = '20px';
             caption.content = data.username;
             group.addChild(caption); 
 
@@ -163,10 +161,8 @@ export default{
 
                 var caption = new paper.PointText(new paper.Point(x_position + width/2, y_position + height + 20));
                 caption.justification = 'center';
-                caption.fillColor = '#0f72bb';
-                caption.shadowColor = new paper.Color(0, 0, 0);
-                caption.shadowBlur = 10;
-                caption.shadowOffset = new paper.Point(0, 0);
+                caption.fillColor = '#ff0000';
+                caption.fontSize = '20px';
                 caption.content = data.username;
                 group.addChild(caption);            
             }
@@ -199,10 +195,8 @@ export default{
 
                 var caption = new paper.PointText(new paper.Point(x_position + width/2, y_position + height + 20));
                 caption.justification = 'center';
-                caption.fillColor = '#0f72bb';
-                caption.shadowColor = new paper.Color(0, 0, 0);
-                caption.shadowBlur = 10;
-                caption.shadowOffset = new paper.Point(0, 0);
+                caption.fillColor = '#ff0000';
+                caption.fontSize = '20px';
                 caption.content = data.username;
                 group.addChild(caption);            
             }
@@ -233,7 +227,6 @@ export default{
 		position: absolute;
 		width: 300px;
 		z-index: 1;
-		background: rgba(40,10,0,.2);
 		padding: 5px;
 		border-radius: 5px;
 		margin: 0;
