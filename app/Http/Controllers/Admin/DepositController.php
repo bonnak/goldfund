@@ -21,10 +21,11 @@ class DepositController extends Controller
     	return Deposit::with(['plan', 'owner'])
                     ->where(function($query) use ($query_string){
                         if($query_string != ''){
-                            if(!is_null($customer = Customer::where('username', 'like', $query_string . '%')->first()))
-                            {
-                                $query->where('cust_id', $customer->id);
-                            }   
+                            $customer = Customer::where('username', 'like', $query_string . '%')
+                                                ->orWhere('email', 'like', $query_string . '%')
+                                                ->get();
+
+                            $query->whereIn('cust_id', is_null($customer) ? '' : $customer->pluck('id'));
                         }                     
                     })
                     ->orderBy('created_at', 'desc')

@@ -65,4 +65,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 
 	Route::post('/photo/upload', 'DepositController@upload');
+
+
+	//Level sponsor 
+	Route::get('/plan/levels', 'LevelController@get');
 });
