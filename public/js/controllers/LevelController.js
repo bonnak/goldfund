@@ -6,7 +6,8 @@ angular.module('MetronicApp').controller('LevelController', [
     function($scope, $anchorScroll, $state, Restful) {
         var vm = this;
         vm.earnings = [];
-        vm.level = '';
+        vm.level_number = '';
+        vm.levels = [];
 
         vm.getHistory = function(params){
             vm.loading = true;
@@ -18,11 +19,18 @@ angular.module('MetronicApp').controller('LevelController', [
         };
 
         vm.filterByLevel = function(){
-            Restful.get('api/earning/level/' + vm.level).success(function(data){
+            Restful.get('api/earning/level/' + vm.level_number).success(function(data){
                 vm.earnings = data;
             })
         };
 
+        vm.fetchLevel = function(){
+            Restful.get('api/plan/levels').success(function(data){
+                vm.levels = data;
+            })
+        };
+
+        vm.fetchLevel();
         vm.getHistory();
 
     }
