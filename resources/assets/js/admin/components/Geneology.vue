@@ -139,11 +139,15 @@ export default{
             caption.content = data.username;
             group.addChild(caption); 
 
+            var rect = new paper.Path.Rectangle((x_position + width/2) - 200/2, (y_position + height/2) - 200/ 2, 200, 200); 
+            rect.strokeColor = 'black';
+            group.addChild(rect); 
+
             while(data.left !== null){  
                 var path_l = new paper.Path();
                 path_l.strokeColor = '#000';
-                path_l.add(new paper.Point(x_position + width/2, y_position + height));   
-                path_l.add(new paper.Point((x_position + width/2) - x_gap, (y_position + height/2) + y_gap));             
+                path_l.add(new paper.Point(x_position + width/2, y_position + height + 200/4));   
+                path_l.add(new paper.Point((x_position + width/2) - x_gap, (y_position + height/2) + y_gap - 200/4));             
                 group.addChild(path_l);
 
                 data = data.left;
@@ -164,7 +168,11 @@ export default{
                 caption.fillColor = '#ff0000';
                 caption.fontSize = '20px';
                 caption.content = data.username;
-                group.addChild(caption);            
+                group.addChild(caption); 
+
+                var rect = new paper.Path.Rectangle((x_position + width/2) - 200/2, (y_position + height/2) - 200/ 2, 200, 200); 
+                rect.strokeColor = 'black';
+                group.addChild(rect);          
             }
 
 
@@ -176,8 +184,8 @@ export default{
             while(data.right !== null){  
                 var path_r = new paper.Path();
                 path_r.strokeColor = '#000';
-                path_r.add(new paper.Point(x_position + width/2, y_position + height));   
-                path_r.add(new paper.Point((x_position + width/2) + x_gap, (y_position + height/2) + y_gap));             
+                path_r.add(new paper.Point(x_position + width/2, y_position + height + 200/4));   
+                path_r.add(new paper.Point((x_position + width/2) + x_gap, (y_position + height/2) + y_gap - 200/4));             
                 group.addChild(path_r);
 
                 data = data.right;
@@ -198,7 +206,11 @@ export default{
                 caption.fillColor = '#ff0000';
                 caption.fontSize = '20px';
                 caption.content = data.username;
-                group.addChild(caption);            
+                group.addChild(caption);     
+
+                var rect = new paper.Path.Rectangle((x_position + width/2) - 200/2, (y_position + height/2) - 200/ 2, 200, 200); 
+                rect.strokeColor = 'black';
+                group.addChild(rect);        
             }
 
             paper.view.scale(0.4);
