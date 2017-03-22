@@ -165,7 +165,7 @@
                                     <li>Profit: @{{plan.daily * 100 * plan.duration }}%</li>
                                     <li>24/7 Customer Support</li>
                                 </ul>
-                                <a class="btn blue btn-success btn-round m-top-40">Deposit</a>
+                                <a class="btn blue btn-success btn-round m-top-40" href="/login">Deposit</a>
                             </div>
                         </div>
                     </div>

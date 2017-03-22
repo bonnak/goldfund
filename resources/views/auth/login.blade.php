@@ -70,13 +70,19 @@
 
                                 <div class="form-group">
                                     <div class="col-md-8 col-md-offset-4">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-company">
                                             Login
                                         </button>
 
                                         <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                             Forgot Your Password?
                                         </a>
+                                        <div>
+                                            Don't have an account!
+                                            <a href="{{ url('/register') }}">
+                                                Register Account
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
