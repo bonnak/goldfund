@@ -13,13 +13,15 @@
 import { mapGetters, mapActions } from 'vuex'
 import _mixin from '../../core/mixins'
 import _Table from './Table.vue'
+import _Info from './Info.vue'
 
 export default{
 
 	mixins: [_mixin],
 
 	components: {
-		_Table
+		_Table,
+		_Info
 	},
 
 	data(){
