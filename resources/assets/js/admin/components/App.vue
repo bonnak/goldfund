@@ -239,3 +239,19 @@ body.md-theme-app{
 	}
 }
 </style>
+
+<style lang="scss">
+.md-theme-app.md-button:not([disabled]).md-primary.md-fab{
+	background-color: #5f6b67 !important;
+}
+
+.label-gold{
+	background-color: #cbb956;
+}
+.label-basic{
+	background-color: #d77ade;
+}
+.label-platinum{
+	background-color: #c5c5c5;
+}
+</style>

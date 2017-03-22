@@ -12,13 +12,10 @@
 		  <md-table-header>
 		    <md-table-row>
 		    	<md-table-head>Username</md-table-head>
+		    	<md-table-head>Email</md-table-head>
 		    	<md-table-head>Amount</md-table-head>
 		    	<md-table-head>Status</md-table-head>
 		    	<md-table-head>Plan</md-table-head>
-		    	<md-table-head>Bitcoin Account</md-table-head>
-		    	<md-table-head>Deposited Date</md-table-head>
-		    	<md-table-head>Issue Date</md-table-head>
-		    	<md-table-head>Expire Date</md-table-head>
 		    	<md-table-head>Bankslip</md-table-head>
 		    	<md-table-head>Action</md-table-head>
 		    </md-table-row>
@@ -26,7 +23,8 @@
 
 		  <md-table-body>
 		    <md-table-row v-for="(el, rowIndex) in data_grid" :key="rowIndex" :md-item="el">
-		    	<md-table-cell>{{ el.owner.username }}</md-table-cell>
+	    		<md-table-cell>{{ el.owner.username }}</md-table-cell>
+	    		<md-table-cell>{{ el.owner.email }}</md-table-cell>
 		        <md-table-cell>{{ el.amount | currency }}</md-table-cell>
 		        <md-table-cell>
 		        	<span class="label label-sm label-warning" v-if="el.status == 0">Pending</span>
@@ -34,12 +32,8 @@
 		        	<span class="label label-sm label-danger" v-if="el.status == 2">Expired</span>
 		        </md-table-cell>
 		        <md-table-cell>{{ el.plan.name }}</md-table-cell>
-		        <md-table-cell>{{ el.owner.bitcoin_account }}</md-table-cell>
-		        <md-table-cell>{{ el.created_at }}</md-table-cell>
-		        <md-table-cell>{{ el.issue_date }}</md-table-cell>
-		        <md-table-cell>{{ el.expire_date }}</md-table-cell>
 		        <md-table-cell>
-		        	<a class="btn" href="#" @click.stop.prevent="openDialog(el.bankslip)">
+		        	<a class="btn" href="#" @click.stop.prevent="openDialog(el)">
 		        		<i class="fa fa-eye"></i>
 		        		<md-tooltip md-direction="top">View bankslip</md-tooltip>
 		        	</a>
@@ -51,6 +45,12 @@
 		        		v-if="el.status == 0">
 					    	<i class="fa fa-check"></i>
 					    	<md-tooltip md-direction="top">Approve</md-tooltip>
+					</md-button>
+					<md-button 
+		        		class="md-fab md-primary md-mini"
+		        		@click.native="showViewInfo(el)">
+					    	<i class="fa fa-eye"></i>
+					    	<md-tooltip md-direction="top">View</md-tooltip>
 					</md-button>
 		        </md-table-cell>
 		    </md-table-row>
@@ -112,9 +112,11 @@ export default{
 	  		approveDeposit: 'deposit/approve'
 	  	}),
 
-	  	openDialog(img)
+	  	openDialog(data)
 	  	{
-	  		this.contentHtml = '<img src="storage/' + img + '" style="max-width: 800px;">';
+	  		this.contentHtml = '<div style="width: 100%; text-align: center;"><b>Bitcoin address</b></div>' +
+	  					'<div style="width: 100%; text-align: center;">'+ data.owner.bitcoin_account + '</div>' + 
+	  					'<img src="storage/' + data.bankslip + '" style="max-width: 800px;">';
 	  		this.$refs['dialog_blankslip'].open();
 	  	},
 
