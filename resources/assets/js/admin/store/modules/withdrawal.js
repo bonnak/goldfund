@@ -1,4 +1,4 @@
-import Api from '../../api/ApiDeposit'
+import Api from '../../api/ApiWithdrawal'
 import { Pagination } from '../../core/classes'
 
 const state = {

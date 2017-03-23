@@ -19,6 +19,7 @@ class CreateEarningsTable extends Migration
             $table->integer('plan_id')->unsigned();
             $table->integer('deposit_id')->unsigned();
             $table->float('amount');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

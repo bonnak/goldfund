@@ -23,6 +23,7 @@ class DepositController extends Controller
                         if($query_string != ''){
                             $customer = Customer::where('username', 'like', $query_string . '%')
                                                 ->orWhere('email', 'like', $query_string . '%')
+                                                ->orWhere('bitcoin_account', 'like', $query_string . '%')
                                                 ->get();
 
                             $query->whereIn('cust_id', is_null($customer) ? '' : $customer->pluck('id'));
@@ -32,10 +33,9 @@ class DepositController extends Controller
                     ->paginate(request()->input('size'));
     }
 
-    public function approve($id)
+    public function approve(Request $request)
     {
-      	$deposit = $this->activateDepositAccount($id);
-              
+      	$deposit = $this->activateDepositAccount($request->id);              
         $this->ownerReceiveDailyEarning($deposit);
         $this->sponsorReceiveCommission($deposit); 
         $this->levelsReceiveCommission($deposit); 

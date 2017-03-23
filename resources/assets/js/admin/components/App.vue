@@ -22,6 +22,11 @@
 	  					</router-link>
 	  				</md-list-item>
 	  				<md-list-item>
+	  					<router-link :to="{ path: '/withdrawal' }">
+							<i class="fa fa-dollar"></i><span>Withdrawal History</span>
+	  					</router-link>
+	  				</md-list-item>
+	  				<md-list-item>
 	  					<router-link :to="{ path: '/plan' }">
 							<i class="fa fa-tint"></i><span>Plan</span>
 	  					</router-link>
@@ -241,8 +246,8 @@ body.md-theme-app{
 </style>
 
 <style lang="scss">
-.md-theme-app.md-button:not([disabled]).md-primary.md-fab{
-	background-color: #5f6b67 !important;
+.md-theme-app.md-button:not([disabled]).md-green.md-fab{
+	background-color: #47a567;
 }
 
 .label-gold{
@@ -253,5 +258,13 @@ body.md-theme-app{
 }
 .label-platinum{
 	background-color: #c5c5c5;
+}
+
+.md-table-cell.flex-end-action{
+	.md-table-cell-container{
+		display: flex !important;
+		align-items: center !important;
+		justify-content: flex-end !important;
+	}
 }
 </style>

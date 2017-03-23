@@ -10,7 +10,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 	Route::get('/customers', 'Admin\CustomerController@customers');
 
 	Route::get('/deposit/history', 'Admin\DepositController@history');
-	Route::post('/deposit/{id}/approve', 'Admin\DepositController@approve');
+	Route::post('/deposit/approve', 'Admin\DepositController@approve');
 
 	//Route::post('/earning/money/daily', 'Admin\EarningController@sendDailyMoney');
 	Route::post('/earning/money/daily', 'Admin\EarningController@sendDailyMoney');
@@ -24,6 +24,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 
 	//Geneology
 	Route::get('/geneology/json', 'Admin\GeneologyController@getData');
+
+	//Withdrawal
+	Route::get('/withdrawal', 'Admin\WithdrawalController@getData');
+	Route::post('/withdrawal/approve', 'Admin\WithdrawalController@approve');
 });
 
 
