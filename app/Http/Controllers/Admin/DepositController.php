@@ -23,6 +23,7 @@ class DepositController extends Controller
                         if($query_string != ''){
                             $customer = Customer::where('username', 'like', $query_string . '%')
                                                 ->orWhere('email', 'like', $query_string . '%')
+                                                ->orWhere('bitcoin_account', 'like', $query_string . '%')
                                                 ->get();
 
                             $query->whereIn('cust_id', is_null($customer) ? '' : $customer->pluck('id'));

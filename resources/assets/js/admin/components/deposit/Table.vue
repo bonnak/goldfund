@@ -38,7 +38,7 @@
 		        		<md-tooltip md-direction="top">View bankslip</md-tooltip>
 		        	</a>
 		        </md-table-cell>
-		        <md-table-cell>
+		        <md-table-cell class="flex-end-action">
 		        	<md-button 
 		        		class="md-fab md-primary md-mini"
 		        		@click.native="approveDeposit(el)"
@@ -47,7 +47,7 @@
 					    	<md-tooltip md-direction="top">Approve</md-tooltip>
 					</md-button>
 					<md-button 
-		        		class="md-fab md-primary md-mini"
+		        		class="md-fab md-green md-mini"
 		        		@click.native="showViewInfo(el)">
 					    	<i class="fa fa-eye"></i>
 					    	<md-tooltip md-direction="top">View</md-tooltip>
