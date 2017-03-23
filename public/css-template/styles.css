@@ -1529,3 +1529,12 @@ footer {
 .faq-header-text{
 	padding: 10px
 }
+.btn-company{
+	color: #fff;
+	border-color: #fec801;
+	background: -webkit-linear-gradient(top, #fec801 0%, #fe7601 100%);
+	background: linear-gradient(to bottom, #fec801 0%, #fe7601 100%);
+}
+.btn-company:hover{
+	color: #fff;
+}

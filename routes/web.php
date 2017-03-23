@@ -51,8 +51,8 @@ Route::get('/term', function(){
 	return view('term');
 });
 
-Route::get('/news', function(){
-	return view('news');
+Route::get('/plan', function(){
+	return view('plan');
 });
 
 Route::get('/faq', 'FaqController@get');

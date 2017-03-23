@@ -76,15 +76,17 @@ Pricint fiv
     padding: 10px 50px;
     display: inline-block;
     border-radius: 30px;
-    background-color: #179880;
-    border-color: #21A476;
+    border-color: #fec801;
+    background: -webkit-linear-gradient(top, #fec801 0%, #fe7601 100%);
+    background: linear-gradient(to bottom, #fec801 0%, #fe7601 100%);
 }
 
 
 .bs-five-area .bs-five.active .btn.btn-success,
 .bs-five-area .bs-five:hover.bs-five .btn.btn-success{
-    /*background: #3598dc;*/
-    /*color: #fff;*/
+    border: 1px solid #fec801;
+    background: -webkit-linear-gradient(top, #fec801 0%, #fe8d01 100%);
+    background: linear-gradient(to bottom, #fec801 0%, #fe8d01 100%);
 }
 .bs-five-area .bs-five.active,
 .bs-five-area .bs-five.active ul li,
