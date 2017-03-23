@@ -74,7 +74,7 @@
                                 <li><a href="/register">Register</a></li>
                             @endif
                             <li><a href="{{url('faq')}}">FAQ</a></li>
-                            <li><a href="{{url('news')}}">News</a></li>
+                            <li><a href="{{url('plan')}}">Plan</a></li>
                             <li><a href="{{url('support')}}">Support</a></li>
                             <li><a href="{{url('about-us')}}">About Us</a></li>
                             <li><a href="{{url('contact-us')}}">Contact</a></li>
@@ -188,7 +188,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-6 btn-submit-wrap">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-company">
                                             Send
                                         </button>
                                     </div>
