@@ -173,11 +173,11 @@
             </div>
         </div>
         <div class="col-md-12 text-center">
-            <img src="images/plan.png" class="img-reponsive" style="margin: 0 auto;"/>
+            <img src="images/plan/plan1.png" class="img-reponsive" style="margin: 0 auto;"/>
         </div>
     </div>
 </section>
-<section>
+{{-- <section>
     <div class="container">
             <h2>Advantage of company</h2>
             <div class="col-md-6 col-sm-6 wow fadeInLeft animated"
@@ -261,7 +261,7 @@
             </div> <!-- / END FEATURES COLUMN RIGHT -->
         </div> <!-- / END FEATURES -->
     </div> <!-- / END CONTAINER -->
-</section> 
+</section>  --}}
 
 @endsection
 

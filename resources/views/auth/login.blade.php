@@ -74,7 +74,7 @@
                                             Login
                                         </button>
 
-                                        <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                                        <a class="btn btn-link" href="{{ url('/password/reset') }}" style="color: #e96656;">
                                             Forgot Your Password?
                                         </a>
                                         <div>
