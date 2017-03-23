@@ -8,12 +8,15 @@ angular.module('MetronicApp').controller('WithdrawalController', [
         vm.withdraw_amount = '';
         vm.balance = '';
         vm.withdrawals = [];
+        vm.error = '';
 
         vm.save = function(){
             vm.loading = true;
 
             Restful.save('api/withdrawal/cashout', { withdraw_amount: vm.withdraw_amount}).success(function(data){
                 $state.go('withdrawal_history');
+            }).error(function(err_response){
+                vm.error = err_response.error;
             }).finally(function () {
                 vm.loading= false;
             });

@@ -15,8 +15,7 @@
 		    	<md-table-head>Email</md-table-head>
 		    	<md-table-head>Amount</md-table-head>
 		    	<md-table-head>Status</md-table-head>
-		    	<md-table-head>Plan</md-table-head>
-		    	<md-table-head>Bankslip</md-table-head>
+		    	<md-table-head>Bitcoin Address</md-table-head>
 		    	<md-table-head>Action</md-table-head>
 		    </md-table-row>
 		  </md-table-header>
@@ -29,28 +28,19 @@
 		        <md-table-cell>
 		        	<span class="label label-sm label-warning" v-if="el.status == 0">Pending</span>
 		        	<span class="label label-sm label-success" v-if="el.status == 1">Approved</span>
-		        	<span class="label label-sm label-danger" v-if="el.status == 2">Expired</span>
 		        </md-table-cell>
-		        <md-table-cell>{{ el.plan.name }}</md-table-cell>
 		        <md-table-cell>
 		        	<a class="btn" href="#" @click.stop.prevent="openDialog(el)">
 		        		<i class="fa fa-eye"></i>
-		        		<md-tooltip md-direction="top">View bankslip</md-tooltip>
 		        	</a>
 		        </md-table-cell>
 		        <md-table-cell class="flex-end-action">
 		        	<md-button 
 		        		class="md-fab md-primary md-mini"
-		        		@click.native="approveDeposit(el)"
+		        		@click.native="approveWithdrawal(el)"
 		        		v-if="el.status == 0">
 					    	<i class="fa fa-check"></i>
 					    	<md-tooltip md-direction="top">Approve</md-tooltip>
-					</md-button>
-					<md-button 
-		        		class="md-fab md-green md-mini"
-		        		@click.native="showViewInfo(el)">
-					    	<i class="fa fa-eye"></i>
-					    	<md-tooltip md-direction="top">View</md-tooltip>
 					</md-button>
 		        </md-table-cell>
 		    </md-table-row>
@@ -70,7 +60,7 @@
 		  :md-content-html="contentHtml"
 		  md-ok-text="Close"
 		   @close="onCloseDlg"
-		  ref="dialog_blankslip">
+		  ref="dialog_bitcoin_address">
 		</md-dialog-alert>
 
   </md-table-card>
@@ -94,8 +84,8 @@ export default{
 
 	computed: {
 	    ...mapGetters({
-	      data_grid: 'deposit/data',
-	      pagination: 'deposit/pagination'
+	      data_grid: 'withdrawal/data',
+	      pagination: 'withdrawal/pagination'
 	    })
 	},
 
@@ -108,16 +98,15 @@ export default{
 
 	methods:{
 		...mapActions({
-	  		fetchData: 'deposit/fetchData',
-	  		approveDeposit: 'deposit/approve'
+	  		fetchData: 'withdrawal/fetchData',
+	  		approveWithdrawal: 'withdrawal/approve'
 	  	}),
 
 	  	openDialog(data)
 	  	{
 	  		this.contentHtml = '<div style="width: 100%; text-align: center;"><b>Bitcoin address</b></div>' +
-	  					'<div style="width: 100%; text-align: center;">'+ data.owner.bitcoin_account + '</div>' + 
-	  					'<img src="storage/' + data.bankslip + '" style="max-width: 800px;">';
-	  		this.$refs['dialog_blankslip'].open();
+	  					'<div style="width: 100%; text-align: center;">'+ data.owner.bitcoin_account + '</div>';
+	  		this.$refs['dialog_bitcoin_address'].open();
 	  	},
 
 	    onCloseDlg(type) {

@@ -6,6 +6,7 @@ import user from './modules/user'
 import customer from './modules/customer'
 import deposit from './modules/deposit'
 import plan from './modules/plan'
+import withdrawal from './modules/withdrawal'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
   	user,
     customer,
     deposit,
-    plan
+    plan,
+    withdrawal
   }
 })

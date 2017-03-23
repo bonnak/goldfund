@@ -18,6 +18,8 @@ class CreateLevelEarningCommissionsTable extends Migration
             $table->integer('cust_id')->unsigned();
             $table->integer('deposit_id')->unsigned();
             $table->float('amount');
+            $table->integer('level_number');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

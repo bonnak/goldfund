@@ -21,11 +21,21 @@ class DashboardController extends Controller
                             ->first();
 
     	$day_left = $deposit !== null ? Carbon::createFromFormat('Y-m-d', $deposit->expire_date)->diffInDays(Carbon::today()) : 0;
-    	$earning = Earning::where('cust_id', auth()->user()->id)->sum('amount');
-        $sponsor = SponsorEarningCommission::where('sponsor_id', auth()->user()->id)->sum('amount');
-        $level = LevelEarningCommission::where('cust_id', auth()->user()->id)->sum('amount');
-        $binary = BinaryEarningCommission::where('cust_id', auth()->user()->id)->sum('amount');
-        $withdrawal = Withdrawal::where('cust_id', auth()->user()->id)->sum('amount');
+    	$earning = Earning::where('cust_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
+        $sponsor = SponsorEarningCommission::where('sponsor_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
+        $level = LevelEarningCommission::where('cust_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
+        $binary = BinaryEarningCommission::where('cust_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
+        $withdrawal = Withdrawal::where('cust_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
         $active_deposit = Deposit::where('cust_id', auth()->user()->id)
                                 ->where('status', 1)
                                 ->sum('amount');

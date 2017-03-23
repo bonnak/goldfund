@@ -8,28 +8,47 @@ use App\Earning;
 use App\SponsorEarningCommission;
 use App\BinaryEarningCommission;
 use App\Withdrawal;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class WithdrawalController extends Controller
 {
     protected function getBalance()
     {
-    	//$earning = Earning::where('cust_id', auth()->user()->id)->sum('amount');
-        $sponsor = SponsorEarningCommission::where('sponsor_id', auth()->user()->id)->sum('amount');
-        $binary = BinaryEarningCommission::where('cust_id', auth()->user()->id)->sum('amount');
-        $withdrawal = Withdrawal::where('cust_id', auth()->user()->id)->sum('amount');
+    	$earning = Earning::where('cust_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
+        $sponsor = SponsorEarningCommission::where('sponsor_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
+        $binary = BinaryEarningCommission::where('cust_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
+        $withdrawal = Withdrawal::where('cust_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
 
 
-    	return ($sponsor + $binary) - $withdrawal; 
+    	return ($earning + $sponsor + $binary) - $withdrawal; 
     }
 
     public function cashOut(Request $request)
     {
-    	$balance = $this->getBalance(); 
+        if(auth()->user()->is_active != 1) 
+        {
+            throw new HttpException(403, 'Your account is inactive or expiry.');
+        }
 
-    	if($request->withdraw_amount > $balance || $request->withdraw_amount <= 0)
+
+    	$balance = $this->getBalance(); 
+    	if($request->withdraw_amount > $balance)            
     	{
-    		return response()->json('Not allow to withdraw this amount', 403);
+    		throw new HttpException(403, 'Not allow to withdraw more than your balance.');
     	}
+
+        if($request->withdraw_amount < 10 || $request->withdraw_amount > 500)
+        {
+            throw new HttpException(403, 'Withdrawal between 10 to 500 per day.');
+        }
 
     	return Withdrawal::create([
     		'cust_id'	=> auth()->user()->id,
