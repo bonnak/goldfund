@@ -23,6 +23,7 @@ angular.module('MetronicApp').controller('DepositController', [
             is_completed : false,
             in_progress : false
         };
+        vm.allow_deposited = false;
 
         vm.save = function(){
             if (!$scope.depositForm.$valid) {
@@ -43,11 +44,14 @@ angular.module('MetronicApp').controller('DepositController', [
         };
 
         vm.getHistory = function(params){
-            vm.loading = true;
             Restful.get('api/deposit/history').success(function(data){
                 vm.deposits = data;
-            }).finally(function(){
-                vm.loading = false;
+
+                vm.deposits.forEach(function(deposit){
+                    if(deposit.status !== 0 && deposit.status !== 1){
+                        vm.allow_deposited = true;
+                    }
+                });
             });
         };
 
