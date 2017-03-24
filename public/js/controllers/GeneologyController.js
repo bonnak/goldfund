@@ -23,6 +23,7 @@ angular.module('MetronicApp')
             direction               : ''
         };
         vm.errors = [];
+        vm.downline_name = '';
 
         Restful.get('/getCountry').success(function(data){
             vm.countries = data;
@@ -61,6 +62,19 @@ angular.module('MetronicApp')
             vm.model.agree_term_condition = '';
         }
 
+        vm.searchChild = function(downline_name){
+            Restful.get('api/binary/json?query_username=' + downline_name).success(function(data){
+                vm.binary_tree = data;
+            });
+        }
+
+        $scope.$watch('vm.downline_name', function(downline_name) {
+            setTimeout(function(){                
+                //if(downline_name === '') return;
+                vm.searchChild(downline_name);
+            }, 700);
+        }, true);
+
         vm.loadTree();
     }
 ])
@@ -68,22 +82,13 @@ angular.module('MetronicApp')
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
-            scope.$watch('vm.binary_tree',function(treeValue) {
-                if(treeValue === undefined) return;
+            scope.$watch('vm.binary_tree',function(treeValue) {               
 
                 var path;
                 paper.setup(element.get(0));
-                // var tool = new paper.Tool();
-                // tool.onMouseDown = function (event) {
-                //     path = new paper.Path();
-                //     path.strokeColor = 'black';
-                // };
-                // tool.onMouseDrag = function (event) {
-                //     path.add(event.point);
-                // };
-                // tool.onMouseUp = function (event) {
-                //     //nothing special here
-                // };
+                var group = new paper.Group();
+
+                if(treeValue === undefined || treeValue == '') return;
 
                 var internalHandler = function(event)
                 {
@@ -126,7 +131,6 @@ angular.module('MetronicApp')
                 
                 var data = treeValue;
 
-                var group = new paper.Group();
                 var x_position_org = 500;
                 var y_position_org = 0;
                 var x_position = x_position_org;
