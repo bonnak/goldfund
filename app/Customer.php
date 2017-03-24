@@ -55,6 +55,11 @@ class Customer extends Authenticatable
     return $this->hasMany(Deposit::class, 'cust_id', 'id');
   }
 
+  public function deposit()
+  {
+    return $this->hasOne(Deposit::class, 'cust_id', 'id')->where('status', 1);
+  }
+
   public function binary_earning_commissions()
   {
     return $this->hasMany(BinaryEarningCommission::class, 'cust_id', 'id');
