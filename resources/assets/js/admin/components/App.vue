@@ -36,6 +36,11 @@
 							<i class="fa fa-sitemap"></i><span>Geneology</span>
 	  					</router-link>
   					</md-list-item>
+  					<md-list-item>
+	  					<router-link :to="{ path: '/company/profile' }">
+							<i class="fa fa-building"></i><span>Company Profile</span>
+	  					</router-link>
+  					</md-list-item>
 			  	</md-list>
 			</div>
 		</md-sidenav>
