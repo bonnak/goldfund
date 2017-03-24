@@ -23,7 +23,7 @@ angular.module('MetronicApp').controller('DepositController', [
             is_completed : false,
             in_progress : false
         };
-        vm.allow_deposited = false;
+        vm.allow_deposited = null;
 
         vm.save = function(){
             if (!$scope.depositForm.$valid) {
@@ -47,11 +47,19 @@ angular.module('MetronicApp').controller('DepositController', [
             Restful.get('api/deposit/history').success(function(data){
                 vm.deposits = data;
 
-                vm.deposits.forEach(function(deposit){
-                    if(deposit.status !== 0 && deposit.status !== 1){
-                        vm.allow_deposited = true;
-                    }
-                });
+                if(vm.deposits.length === 0){
+                    vm.allow_deposited = true;
+                }else if(vm.deposits.length >0){
+                    vm.deposits.forEach(function(deposit){
+                        if(deposit.status !== 0 && deposit.status !== 1){
+                            vm.allow_deposited = true;
+                        }
+                    });
+                }else{
+                    vm.allow_deposited = false;
+                }
+
+                
             });
         };
 
@@ -129,13 +137,15 @@ angular.module('MetronicApp').controller('DepositController', [
                         console.log(e);
                         //$('#preview #blah').attr('src', e.target.result);
                         vm.src_upload = e.target.result;//true;
+                        console.log(vm.src_upload);
                     };
 
                     reader.readAsDataURL(input.files[0]);
                 }
             };
 
-            $("#bankslip-file").change(function(){
+            $("#bankslip-file").on("change", function(){
+                console.log('dfd');
                 previewImage(this);
             });
         };
@@ -144,7 +154,7 @@ angular.module('MetronicApp').controller('DepositController', [
         vm.getPlans();
         vm.getHistory();
         vm.initialConfigUpload();
-        $scope.$on('$viewContentLoaded', function() {});        
+        $scope.$on('$viewContentLoaded', function() {});  
     }
 ]);
 
