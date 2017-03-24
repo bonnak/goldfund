@@ -38,9 +38,9 @@ class DepositController extends Controller
     	]);
 
     	// Broadcast a memerber just deposit.
-        event(new MemberDeposited(
-            Deposit::with('owner')->where('id', $deposit->id)->first()
-        ));
+        // event(new MemberDeposited(
+        //     Deposit::with('owner')->where('id', $deposit->id)->first()
+        // ));
 
         return response()->json($deposit->toArray());
     }

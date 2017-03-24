@@ -79,4 +79,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 	//Company profile
 	Route::get('company/profile', 'CompanyProfileController@getData');
+
+
+	// Customer send mail
+	Route::post('customer/message', 'UserController@sendMessage');
 });
