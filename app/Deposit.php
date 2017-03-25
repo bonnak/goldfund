@@ -34,7 +34,7 @@ class Deposit extends Model
 
 	public function level_earning_commission()
 	{
-		return $this->hasOne(LevelEarningCommission::class, 'deposit_id', 'id');
+		return $this->hasMany(LevelEarningCommission::class, 'deposit_id', 'id');
 	}
 
 	public function daily_earning()

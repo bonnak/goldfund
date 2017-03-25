@@ -43,7 +43,7 @@ class PlansTableSeeder extends Seeder
         $plan2->sponsor_levels()->createMany([
             [ 'level' => 1, 'type' => 'I', 'commission' => 0.05 ],
             [ 'level' => 2, 'type' => 'I', 'commission' => 0.03 ],
-            [ 'level' => 2, 'type' => 'I', 'commission' => 0.02 ],
+            [ 'level' => 3, 'type' => 'I', 'commission' => 0.02 ],
         ]);
 
         $plan3 = factory(Plan::class)->create([ 

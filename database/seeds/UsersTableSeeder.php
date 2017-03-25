@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
 
     	User::truncate();
 
-    	factory(User::class)->create(['username' => 'admin']);
-        factory(User::class, 20)->create();
+    	factory(User::class)->create(['username' => 'admin', 'password' => 'Admin@Secret']);
+        //factory(User::class, 20)->create();
     }
 }
