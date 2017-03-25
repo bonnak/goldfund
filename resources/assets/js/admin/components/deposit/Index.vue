@@ -1,10 +1,10 @@
 <template>
 	<div>
 	    <component :is="current_view" :data="data"
-	    		@show-create-view="current_view = '_Create'"	 
-	    		@show-view-info="showInfoView"     		
-	    		@show-edit-view="showEditView"
-	    		@close-form-message="current_view = '_Table'">
+	    		@show-create="current_view = '_Create'"	 
+	    		@show-view="showView"     		
+	    		@show-edit="showEdit"
+	    		@close-form="current_view = '_Table'">
 	  	</component>
   </div>
 </template>
@@ -13,7 +13,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import _mixin from '../../core/mixins'
 import _Table from './Table.vue'
-import _Info from './Info.vue'
+import _View from './View.vue'
 
 export default{
 
@@ -21,7 +21,7 @@ export default{
 
 	components: {
 		_Table,
-		_Info
+		_View
 	},
 
 	data(){
