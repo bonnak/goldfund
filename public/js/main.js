@@ -524,4 +524,9 @@ MetronicApp.run(["$rootScope", "settings", "$state", "$http", function($rootScop
         'X-CSRF-TOKEN': window.Laravel.csrfToken,
         'X-Requested-With': 'XMLHttpRequest'
     };
+
+    axios.defaults.headers.common = {
+        'X-CSRF-TOKEN': window.Laravel.csrfToken,
+        'X-Requested-With': 'XMLHttpRequest'
+    };
 }]);

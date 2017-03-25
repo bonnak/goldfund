@@ -110,13 +110,13 @@ MetronicApp.directive('upload', ['uploadManager', function factory(uploadManager
                     uploadManager.setProgress(progress);
                 },
                 done: function (e, data) {
-                    //uploadManager.setProgress(0);
+                    uploadManager.setProgress(0);
                     uploadManager.setCompleted(true);
                     uploadManager.setResponse(data);
                 },
                 fail: function(e, data){
-                    console.log(e, data);
                     uploadManager.setCompleted(false);
+                    uploadManager.setFails(data.response().jqXHR);
                 }
             });
         }

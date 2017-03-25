@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exceptions\InvalidPasswordException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\CompanyProfile;
+use App\Mail\CustomerQuestionMail;
 
 class UserController extends Controller
 {
@@ -25,5 +28,28 @@ class UserController extends Controller
         }
 
         return 1;
+    }
+
+    public function sendMessage()
+    {
+        $data = collect(request()->all());
+        $attachment = request()->file('attachment');
+        if( !is_null($attachment)) 
+        {
+            if(!$attachment->isValid()) throw new HttpException(403, 'uploaded file is corrupted.');
+
+            $data = $data->merge([
+                'attachment' => [
+                    'file_name' => 'colo.jpg',
+                    'path' => $attachment->store('images/mail'),
+                ]
+            ]);
+        }
+        
+        // Send mail to admin
+        \Mail::to(CompanyProfile::where('field', 'email')->first()->value)
+            ->send(new CustomerQuestionMail($data));
+
+        return request()->all();
     }
 }

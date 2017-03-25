@@ -29,6 +29,14 @@
                         </div>
                     </dd>
                 </dl>
+                <dl class="dl-horizontal">
+                    <dt>Bitcoin address</dt>
+                    <dd>
+                        <div class="form-group">
+                            <input type="text" class="form-control" v-model="data.bitcoin_address">
+                        </div>
+                    </dd>
+                </dl>
             </div>
         </md-card-content>
         <md-card-actions class="space-between">

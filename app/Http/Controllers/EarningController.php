@@ -52,7 +52,7 @@ class EarningController extends Controller
     {
         return LevelEarningCommission::with('deposit.owner')
                                         ->where('cust_id', auth()->user()->id)
-                                        ->where('status', 1)
+                                        //->where('status', 1)
                                         ->orderBy('created_at', 'desc')
                                         ->get();
     }
@@ -62,7 +62,7 @@ class EarningController extends Controller
         return LevelEarningCommission::with('deposit.owner')
                                         ->where('cust_id', auth()->user()->id)
                                         ->where('level_number', $level_number)
-                                        ->where('status', 1)
+                                        //->where('status', 1)
                                         ->orderBy('created_at', 'desc')
                                         ->get();
     }
@@ -71,7 +71,7 @@ class EarningController extends Controller
     {
         return BinaryEarningCommission::with(['left_child', 'right_child'])
                         ->where('cust_id', auth()->user()->id)
-                        ->where('status', 1)
+                        //->where('status', 1)
                         ->orderBy('created_at', 'desc')
                         ->get();
     }
@@ -80,7 +80,7 @@ class EarningController extends Controller
     {
         return SponsorEarningCommission::with('deposit.owner')
                                         ->where('sponsor_id', auth()->user()->id)
-                                        ->where('status', 1)
+                                        //->where('status', 1)
                                         ->orderBy('created_at', 'desc')
                                         ->get();
     }
