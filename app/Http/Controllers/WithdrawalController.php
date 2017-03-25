@@ -8,27 +8,34 @@ use App\Earning;
 use App\SponsorEarningCommission;
 use App\BinaryEarningCommission;
 use App\Withdrawal;
+use App\LevelEarningCommission;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class WithdrawalController extends Controller
 {
     protected function getBalance()
     {
+        $this->allowWithdrawal();
+
+
     	$earning = Earning::where('cust_id', auth()->user()->id)
                             ->where('status', 1)
                             ->sum('amount');
         $sponsor = SponsorEarningCommission::where('sponsor_id', auth()->user()->id)
                             ->where('status', 1)
                             ->sum('amount');
+        $level = LevelEarningCommission::where('cust_id', auth()->user()->id)
+                            ->where('status', 1)
+                            ->sum('amount');
         $binary = BinaryEarningCommission::where('cust_id', auth()->user()->id)
                             ->where('status', 1)
                             ->sum('amount');
         $withdrawal = Withdrawal::where('cust_id', auth()->user()->id)
-                            ->where('status', 1)
+                            //->where('status', 1)
                             ->sum('amount');
 
 
-    	return ($earning + $sponsor + $binary) - $withdrawal; 
+    	return ($earning + $sponsor + $binary + $level) - $withdrawal; 
     }
 
     public function cashOut(Request $request)
@@ -38,6 +45,7 @@ class WithdrawalController extends Controller
             throw new HttpException(403, 'Your account is inactive or expiry.');
         }
 
+        $this->allowWithdrawal();
 
     	$balance = $this->getBalance(); 
     	if($request->withdraw_amount > $balance)            
@@ -53,6 +61,7 @@ class WithdrawalController extends Controller
     	return Withdrawal::create([
     		'cust_id'	=> auth()->user()->id,
     		'amount'	=> $request->withdraw_amount,
+            'status'    => 0,
     	]);
     }
 
@@ -69,5 +78,15 @@ class WithdrawalController extends Controller
     					->where('cust_id', auth()->user()->id)
     					->orderBy('created_at', 'decs')
     					->get();
+    }
+
+    private function allowWithdrawal()
+    {
+        if(! auth()->user()->withdrawals
+                    ->where('created_at', '>=', Carbon::today())
+                    ->isEmpty())
+        {
+            throw new HttpException(403, 'You can only withdraw once per day.');
+        }
     }
 }

@@ -19,17 +19,23 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(500);
 
 
-        $company_profile = CompanyProfile::get()
-                            ->mapWithKeys(function ($item) {
-                                return [$item['field'] => $item['value']];
-                            });
+        if (Schema::hasTable('company_profiles')) {
 
-        \View::share('company_profile', $company_profile);
+            $company_profile = CompanyProfile::get()
+                                            ->mapWithKeys(function ($item) {
+                                                return [$item['field'] => $item['value']];
+                                            });
+
+            \View::share('company_profile', $company_profile);
+        }
+        
 
         // menu
-        $menus = Service::select('title','id')->get();
+        if (Schema::hasTable('services')) {
+            $menus = Service::select('title','id')->get();
 
-        \View::share('menus', $menus);
+            \View::share('menus', $menus);
+        }
     }
 
     /**
