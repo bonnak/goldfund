@@ -73,13 +73,13 @@
 
                     <p style="color:#C09"><span class="glyphicon glyphicon-triangle-right">
 
-            </span> 1% Daily Growth 365 Days (Everyday).
+            </span> 3% Daily Growth 60 Days (Everyday).
 
                     </p>
 
                     <p style="color:#C06"><span class="glyphicon glyphicon-triangle-right">
 
-            </span> Daily Withdrawal Above 5 USD.
+            </span> Daily Withdrawal Minimum USD 10 - USD 500 .
 
                     </p>
 

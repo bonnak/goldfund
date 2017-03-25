@@ -4,9 +4,11 @@
 $.vegas('slideshow', {
   delay:7000,
   backgrounds:[
+      { src:'images/b1.jpg', fade:1000 },
     { src:'images/backgrounds/bg1.jpg', fade:1000 },
     { src:'images/backgrounds/bg2.jpg', fade:1000 },
-    { src:'images/backgrounds/bg3.jpg', fade:1000 }
+      { src:'images/b2.jpg', fade:1000 },
+      { src:'images/b3.jpg', fade:1000 }
   ]
 });
       
@@ -21,7 +23,12 @@ jQuery(window).load(function() {
         // will fade out the whole DIV that covers the website.
 	jQuery(".preloader").delay(1000).fadeOut("slow");
 })
-
+// dropdown menu
+$('ul.nav li.dropdown').hover(function() {
+    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+}, function() {
+    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+});
 
 /* =================================
 ===  Bootstrap Fix              ====
