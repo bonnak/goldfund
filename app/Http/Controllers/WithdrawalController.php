@@ -15,6 +15,9 @@ class WithdrawalController extends Controller
 {
     protected function getBalance()
     {
+        $this->allowWithdrawal();
+
+
     	$earning = Earning::where('cust_id', auth()->user()->id)
                             ->where('status', 1)
                             ->sum('amount');
@@ -42,12 +45,7 @@ class WithdrawalController extends Controller
             throw new HttpException(403, 'Your account is inactive or expiry.');
         }
 
-        $today_withdrawals = auth()->user()->withdrawals->where('created_at', '>=', Carbon::today());
-        if(!$today_withdrawals->isEmpty())
-        {
-            throw new HttpException(403, 'Allow to withdrawal only once per day');
-        }
-
+        $this->allowWithdrawal();
 
     	$balance = $this->getBalance(); 
     	if($request->withdraw_amount > $balance)            
@@ -80,5 +78,15 @@ class WithdrawalController extends Controller
     					->where('cust_id', auth()->user()->id)
     					->orderBy('created_at', 'decs')
     					->get();
+    }
+
+    private function allowWithdrawal()
+    {
+        if(! auth()->user()->withdrawals
+                    ->where('created_at', '>=', Carbon::today())
+                    ->isEmpty())
+        {
+            throw new HttpException(403, 'You can only withdraw once per day.');
+        }
     }
 }

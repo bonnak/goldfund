@@ -8,10 +8,15 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="note note-warning">
-                    <p>It take 24 to 48 hours for us to proccess your withdrawal.</p>
+                <div class="row" ng-if="vm.allow_withdrawal === false">
+                    <div class="note note-warning">
+                        <p>{{ vm.error }}</p>
+                    </div>
                 </div>
-                <div class="row">
+                <div class="row" ng-if="vm.allow_withdrawal === true">
+                    <div class="note note-warning">
+                        <p>It take 24 to 48 hours for us to proccess your withdrawal.</p>
+                    </div>
                     <div class="col-sm-8">
                         <form class="form-horizontal" role="form">
                             <div class="form-body">
