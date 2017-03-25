@@ -18,6 +18,7 @@ class CompanyProfileSeeder extends Seeder
         	[ 'field' => 'address', 'value' => 'PO Box 16122 Collins Street West, Victoria 8007 Australia' ],
         	[ 'field' => 'email', 'value' => 'contact@designlab.com' ],
         	[ 'field' => 'phone', 'value' => '012887657' ],
+            [ 'field' => 'bitcoin_address', 'value' => '1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu' ],
         ]);
     }
 }

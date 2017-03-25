@@ -17,6 +17,10 @@
                     <dt>Phone</dt>
                     <dd>{{ model.phone }}</dd>
                 </dl>
+                <dl class="dl-horizontal">
+                    <dt>Bitcoin address</dt>
+                    <dd>{{ model.bitcoin_address }}</dd>
+                </dl>
             </div>
         </md-card-content>
         <md-card-actions class="space-between">

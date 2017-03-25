@@ -55,17 +55,28 @@ class DepositController extends Controller
 
     public function upload(Request $request)
     {
+        $validator = \Validator::make($request->all(),[
+            'file' => 'mimes:jpeg,bmp,png|max:2048'
+        ]);
+
+        if($validator->fails())
+        {
+            return response()->json([
+                'error' => $validator->getMessageBag()->first()
+            ], 403);
+        }
+
         $photo = $request->file('file');
 
         if( is_null($photo) || !$photo->isValid()) 
         {
-            throw new HttpException(403, 'uploaded file is corrupted.');
+            throw new HttpException(403, 'File is corrupted.');
         }
 
         //$photo->store('images/deposit/bankslip');
 
         //return  'data:image/jpeg;base64,' . base64_encode(\Storage::get($photo->store('images/deposit/bankslip')));
         
-        return $photo->store('images/deposit/bankslip');
+        return 'storage/' . $photo->store('images/deposit/bankslip');
     }
 }

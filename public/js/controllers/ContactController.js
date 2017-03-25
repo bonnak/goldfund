@@ -6,15 +6,6 @@ angular.module('MetronicApp').controller('ContactController', [
     function($scope, $anchorScroll, $state, Restful) {
         var vm = this;
         vm.model = [];
-
-        vm.fetchData = function(){
-            Restful.get('api/company/profile').success(function(data){
-                vm.model = data;
-            })
-        };
-
-        vm.fetchData();
-
         vm.uploadme = {};
 
 

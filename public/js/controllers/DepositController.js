@@ -20,7 +20,7 @@ angular.module('MetronicApp').controller('DepositController', [
         vm.upload = {
             photo : null,
             percentage : 0,
-            is_completed : false,
+            is_success : null,
             in_progress : false
         };
         vm.allow_deposited = null;
@@ -65,7 +65,8 @@ angular.module('MetronicApp').controller('DepositController', [
 
         vm.getQrCode = function(params){
             Restful.get('api/qr/admin/bitcoin').success(function(data){
-                vm.qrcode = data;
+                vm.qr_code = data.qr_code;
+                vm.bitcoin_address = data.bitcoin_address;
             });
         };
 
@@ -115,38 +116,21 @@ angular.module('MetronicApp').controller('DepositController', [
                 $scope.vm.upload.photo = result;
                 vm.model.bankslip = result;
                 setTimeout(function(){
-                    $scope.vm.upload.is_completed = true;
+                    $scope.vm.upload.is_success = true;
                     $scope.vm.upload.in_progress = false;
                     $scope.$apply();
                 }, 200);
                 $scope.$apply();
             });
 
+            $rootScope.$on('uploadResponseFails', function (e, err_res) {
+                $scope.vm.upload = Object.assign($scope.vm.upload, JSON.parse(err_res.responseText)); 
+                $scope.vm.upload.percentage = 0; 
+                $scope.vm.upload.in_progress = false; 
+                $scope.vm.upload.is_success = false;    
+                $scope.$apply();
 
-            var previewImage =  function(input) {
-                //$('#preview').find('img').remove();
-
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        // var image = new Image();
-                        // image.title = e.target.name;
-                        // image.src = e.target.result;
-                        // $('#preview').append( image );
-                        console.log(e);
-                        //$('#preview #blah').attr('src', e.target.result);
-                        vm.src_upload = e.target.result;//true;
-                        console.log(vm.src_upload);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            };
-
-            $("#bankslip-file").on("change", function(){
-                console.log('dfd');
-                previewImage(this);
+                console.log($scope.vm.upload);
             });
         };
         

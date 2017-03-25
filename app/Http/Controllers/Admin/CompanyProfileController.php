@@ -21,6 +21,7 @@ class CompanyProfileController extends Controller
     	$this->setAddress($request->address);
     	$this->setEmail($request->email);
     	$this->setPhone($request->phone);
+        $this->setBitcoinAddress($request->bitcoin_address);
     }
 
     private function setPhone($phone_number)
@@ -37,10 +38,17 @@ class CompanyProfileController extends Controller
     	$record->save();
     }
 
-    public function setEmail($email)
+    private function setEmail($email)
     {
     	$record = CompanyProfile::where('field' ,'email')->first();
     	$record->value = $email;
     	$record->save();
+    }
+
+    private function setBitcoinAddress($bitcoin_address)
+    {
+        $record = CompanyProfile::where('field' ,'bitcoin_address')->first();
+        $record->value = $bitcoin_address;
+        $record->save();
     }
 }
