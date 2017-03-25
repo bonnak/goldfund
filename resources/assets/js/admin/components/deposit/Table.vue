@@ -116,7 +116,7 @@ export default{
 	  	{
 	  		this.contentHtml = '<div style="width: 100%; text-align: center;"><b>Bitcoin address</b></div>' +
 	  					'<div style="width: 100%; text-align: center;">'+ data.owner.bitcoin_account + '</div>' + 
-	  					'<img src="storage/' + data.bankslip + '" style="max-width: 800px;">';
+	  					'<img src="/' + data.bankslip + '" style="max-width: 800px;">';
 	  		this.$refs['dialog_blankslip'].open();
 	  	},
 
