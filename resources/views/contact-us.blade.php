@@ -22,9 +22,8 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="address">
-                        <h4>
-                            Contact Detail
-                        </h4>
+                        <img src="images/support.jpg" style="width: 300px; padding-bottom: 15px;"
+                             class="img-responsive">
                         <ul class="contact_address">
                             <li>
                                 <i class="fa fa-phone"></i>
