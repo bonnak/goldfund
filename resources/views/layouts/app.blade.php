@@ -135,9 +135,13 @@
                     <div class="col-md-3 sec-block">
                         <img src="images/60-day-unconditional-guarantee.png" class="img-responsive">
                     </div>
-                    <div class="col-md-6 sec-block contact">
+                    <div class="col-md-3 sec-block contact">
                         <img src="images/symantec_norton_sites_seal.jpg" width="83px">
                         <img src="images/PositiveSSL-comodo.png" width="140px">
+                    </div>
+                    <div class="col-md-3 sec-block">
+                        <h2 style=" font-size: 20px !important;margin-bottom: 0px;">We Support</h2>
+                        <img src="images/Bitcoin_logo.svg.png" class="img-responsive">
                     </div>
                 </div>
             </div> <!-- / END CONTAINER -->
