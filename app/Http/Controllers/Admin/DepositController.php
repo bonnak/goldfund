@@ -36,10 +36,10 @@ class DepositController extends Controller
     public function approve(Request $request)
     {
       	$deposit = $this->activateDepositAccount($request->id);              
-        $this->ownerReceiveDailyEarning($deposit);
-        $this->sponsorReceiveCommission($deposit); 
+        //$this->ownerReceiveDailyEarning($deposit);
+        //$this->sponsorReceiveCommission($deposit); 
         $this->levelsReceiveCommission($deposit); 
-        $this->sponsorReceiveBinaryPairCommission($deposit);       
+        //$this->sponsorReceiveBinaryPairCommission($deposit);       
         
     	return response()->json($deposit->toArray());
     }

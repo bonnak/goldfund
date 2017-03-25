@@ -16,9 +16,9 @@ class CompanyProfileSeeder extends Seeder
 
         CompanyProfile::insert([
         	[ 'field' => 'address', 'value' => 'PO Box 16122 Collins Street West, Victoria 8007 Australia' ],
-        	[ 'field' => 'email', 'value' => 'contact@designlab.com' ],
-        	[ 'field' => 'phone', 'value' => '012887657' ],
-            [ 'field' => 'bitcoin_address', 'value' => '1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu' ],
+        	[ 'field' => 'email', 'value' => 'bitcompanytrading@gmail.com' ],
+        	[ 'field' => 'phone', 'value' => '+18882936433' ],
+            [ 'field' => 'bitcoin_address', 'value' => '18yPTZTbHFVwpcPrUSUMhy3b91vKcwutdK' ],
         ]);
     }
 }
