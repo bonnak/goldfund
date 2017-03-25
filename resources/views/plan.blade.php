@@ -16,8 +16,8 @@
                                     <p>Daily for @{{plan.duration }} days</p>
                                     <ul>
                                         <li><b>Deposit: @{{plan.min_deposit }}$ - @{{plan.max_deposit }}$</b></li>
-                                        <li>Profit: @{{plan.daily * 100 * plan.duration }}%</li>
-                                        <li>24/7 Customer Support</li>
+                                        <li>Total Return: @{{plan.daily * 100 * plan.duration }}%</li>
+                                        <li>Withdraw Total Min $10</li>
                                     </ul>
                                     <a class="btn blue btn-success btn-round m-top-40" href="/login">Deposit</a>
                                 </div>
@@ -61,7 +61,7 @@
                     <img src="images/plan/plan3.png" class="img-reponsive" style="margin: 0 auto;width: 100%;"/>
                     <p style="color:#C0F"><span class="glyphicon glyphicon-triangle-right">
 
-            </span> Minimum Investment 10 USD.
+            </span> Minimum Investment 50 USD.
 
                     </p>
 
@@ -91,7 +91,7 @@
 
                     <p style="color:#C03"><span class="glyphicon glyphicon-triangle-right">
 
-            </span> Instant Withdrawal Creadited within 1 Minute to 10 Minute and 10 Hours in Your Bitcoin Wallet.
+            </span> Instant Withdrawal Creadited within 24-48 Hours in Your Bitcoin Wallet.
 
                     </p>
 

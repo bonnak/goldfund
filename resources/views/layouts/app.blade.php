@@ -118,24 +118,7 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <!-- COMPANY ADDRESS-->
                     <div class="col-md-3 sec-block">
-                        <ul>
-                            <li>News</li>
-                            <li>Support</li>
-                            <li>FAQ</li>
-                            <li>About Us</li>
-                            <li>Contact</li>
-                            <li>Term & Condition</li>
-                        </ul>
-                        {{-- <div class="icon-top red-text">
-                            <i class="icon-fontawesome-webfont-302"></i>
-                        </div>
-                        PO Box 16122 Collins Street West, Victoria 8007 Australia --}}
-                    </div>
-
-                    <!-- COMPANY EMAIL-->
-                    <div class="col-md-4 sec-block">
                         <dl class="dl-horizontal">
                           <dt><i class="icon-fontawesome-webfont-302 red-text"></i></dt>
                           <dd>{{ $company_profile['address'] }}</dd>
@@ -149,69 +132,12 @@
                           <dd>{{ $company_profile['phone'] }}</dd>
                         </dl>
                     </div>
-
-                    <!-- COMPANY PHONE NUMBER -->
-                    {{-- <div class="col-md-2 sec-block">
-                        <div class="icon-top blue-text">
-                            <i class="icon-fontawesome-webfont-101"></i>
-                        </div>
-                        +613 0000 0000
-                    </div> --}}
-
-                    <!-- SOCIAL ICON AND COPYRIGHT -->
-                    <div class="col-md-5 col-sm-5 sec-block contact">
-                        <div class="row">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/guest/message') }}">
-                                {{ csrf_field() }}
-
-                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label for="name" class="col-md-4 control-label">Name</label>
-
-                                    <div class="col-md-8">
-                                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-                                        @if ($errors->has('name'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('name') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-4 control-label">Email</label>
-
-                                    <div class="col-md-8">
-                                        <input id="email" type="email" class="form-control" name="email" required>
-                                        @if ($errors->has('email'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('email') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                                    <label for="message" class="col-md-4 control-label">Message</label>
-
-                                    <div class="col-md-8">
-                                        <textarea class="form-control" rows="3" id="message" name="message"></textarea>
-                                        @if ($errors->has('message'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('message') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-4 col-md-offset-6 btn-submit-wrap">
-                                        <button type="submit" class="btn btn-company">
-                                            Send
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="col-md-3 sec-block">
+                        <img src="images/60-day-unconditional-guarantee.png" class="img-responsive">
+                    </div>
+                    <div class="col-md-6 sec-block contact">
+                        <img src="images/symantec_norton_sites_seal.jpg" width="83px">
+                        <img src="images/PositiveSSL-comodo.png" width="140px">
                     </div>
                 </div>
             </div> <!-- / END CONTAINER -->
