@@ -5,6 +5,7 @@ const routes = [
   { path: '/withdrawal', component: require('./components/withdrawal/Index.vue') },
   { path: '/plan', component: require('./components/plan/Index.vue') },
   { path: '/geneology', component: require('./components/Geneology.vue') },
+  { path: '/company/profile', component: require('./components/company/Index.vue') },
 ]
 
 export default routes ;

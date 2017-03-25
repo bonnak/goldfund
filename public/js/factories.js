@@ -36,6 +36,10 @@ MetronicApp.factory('uploadManager', function ($rootScope) {
             $rootScope.$broadcast('uploadResponseResult', data.result);
         },
 
+        setFails: function(data){
+            $rootScope.$broadcast('uploadResponseFails', data);
+        },
+
         setCompleted: function(status){
             _is_completed = status;
             _is_failed = false;

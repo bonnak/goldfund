@@ -336,6 +336,25 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             }
         })
 
+        .state('contact', {
+            url: "/contact",
+            templateUrl: "views/contact.html",
+            data: {pageTitle: 'Contact'},
+            controller: "ContactController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'css-template/plan_style.css',
+                            'js/controllers/ContactController.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
         // AngularJS plugins
         .state('request_payment', {
             url: "/request_payment",
@@ -502,6 +521,11 @@ MetronicApp.run(["$rootScope", "settings", "$state", "$http", function($rootScop
     $rootScope.$settings = settings; // state to be accessed from view
 
     $http.defaults.headers.common = {
+        'X-CSRF-TOKEN': window.Laravel.csrfToken,
+        'X-Requested-With': 'XMLHttpRequest'
+    };
+
+    axios.defaults.headers.common = {
         'X-CSRF-TOKEN': window.Laravel.csrfToken,
         'X-Requested-With': 'XMLHttpRequest'
     };

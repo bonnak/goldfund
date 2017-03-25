@@ -28,6 +28,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 	//Withdrawal
 	Route::get('/withdrawal', 'Admin\WithdrawalController@getData');
 	Route::post('/withdrawal/approve', 'Admin\WithdrawalController@approve');
+
+	//Company profile
+	Route::get('company/profile', 'Admin\CompanyProfileController@getData');
+	Route::put('company/profile', 'Admin\CompanyProfileController@update');
 });
 
 
@@ -70,7 +74,13 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 	Route::post('/photo/upload', 'DepositController@upload');
 
-
 	//Level sponsor 
 	Route::get('/plan/levels', 'LevelController@get');
+
+	//Company profile
+	Route::get('company/profile', 'CompanyProfileController@getData');
+
+
+	// Customer send mail
+	Route::post('customer/message', 'UserController@sendMessage');
 });

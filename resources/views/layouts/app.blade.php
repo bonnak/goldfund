@@ -121,15 +121,15 @@
                     <div class="col-md-4 sec-block">
                         <dl class="dl-horizontal">
                           <dt><i class="icon-fontawesome-webfont-302 red-text"></i></dt>
-                          <dd>PO Box 16122 Collins Street West, Victoria 8007 Australia</dd>
+                          <dd>{{ $company_profile['address'] }}</dd>
                         </dl>
                         <dl class="dl-horizontal">
                           <dt><i class="icon-fontawesome-webfont-329 green-text"></i></dt>
-                          <dd>contact@designlab.co</dd>
+                          <dd>{{ $company_profile['email'] }}</dd>
                         </dl>
                         <dl class="dl-horizontal">
                           <dt><i class="icon-fontawesome-webfont-101 blue-text"></i></dt>
-                          <dd>+613 0000 0000</dd>
+                          <dd>{{ $company_profile['phone'] }}</dd>
                         </dl>
                     </div>
 

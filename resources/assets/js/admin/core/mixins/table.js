@@ -8,6 +8,10 @@ export default{
 			this.$emit('show-view-info', data);
 		},
 
+		showEdit(data){
+			this.$emit('show-edit-view', data);
+		},
+
 		onSelect(data){
 		 	console.log(data);
 		},

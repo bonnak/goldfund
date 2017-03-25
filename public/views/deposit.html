@@ -1,7 +1,6 @@
 <form name="depositForm" novalidate role="form" class="form-horizontal">
     <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN: ACCORDION DEMO -->
+        <div class="col-md-12" ng-if="vm.allow_deposited">
             <div class="portlet light bordered">
                 <div class="portlet-title">
                     <div class="caption font-blue-sharp">
@@ -79,13 +78,29 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12" ng-if="vm.allow_deposited === false">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-blue-sharp">
+                        <span class="caption-subject bold uppercase">
+                            Make Deposit
+                        </span>
+                    </div>
+                </div>
+                <div class="portlet-body">                
+                    <div class="note note-warning">
+                        <p>Your already deposited. The next deposit is after the old one is expire.</p>
+                    </div>
+                </div>
+            </div>            
+        </div>
     </div>
 </form>
 
 
 
 
-<div id="deposit_modal" class="modal fade in" tabindex="-1" role="dialog">
+<div id="deposit_modal" class="modal fade in" tabindex="-1" role="dialog" ng-if="vm.allow_deposited">
     <div class="modal-dialog">
         <div class="modal-content">
             <form class="form-horizontal" role="form">
@@ -99,8 +114,8 @@
                             for us to verify your deposit.</p>
                     </div>
                     <div class="block-chain">
-                        <img ng-src="{{vm.qrcode}}">
-                        <span>1MXeRULNu6L3En4AKQ5iDgJkBnCLYTC8Nu</span>
+                        <img ng-src="{{ vm.qr_code }}">
+                        <span>{{ vm.bitcoin_address }}</span>
                     </div>
                     <div class="bankslip">
                         <span class="btn green fileinput-button" onClick="document.getElementById('bankslip-file').click()">
@@ -112,8 +127,11 @@
                                     data-url="/api/photo/upload" 
                                     upload>
                         </span>
-                        <div class="img-bankslip" id="preview">                              
-                            <img id="blah" ng-src="{{vm.src_upload}}" alt="your image" data-ng-if="vm.src_upload"/>
+                        <div class="img-bankslip" id="preview"> 
+                            <div class="alert alert-danger" data-ng-if="vm.upload.is_success ===  false">
+                                <strong><i class="fa fa-exclamation"></i>&nbsp;</strong> {{ vm.upload.error }} 
+                            </div>                             
+                            <img id="blah" ng-src="{{ vm.upload.photo }}" alt="your image" data-ng-if="vm.upload.is_success === true"/>
                             <div class="progress" ng-show="vm.upload.in_progress">
                                 <div class="progress-bar progress-bar-success" 
                                     role="progressbar" 
@@ -125,7 +143,7 @@
                     </div> 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn blue" ng-click="vm.save();" ng-disabled="!vm.src_upload || vm.loading || vm.inValid()">
+                    <button class="btn blue" ng-click="vm.save();" ng-disabled="!vm.upload.is_success || vm.loading">
                         <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
                         Submit
                     </button>

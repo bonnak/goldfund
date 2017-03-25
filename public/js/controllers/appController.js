@@ -13,6 +13,16 @@ MetronicApp.controller('AppController', [
         $scope.initSetting = function(){
             restful.get('/user/getProfile').success(function(result){
                 $scope.userProfile = result;
+
+                var deposit = $scope.userProfile.deposit;
+
+                if(deposit !== null){
+                    $scope.expire_from_now = moment(deposit.expire_date, "YYYY-MM-DD").diff(moment(), 'days');
+                    if($scope.expire_from_now <= 5){
+                        $('#modal-alert-expire').modal();
+                    }
+                }
+
             });
         };
         $scope.initSetting();

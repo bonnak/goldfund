@@ -13,7 +13,7 @@ class UserController extends Controller
 
     public function getProfile(){
         $user_id = auth()->user()->id;
-        $user = Customer::with('country')->where('customers.id', $user_id)->first();
+        $user = Customer::with(['country', 'deposits', 'deposit'])->where('customers.id', $user_id)->first();
         $user->image = !is_null($user->image) ? 
                             'data:image/jpeg;base64,' . base64_encode(\Storage::get($user->image)) : null;
 
