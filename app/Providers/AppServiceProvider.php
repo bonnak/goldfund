@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\CompanyProfile;
+use App\Service;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
                             });
 
         \View::share('company_profile', $company_profile);
+
+        // menu
+        $menus = Service::select('title','id')->get();
+
+        \View::share('menus', $menus);
     }
 
     /**

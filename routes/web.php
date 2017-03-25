@@ -43,9 +43,7 @@ Route::get('/about-us', function(){
 	return view('about-us');
 });
 
-Route::get('/contact-us', function(){
-	return view('contact-us');
-});
+Route::get('/contact-us', 'ContactController@index');
 
 Route::get('/term', function(){
 	return view('term');
@@ -60,3 +58,6 @@ Route::get('/faq', 'FaqController@get');
 Route::get('/support', function(){
 	return view('support');
 });
+
+
+Route::get('/service/{id}', 'ServiceController@get');
