@@ -50,16 +50,14 @@ angular.module('MetronicApp').controller('DepositController', [
                 if(vm.deposits.length === 0){
                     vm.allow_deposited = true;
                 }else if(vm.deposits.length >0){
+                    vm.allow_deposited = false;
+
                     vm.deposits.forEach(function(deposit){
                         if(deposit.status !== 0 && deposit.status !== 1){
                             vm.allow_deposited = true;
                         }
                     });
-                }else{
-                    vm.allow_deposited = false;
                 }
-
-                
             });
         };
 
