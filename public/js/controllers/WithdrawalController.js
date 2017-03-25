@@ -9,6 +9,7 @@ angular.module('MetronicApp').controller('WithdrawalController', [
         vm.balance = '';
         vm.withdrawals = [];
         vm.error = '';
+        vm.allow_withdrawal = null;
 
         vm.save = function(){
             vm.loading = true;
@@ -24,7 +25,11 @@ angular.module('MetronicApp').controller('WithdrawalController', [
 
         vm.getData = function(){
             Restful.get('/api/withdrawal/balance').success(function(data){
-                vm.balance = data.balance;
+                vm.balance = data.balance;                
+                vm.allow_withdrawal = true;
+            }).error(function(err_response){
+                vm.error = err_response.error;
+                vm.allow_withdrawal = false;
             });
         }
 
