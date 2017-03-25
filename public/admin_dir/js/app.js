@@ -1536,13 +1536,13 @@ function applyToTag (styleElement, obj) {
 /* harmony default export */ __webpack_exports__["a"] = {
 	methods: {
 		closeForm: function closeForm() {
-			this.$emit('close-form-message');
+			this.$emit('close-form');
 		},
 		showViewInfo: function showViewInfo(data) {
-			this.$emit('show-view-info', data);
+			this.$emit('show-view', data);
 		},
 		showEdit: function showEdit(data) {
-			this.$emit('show-edit-view', data);
+			this.$emit('show-edit', data);
 		},
 		onSelect: function onSelect(data) {
 			console.log(data);
@@ -12150,11 +12150,11 @@ module.exports = defaults;
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = {
 	methods: {
-		showInfoView: function showInfoView(data) {
+		showView: function showView(data) {
 			this.data = data;
-			this.current_view = '_Info';
+			this.current_view = '_View';
 		},
-		showEditView: function showEditView(data) {
+		showEdit: function showEdit(data) {
 			this.data = data;
 			this.current_view = '_Edit';
 		}
@@ -46010,8 +46010,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Table_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Info_vue__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Info_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Info_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__View_vue__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__View_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__View_vue__);
 //
 //
 //
@@ -46034,7 +46034,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	components: {
 		_Table: __WEBPACK_IMPORTED_MODULE_2__Table_vue___default.a,
-		_Info: __WEBPACK_IMPORTED_MODULE_3__Info_vue___default.a
+		_View: __WEBPACK_IMPORTED_MODULE_3__View_vue___default.a
 	},
 
 	data: function data() {
@@ -46046,133 +46046,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 69 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(5);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = {
-
-	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
-
-	props: ['data'],
-
-	data: function data() {
-		return {
-			show_edit_email: false,
-			show_edit_bitcoin_account: false,
-			validation: {
-				email: '',
-				bitcoin_account: ''
-			}
-		};
-	},
-
-
-	methods: _extends({
-		editEmail: function editEmail(data) {
-			var _this = this;
-
-			this.saveEmail(data).then(function (response) {
-				_this.show_edit_email = false;
-				_this.validation.email = '';
-			}, function (err_response) {
-				_this.validation.email = err_response.data.error;
-			});
-		},
-		editBitCoinAddress: function editBitCoinAddress(data) {
-			var _this2 = this;
-
-			this.saveBitCoinAddress(data).then(function (response) {
-				_this2.show_edit_bitcoin_account = false;
-				_this2.validation.bitcoin_account = '';
-			}, function (err_response) {
-				_this2.validation.bitcoin_account = err_response.data.error;
-			});
-		}
-	}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
-		saveEmail: 'customer/editEmail',
-		saveBitCoinAddress: 'customer/editBitCoinAddress'
-	}))
-};
-
-/***/ }),
+/* 69 */,
 /* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -46256,8 +46130,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Table_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Info_vue__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Info_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Info_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__View_vue__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__View_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__View_vue__);
 //
 //
 //
@@ -46281,7 +46155,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	components: {
 		_Table: __WEBPACK_IMPORTED_MODULE_2__Table_vue___default.a,
-		_Info: __WEBPACK_IMPORTED_MODULE_3__Info_vue___default.a
+		_View: __WEBPACK_IMPORTED_MODULE_3__View_vue___default.a
 	},
 
 	data: function data() {
@@ -46293,99 +46167,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 72 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(5);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = {
-
-	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
-
-	props: ['data'],
-
-	data: function data() {
-		return {};
-	},
-
-
-	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
-		saveEmail: 'customer/editEmail',
-		saveBitCoinAddress: 'customer/editBitCoinAddress'
-	}))
-};
-
-/***/ }),
+/* 72 */,
 /* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -46534,8 +46316,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Table_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Info_vue__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Info_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Info_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__View_vue__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__View_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__View_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Edit_vue__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Edit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Edit_vue__);
 //
 //
 //
@@ -46547,6 +46331,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -46559,7 +46344,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	components: {
 		_Table: __WEBPACK_IMPORTED_MODULE_2__Table_vue___default.a,
-		_Info: __WEBPACK_IMPORTED_MODULE_3__Info_vue___default.a
+		_View: __WEBPACK_IMPORTED_MODULE_3__View_vue___default.a,
+		_Edit: __WEBPACK_IMPORTED_MODULE_4__Edit_vue___default.a
 	},
 
 	data: function data() {
@@ -46571,94 +46357,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 75 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(5);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = {
-
-	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
-
-	props: ['data'],
-
-	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({}))
-};
-
-/***/ }),
+/* 75 */,
 /* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -46865,8 +46564,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Table_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Table_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Info_vue__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Info_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Info_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__View_vue__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__View_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__View_vue__);
 //
 //
 //
@@ -46890,7 +46589,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	components: {
 		_Table: __WEBPACK_IMPORTED_MODULE_2__Table_vue___default.a,
-		_Info: __WEBPACK_IMPORTED_MODULE_3__Info_vue___default.a
+		_View: __WEBPACK_IMPORTED_MODULE_3__View_vue___default.a
 	},
 
 	data: function data() {
@@ -46902,99 +46601,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 80 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(5);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = {
-
-	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
-
-	props: ['data'],
-
-	data: function data() {
-		return {};
-	},
-
-
-	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
-		saveEmail: 'customer/editEmail',
-		saveBitCoinAddress: 'customer/editBitCoinAddress'
-	}))
-};
-
-/***/ }),
+/* 80 */,
 /* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -47698,20 +47305,7 @@ var actions = {
 };
 
 /***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "\n.sec-block[data-v-0b27c642] {\n  padding: 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 98 */,
 /* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -47741,20 +47335,7 @@ exports.push([module.i, "\n.row[data-v-48782174] {\n  margin: 0;\n}\n.body[data-
 
 /***/ }),
 /* 101 */,
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "\n.sec-block[data-v-52adfcb8] {\n  padding: 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 102 */,
 /* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -47783,34 +47364,8 @@ exports.push([module.i, "\n.md-theme-app.md-button:not([disabled]).md-green.md-f
 
 
 /***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "\n.sec-block[data-v-60f2f7aa] {\n  padding: 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "\n.sec-block[data-v-65c42396] {\n  padding: 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 105 */,
+/* 106 */,
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48038,44 +47593,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(156)
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(69),
-  /* template */
-  __webpack_require__(140),
-  /* scopeId */
-  "data-v-65c42396",
-  /* cssModules */
-  null
-)
-Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\Info.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Info.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-65c42396", Component.options)
-  } else {
-    hotAPI.reload("data-v-65c42396", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 114 */,
 /* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48144,44 +47662,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 117 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(152)
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(72),
-  /* template */
-  __webpack_require__(136),
-  /* scopeId */
-  "data-v-52adfcb8",
-  /* cssModules */
-  null
-)
-Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\deposit\\Info.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Info.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-52adfcb8", Component.options)
-  } else {
-    hotAPI.reload("data-v-52adfcb8", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 117 */,
 /* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48254,44 +47735,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 120 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(155)
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(75),
-  /* template */
-  __webpack_require__(138),
-  /* scopeId */
-  "data-v-60f2f7aa",
-  /* cssModules */
-  null
-)
-Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\plan\\Info.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Info.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-60f2f7aa", Component.options)
-  } else {
-    hotAPI.reload("data-v-60f2f7aa", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 120 */,
 /* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48428,44 +47872,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 125 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(148)
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(80),
-  /* template */
-  __webpack_require__(128),
-  /* scopeId */
-  "data-v-0b27c642",
-  /* cssModules */
-  null
-)
-Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\withdrawal\\Info.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Info.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0b27c642", Component.options)
-  } else {
-    hotAPI.reload("data-v-0b27c642", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 125 */,
 /* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48505,71 +47912,7 @@ module.exports = Component.exports
 
 /***/ }),
 /* 127 */,
-/* 128 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('md-card', {
-    staticClass: "content-form"
-  }, [_c('md-card-header', [_c('div', {
-    staticClass: "md-title"
-  }, [_vm._v("Deposit History")])]), _vm._v(" "), _c('md-card-content', {
-    staticClass: "content-body"
-  }, [_c('div', {
-    staticClass: "col-md-12 sec-block"
-  }, [_c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Username")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.username))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Email")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.email))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Deposit Amount")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.amount)))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Status")]), _vm._v(" "), _c('dd', [(_vm.data.status == 0) ? _c('span', {
-    staticClass: "label label-sm label-warning"
-  }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (_vm.data.status == 1) ? _c('span', {
-    staticClass: "label label-sm label-success"
-  }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (_vm.data.status == 2) ? _c('span', {
-    staticClass: "label label-sm label-danger"
-  }, [_vm._v("Expired")]) : _vm._e()])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Plan")]), _vm._v(" "), _c('dd', [_c('span', {
-    class: 'label label-sm label-' + _vm.data.plan.name.toLowerCase()
-  }, [_vm._v(_vm._s(_vm.data.plan.name))])])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Bitcoin Address")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.bitcoin_account))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Issue Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.issue_date))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Expire Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.expire_date))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Deposited Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.created_at))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Bankslip")]), _vm._v(" "), _c('dd', [_c('img', {
-    staticStyle: {
-      "max-width": "800px"
-    },
-    attrs: {
-      "src": 'storage/' + _vm.data.bankslip
-    }
-  })])])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
-    staticClass: "md-primary",
-    nativeOn: {
-      "click": function($event) {
-        _vm.closeForm()
-      }
-    }
-  }, [_vm._v("Close")])], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0b27c642", module.exports)
-  }
-}
-
-/***/ }),
+/* 128 */,
 /* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48580,11 +47923,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.data
     },
     on: {
-      "show-create-view": function($event) {
+      "show-create": function($event) {
         _vm.current_view = '_Create'
       },
-      "show-view-info": _vm.showInfoView,
-      "close-form-message": function($event) {
+      "show-view": _vm.showView,
+      "close-form": function($event) {
         _vm.current_view = '_Table'
       }
     }
@@ -48609,12 +47952,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.data
     },
     on: {
-      "show-create-view": function($event) {
+      "show-create": function($event) {
         _vm.current_view = '_Create'
       },
-      "show-view-info": _vm.showInfoView,
-      "show-edit-view": _vm.showEditView,
-      "close-form-message": function($event) {
+      "show-view": _vm.showInfoView,
+      "show-edit": _vm.showEditView,
+      "close-form": function($event) {
         _vm.current_view = '_View'
       }
     }
@@ -48765,12 +48108,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.data
     },
     on: {
-      "show-create-view": function($event) {
+      "show-create": function($event) {
         _vm.current_view = '_Create'
       },
-      "show-view-info": _vm.showInfoView,
-      "show-edit-view": _vm.showEditView,
-      "close-form-message": function($event) {
+      "show-view": _vm.showView,
+      "show-edit": _vm.showEdit,
+      "close-form": function($event) {
         _vm.current_view = '_Table'
       }
     }
@@ -48795,11 +48138,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.data
     },
     on: {
-      "show-create-view": function($event) {
+      "show-create": function($event) {
         _vm.current_view = '_Create'
       },
-      "show-view-info": _vm.showInfoView,
-      "close-form-message": function($event) {
+      "show-view": _vm.showView,
+      "close-form": function($event) {
         _vm.current_view = '_Table'
       }
     }
@@ -48912,71 +48255,7 @@ if (false) {
 
 /***/ }),
 /* 135 */,
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('md-card', {
-    staticClass: "content-form"
-  }, [_c('md-card-header', [_c('div', {
-    staticClass: "md-title"
-  }, [_vm._v("Deposit History")])]), _vm._v(" "), _c('md-card-content', {
-    staticClass: "content-body"
-  }, [_c('div', {
-    staticClass: "col-md-12 sec-block"
-  }, [_c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Username")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.username))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Email")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.email))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Deposit Amount")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.amount)))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Status")]), _vm._v(" "), _c('dd', [(_vm.data.status == 0) ? _c('span', {
-    staticClass: "label label-sm label-warning"
-  }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (_vm.data.status == 1) ? _c('span', {
-    staticClass: "label label-sm label-success"
-  }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (_vm.data.status == 2) ? _c('span', {
-    staticClass: "label label-sm label-danger"
-  }, [_vm._v("Expired")]) : _vm._e()])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Plan")]), _vm._v(" "), _c('dd', [_c('span', {
-    class: 'label label-sm label-' + _vm.data.plan.name.toLowerCase()
-  }, [_vm._v(_vm._s(_vm.data.plan.name))])])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Bitcoin Address")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.bitcoin_account))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Issue Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.issue_date))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Expire Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.expire_date))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Deposited Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.created_at))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Bankslip")]), _vm._v(" "), _c('dd', [_c('img', {
-    staticStyle: {
-      "max-width": "800px"
-    },
-    attrs: {
-      "src": 'storage/' + _vm.data.bankslip
-    }
-  })])])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
-    staticClass: "md-primary",
-    nativeOn: {
-      "click": function($event) {
-        _vm.closeForm()
-      }
-    }
-  }, [_vm._v("Close")])], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-52adfcb8", module.exports)
-  }
-}
-
-/***/ }),
+/* 136 */,
 /* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49104,73 +48383,7 @@ if (false) {
 }
 
 /***/ }),
-/* 138 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('md-card', {
-    staticClass: "content-form"
-  }, [_c('md-card-header', [_c('div', {
-    staticClass: "md-title"
-  }, [_vm._v("Plan Package Detail")])]), _vm._v(" "), _c('md-card-content', {
-    staticClass: "content-body"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-4 sec-block"
-  }, [_c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Name")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.name))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Min Deposit")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.min_deposit)))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Max Deposit")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.max_deposit)))])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4 sec-block"
-  }, [_c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Daily")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("percentage")(_vm.data.daily)))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Binary Earning")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("percentage")(_vm.data.pairing)))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Earning Duration")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("pluralize")(_vm.data.duration, 'day')))])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4 sec-block"
-  }, [_c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Sponsor")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("percentage")(_vm.data.sponsor)))])])])]), _vm._v(" "), _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12 sec-block"
-  }, [_c('table', {
-    staticClass: "table"
-  }, [_c('thead', [_c('th', [_vm._v("Level")])]), _vm._v(" "), _c('tbody', _vm._l((_vm.data.sponsor_levels), function(level) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(level.level))])])
-  }))])])])]), _vm._v(" "), _c('md-card-actions', {
-    staticClass: "space-between"
-  }, [_c('md-button', {
-    staticClass: "md-primary",
-    nativeOn: {
-      "click": function($event) {
-        _vm.closeForm()
-      }
-    }
-  }, [_vm._v("Edit")]), _vm._v(" "), _c('md-button', {
-    staticClass: "md-primary",
-    nativeOn: {
-      "click": function($event) {
-        _vm.closeForm()
-      }
-    }
-  }, [_vm._v("Close")])], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-60f2f7aa", module.exports)
-  }
-}
-
-/***/ }),
+/* 138 */,
 /* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49223,152 +48436,7 @@ if (false) {
 }
 
 /***/ }),
-/* 140 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('md-card', {
-    staticClass: "content-form"
-  }, [_c('md-card-header', [_c('div', {
-    staticClass: "md-title"
-  }, [_vm._v("Customer Information Detail")])]), _vm._v(" "), _c('md-card-content', {
-    staticClass: "content-body"
-  }, [_c('div', {
-    staticClass: "col-md-12 sec-block"
-  }, [_c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Username")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.username))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("First Name")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.first_name))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Last Name")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.last_name))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Gender")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("sex")(_vm.data.gender)))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Country")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.country.name))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Date of Birth")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.date_of_birth))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Email")]), _vm._v(" "), (!_vm.show_edit_email) ? _c('dd', [_vm._v("\n      \t\t\t\t" + _vm._s(_vm.data.email) + "\n      \t\t\t\t"), _c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        _vm.show_edit_email = true
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-pencil"
-  })])]) : _vm._e(), _vm._v(" "), (_vm.show_edit_email) ? _c('dd', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.data.email),
-      expression: "data.email"
-    }],
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": _vm._s(_vm.data.email)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.data.email = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        _vm.editEmail(_vm.data)
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-save"
-  })]), _vm._v(" "), (_vm.validation.email != '') ? _c('span', {
-    staticStyle: {
-      "color": "red"
-    }
-  }, [_vm._v(_vm._s(_vm.validation.email))]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Sponsor")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.sponsor !== null ? _vm.data.sponsor.username : ''))])]), _vm._v(" "), _c('dl', {
-    staticClass: "dl-horizontal"
-  }, [_c('dt', [_vm._v("Address Bitcoin")]), _vm._v(" "), (!_vm.show_edit_bitcoin_account) ? _c('dd', [_vm._v("\n      \t\t\t\t" + _vm._s(_vm.data.bitcoin_account) + "\n      \t\t\t\t"), _c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        _vm.show_edit_bitcoin_account = true
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-pencil"
-  })])]) : _vm._e(), _vm._v(" "), (_vm.show_edit_bitcoin_account) ? _c('dd', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.data.bitcoin_account),
-      expression: "data.bitcoin_account"
-    }],
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": _vm._s(_vm.data.bitcoin_account)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.data.bitcoin_account = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        _vm.editBitCoinAddress(_vm.data)
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-save"
-  })]), _vm._v(" "), (_vm.validation.bitcoin_account != '') ? _c('span', {
-    staticStyle: {
-      "color": "red"
-    }
-  }, [_vm._v(_vm._s(_vm.validation.bitcoin_account))]) : _vm._e()]) : _vm._e()])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
-    staticClass: "md-primary",
-    nativeOn: {
-      "click": function($event) {
-        _vm.closeForm()
-      }
-    }
-  }, [_vm._v("Close")])], 1)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-65c42396", module.exports)
-  }
-}
-
-/***/ }),
+/* 140 */,
 /* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49556,12 +48624,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.data
     },
     on: {
-      "show-create-view": function($event) {
+      "show-create": function($event) {
         _vm.current_view = '_Create'
       },
-      "show-view-info": _vm.showInfoView,
-      "show-edit-view": _vm.showEditView,
-      "close-form-message": function($event) {
+      "show-view": _vm.showView,
+      "show-edit": _vm.showEdit,
+      "close-form": function($event) {
         _vm.current_view = '_Table'
       }
     }
@@ -49787,12 +48855,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.data
     },
     on: {
-      "show-create-view": function($event) {
+      "show-create": function($event) {
         _vm.current_view = '_Create'
       },
-      "show-view-info": _vm.showInfoView,
-      "show-edit-view": _vm.showEditView,
-      "close-form-message": function($event) {
+      "show-view": _vm.showView,
+      "show-edit": _vm.showEdit,
+      "close-form": function($event) {
         _vm.current_view = '_Table'
       }
     }
@@ -49807,32 +48875,7 @@ if (false) {
 }
 
 /***/ }),
-/* 148 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(98);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("4d6431fc", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-0b27c642&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Info.vue", function() {
-     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-0b27c642&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Info.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 148 */,
 /* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49886,32 +48929,7 @@ if(false) {
 
 /***/ }),
 /* 151 */,
-/* 152 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(102);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("54e87b67", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-52adfcb8&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Info.vue", function() {
-     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-52adfcb8&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Info.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 152 */,
 /* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49964,58 +48982,8 @@ if(false) {
 }
 
 /***/ }),
-/* 155 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(105);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("f6614cea", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-60f2f7aa&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Info.vue", function() {
-     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-60f2f7aa&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Info.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 156 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(106);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("5681053c", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-65c42396&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Info.vue", function() {
-     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-65c42396&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Info.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 155 */,
+/* 156 */,
 /* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -50047,6 +49015,1413 @@ if(false) {
 
 module.exports = __webpack_require__(59);
 
+
+/***/ }),
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(172),
+  /* template */
+  __webpack_require__(173),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\plan\\Edit.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Edit.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-24687f87", Component.options)
+  } else {
+    hotAPI.reload("data-v-24687f87", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 172 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_Api__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(5);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+    mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
+
+    props: ['data'],
+
+    methods: {
+        save: function save() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0__api_Api__["a" /* default */].put('plan/edit', this.data).then(function (response) {
+                _this.closeForm();
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('md-card', {
+    staticClass: "content-form"
+  }, [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v("Edit Company Profile")])]), _vm._v(" "), _c('md-card-content', {
+    staticClass: "content-body"
+  }, [_c('div', {
+    staticClass: "col-md-12 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Name")]), _vm._v(" "), _c('dd', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.name),
+      expression: "data.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": _vm._s(_vm.data.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.data.name = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Min Deposit")]), _vm._v(" "), _c('dd', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.min_deposit),
+      expression: "data.min_deposit"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": _vm._s(_vm.data.min_deposit)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.data.min_deposit = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Max Deposit")]), _vm._v(" "), _c('dd', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.max_deposit),
+      expression: "data.max_deposit"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": _vm._s(_vm.data.max_deposit)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.data.max_deposit = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Daily")]), _vm._v(" "), _c('dd', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.daily),
+      expression: "data.daily"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": _vm._s(_vm.data.daily)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.data.daily = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Binary")]), _vm._v(" "), _c('dd', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.pairing),
+      expression: "data.pairing"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": _vm._s(_vm.data.pairing)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.data.pairing = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Sponsor")]), _vm._v(" "), _c('dd', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.sponsor),
+      expression: "data.sponsor"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": _vm._s(_vm.data.sponsor)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.data.sponsor = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Level")]), _vm._v(" "), _vm._l((_vm.data.sponsor_levels), function(level) {
+    return _c('dd', [_c('div', {
+      staticClass: "form-group"
+    }, [_c('div', {
+      staticClass: "input-group"
+    }, [_c('span', {
+      staticClass: "input-group-addon"
+    }, [_vm._v(_vm._s(level.level))]), _vm._v(" "), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (level.commission),
+        expression: "level.commission"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": _vm._s(level.commission)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          level.commission = $event.target.value
+        }
+      }
+    })])])])
+  })], 2)])]), _vm._v(" "), _c('md-card-actions', {
+    staticClass: "space-between"
+  }, [_c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.save()
+      }
+    }
+  }, [_vm._v("Save")]), _vm._v(" "), _c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.closeForm()
+      }
+    }
+  }, [_vm._v("Close")])], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-24687f87", module.exports)
+  }
+}
+
+/***/ }),
+/* 174 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(5);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
+
+	props: ['data'],
+
+	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({}))
+};
+
+/***/ }),
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.sec-block[data-v-0c3286a2] {\n  padding: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 176 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(178)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(174),
+  /* template */
+  __webpack_require__(177),
+  /* scopeId */
+  "data-v-0c3286a2",
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\plan\\View.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] View.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0c3286a2", Component.options)
+  } else {
+    hotAPI.reload("data-v-0c3286a2", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('md-card', {
+    staticClass: "content-form"
+  }, [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v("Plan Package Detail")])]), _vm._v(" "), _c('md-card-content', {
+    staticClass: "content-body"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Name")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.name))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Min Deposit")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.min_deposit)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Max Deposit")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.max_deposit)))])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Daily")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("percentage")(_vm.data.daily)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Binary Earning")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("percentage")(_vm.data.pairing)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Earning Duration")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("pluralize")(_vm.data.duration, 'day')))])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Sponsor")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("percentage")(_vm.data.sponsor)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Level")]), _vm._v(" "), _vm._l((_vm.data.sponsor_levels), function(level) {
+    return _c('dd', [_vm._v("\n              " + _vm._s(level.level) + " -> " + _vm._s(_vm._f("percentage")(level.commission)) + "\n            ")])
+  })], 2)])])]), _vm._v(" "), _c('md-card-actions', {
+    staticClass: "space-between"
+  }, [_c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.showEdit(_vm.data)
+      }
+    }
+  }, [_vm._v("Edit")]), _vm._v(" "), _c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.closeForm()
+      }
+    }
+  }, [_vm._v("Close")])], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0c3286a2", module.exports)
+  }
+}
+
+/***/ }),
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(175);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("1362f704", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-0c3286a2&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./View.vue", function() {
+     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-0c3286a2&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./View.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 179 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(5);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
+
+	props: ['data'],
+
+	data: function data() {
+		return {
+			show_edit_email: false,
+			show_edit_bitcoin_account: false,
+			validation: {
+				email: '',
+				bitcoin_account: ''
+			}
+		};
+	},
+
+
+	methods: _extends({
+		editEmail: function editEmail(data) {
+			var _this = this;
+
+			this.saveEmail(data).then(function (response) {
+				_this.show_edit_email = false;
+				_this.validation.email = '';
+			}, function (err_response) {
+				_this.validation.email = err_response.data.error;
+			});
+		},
+		editBitCoinAddress: function editBitCoinAddress(data) {
+			var _this2 = this;
+
+			this.saveBitCoinAddress(data).then(function (response) {
+				_this2.show_edit_bitcoin_account = false;
+				_this2.validation.bitcoin_account = '';
+			}, function (err_response) {
+				_this2.validation.bitcoin_account = err_response.data.error;
+			});
+		}
+	}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
+		saveEmail: 'customer/editEmail',
+		saveBitCoinAddress: 'customer/editBitCoinAddress'
+	}))
+};
+
+/***/ }),
+/* 180 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.sec-block[data-v-bb1fb3e6] {\n  padding: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 181 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(183)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(179),
+  /* template */
+  __webpack_require__(182),
+  /* scopeId */
+  "data-v-bb1fb3e6",
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\customer\\View.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] View.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-bb1fb3e6", Component.options)
+  } else {
+    hotAPI.reload("data-v-bb1fb3e6", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('md-card', {
+    staticClass: "content-form"
+  }, [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v("Customer Information Detail")])]), _vm._v(" "), _c('md-card-content', {
+    staticClass: "content-body"
+  }, [_c('div', {
+    staticClass: "col-md-12 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Username")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.username))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("First Name")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.first_name))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Last Name")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.last_name))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Gender")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("sex")(_vm.data.gender)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Country")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.country.name))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Date of Birth")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.date_of_birth))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Email")]), _vm._v(" "), (!_vm.show_edit_email) ? _c('dd', [_vm._v("\n      \t\t\t\t" + _vm._s(_vm.data.email) + "\n      \t\t\t\t"), _c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        _vm.show_edit_email = true
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-pencil"
+  })])]) : _vm._e(), _vm._v(" "), (_vm.show_edit_email) ? _c('dd', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.email),
+      expression: "data.email"
+    }],
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": _vm._s(_vm.data.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.data.email = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        _vm.editEmail(_vm.data)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-save"
+  })]), _vm._v(" "), (_vm.validation.email != '') ? _c('span', {
+    staticStyle: {
+      "color": "red"
+    }
+  }, [_vm._v(_vm._s(_vm.validation.email))]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Sponsor")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.sponsor !== null ? _vm.data.sponsor.username : ''))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Address Bitcoin")]), _vm._v(" "), (!_vm.show_edit_bitcoin_account) ? _c('dd', [_vm._v("\n      \t\t\t\t" + _vm._s(_vm.data.bitcoin_account) + "\n      \t\t\t\t"), _c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        _vm.show_edit_bitcoin_account = true
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-pencil"
+  })])]) : _vm._e(), _vm._v(" "), (_vm.show_edit_bitcoin_account) ? _c('dd', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.data.bitcoin_account),
+      expression: "data.bitcoin_account"
+    }],
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": _vm._s(_vm.data.bitcoin_account)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.data.bitcoin_account = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        _vm.editBitCoinAddress(_vm.data)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-save"
+  })]), _vm._v(" "), (_vm.validation.bitcoin_account != '') ? _c('span', {
+    staticStyle: {
+      "color": "red"
+    }
+  }, [_vm._v(_vm._s(_vm.validation.bitcoin_account))]) : _vm._e()]) : _vm._e()])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.closeForm()
+      }
+    }
+  }, [_vm._v("Close")])], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-bb1fb3e6", module.exports)
+  }
+}
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(180);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("6154f7d8", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bb1fb3e6&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./View.vue", function() {
+     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bb1fb3e6&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./View.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 184 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(5);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
+
+	props: ['data'],
+
+	data: function data() {
+		return {};
+	},
+
+
+	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
+		saveEmail: 'customer/editEmail',
+		saveBitCoinAddress: 'customer/editBitCoinAddress'
+	}))
+};
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.sec-block[data-v-e14c01a2] {\n  padding: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(188)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(184),
+  /* template */
+  __webpack_require__(187),
+  /* scopeId */
+  "data-v-e14c01a2",
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\deposit\\View.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] View.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e14c01a2", Component.options)
+  } else {
+    hotAPI.reload("data-v-e14c01a2", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('md-card', {
+    staticClass: "content-form"
+  }, [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v("Deposit History")])]), _vm._v(" "), _c('md-card-content', {
+    staticClass: "content-body"
+  }, [_c('div', {
+    staticClass: "col-md-12 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Username")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.username))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Email")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.email))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Deposit Amount")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.amount)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Status")]), _vm._v(" "), _c('dd', [(_vm.data.status == 0) ? _c('span', {
+    staticClass: "label label-sm label-warning"
+  }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (_vm.data.status == 1) ? _c('span', {
+    staticClass: "label label-sm label-success"
+  }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (_vm.data.status == 2) ? _c('span', {
+    staticClass: "label label-sm label-danger"
+  }, [_vm._v("Expired")]) : _vm._e()])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Plan")]), _vm._v(" "), _c('dd', [_c('span', {
+    class: 'label label-sm label-' + _vm.data.plan.name.toLowerCase()
+  }, [_vm._v(_vm._s(_vm.data.plan.name))])])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Bitcoin Address")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.bitcoin_account))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Issue Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.issue_date))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Expire Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.expire_date))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Deposited Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.created_at))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Bankslip")]), _vm._v(" "), _c('dd', [_c('img', {
+    staticStyle: {
+      "max-width": "800px"
+    },
+    attrs: {
+      "src": 'storage/' + _vm.data.bankslip
+    }
+  })])])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.closeForm()
+      }
+    }
+  }, [_vm._v("Close")])], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-e14c01a2", module.exports)
+  }
+}
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(185);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("d167fcec", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-e14c01a2&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./View.vue", function() {
+     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-e14c01a2&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./View.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 189 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(5);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+	mixins: [__WEBPACK_IMPORTED_MODULE_1__core_mixins_table__["a" /* default */]],
+
+	props: ['data'],
+
+	data: function data() {
+		return {};
+	},
+
+
+	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
+		saveEmail: 'customer/editEmail',
+		saveBitCoinAddress: 'customer/editBitCoinAddress'
+	}))
+};
+
+/***/ }),
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.sec-block[data-v-37181f56] {\n  padding: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(193)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(189),
+  /* template */
+  __webpack_require__(192),
+  /* scopeId */
+  "data-v-37181f56",
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\Bonnak\\Portfolios\\goldfund\\resources\\assets\\js\\admin\\components\\withdrawal\\View.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] View.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-37181f56", Component.options)
+  } else {
+    hotAPI.reload("data-v-37181f56", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('md-card', {
+    staticClass: "content-form"
+  }, [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v("Deposit History")])]), _vm._v(" "), _c('md-card-content', {
+    staticClass: "content-body"
+  }, [_c('div', {
+    staticClass: "col-md-12 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Username")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.username))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Email")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.email))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Deposit Amount")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("currency")(_vm.data.amount)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Status")]), _vm._v(" "), _c('dd', [(_vm.data.status == 0) ? _c('span', {
+    staticClass: "label label-sm label-warning"
+  }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (_vm.data.status == 1) ? _c('span', {
+    staticClass: "label label-sm label-success"
+  }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (_vm.data.status == 2) ? _c('span', {
+    staticClass: "label label-sm label-danger"
+  }, [_vm._v("Expired")]) : _vm._e()])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Plan")]), _vm._v(" "), _c('dd', [_c('span', {
+    class: 'label label-sm label-' + _vm.data.plan.name.toLowerCase()
+  }, [_vm._v(_vm._s(_vm.data.plan.name))])])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Bitcoin Address")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.owner.bitcoin_account))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Issue Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.issue_date))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Expire Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.expire_date))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Deposited Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.created_at))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Bankslip")]), _vm._v(" "), _c('dd', [_c('img', {
+    staticStyle: {
+      "max-width": "800px"
+    },
+    attrs: {
+      "src": 'storage/' + _vm.data.bankslip
+    }
+  })])])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.closeForm()
+      }
+    }
+  }, [_vm._v("Close")])], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-37181f56", module.exports)
+  }
+}
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(190);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("753917fe", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-37181f56&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./View.vue", function() {
+     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-37181f56&scoped=true!./../../../../../../node_modules/sass-loader/index.js!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./View.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

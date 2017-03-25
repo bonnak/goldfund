@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 
 	//Plan
 	Route::get('/plans', 'Admin\PlanController@get');
+	Route::put('/plan/edit', 'Admin\PlanController@update');
 
 	//Geneology
 	Route::get('/geneology/json', 'Admin\GeneologyController@getData');

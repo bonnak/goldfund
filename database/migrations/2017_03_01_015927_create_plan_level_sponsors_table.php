@@ -18,7 +18,7 @@ class CreatePlanLevelSponsorsTable extends Migration
             $table->integer('plan_id')->unsigned();
             $table->integer('level');
             $table->char('type', 1);
-            $table->decimal('commission');
+            $table->double('commission');
         });
     }
 

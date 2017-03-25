@@ -16,4 +16,9 @@ class PlanController extends Controller
     	// 	return collect($data)->union(['test' => 1]);
     	// });
     }
+
+    public function update(Request $request)
+    {
+    	return $request->all();
+    }
 }
