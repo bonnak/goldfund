@@ -16,6 +16,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Earn Amount</th>
+                                        <th>Status</th>
                                         <th>Left Child</th>
                                         <th>Right Child</th>
                                         <th>Created Date</th>
@@ -25,6 +26,10 @@
                                     <tr ng-repeat="(key, earning) in vm.earnings">
                                         <td>{{$index + 1}}</td>
                                         <td>{{ earning.amount | currency }}</td>
+                                        <td>
+                                            <span class="label label-sm label-warning" ng-if="earning.status == 0">Pending</span>
+                                            <span class="label label-sm label-success" ng-if="earning.status == 1">Approved</span>
+                                        </td>
                                         <td>{{ earning.left_child.username }}</td>
                                         <td>{{ earning.right_child.username }}</td>
                                         <td>{{ earning.created_at }}</td>   

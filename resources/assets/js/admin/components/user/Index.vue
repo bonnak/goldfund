@@ -1,9 +1,9 @@
 <template>
 	<div>
 	    <component :is="current_view" :data="data"
-	    		@show-create-view="current_view = '_Create'"	      		
-	    		@show-view-info="showInfoView"
-	    		@close-form-message="current_view = '_Table'">
+	    		@show-create="current_view = '_Create'"	      		
+	    		@show-view="showView"
+	    		@close-form="current_view = '_Table'">
 	  	</component>
   </div>
 </template>

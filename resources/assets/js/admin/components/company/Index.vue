@@ -1,10 +1,10 @@
 <template>
 	<div>
 	    <component :is="current_view" :data="data"
-	    		@show-create-view="current_view = '_Create'"	 
-	    		@show-view-info="showInfoView"     		
-	    		@show-edit-view="showEditView"
-	    		@close-form-message="current_view = '_View'">
+	    		@show-create="current_view = '_Create'"	 
+	    		@show-view="showInfoView"     		
+	    		@show-edit="showEditView"
+	    		@close-form="current_view = '_View'">
 	  	</component>
   </div>
 </template>

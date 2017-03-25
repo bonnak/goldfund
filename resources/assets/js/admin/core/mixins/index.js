@@ -1,11 +1,11 @@
 export default{
 	methods: {
-		showInfoView(data){
+		showView(data){
 			this.data = data;
-			this.current_view = '_Info';
+			this.current_view = '_View';
 		},
 		
-		showEditView(data){
+		showEdit(data){
 			this.data = data;
 			this.current_view = '_Edit';
 		}

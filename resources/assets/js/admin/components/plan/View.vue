@@ -38,25 +38,17 @@
             <dt>Sponsor</dt>
             <dd>{{ data.sponsor | percentage }}</dd>
           </dl>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 sec-block">
-          <table class="table">
-            <thead>
-              <th>Level</th>
-            </thead>
-            <tbody>
-              <tr v-for="level in data.sponsor_levels">
-                <td>{{ level.level }}</td>                
-              </tr>
-            </tbody>
-          </table>
+          <dl class="dl-horizontal">
+            <dt>Level</dt>
+            <dd v-for="level in data.sponsor_levels">
+              {{ level.level }} -> {{ level.commission | percentage }}
+            </dd>
+          </dl>
         </div>
       </div>
     </md-card-content>
     <md-card-actions class="space-between">
-	    <md-button class="md-primary" @click.native="closeForm()">Edit</md-button>
+	    <md-button class="md-primary" @click.native="showEdit(data)">Edit</md-button>
       <md-button class="md-primary" @click.native="closeForm()">Close</md-button>
 	  </md-card-actions>
   </md-card>

@@ -1,15 +1,15 @@
 export default{
 	methods: {
 		closeForm(){
-			this.$emit('close-form-message');
+			this.$emit('close-form');
 		},
 
 		showViewInfo(data){
-			this.$emit('show-view-info', data);
+			this.$emit('show-view', data);
 		},
 
 		showEdit(data){
-			this.$emit('show-edit-view', data);
+			this.$emit('show-edit', data);
 		},
 
 		onSelect(data){
