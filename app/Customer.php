@@ -9,6 +9,7 @@ use App\Deposit;
 use App\BinaryEarningCommission;
 use App\SponsorEarningCommission;
 use App\Earning;
+use App\Withdrawal;
 
 class Customer extends Authenticatable
 {
@@ -73,6 +74,11 @@ class Customer extends Authenticatable
   public function daily_earning_commission()
   {
     return $this->hasMany(Earning::class, 'cust_id', 'id');
+  }
+
+  public function withdrawals()
+  {
+    return $this->hasMany(Withdrawal::class, 'cust_id', 'id');
   }
 
   

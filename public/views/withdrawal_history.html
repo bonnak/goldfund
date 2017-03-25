@@ -15,20 +15,20 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
                                         <th>Created Date</th>
+                                        <th>Status</th>
+                                        <th>Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="(key, withdrawal) in vm.withdrawals">
-                                        <td>{{$index + 1}}</td>
-                                        <td>{{ withdrawal.amount | currency }}</td>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ withdrawal.created_at }}</td> 
                                         <td>
                                             <span class="label label-sm label-warning" ng-if="withdrawal.status == 0">Pending</span>
                                             <span class="label label-sm label-success" ng-if="withdrawal.status == 1">Approved</span>
-                                        </td>
-                                        <td>{{ withdrawal.created_at }}</td>   
+                                        </td> 
+                                        <td>{{ withdrawal.amount | currency }}</td> 
                                     </tr>
                                 </tbody>
                             </table>
