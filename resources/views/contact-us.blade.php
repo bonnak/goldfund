@@ -7,10 +7,10 @@
 
             <!-- SECTION HEADER -->
             <div class="section-header">
-
                 <!-- SECTION TITLE -->
-                <h2 class="white-text">Get in touch</h2>
-
+                <h2 class="white-text">
+                    Contact Detail
+                </h2>
                 <!-- SHORT DESCRIPTION ABOUT THE SECTION -->
                 <h6 class="white-text">
                     Have any question? Drop us a message. We will get back to you in 24 hours.
@@ -23,29 +23,27 @@
                 <div class="col-sm-6">
                     <div class="address">
                         <h4>
-                            Get in touch
+                            Contact Detail
                         </h4>
                         <ul class="contact_address">
                             <li>
                                 <i class="fa fa-phone"></i>
-                                <a href="tel:+(855)12888888">
-                                    + (855)12 888 888
+                                <a href="tel:‎{{$data['phone']}}">
+                                    {{$data['phone']}}
                                 </a>
                             </li>
                             <li><i class="fa fa-envelope"></i>
-                                <a href="mailto:admin@gmail.com">
-                                    admin@gmail.com              </a>
+                                <a href="mailto:{{$data['email']}}">
+                                    {{$data['email']}}
+                                </a>
                             </li>
                             <li>
                                 <i class="fa fa-globe"></i>
                                 www.bitcompanytrading.com
                             </li>
-                            <li>
-                                <i class="fa fa-clock-o"></i>
-                                Monday-Sunday 8:00 AM - 7:00 PM
-                            </li>
                             <li><i class="fa fa-map-marker"></i>
-                                Building 44-46Eo, St.310, Sangkat Toul Svay Pray1, Khan Chamkamon, Phnom Penh.</li>
+                                {{$data['address']}}
+                            </li>
                         </ul>
                     </div>
                 </div>

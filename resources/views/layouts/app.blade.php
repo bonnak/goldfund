@@ -75,6 +75,23 @@
                             @endif
                             <li><a href="{{url('faq')}}">FAQ</a></li>
                             <li><a href="{{url('plan')}}">Plan</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle"
+                                   style="margin-bottom: 27px;"
+                                   data-toggle="dropdown">
+                                    Service
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @foreach($menus as $menu)
+                                        <li>
+                                            <a href="{{url('service/' . $menu->id)}}">
+                                                {{$menu->title}}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li><a href="{{url('support')}}">Support</a></li>
                             <li><a href="{{url('about-us')}}">About Us</a></li>
                             <li><a href="{{url('contact-us')}}">Contact</a></li>

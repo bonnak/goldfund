@@ -74,19 +74,28 @@
             <div data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
                 <div class="row">
                     <div class="col-md-4 text-center">
-                        <img src="/images/icons/icon-register.gif">
-                        <h2 class="caption">REGISTER ACCOUNT</h2>
-                        <p class="description">Register an account to start making money with bitcompanytradingJust fill out registration form.</p>
+                        <span class="icon-home"><i class="fa fa-btc"></i></span>
+                        <h2 class="caption">Bitcoin Mining</h2>
+                        <p class="description">
+                            Bitcoin Mining is the process of adding transaction records to
+                            Bitcoin's public ledger of past transactions
+                        </p>
                     </div>
                     <div class="col-md-4 text-center">
-                        <img src="/images/icons/icon-deposit.gif">
-                        <h2 class="caption">MAKE DEPOSIT</h2>
-                        <p class="description">To make a deposit you have to log into your personal account. You can do this after registration and use make deposit function in your account.</p>
+                        <span class="icon-home"><i class="fa fa-bar-chart"></i></span>
+                        <h2 class="caption">Forex Trading</h2>
+                        <p class="description">
+                            Forex Trading, also known as foreign exchange, FX or currency trading,
+                            is a decentralized global market where all the world's currencies trade.
+                        </p>
                     </div>
                     <div class="col-md-4 text-center">
-                        <img src="/images/icons/icon-earn.gif">
-                        <h2 class="caption">RECEIVE EARNING</h2>
-                        <p class="description">Once you collected certain amount on your account balance. You can make withdrawal request. Withdrawals processes within 24 hours on business days.</p>
+                        <span class="icon-home"><i class="fa fa-star"></i></span>
+                        <h2 class="caption">Gold Trading</h2>
+                        <p class="description">
+                            Gold Trading is the technique by which gold that
+                            has accumulated in a Gold deposit is extracted.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -156,7 +165,7 @@
                     <div class="bs-five-area">
                         <div class="col-md-4 no-padding" data-ng-repeat="(key, plan) in vm.plans">
                             <div class="bs-five">
-                                <img src="@{{plan.image }}" alt="logo">
+                                <img ng-src="@{{plan.image }}" alt="logo">
                                 <div class="text-uppercase plan-name">@{{ plan.name }}</div>
                                 <h1 class="bs-caption" style="margin: 30px;">@{{plan.daily * 100 }}<sup>%</sup></h1>
                                 <p>Daily for @{{plan.duration }} days</p>
