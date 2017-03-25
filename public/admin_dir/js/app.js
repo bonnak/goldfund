@@ -50099,7 +50099,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "max-width": "800px"
     },
     attrs: {
-      "src": 'storage/' + _vm.data.bankslip
+      "src": _vm.data.bankslip
     }
   })])])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
     staticClass: "md-primary",

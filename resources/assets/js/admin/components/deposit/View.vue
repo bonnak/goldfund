@@ -49,7 +49,7 @@
         </dl>
         <dl class="dl-horizontal">
           <dt>Bankslip</dt>
-          <dd><img :src="'storage/' + data.bankslip" style="max-width: 800px;"></dd>
+          <dd><img :src="data.bankslip" style="max-width: 800px;"></dd>
         </dl>
       </div>
     </md-card-content>
