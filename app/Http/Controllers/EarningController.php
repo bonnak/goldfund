@@ -42,7 +42,7 @@ class EarningController extends Controller
     {
         return Earning::with('plan')
                     ->where('cust_id', auth()->user()->id)
-                    ->where('status', 1)
+                    //->where('status', 1)
                     ->orderBy('created_at', 'desc')
                     ->get();
     }
