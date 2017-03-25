@@ -21,11 +21,11 @@
                                             <p>Daily for {{ plan.duration }} days</p>
                                             <ul>
                                                 <li><b>Deposit: {{ plan.min_deposit }}$ - {{ plan.max_deposit }}$</b></li>
-                                                <li>Profit: {{ plan.daily * 100 * plan.duration }}%</li>
-                                                <li>24/7 Customer Support</li>
+                                                <li>Total Return: {{ plan.daily * 100 * plan.duration }}%</li>
+                                                <li>Withdraw Total Min $10</li>
                                             </ul>
                                             <a ng-click="vm.model.plan_id = plan.id; vm.model.amount = plan.min_deposit; vm.model.min_deposit = plan.min_deposit; vm.model.max_deposit = plan.max_deposit"
-                                               class="btn blue btn-success btn-round m-top-40">Deposit</a>
+                                               class="btn btn-success btn-round m-top-40">Deposit</a>
                                         </div>
                                     </div>
                                 </div>

@@ -171,8 +171,8 @@
                                 <p>Daily for @{{plan.duration }} days</p>
                                 <ul>
                                     <li><b>Deposit: @{{plan.min_deposit }}$ - @{{plan.max_deposit }}$</b></li>
-                                    <li>Profit: @{{plan.daily * 100 * plan.duration }}%</li>
-                                    <li>24/7 Customer Support</li>
+                                    <li>Total Return: @{{plan.daily * 100 * plan.duration }}%</li>
+                                    <li>Withdraw Total Min $10</li>
                                 </ul>
                                 <a class="btn blue btn-success btn-round m-top-40" href="/login">Deposit</a>
                             </div>
