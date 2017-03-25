@@ -11,6 +11,7 @@ angular.module('MetronicApp')
             username                : '',
             email                   : '',
             password                : '',
+            password_confirmation   : '',
             first_name              : '',
             last_name               : '',
             country_id              : '',
@@ -53,6 +54,7 @@ angular.module('MetronicApp')
             vm.model.username = '';
             vm.model.email = '';
             vm.model.password = '';
+            vm.model.password_confirmation = '';
             vm.model.first_name = '';
             vm.model.last_name = '';
             vm.model.country_id = '';
