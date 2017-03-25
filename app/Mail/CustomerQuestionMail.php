@@ -30,10 +30,10 @@ class CustomerQuestionMail extends Mailable
      */
     public function build()
     {
-        if($this->data->has('attachment'))
-        {
-            $this->attach('/storage/images/mail/1.png');
-        }
+        // if($this->data->has('attachment'))
+        // {
+        //     $this->attach('/storage/images/mail/1.png');
+        // }
 
         return $this->from($this->data['email'])
                     ->view('emails.question')
