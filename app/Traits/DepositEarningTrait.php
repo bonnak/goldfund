@@ -53,13 +53,13 @@ trait DepositEarningTrait
             $level_number = $key + 1;
             $sponsor_level = $deposit->plan->sponsor_levels()->where('level', $level_number)->first();  
 
-            if($sponsor_level === null)  
-            {
-                throw new \Symfony\Component\HttpKernel\Exception\HttpException(
-                    422, 
-                    $upline->username . '   ' . $key
-                );
-            }
+            // if($sponsor_level === null)  
+            // {
+            //     throw new \Symfony\Component\HttpKernel\Exception\HttpException(
+            //         422, 
+            //         $upline->username . '   ' . $key
+            //     );
+            // }
 
             if($sponsor_level === null) return false;
             if(is_null($upline->deposit) || $upline->deposit->status != 1) return;    
