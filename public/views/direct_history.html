@@ -15,9 +15,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Sponsor</th>
+                                        <th>Name</th>
                                         <th>Direction</th>                                        
                                         <th>Earn Amount</th>
+                                        <th>Plan</th>
                                         <th>Status</th>
                                         <th>Deposited Date</th>
                                     </tr>
@@ -28,6 +29,7 @@
                                         <td>{{ earning.deposit.owner.username }}</td>
                                         <td>{{ earning.deposit.owner.direction }}</td>
                                         <td>{{ earning.amount | currency }}</td>
+                                        <td>{{ earning.deposit.plan.name }}</td>
                                         <td>
                                             <span class="label label-sm label-warning" ng-if="earning.status == 0">Pending</span>
                                             <span class="label label-sm label-success" ng-if="earning.status == 1">Approved</span>

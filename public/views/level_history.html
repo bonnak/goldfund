@@ -33,10 +33,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Sponsor</th>
+                                        <th>Name</th>
                                         <th>Direction</th> 
                                         <th>Level</th>
-                                        <th>Placement</th>
+                                        <th>Plan</th>
                                         <th>Earn Amount</th>
                                         <th>Status</th>
                                         <th>Deposited Date</th>
@@ -48,7 +48,7 @@
                                         <td>{{ earning.deposit.owner.username }}</td>
                                         <td>{{ earning.deposit.owner.direction }}</td>
                                         <td>{{ earning.level_number }}</td>
-                                        <td>{{ earning.deposit.owner.placement_id }}</td>
+                                        <td>{{ earning.deposit.plan.name }}</td>
                                         <td>{{ earning.amount | currency }}</td>
                                         <td>
                                             <span class="label label-sm label-warning" ng-if="earning.status == 0">Pending</span>
