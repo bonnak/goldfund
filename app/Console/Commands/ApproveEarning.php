@@ -9,21 +9,21 @@ use App\SponsorEarningCommission;
 use App\LevelEarningCommission;
 use App\BinaryEarningCommission;
 
-class CutomerReceiveEarning extends Command
+class ApproveEarning extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'earning:send';
+    protected $signature = 'earning:approve';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Customer receiving earning';
+    protected $description = 'Customer get approve direct, level and binary earning.';
 
     /**
      * Create a new command instance.
@@ -44,30 +44,9 @@ class CutomerReceiveEarning extends Command
     {
         $this->info('[' . Carbon::now()->toDateTimeString() . ']');
 
-        $this->approveDailyEarning();
         $this->approveDirectEarning();
         $this->approveLevelEarning();
         $this->approveBinaryEarning();
-    }
-
-
-    protected function approveDailyEarning()
-    {
-        $earnings = Earning::with('owner', 'deposit', 'plan')
-                            ->where('status', 0)
-                            ->get();
-
-        $earnings->each(function ($earning, $key) {
-            $earning->status = 1;
-            $earning->save();
-
-
-            $this->line(
-                '#' . $key . ' ' . 
-                $earning->owner->username . ' receive daily earning $' . $earning->amount .
-                ' (deposit_id = ' . $earning->deposit_id . ' and plan_name = ' . $earning->plan->name . ').'
-            );
-        });
     }
 
     protected function approveDirectEarning()
