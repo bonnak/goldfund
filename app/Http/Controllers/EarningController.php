@@ -69,7 +69,7 @@ class EarningController extends Controller
 
     public function binaryEarning()
     {
-        return BinaryEarningCommission::with(['left_child', 'right_child'])
+        return BinaryEarningCommission::with(['left_child.deposit.plan', 'right_child.deposit.plan'])
                         ->where('cust_id', auth()->user()->id)
                         //->where('status', 1)
                         ->orderBy('created_at', 'desc')
