@@ -18,7 +18,9 @@
                                         <th>Bonus Amount</th>
                                         <th>Status</th>
                                         <th>Left Child</th>
+                                        <th>Plan Left</th>
                                         <th>Right Child</th>
+                                        <th>Plan Right</th>
                                         <th>Created Date</th>
                                     </tr>
                                 </thead>
@@ -31,7 +33,9 @@
                                             <span class="label label-sm label-success" ng-if="earning.status == 1">Approved</span>
                                         </td>
                                         <td>{{ earning.left_child.username }}</td>
+                                        <td>{{ earning.left_child.deposit.plan.name }}</td>
                                         <td>{{ earning.right_child.username }}</td>
+                                        <td>{{ earning.right_child.deposit.plan.name }}</td>
                                         <td>{{ earning.created_at }}</td>   
                                     </tr>
                                 </tbody>
