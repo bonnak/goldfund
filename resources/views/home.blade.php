@@ -125,15 +125,15 @@
                 <div class="col-md-4">
                     <br/>
                     <div class="stat">
-                        <p class="num">95</p>
+                        <p class="num">500</p>
                         <p class="text">Days Online</p>
                     </div>
                     <div class="stat">
-                        <p class="num">@{{vm.totalMember }}</p>
+                        <p class="num">@{{ vm.totalMember + 100 }}</p>
                         <p class="text">Members</p>
                     </div>
                     <div class="stat">
-                        <p class="num">@{{vm.investedCapital | currency }}</p>
+                        <p class="num">@{{ vm.investedCapital + 20000 | currency }}</p>
                         <p class="text">Invested</p>
                     </div>
                 </div>
@@ -143,10 +143,10 @@
                     <dl>
                         <div ng-repeat="last_deposit in vm.lastDeposits">
                             <div class="col-md-6 col-xs-6 align-left">
-                                @{{last_deposit.owner.username }}
+                                @{{ last_deposit.owner.username }}
                             </div>
                             <div class="col-md-6 col-xs-6 align-left">
-                                @{{last_deposit.amount | currency}}
+                                @{{ last_deposit.amount | currency}}
                             </div>
                         </div>
                     </dl>

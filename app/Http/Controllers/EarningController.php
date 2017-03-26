@@ -50,7 +50,7 @@ class EarningController extends Controller
 
     public function levelEarning()
     {
-        return LevelEarningCommission::with('deposit.owner')
+        return LevelEarningCommission::with(['deposit.owner', 'deposit.plan'])
                                         ->where('cust_id', auth()->user()->id)
                                         //->where('status', 1)
                                         ->orderBy('created_at', 'desc')
@@ -59,7 +59,7 @@ class EarningController extends Controller
 
     public function filterLevelEarning($level_number)
     {
-        return LevelEarningCommission::with('deposit.owner')
+        return LevelEarningCommission::with(['deposit.owner', 'deposit.plan'])
                                         ->where('cust_id', auth()->user()->id)
                                         ->where('level_number', $level_number)
                                         //->where('status', 1)
@@ -78,7 +78,7 @@ class EarningController extends Controller
 
     public function directEarning()
     {
-        return SponsorEarningCommission::with('deposit.owner')
+        return SponsorEarningCommission::with(['deposit.owner', 'deposit.plan'])
                                         ->where('sponsor_id', auth()->user()->id)
                                         //->where('status', 1)
                                         ->orderBy('created_at', 'desc')
