@@ -39,6 +39,10 @@ Route::get('/getCountry', 'CountryController@get');
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/home', function(){
+	return redirect()->to('/');
+});
+
 Route::get('/about-us', function(){
 	return view('about-us');
 });
