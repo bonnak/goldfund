@@ -27,11 +27,6 @@
 	  					</router-link>
 	  				</md-list-item>
 	  				<md-list-item>
-	  					<router-link :to="{ path: '/plan' }">
-							<i class="fa fa-tint"></i><span>Plan</span>
-	  					</router-link>
-	  				</md-list-item>
-	  				<md-list-item>
 	  					<router-link :to="{ path: '/geneology' }">
 							<i class="fa fa-sitemap"></i><span>Geneology</span>
 	  					</router-link>
