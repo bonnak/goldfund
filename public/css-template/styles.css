@@ -1542,3 +1542,13 @@ footer {
 	font-size: xx-large;
 	color: #000;
 }
+#main-nav .container .navbar-collapse ul.main-nav-list li a {
+	text-decoration: none;
+	padding:0px 6px 10px 6px;
+	text-transform: uppercase;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+	color: #262626;
+	text-decoration: none;
+	background-color: #d3d3d3;
+}
