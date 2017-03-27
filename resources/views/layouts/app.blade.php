@@ -73,11 +73,10 @@
                             @if(!auth()->check())
                                 <li><a href="/register">Register</a></li>
                             @endif
-                            <li><a href="{{url('faq')}}">FAQ</a></li>
-                            <li><a href="{{url('plan')}}">Plan</a></li>
+                            <li><a href="{{url('plan')}}">Business Plan</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle"
-                                   style="margin-bottom: 27px;"
+                                   style="margin-bottom: 15px;background: none;color: #404040;"
                                    data-toggle="dropdown">
                                     Service
                                     <b class="caret"></b>
@@ -90,11 +89,13 @@
                                             </a>
                                         </li>
                                     @endforeach
+                                    <img src="/images/viberimage.jpg">
                                 </ul>
                             </li>
-                            <li><a href="{{url('support')}}">Support</a></li>
+                            <li><a href="{{url('what-is-forex')}}">What is Forex</a></li>
                             <li><a href="{{url('about-us')}}">About Us</a></li>
-                            <li><a href="{{url('contact-us')}}">Contact</a></li>
+                            <li><a href="{{url('contact-us')}}">Contact Us</a></li>
+                            <li><a href="{{url('faq')}}">FAQ</a></li>
                             <li><a href="{{url('account')}}">My Account</a></li>
                             @if(auth()->check())
                                 <li><a href="{{url('logout')}}">Logout</a></li>
@@ -133,15 +134,15 @@
                         </dl>
                     </div>
                     <div class="col-md-3 sec-block">
-                        <img src="images/60-day-unconditional-guarantee.png" class="img-responsive">
+                        <img src="/images/60-day-unconditional-guarantee.png" class="img-responsive">
                     </div>
                     <div class="col-md-3 sec-block contact">
-                        <img src="images/symantec_norton_sites_seal.jpg" width="83px">
-                        <img src="images/PositiveSSL-comodo.png" width="140px">
+                        <img src="/images/symantec_norton_sites_seal.jpg" width="83px">
+                        <img src="/images/PositiveSSL-comodo.png" width="140px">
                     </div>
                     <div class="col-md-3 sec-block">
                         <h2 style=" font-size: 20px !important;margin-bottom: 0px;">We Support</h2>
-                        <img src="images/Bitcoin_logo.svg.png" class="img-responsive">
+                        <img src="/images/Bitcoin_logo.svg.png" class="img-responsive">
                     </div>
                 </div>
             </div> <!-- / END CONTAINER -->

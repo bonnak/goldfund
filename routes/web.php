@@ -59,8 +59,8 @@ Route::get('/plan', function(){
 
 Route::get('/faq', 'FaqController@get');
 
-Route::get('/support', function(){
-	return view('support');
+Route::get('/what-is-forex', function(){
+	return view('what-is-forex');
 });
 
 

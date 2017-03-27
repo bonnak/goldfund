@@ -14,7 +14,7 @@
                 <h2 class="white-text">About US</h2>
 
                 <!-- SHORT DESCRIPTION ABOUT THE SECTION -->
-                <h6 class="white-text" style="text">
+                <h6 class="white-text">
                     <p>
                         Our company is an association of professional traders and analysts involved in trading at the world’s largest FOREX market.
                         Due to our experience, efficient software, and risk diversification, we are able to provide a high level of income to anyone,
