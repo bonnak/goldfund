@@ -46377,6 +46377,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -46389,7 +46400,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	data: function data() {
 		return {
 			contentHtml: '<div></div>',
-			search_query: ''
+			search_query: '',
+			approving_data: null
 		};
 	},
 
@@ -46420,7 +46432,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 		searchData: __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.debounce(function () {
 			this.fetchData(this.search_query);
-		}, 500)
+		}, 500),
+
+		openConfirmApprove: function openConfirmApprove(data) {
+			this.approving_data = data;
+			this.$refs['dialog_approve'].open();
+		},
+		confirmApprove: function confirmApprove() {
+			this.approveDeposit(this.approving_data);
+			this.approving_data = null;
+			this.$refs['dialog_approve'].close();
+		},
+		rejectApprove: function rejectApprove() {
+			this.approving_data = null;
+			this.$refs['dialog_approve'].close();
+		}
 	})
 };
 
@@ -48433,7 +48459,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "md-fab md-primary md-mini",
       nativeOn: {
         "click": function($event) {
-          _vm.approveDeposit(el)
+          _vm.openConfirmApprove(el)
         }
       }
     }, [_c('i', {
@@ -48476,7 +48502,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "close": _vm.onCloseDlg
     }
-  })], 1)
+  }), _vm._v(" "), _c('md-dialog', {
+    ref: 'dialog_approve',
+    attrs: {
+      "md-open-from": "#fab",
+      "md-close-to": "#fab"
+    }
+  }, [_c('md-dialog-title', [_c('span', [_c('i', {
+    staticClass: "fa fa fa-check-circle icon-success"
+  }), _vm._v(" Warning")])]), _vm._v(" "), _c('md-dialog-content', [_vm._v("Are you sure want to approve?")]), _vm._v(" "), _c('md-dialog-actions', [_c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.confirmApprove()
+      }
+    }
+  }, [_vm._v("Yes")]), _vm._v(" "), _c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.rejectApprove()
+      }
+    }
+  }, [_vm._v("No")])], 1)], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
