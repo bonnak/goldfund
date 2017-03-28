@@ -107,7 +107,7 @@ class RegisterController extends Controller
             'last_name' => 'required',
             'country_id' => 'required',
             'gender' => 'required',
-            'bitcoin_account' => 'required',
+            'bitcoin_account' => 'required|unique:customers',
             'date_of_birth' => 'required',
             'sponsor_id' => 'required',
             'direction' => 'required',
