@@ -27,6 +27,7 @@
                                         <td>
                                             <span class="label label-sm label-warning" ng-if="withdrawal.status == 0">Pending</span>
                                             <span class="label label-sm label-success" ng-if="withdrawal.status == 1">Approved</span>
+                                            <span class="label label-sm label-danger" ng-if="withdrawal.status == 2">Canceled</span>
                                         </td> 
                                         <td>{{ withdrawal.amount | currency }}</td> 
                                     </tr>

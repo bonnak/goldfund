@@ -7,5 +7,9 @@ export default {
 
   approve(data) {
     return Api.post('withdrawal/approve',  data);
+  },
+
+  cancel(data) {
+    return Api.post('withdrawal/cancel',  data);
   }
 }
