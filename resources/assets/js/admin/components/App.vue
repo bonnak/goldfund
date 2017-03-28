@@ -23,7 +23,7 @@
 	  				</md-list-item>
 	  				<md-list-item>
 	  					<router-link :to="{ path: '/withdrawal' }">
-							<i class="fa fa-dollar"></i><span>Withdrawal History</span>
+							<i class="fa fa-dollar"></i><span>Withdrawal</span>
 	  					</router-link>
 	  				</md-list-item>
 	  				<md-list-item>
@@ -266,5 +266,28 @@ body.md-theme-app{
 		align-items: center !important;
 		justify-content: flex-end !important;
 	}
+}
+
+.md-danger{
+	background-color: #ed6b75 !important;
+}
+
+.md-dialog-title{
+	padding: 13px;
+	margin: 0;
+
+	.icon-danger{
+		color: #ed6b75;
+	}
+
+	.icon-success{
+		color: #2ab27b;
+	}
+}
+
+.md-dialog-content{
+	padding: 13px;
+	background: none;
+	text-align: center;
 }
 </style>

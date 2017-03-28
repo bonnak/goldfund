@@ -48,7 +48,15 @@ const actions = {
         commit('EDIT', response);
       }
     );
-  }
+  },
+
+  cancel({ commit }, data){
+    Api.cancel(data).then(
+      (response) => {
+        commit('EDIT', response);
+      }
+    );
+  },
 }
 
 export default {

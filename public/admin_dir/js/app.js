@@ -46761,6 +46761,37 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -46773,7 +46804,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	data: function data() {
 		return {
 			contentHtml: '<div></div>',
-			search_query: ''
+			search_query: '',
+			canceling_data: null,
+			approving_data: null
 		};
 	},
 
@@ -46791,7 +46824,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 	methods: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapActions"])({
 		fetchData: 'withdrawal/fetchData',
-		approveWithdrawal: 'withdrawal/approve'
+		approveWithdrawal: 'withdrawal/approve',
+		cancelWithdrawal: 'withdrawal/cancel'
 	}), {
 		openDialog: function openDialog(data) {
 			this.contentHtml = '<div style="width: 100%; text-align: center;"><b>Bitcoin address</b></div>' + '<div style="width: 100%; text-align: center;">' + data.owner.bitcoin_account + '</div>';
@@ -46804,7 +46838,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 		searchData: __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.debounce(function () {
 			this.fetchData(this.search_query);
-		}, 500)
+		}, 500),
+
+		openConfirmCancel: function openConfirmCancel(data) {
+			this.canceling_data = data;
+			this.$refs['dialog_cancel'].open();
+		},
+		confirmCancel: function confirmCancel() {
+			this.cancelWithdrawal(this.canceling_data);
+			this.canceling_data = null;
+			this.$refs['dialog_cancel'].close();
+		},
+		rejectCancel: function rejectCancel() {
+			this.canceling_data = null;
+			this.$refs['dialog_cancel'].close();
+		},
+		openConfirmApprove: function openConfirmApprove(data) {
+			this.approving_data = data;
+			this.$refs['dialog_approve'].open();
+		},
+		confirmApprove: function confirmApprove() {
+			this.approveWithdrawal(this.approving_data);
+			this.approving_data = null;
+			this.$refs['dialog_approve'].close();
+		},
+		rejectApprove: function rejectApprove() {
+			this.approving_data = null;
+			this.$refs['dialog_approve'].close();
+		}
 	})
 };
 
@@ -46981,6 +47042,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   approve: function approve(data) {
     return __WEBPACK_IMPORTED_MODULE_0__Api__["a" /* default */].post('withdrawal/approve', data);
+  },
+  cancel: function cancel(data) {
+    return __WEBPACK_IMPORTED_MODULE_0__Api__["a" /* default */].post('withdrawal/cancel', data);
   }
 };
 
@@ -47467,6 +47531,13 @@ var actions = {
     __WEBPACK_IMPORTED_MODULE_0__api_ApiWithdrawal__["a" /* default */].approve(data).then(function (response) {
       commit('EDIT', response);
     });
+  },
+  cancel: function cancel(_ref5, data) {
+    var commit = _ref5.commit;
+
+    __WEBPACK_IMPORTED_MODULE_0__api_ApiWithdrawal__["a" /* default */].cancel(data).then(function (response) {
+      commit('EDIT', response);
+    });
   }
 };
 
@@ -47544,7 +47615,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n.md-theme-app.md-button:not([disabled]).md-green.md-fab {\n  background-color: #47a567;\n}\n.label-gold {\n  background-color: #cbb956;\n}\n.label-basic {\n  background-color: #d77ade;\n}\n.label-platinum {\n  background-color: #c5c5c5;\n}\n.md-table-cell.flex-end-action .md-table-cell-container {\n  display: -webkit-box !important;\n  display: -ms-flexbox !important;\n  display: flex !important;\n  -webkit-box-align: center !important;\n      -ms-flex-align: center !important;\n          align-items: center !important;\n  -webkit-box-pack: end !important;\n      -ms-flex-pack: end !important;\n          justify-content: flex-end !important;\n}\n", ""]);
+exports.push([module.i, "\n.md-theme-app.md-button:not([disabled]).md-green.md-fab {\n  background-color: #47a567;\n}\n.label-gold {\n  background-color: #cbb956;\n}\n.label-basic {\n  background-color: #d77ade;\n}\n.label-platinum {\n  background-color: #c5c5c5;\n}\n.md-table-cell.flex-end-action .md-table-cell-container {\n  display: -webkit-box !important;\n  display: -ms-flexbox !important;\n  display: flex !important;\n  -webkit-box-align: center !important;\n      -ms-flex-align: center !important;\n          align-items: center !important;\n  -webkit-box-pack: end !important;\n      -ms-flex-pack: end !important;\n          justify-content: flex-end !important;\n}\n.md-danger {\n  background-color: #ed6b75 !important;\n}\n.md-dialog-title {\n  padding: 13px;\n  margin: 0;\n}\n.md-dialog-title .icon-danger {\n    color: #ed6b75;\n}\n.md-dialog-title .icon-success {\n    color: #2ab27b;\n}\n.md-dialog-content {\n  padding: 13px;\n  background: none;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -48627,7 +48698,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-dollar"
-  }), _c('span', [_vm._v("Withdrawal History")])])], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
+  }), _c('span', [_vm._v("Withdrawal")])])], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
     attrs: {
       "to": {
         path: '/geneology'
@@ -49091,7 +49162,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "sort": _vm.onSort
     }
-  }, [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Username")]), _vm._v(" "), _c('md-table-head', [_vm._v("Email")]), _vm._v(" "), _c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Bitcoin Address")]), _vm._v(" "), _c('md-table-head', [_vm._v("Action")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.data_grid), function(el, rowIndex) {
+  }, [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Username")]), _vm._v(" "), _c('md-table-head', [_vm._v("Email")]), _vm._v(" "), _c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Bitcoin Address")]), _vm._v(" "), _c('md-table-head', [_vm._v("Created Date")]), _vm._v(" "), _c('md-table-head', [_vm._v("Action")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.data_grid), function(el, rowIndex) {
     return _c('md-table-row', {
       key: rowIndex,
       attrs: {
@@ -49101,7 +49172,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "label label-sm label-warning"
     }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (el.status == 1) ? _c('span', {
       staticClass: "label label-sm label-success"
-    }, [_vm._v("Approved")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_c('a', {
+    }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (el.status == 2) ? _c('span', {
+      staticClass: "label label-sm label-danger"
+    }, [_vm._v("Canceled")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_c('a', {
       staticClass: "btn",
       attrs: {
         "href": "#"
@@ -49115,13 +49188,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('i', {
       staticClass: "fa fa-eye"
-    })])]), _vm._v(" "), _c('md-table-cell', {
+    })])]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(el.created_at))]), _vm._v(" "), _c('md-table-cell', {
       staticClass: "flex-end-action"
     }, [(el.status == 0) ? _c('md-button', {
       staticClass: "md-fab md-primary md-mini",
       nativeOn: {
         "click": function($event) {
-          _vm.approveWithdrawal(el)
+          _vm.openConfirmApprove(el)
         }
       }
     }, [_c('i', {
@@ -49130,7 +49203,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "md-direction": "top"
       }
-    }, [_vm._v("Approve")])], 1) : _vm._e()], 1)], 1)
+    }, [_vm._v("Approve")])], 1) : _vm._e(), _vm._v(" "), (el.status !== 2 && el.status !== 1) ? _c('md-button', {
+      staticClass: "md-fab md-danger md-mini",
+      nativeOn: {
+        "click": function($event) {
+          _vm.openConfirmCancel(el)
+        }
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-close"
+    }), _vm._v(" "), _c('md-tooltip', {
+      attrs: {
+        "md-direction": "top"
+      }
+    }, [_vm._v("Cancel")])], 1) : _vm._e()], 1)], 1)
   }))], 1), _vm._v(" "), (_vm.pagination.per_page <= _vm.pagination.total) ? _c('md-table-pagination', {
     attrs: {
       "md-size": _vm.pagination.per_page,
@@ -49151,7 +49237,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "close": _vm.onCloseDlg
     }
-  })], 1)
+  }), _vm._v(" "), _c('md-dialog', {
+    ref: 'dialog_approve',
+    attrs: {
+      "md-open-from": "#fab",
+      "md-close-to": "#fab"
+    }
+  }, [_c('md-dialog-title', [_c('span', [_c('i', {
+    staticClass: "fa fa fa-check-circle icon-success"
+  }), _vm._v(" Warning")])]), _vm._v(" "), _c('md-dialog-content', [_vm._v("Are you sure want to approve?")]), _vm._v(" "), _c('md-dialog-actions', [_c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.confirmApprove()
+      }
+    }
+  }, [_vm._v("Yes")]), _vm._v(" "), _c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.rejectApprove()
+      }
+    }
+  }, [_vm._v("No")])], 1)], 1), _vm._v(" "), _c('md-dialog', {
+    ref: 'dialog_cancel',
+    attrs: {
+      "md-open-from": "#fab",
+      "md-close-to": "#fab"
+    }
+  }, [_c('md-dialog-title', [_c('span', [_c('i', {
+    staticClass: "fa fa-exclamation-triangle icon-danger"
+  }), _vm._v(" Warning")])]), _vm._v(" "), _c('md-dialog-content', [_vm._v("Are you sure want to cancel?")]), _vm._v(" "), _c('md-dialog-actions', [_c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.confirmCancel()
+      }
+    }
+  }, [_vm._v("Yes")]), _vm._v(" "), _c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.rejectCancel()
+      }
+    }
+  }, [_vm._v("No")])], 1)], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

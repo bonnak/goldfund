@@ -16,6 +16,7 @@
 		    	<md-table-head>Amount</md-table-head>
 		    	<md-table-head>Status</md-table-head>
 		    	<md-table-head>Bitcoin Address</md-table-head>
+		    	<md-table-head>Created Date</md-table-head>
 		    	<md-table-head>Action</md-table-head>
 		    </md-table-row>
 		  </md-table-header>
@@ -28,19 +29,28 @@
 		        <md-table-cell>
 		        	<span class="label label-sm label-warning" v-if="el.status == 0">Pending</span>
 		        	<span class="label label-sm label-success" v-if="el.status == 1">Approved</span>
+		        	<span class="label label-sm label-danger" v-if="el.status == 2">Canceled</span>
 		        </md-table-cell>
 		        <md-table-cell>
 		        	<a class="btn" href="#" @click.stop.prevent="openDialog(el)">
 		        		<i class="fa fa-eye"></i>
 		        	</a>
-		        </md-table-cell>
+		        </md-table-cell>		        
+		        <md-table-cell>{{ el.created_at }}</md-table-cell>
 		        <md-table-cell class="flex-end-action">
 		        	<md-button 
 		        		class="md-fab md-primary md-mini"
-		        		@click.native="approveWithdrawal(el)"
+		        		@click.native="openConfirmApprove(el)"
 		        		v-if="el.status == 0">
 					    	<i class="fa fa-check"></i>
 					    	<md-tooltip md-direction="top">Approve</md-tooltip>
+					</md-button>
+					<md-button 
+		        		class="md-fab md-danger md-mini"
+		        		@click.native="openConfirmCancel(el)"
+		        		v-if="el.status !== 2 && el.status !== 1">
+					    	<i class="fa fa-close"></i>
+					    	<md-tooltip md-direction="top">Cancel</md-tooltip>
 					</md-button>
 		        </md-table-cell>
 		    </md-table-row>
@@ -63,6 +73,27 @@
 		  ref="dialog_bitcoin_address">
 		</md-dialog-alert>
 
+		<md-dialog md-open-from="#fab" md-close-to="#fab" :ref="'dialog_approve'">
+			<md-dialog-title>
+				<span><i class="fa fa fa-check-circle icon-success"></i> Warning</span>
+			</md-dialog-title>
+			<md-dialog-content>Are you sure want to approve?</md-dialog-content>
+			<md-dialog-actions>
+		    	<md-button class="md-primary" @click.native="confirmApprove()">Yes</md-button>
+		    	<md-button class="md-primary" @click.native="rejectApprove()">No</md-button>
+			</md-dialog-actions>
+		</md-dialog>
+
+		<md-dialog md-open-from="#fab" md-close-to="#fab" :ref="'dialog_cancel'">
+			<md-dialog-title>
+				<span><i class="fa fa-exclamation-triangle icon-danger"></i> Warning</span>
+			</md-dialog-title>
+			<md-dialog-content>Are you sure want to cancel?</md-dialog-content>
+			<md-dialog-actions>
+		    	<md-button class="md-primary" @click.native="confirmCancel()">Yes</md-button>
+		    	<md-button class="md-primary" @click.native="rejectCancel()">No</md-button>
+			</md-dialog-actions>
+		</md-dialog>
   </md-table-card>
 </template>
 
@@ -78,7 +109,9 @@ export default{
 	data(){
 		return {
 			contentHtml : '<div></div>',
-			search_query: ''
+			search_query: '',
+			canceling_data: null,
+			approving_data: null
 		}
 	},
 
@@ -99,7 +132,8 @@ export default{
 	methods:{
 		...mapActions({
 	  		fetchData: 'withdrawal/fetchData',
-	  		approveWithdrawal: 'withdrawal/approve'
+	  		approveWithdrawal: 'withdrawal/approve',
+	  		cancelWithdrawal: 'withdrawal/cancel',
 	  	}),
 
 	  	openDialog(data)
@@ -115,7 +149,39 @@ export default{
 
 	    searchData: _.debounce(function () {
             this.fetchData(this.search_query);
-        }, 500)
+        }, 500),
+
+        openConfirmCancel(data){
+        	this.canceling_data = data;
+        	this.$refs['dialog_cancel'].open();
+        },
+
+        confirmCancel(){
+        	this.cancelWithdrawal(this.canceling_data);  
+        	this.canceling_data = null;      	
+        	this.$refs['dialog_cancel'].close();
+        },
+
+        rejectCancel(){
+        	this.canceling_data = null;
+        	this.$refs['dialog_cancel'].close();
+        },
+
+        openConfirmApprove(data){
+        	this.approving_data = data;
+        	this.$refs['dialog_approve'].open();
+        },
+
+        confirmApprove(){
+			this.approveWithdrawal(this.approving_data);  
+        	this.approving_data = null;      	
+        	this.$refs['dialog_approve'].close();
+        },
+
+        rejectApprove(){
+        	this.approving_data = null;
+        	this.$refs['dialog_approve'].close();
+        }
 	}
 }
 </script>

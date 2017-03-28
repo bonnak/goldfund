@@ -11,13 +11,16 @@ class WithdrawalController extends Controller
     public function getData()
     {
     	return Withdrawal::with('owner')
-    				->where('status', 0)
+    				//->where('status', 0)
+                    ->orderBy('created_at', 'desc')
     				->paginate(request()->input('size'));
     }
 
     public function approve(Request $request)
     {
-    	$withdrawal = Withdrawal::find($request->id);
+    	$withdrawal = Withdrawal::where('id', $request->id)
+                                ->where('status', 0)
+                                ->first();
 
     	if(is_null($withdrawal)) throw new HttpException(422, 'Withdrawal not found');
 
@@ -25,5 +28,19 @@ class WithdrawalController extends Controller
     	$withdrawal->save();
 
     	return $withdrawal;
+    }
+
+    public function cancel(Request $request)
+    {
+        $withdrawal = Withdrawal::where('id', $request->id)
+                                ->where('status', '!=', 2)
+                                ->first();
+
+        if(is_null($withdrawal)) throw new HttpException(422, 'Withdrawal not found');
+
+        $withdrawal->status = 2;
+        $withdrawal->save();
+
+        return $withdrawal;
     }
 }
