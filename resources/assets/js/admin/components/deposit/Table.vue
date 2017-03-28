@@ -41,7 +41,7 @@
 		        <md-table-cell class="flex-end-action">
 		        	<md-button 
 		        		class="md-fab md-primary md-mini"
-		        		@click.native="approveDeposit(el)"
+		        		@click.native="openConfirmApprove(el)"
 		        		v-if="el.status == 0">
 					    	<i class="fa fa-check"></i>
 					    	<md-tooltip md-direction="top">Approve</md-tooltip>
@@ -73,6 +73,17 @@
 		  ref="dialog_blankslip">
 		</md-dialog-alert>
 
+		<md-dialog md-open-from="#fab" md-close-to="#fab" :ref="'dialog_approve'">
+			<md-dialog-title>
+				<span><i class="fa fa fa-check-circle icon-success"></i> Warning</span>
+			</md-dialog-title>
+			<md-dialog-content>Are you sure want to approve?</md-dialog-content>
+			<md-dialog-actions>
+		    	<md-button class="md-primary" @click.native="confirmApprove()">Yes</md-button>
+		    	<md-button class="md-primary" @click.native="rejectApprove()">No</md-button>
+			</md-dialog-actions>
+		</md-dialog>
+
   </md-table-card>
 </template>
 
@@ -88,7 +99,8 @@ export default{
 	data(){
 		return {
 			contentHtml : '<div></div>',
-			search_query: ''
+			search_query: '',
+			approving_data: null
 		}
 	},
 
@@ -126,7 +138,23 @@ export default{
 
 	    searchData: _.debounce(function () {
             this.fetchData(this.search_query);
-        }, 500)
+        }, 500),
+
+        openConfirmApprove(data){
+        	this.approving_data = data;
+        	this.$refs['dialog_approve'].open();
+        },
+
+        confirmApprove(){
+			this.approveDeposit(this.approving_data);  
+        	this.approving_data = null;      	
+        	this.$refs['dialog_approve'].close();
+        },
+
+        rejectApprove(){
+        	this.approving_data = null;
+        	this.$refs['dialog_approve'].close();
+        }
 	}
 }
 </script>
