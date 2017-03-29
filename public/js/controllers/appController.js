@@ -4,9 +4,9 @@ MetronicApp.controller('AppController', [
     '$scope',
     '$rootScope',
     '$location',
-    '$timeout',
+    '$interval',
     'Restful',
-    function($scope, $rootScope, $location, $timeout, Restful) {
+    function($scope, $rootScope, $location, $interval, Restful) {
         $scope.$on('$viewContentLoaded', function() {
             App.initComponents(); // init core components
             // Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials
@@ -29,10 +29,37 @@ MetronicApp.controller('AppController', [
         };
 
         $scope.autoLogout = function(){
-            $timeout(function(){                    
-                    window.location.assign('/logout');
-            }, 600000);
+            // $(window).on("blur focus", function(e) {
+            //     var stopTime;
+            //     var prevType = $(this).data("prevType");
+
+            //     if (prevType != e.type) {
+            //         switch (e.type) {
+            //             case "blur":
+            //                 stopTime = $interval(function(){
+            //                     Restful.get('/user/getProfile').error(function(result){                  
+            //                         window.location.assign('/logout');
+            //                     });
+            //                 }, 80000);
+
+            //                 console.log('blur');
+
+            //                 break;
+            //             case "focus":
+            //                 $interval.cancel(stopTime);
+            //                 console.log('focus');
+            //                 break;
+            //         }
+            //     }
+
+            //     $(this).data("prevType", e.type);
+            // });
             
+            $interval(function(){
+                Restful.get('/user/getProfile').error(function(result){                  
+                    window.location.assign('/logout');
+                });
+            }, 660000);
         }
 
         $scope.initSetting();
