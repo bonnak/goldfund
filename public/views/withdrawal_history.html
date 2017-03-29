@@ -22,7 +22,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="(key, withdrawal) in vm.withdrawals">
+                                    <tr ng-repeat="(key, withdrawal) in vm.withdrawals.data">
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ withdrawal.created_at }}</td> 
                                         <td>
