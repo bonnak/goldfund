@@ -34,7 +34,7 @@ class DashboardController extends Controller
                             ->where('status', 1)
                             ->sum('amount');
         $withdrawal = Withdrawal::where('cust_id', auth()->user()->id)
-                            //->where('status', 1)
+                            ->where('status', 1)
                             ->sum('amount');
         $active_deposit = Deposit::where('cust_id', auth()->user()->id)
                                 ->where('status', 1)

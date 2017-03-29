@@ -39,6 +39,18 @@ angular.module('MetronicApp').controller('WithdrawalController', [
             });
         };
 
+        vm.cancelWithdrawal = function(withdrawal){
+            $('.btn-confirm').on('click', function(e){
+                Restful.post('api/withdrawal/cancel', withdrawal).success(function(data){
+                    vm.withdrawals = data;
+                }); 
+
+                $('#modal-withdrawal').modal('hide');
+            });
+            
+            $('#modal-withdrawal').modal();
+        }
+
         vm.getData();
         vm.getHistory();
 
