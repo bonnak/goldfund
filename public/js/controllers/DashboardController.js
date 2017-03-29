@@ -2,7 +2,7 @@ angular.module('MetronicApp').controller('DashboardController', [
     '$scope',
     '$location',
     'Restful',
-    function($scope, $rootScope, $location, Restful) {
+    function($scope, $location, Restful) {
         var vm = this;
         vm.model = {};        
 
