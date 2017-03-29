@@ -31,7 +31,7 @@ class WithdrawalController extends Controller
                             ->where('status', 1)
                             ->sum('amount');
         $withdrawal = Withdrawal::where('cust_id', auth()->user()->id)
-                            //->where('status', 1)
+                            ->where('status', 1)
                             ->sum('amount');
 
 
@@ -63,6 +63,18 @@ class WithdrawalController extends Controller
     		'amount'	=> $request->withdraw_amount,
             'status'    => 0,
     	]);
+    }
+
+    public function cancel(Request $request)
+    {
+        $withdrawal = Withdrawal::find($request->id);
+
+        if(is_null($withdrawal)) throw new HttpException(404, 'Withdrawal not found.');
+
+        $withdrawal->status = 2;
+        $withdrawal->save();
+
+        return $this->history();
     }
 
     public function getData()

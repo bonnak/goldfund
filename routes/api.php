@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 	//Withdrawal
 	Route::get('/withdrawal/balance', 'WithdrawalController@getData');
 	Route::post('/withdrawal/cashout', 'WithdrawalController@cashOut');
+	Route::post('/withdrawal/cancel', 'WithdrawalController@cancel');
 	Route::get('/withdrawal/history', 'WithdrawalController@history');
 
 	//Dashboard	
