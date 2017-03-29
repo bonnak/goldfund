@@ -1,12 +1,11 @@
 angular.module('MetronicApp').controller('DashboardController', [
     '$scope',
+    '$rootScope',
     '$location',
     'Restful',
-    function($scope, $location, Restful) {
+    function($scope, $rootScope, $location, Restful) {
         var vm = this;
-        vm.model = {};
-        vm.link = $location.protocol() + "://" + $location.host() + 
-                ($location.port() !== 80 ? (':' + $location.port()) : '') + '/register?ref=' + $scope.userProfile.username;
+        vm.model = {};        
 
 
         vm.fetchData = function()
@@ -25,5 +24,10 @@ angular.module('MetronicApp').controller('DashboardController', [
 
         vm.fetchData();  
         vm.fetchTransactions();
+
+        $rootScope.$on("InitSettingMethod", function(){
+            vm.link = $location.protocol() + "://" + $location.host() + 
+                ($location.port() !== 80 ? (':' + $location.port()) : '') + '/register?ref=' + $scope.userProfile.username;
+        });
     }
 ]);

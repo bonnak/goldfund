@@ -153,9 +153,10 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
-                        //insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID.
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID.
                         // Dynamic CSS files must be loaded between core and theme css files
                         files: [
+                            'css-template/plan_style.css',
                             'js/controllers/DashboardController.js',
                         ]
                     });
