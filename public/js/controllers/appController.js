@@ -29,37 +29,31 @@ MetronicApp.controller('AppController', [
         };
 
         $scope.autoLogout = function(){
-            // $(window).on("blur focus", function(e) {
-            //     var stopTime;
-            //     var prevType = $(this).data("prevType");
+            $(window).on("blur focus", function(e) {
+                var stopTime;
+                var prevType = $(this).data("prevType");
 
-            //     if (prevType != e.type) {
-            //         switch (e.type) {
-            //             case "blur":
-            //                 stopTime = $interval(function(){
-            //                     Restful.get('/user/getProfile').error(function(result){                  
-            //                         window.location.assign('/logout');
-            //                     });
-            //                 }, 80000);
+                if (prevType != e.type) {
+                    switch (e.type) {
+                        case "blur":
+                            stopTime = $interval(function(){                 
+                                window.location.assign('/logout');
+                            }, 600000);
+                            break;
+                        case "focus":
+                            $interval.cancel(stopTime);
+                            break;
+                    }
+                }
 
-            //                 console.log('blur');
-
-            //                 break;
-            //             case "focus":
-            //                 $interval.cancel(stopTime);
-            //                 console.log('focus');
-            //                 break;
-            //         }
-            //     }
-
-            //     $(this).data("prevType", e.type);
-            // });
+                $(this).data("prevType", e.type);
+            });
             
-            $interval(function(){
-                Restful.get('/user/getProfile').error(function(result){                  
-                    window.location.assign('/logout');
-                });
-            }, 660000);
+            // $interval(function(){
+            //     Restful.get('/user/getProfile').error(function(result){                  
+            //         window.location.assign('/logout');
+            //     });
+            // }, 660000);
         }
 
         $scope.initSetting();

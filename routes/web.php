@@ -2,7 +2,7 @@
 /***
  * Back-end
  */
-Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth:admin'],function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function(){
 	Route::get('/', function(){
 		return view('admin.index');
 	});

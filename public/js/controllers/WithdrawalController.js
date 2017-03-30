@@ -10,6 +10,8 @@ angular.module('MetronicApp').controller('WithdrawalController', [
         vm.withdrawals = [];
         vm.error = '';
         vm.allow_withdrawal = null;
+        $scope.Array = Array;
+        $scope.Math = window.Math;
 
         vm.save = function(){
             vm.loading = true;
@@ -33,8 +35,8 @@ angular.module('MetronicApp').controller('WithdrawalController', [
             });
         }
 
-        vm.getHistory = function(params){
-            Restful.get('api/withdrawal/history').success(function(data){
+        vm.getHistory = function(page){
+            Restful.get('api/withdrawal/history?page=' +  page).success(function(data){
                 vm.withdrawals = data;
             });
         };

@@ -45476,6 +45476,7 @@ Vue.filter('precision', __WEBPACK_IMPORTED_MODULE_2__core_filter__["f" /* precis
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_Api__ = __webpack_require__(7);
 //
 //
 //
@@ -45548,23 +45549,36 @@ Vue.filter('precision', __WEBPACK_IMPORTED_MODULE_2__core_filter__["f" /* precis
 //
 //
 //
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = {
-  created: function created() {},
-  mounted: function mounted() {
-    this.toggleLeftSidenav();
-  },
+	data: function data() {
+		return {
+			user: {}
+		};
+	},
+	created: function created() {
+		var _this = this;
+
+		__WEBPACK_IMPORTED_MODULE_0__api_Api__["a" /* default */].get('auth/user').then(function (response) {
+			_this.user = response.data;
+		});
+	},
+	mounted: function mounted() {
+		this.toggleLeftSidenav();
+	},
 
 
-  methods: {
-    toggleLeftSidenav: function toggleLeftSidenav() {
-      this.$refs.leftSidenav.toggle();
+	methods: {
+		toggleLeftSidenav: function toggleLeftSidenav() {
+			this.$refs.leftSidenav.toggle();
 
-      var el_page_ontent = this.$refs.pageContent;
+			var el_page_ontent = this.$refs.pageContent;
 
-      $(el_page_ontent).toggleClass('open-nav');
-    }
-  }
+			$(el_page_ontent).toggleClass('open-nav');
+		}
+	}
 };
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(8)))
 
@@ -46719,6 +46733,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_mixins_table__ = __webpack_require__(5);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
 //
 //
 //
@@ -48792,7 +48807,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "user-name"
-  }, [_vm._v("administrator")])]), _vm._v(" "), _c('ul', {
+  }, [_vm._v(_vm._s(_vm.user.username))])]), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu"
   }, [_c('li', [_c('a', {
     attrs: {
@@ -49222,6 +49237,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "label label-sm label-success"
     }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (el.status == 2) ? _c('span', {
       staticClass: "label label-sm label-danger"
+    }, [_vm._v("Canceled by user")]) : _vm._e(), _vm._v(" "), (el.status == 3) ? _c('span', {
+      staticClass: "label label-sm label-danger"
     }, [_vm._v("Canceled")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_c('a', {
       staticClass: "btn",
       attrs: {
@@ -49251,7 +49268,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "md-direction": "top"
       }
-    }, [_vm._v("Approve")])], 1) : _vm._e(), _vm._v(" "), (el.status !== 2 && el.status !== 1) ? _c('md-button', {
+    }, [_vm._v("Approve")])], 1) : _vm._e(), _vm._v(" "), (el.status === 0) ? _c('md-button', {
       staticClass: "md-fab md-danger md-mini",
       nativeOn: {
         "click": function($event) {

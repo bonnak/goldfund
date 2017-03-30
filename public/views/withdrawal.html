@@ -9,8 +9,10 @@
             </div>
             <div class="portlet-body">
                 <div class="row" ng-if="vm.allow_withdrawal === false">
-                    <div class="note note-warning">
-                        <p>{{ vm.error }}</p>
+                    <div class="col-sm-12">
+                        <div class="note note-warning">
+                            <p>{{ vm.error }}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="row" ng-if="vm.allow_withdrawal === true">

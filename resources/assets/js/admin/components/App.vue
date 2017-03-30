@@ -54,7 +54,7 @@
 					  	<!-- <md-avatar class="user-avatar">
 							  <img src="https://placeimg.com/40/40/people/5" alt="Avatar">
 							</md-avatar> -->
-							<span class="user-name">administrator</span>
+							<span class="user-name">{{ user.username }}</span>
 						</a>
 	          <ul class="dropdown-menu">
 					    <li><a href="/admin/logout">Logout</a></li>
@@ -71,9 +71,19 @@
 </template>
 
 <script>
+import Api from '../api/Api'
+
 export default {
+	data(){
+		return {
+			user: {}
+		}
+	},
+
 	created(){
-		
+		Api.get('auth/user').then((response) => {
+			this.user = response.data;
+		});
 	},
 
 	mounted(){

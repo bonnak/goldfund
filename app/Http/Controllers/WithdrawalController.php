@@ -40,11 +40,15 @@ class WithdrawalController extends Controller
 
     public function cancel(Request $request)
     {
-        $withdrawal = Withdrawal::find($request->id);
+        $withdrawal = Withdrawal::where('id', $request->id)
+                                ->where('cust_id', auth()->user()->id)
+                                ->where('status', 0)
+                                ->first();
 
         if(is_null($withdrawal)) throw new HttpException(404, 'Withdrawal not found.');
 
         $withdrawal->status = 2;
+        $withdrawal->cancelled_by = auth()->user()->username;
         $withdrawal->save();
 
         return $this->history();
@@ -52,6 +56,9 @@ class WithdrawalController extends Controller
 
     public function getData()
     {
+        $this->validateUserIsActive();
+        $this->allowWithdrawal();
+
 		return [
     		'balance' => $this->currentBalance(),
     	];   	   	
