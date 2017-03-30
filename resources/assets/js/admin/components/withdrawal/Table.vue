@@ -29,8 +29,8 @@
 		        <md-table-cell>
 		        	<span class="label label-sm label-warning" v-if="el.status == 0">Pending</span>
 		        	<span class="label label-sm label-success" v-if="el.status == 1">Approved</span>
-		        	<span class="label label-sm label-danger" v-if="el.status == 2">Canceled by user</span>
-		        	<span class="label label-sm label-danger" v-if="el.status == 3">Canceled</span>
+		        	<span class="label label-sm label-danger" v-if="el.status == 2">Canceled</span>
+		        	<span class="label label-sm label-danger" v-if="el.status == 3">Canceled by user</span>
 		        </md-table-cell>
 		        <md-table-cell>
 		        	<a class="btn" href="#" @click.stop.prevent="openDialog(el)">

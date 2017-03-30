@@ -49237,9 +49237,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "label label-sm label-success"
     }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (el.status == 2) ? _c('span', {
       staticClass: "label label-sm label-danger"
-    }, [_vm._v("Canceled by user")]) : _vm._e(), _vm._v(" "), (el.status == 3) ? _c('span', {
+    }, [_vm._v("Canceled")]) : _vm._e(), _vm._v(" "), (el.status == 3) ? _c('span', {
       staticClass: "label label-sm label-danger"
-    }, [_vm._v("Canceled")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_c('a', {
+    }, [_vm._v("Canceled by user")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_c('a', {
       staticClass: "btn",
       attrs: {
         "href": "#"

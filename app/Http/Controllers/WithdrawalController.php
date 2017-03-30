@@ -47,7 +47,7 @@ class WithdrawalController extends Controller
 
         if(is_null($withdrawal)) throw new HttpException(404, 'Withdrawal not found.');
 
-        $withdrawal->status = 2;
+        $withdrawal->status = 3;
         $withdrawal->cancelled_by = auth()->user()->username;
         $withdrawal->save();
 
