@@ -4,6 +4,9 @@
  * Back-end
  */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function(){
+	Route::get('/auth/user', function(){
+		return auth()->user();
+	});
 
 	Route::get('/users', 'Admin\UserController@users');
 

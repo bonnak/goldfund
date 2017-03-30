@@ -16,10 +16,10 @@ trait WithdrawalTrait
     protected function allowWithdrawal()
     {
         if(! auth()->user()->withdrawals
-                    ->where('created_at', '>=', Carbon::today())
+                    ->where('status', 0)
                     ->isEmpty())
         {
-            throw new HttpException(403, 'You can only withdraw once per day.');
+            throw new HttpException(403, 'You still have a withdrawal pending.');
         }
     }
 

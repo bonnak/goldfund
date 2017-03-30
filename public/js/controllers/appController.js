@@ -38,7 +38,7 @@ MetronicApp.controller('AppController', [
                         case "blur":
                             stopTime = $interval(function(){                 
                                 window.location.assign('/logout');
-                            }, 60000);
+                            }, 600000);
                             break;
                         case "focus":
                             $interval.cancel(stopTime);
