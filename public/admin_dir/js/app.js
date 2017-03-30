@@ -45549,6 +45549,12 @@ Vue.filter('precision', __WEBPACK_IMPORTED_MODULE_2__core_filter__["f" /* precis
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -47156,7 +47162,7 @@ function precision(val) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var routes = [{ path: '/user', component: __webpack_require__(115) }, { path: '/customer', component: __webpack_require__(109) }, { path: '/deposit', component: __webpack_require__(112) }, { path: '/withdrawal', component: __webpack_require__(117) },
+var routes = [{ path: '/user', component: __webpack_require__(115) }, { path: '/customer', component: __webpack_require__(109) }, { path: '/deposit', component: __webpack_require__(112) }, { path: '/withdrawal/pending', component: __webpack_require__(117) },
 // { path: '/plan', component: require('./components/plan/Index.vue') },
 { path: '/geneology', component: __webpack_require__(105) }, { path: '/company/profile', component: __webpack_require__(107) }];
 
@@ -47711,6 +47717,7 @@ exports.push([module.i, "\n.sec-block[data-v-e14c01a2] {\n  padding: 0;\n}\n", "
 /* styles */
 __webpack_require__(142)
 __webpack_require__(143)
+__webpack_require__(161)
 
 var Component = __webpack_require__(1)(
   /* script */
@@ -48753,15 +48760,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-money"
-  }), _c('span', [_vm._v("Deposit History")])])], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
+  }), _c('span', [_vm._v("Deposit History")])])], 1), _vm._v(" "), _c('md-list-item', [_c('i', {
+    staticClass: "fa fa-dollar"
+  }), _vm._v(" "), _c('span', [_vm._v("Withdrawal")]), _vm._v(" "), _c('md-list-expand', [_c('md-list', [_c('md-list-item', {
+    staticClass: "md-inset"
+  }, [_c('router-link', {
     attrs: {
       "to": {
-        path: '/withdrawal'
+        path: '/withdrawal/pending'
       }
     }
-  }, [_c('i', {
-    staticClass: "fa fa-dollar"
-  }), _c('span', [_vm._v("Withdrawal")])])], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
+  }, [_c('span', [_vm._v("Pending Withdrawal")])])], 1), _vm._v(" "), _c('md-list-item', {
+    staticClass: "md-inset"
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        path: '/withdrawal/approved'
+      }
+    }
+  }, [_c('span', [_vm._v("Approved Withdrawal")])])], 1), _vm._v(" "), _c('md-list-item', {
+    staticClass: "md-inset"
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        path: '/withdrawal/cancelled'
+      }
+    }
+  }, [_c('span', [_vm._v("Canceled Withdrawal")])])], 1)], 1)], 1)], 1), _vm._v(" "), _c('md-list-item', [_c('router-link', {
     attrs: {
       "to": {
         path: '/geneology'
@@ -49722,6 +49747,58 @@ if(false) {
 
 module.exports = __webpack_require__(59);
 
+
+/***/ }),
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.main-sidebar .md-sidenav-content .main-sidebar-links .md-list-expand .md-list-item .md-button {\n  padding-left: 72px;\n}\n.main-sidebar .md-sidenav-content .main-sidebar-links .md-list .md-list-item i {\n  text-align: center;\n}\n.main-sidebar .md-sidenav-content .main-sidebar-links .md-list .md-list-item .md-button-ghost {\n  width: 100%;\n  margin: 0;\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1;\n  border-radius: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(160);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("13cf5994", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5a0c6af8!./../../../../../node_modules/sass-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=2!./App.vue", function() {
+     var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5a0c6af8!./../../../../../node_modules/sass-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=2!./App.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);
