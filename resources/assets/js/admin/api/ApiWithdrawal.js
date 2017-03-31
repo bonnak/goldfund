@@ -1,8 +1,8 @@
 import Api from './Api';
 
 export default {
-  fetchData(pagination) {
-    return Api.get('withdrawal',  pagination);
+  getPending(pagination) {
+    return Api.get('withdrawal/pending',  pagination);
   },
 
   approve(data) {
@@ -11,5 +11,13 @@ export default {
 
   cancel(data) {
     return Api.post('withdrawal/cancel',  data);
+  },
+
+  getApproved(pagination) {
+    return Api.get('withdrawal/approved',  pagination);
+  },
+
+  getCanceled(pagination) {
+    return Api.get('withdrawal/canceled',  pagination);
   }
 }

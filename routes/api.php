@@ -30,9 +30,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 	Route::get('/geneology/json', 'Admin\GeneologyController@getData');
 
 	//Withdrawal
-	Route::get('/withdrawal', 'Admin\WithdrawalController@getData');
 	Route::post('/withdrawal/approve', 'Admin\WithdrawalController@approve');
 	Route::post('/withdrawal/cancel', 'Admin\WithdrawalController@cancel');
+	Route::get('/withdrawal/pending', 'Admin\WithdrawalController@getPending');
+	Route::get('/withdrawal/approved', 'Admin\WithdrawalController@getApproved');
+	Route::get('/withdrawal/canceled', 'Admin\WithdrawalController@getCanceled');
 
 	//Company profile
 	Route::get('company/profile', 'Admin\CompanyProfileController@getData');

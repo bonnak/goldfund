@@ -8,13 +8,29 @@ use App\Withdrawal;
 
 class WithdrawalController extends Controller
 {
-    public function getData()
+    public function getPending()
+    {
+        return Withdrawal::with('owner')
+                    ->where('status', 0)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(request()->input('per_page'));
+    }
+
+    public function getApproved()
+    {
+        return Withdrawal::with('owner')
+                    ->where('status', 1)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(request()->input('per_page'));
+    } 
+
+    public function getCanceled()
     {
     	return Withdrawal::with('owner')
-    				//->where('status', 0)
+    				->whereIn('status', [2, 3])
                     ->orderBy('created_at', 'desc')
-    				->paginate(request()->input('size'));
-    }
+    				->paginate(request()->input('per_page'));
+    }    
 
     public function approve(Request $request)
     {
