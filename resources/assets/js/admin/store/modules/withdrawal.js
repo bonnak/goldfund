@@ -7,7 +7,9 @@ const state = {
 }
 
 const getters = {
-	data: state => state.data,
+	pending: state => state.data.filter(item => item.status == 0),
+  approved: state => state.data.filter(item => item.status == 1),
+  canceled: state => state.data.filter(item => item.status == 2 || item.status == 3),
 	pagination: state => state.pagination
 }
 
@@ -23,20 +25,50 @@ const mutations = {
     state.data.find(el => el.id == data.id).status = data.status;
   },
 
-  CLEAR_STORE (state){
-    state.data.splice(0, state.data.length);
-  }
+  CLEAR_DATA (state){
+      state.data.splice(0, state.data.length);
+  },
+
+  RESET_PAGINATION (state){
+      state.pagination = new Pagination();
+  },
 }
 
 const actions = {
-	fetchData({ commit }, query = '', pagination = state.pagination){
-		Api.fetchData({ 
+	getPending({ commit }, pagination = state.pagination, query = ''){
+    Api.getPending({ 
+      per_page : pagination.per_page,
+      page     : pagination.current_page,
+      query    : query
+    }).then(
+      (response) => {
+        commit('CLEAR_DATA');
+        commit('RECEIVE_DATA', { body: response.data });
+      }
+    );
+  },
+
+  getApproved({ commit }, pagination = state.pagination, query = ''){
+    Api.getApproved({ 
+      per_page : pagination.per_page,
+      page     : pagination.current_page,
+      query    : query
+    }).then(
+      (response) => {
+        commit('CLEAR_DATA');
+        commit('RECEIVE_DATA', { body: response.data });
+      }
+    );
+  },
+
+  getCanceled({ commit }, pagination = state.pagination, query = ''){
+		Api.getCanceled({ 
       per_page : pagination.per_page,
       page     : pagination.current_page,
       query    : query
     }).then(
 			(response) => {
-        commit('CLEAR_STORE');
+        commit('CLEAR_DATA');
         commit('RECEIVE_DATA', { body: response.data });
       }
 		);
@@ -57,6 +89,11 @@ const actions = {
       }
     );
   },
+
+  clearStore({ commit }){
+    commit('CLEAR_DATA');
+    commit('RESET_PAGINATION');
+  }
 }
 
 export default {

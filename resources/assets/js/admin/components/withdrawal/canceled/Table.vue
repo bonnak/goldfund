@@ -5,8 +5,7 @@
                 class="form-control input-sm" 
                 placeholder="Search ..." 
                 v-model="search_query" 
-                @keyup="searchData">
-			<span class="input-group-addon"><i class="fa fa-search"></i></span>				
+                @keyup="searchData">		
 		</div>
     	<md-table @sort="onSort">
 		  <md-table-header>
@@ -17,7 +16,7 @@
 		    	<md-table-head>Status</md-table-head>
 		    	<md-table-head>Bitcoin Address</md-table-head>
 		    	<md-table-head>Created Date</md-table-head>
-		    	<md-table-head>Action</md-table-head>
+		    	<md-table-head>Updated Date</md-table-head>
 		    </md-table-row>
 		  </md-table-header>
 
@@ -38,22 +37,7 @@
 		        	</a>
 		        </md-table-cell>		        
 		        <md-table-cell>{{ el.created_at }}</md-table-cell>
-		        <md-table-cell class="flex-end-action">
-		        	<md-button 
-		        		class="md-fab md-primary md-mini"
-		        		@click.native="openConfirmApprove(el)"
-		        		v-if="el.status == 0">
-					    	<i class="fa fa-check"></i>
-					    	<md-tooltip md-direction="top">Approve</md-tooltip>
-					</md-button>
-					<md-button 
-		        		class="md-fab md-danger md-mini"
-		        		@click.native="openConfirmCancel(el)"
-		        		v-if="el.status === 0">
-					    	<i class="fa fa-close"></i>
-					    	<md-tooltip md-direction="top">Cancel</md-tooltip>
-					</md-button>
-		        </md-table-cell>
+		        <md-table-cell>{{ el.updated_at }}</md-table-cell>
 		    </md-table-row>
 		  </md-table-body>
 		</md-table>
@@ -62,7 +46,7 @@
 		    :md-size="pagination.per_page"
 		    :md-total="pagination.total"
 		    :md-page="pagination.current_page"
-		    :md-page-options="[5, 10, 25, 50]"
+		    :md-page-options="[5, 10, 50, 100]"
 		    md-label="Per page"
 		    @pagination="onPagination">
 		</md-table-pagination>
@@ -73,35 +57,13 @@
 		   @close="onCloseDlg"
 		  ref="dialog_bitcoin_address">
 		</md-dialog-alert>
-
-		<md-dialog md-open-from="#fab" md-close-to="#fab" :ref="'dialog_approve'">
-			<md-dialog-title>
-				<span><i class="fa fa fa-check-circle icon-success"></i> Warning</span>
-			</md-dialog-title>
-			<md-dialog-content>Are you sure want to approve?</md-dialog-content>
-			<md-dialog-actions>
-		    	<md-button class="md-primary" @click.native="confirmApprove()">Yes</md-button>
-		    	<md-button class="md-primary" @click.native="rejectApprove()">No</md-button>
-			</md-dialog-actions>
-		</md-dialog>
-
-		<md-dialog md-open-from="#fab" md-close-to="#fab" :ref="'dialog_cancel'">
-			<md-dialog-title>
-				<span><i class="fa fa-exclamation-triangle icon-danger"></i> Warning</span>
-			</md-dialog-title>
-			<md-dialog-content>Are you sure want to cancel?</md-dialog-content>
-			<md-dialog-actions>
-		    	<md-button class="md-primary" @click.native="confirmCancel()">Yes</md-button>
-		    	<md-button class="md-primary" @click.native="rejectCancel()">No</md-button>
-			</md-dialog-actions>
-		</md-dialog>
   </md-table-card>
 </template>
 
 <script>
 import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
-import _mixin from '../../core/mixins/table'
+import _mixin from '../../../core/mixins/table'
 
 export default{
 
@@ -110,15 +72,13 @@ export default{
 	data(){
 		return {
 			contentHtml : '<div></div>',
-			search_query: '',
-			canceling_data: null,
-			approving_data: null
+			search_query: ''
 		}
 	},
 
 	computed: {
 	    ...mapGetters({
-	      data_grid: 'withdrawal/data',
+	      data_grid: 'withdrawal/canceled',
 	      pagination: 'withdrawal/pagination'
 	    })
 	},
@@ -132,9 +92,7 @@ export default{
 
 	methods:{
 		...mapActions({
-	  		fetchData: 'withdrawal/fetchData',
-	  		approveWithdrawal: 'withdrawal/approve',
-	  		cancelWithdrawal: 'withdrawal/cancel',
+	  		fetchData: 'withdrawal/getCanceled'
 	  	}),
 
 	  	openDialog(data)
@@ -150,39 +108,7 @@ export default{
 
 	    searchData: _.debounce(function () {
             this.fetchData(this.search_query);
-        }, 500),
-
-        openConfirmCancel(data){
-        	this.canceling_data = data;
-        	this.$refs['dialog_cancel'].open();
-        },
-
-        confirmCancel(){
-        	this.cancelWithdrawal(this.canceling_data);  
-        	this.canceling_data = null;      	
-        	this.$refs['dialog_cancel'].close();
-        },
-
-        rejectCancel(){
-        	this.canceling_data = null;
-        	this.$refs['dialog_cancel'].close();
-        },
-
-        openConfirmApprove(data){
-        	this.approving_data = data;
-        	this.$refs['dialog_approve'].open();
-        },
-
-        confirmApprove(){
-			this.approveWithdrawal(this.approving_data);  
-        	this.approving_data = null;      	
-        	this.$refs['dialog_approve'].close();
-        },
-
-        rejectApprove(){
-        	this.approving_data = null;
-        	this.$refs['dialog_approve'].close();
-        }
+        }, 500)
 	}
 }
 </script>

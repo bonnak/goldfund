@@ -11,17 +11,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import _mixin from '../../core/mixins'
+import _mixin from '../../../core/mixins'
 import _Table from './Table.vue'
-import _View from './View.vue'
 
 export default{
 
 	mixins: [_mixin],
 
 	components: {
-		_Table,
-		_View
+		_Table
 	},
 
 	data(){
@@ -29,6 +27,17 @@ export default{
 			current_view : '_Table',
 			data: null
 		}
+	},
+
+	methods:{
+		...mapActions({
+	  		clearStore: 'withdrawal/clearStore'
+		})
+	},
+
+	beforeRouteLeave (to, from, next){
+    	this.clearStore();
+    	next();
 	}
 }
 </script>

@@ -28,7 +28,7 @@
 				    		<md-list>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/pending' }"><span>Pending Withdrawal</span></router-link></md-list-item>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/approved' }"><span>Approved Withdrawal</span></router-link></md-list-item>
-				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/cancelled' }"><span>Canceled Withdrawal</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/canceled' }"><span>Canceled Withdrawal</span></router-link></md-list-item>
 				            </md-list>
 				    	</md-list-expand>
 				    </md-list-item>
@@ -339,6 +339,20 @@ body.md-theme-app{
 					}
 				}
 			}
+		}
+	}
+}
+
+.md-pagination-select{
+	.md-list-item.md-menu-item.md-option{
+		.md-list-item-container.md-button{
+			min-height: auto;
+		}
+	}
+
+	.md-list-item.md-menu-item.md-option{
+		.md-button.md-button-ghost{
+			display: none;
 		}
 	}
 }
