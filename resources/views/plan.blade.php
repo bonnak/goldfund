@@ -26,9 +26,36 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center">
-                <img src="images/plan/plan1.png" class="img-reponsive" style="margin: 0 auto;"/>
-            </div>
+            <div class="row">
+                <div class="col-md-12" style="display: flex; align-items: center; justify-content:center;">
+                    <div style="width:222px;">
+                        <p style="color:#C0C; font-size: 20px;">
+                            <span class="glyphicon glyphicon-triangle-right"></span> Direct sponsor get 7%.
+                        </p>
+                        <p style="font-style: italic; margin-top: 21px;">
+                            When you are the sponsor of a direct downline, you will get 7% from the amount they deposit.
+                        </p>
+                    </div>
+                    <img src="images/plan/level.png" class="img-reponsive"/>
+                    <div>                        
+                        <p style="color:#C0C; font-size: 20px;">
+                            <span class="glyphicon glyphicon-triangle-right"></span> Level 1 get 5%.
+                        </p>
+                        <p style="color:#C0C; font-size: 20px;">
+                            <span class="glyphicon glyphicon-triangle-right"></span> Level 2 get 3%.
+                        </p>
+                        <p style="color:#C0C; font-size: 20px;">
+                            <span class="glyphicon glyphicon-triangle-right"></span> Level 3 get 2%.
+                        </p>
+                        <p style="color:#C0C; font-size: 20px;">
+                            <span class="glyphicon glyphicon-triangle-right"></span> Level 4 get 1%.
+                        </p>
+                        <p style="color:#C0C; font-size: 20px;">
+                            <span class="glyphicon glyphicon-triangle-right"></span> Level 5 get 0.5%.
+                        </p>
+                    </div>
+                </div>
+            </div>    
             <div class="row">
                 <div class="col-md-6">
                     <img src="images/plan/plan2.png" class="img-reponsive" style="margin: 0 auto;width: 100%;"/>
