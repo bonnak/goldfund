@@ -5,8 +5,7 @@
                 class="form-control input-sm" 
                 placeholder="Search ..." 
                 v-model="search_query" 
-                @keyup="searchData">
-			<span class="input-group-addon"><i class="fa fa-search"></i></span>				
+                @keyup="searchData">		
 		</div>
     	<md-table @sort="onSort">
 		  <md-table-header>
@@ -61,7 +60,7 @@
 		    :md-size="pagination.per_page"
 		    :md-total="pagination.total"
 		    :md-page="pagination.current_page"
-		    :md-page-options="[5, 10, 25, 50]"
+		    :md-page-options="[5, 10, 50, 100]"
 		    md-label="Per page"
 		    @pagination="onPagination">
 		</md-table-pagination>

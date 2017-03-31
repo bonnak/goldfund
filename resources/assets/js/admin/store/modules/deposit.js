@@ -29,7 +29,7 @@ const mutations = {
 }
 
 const actions = {
-	fetchData({ commit }, query = '', pagination = state.pagination){
+	fetchData({ commit }, pagination = state.pagination, query = ''){
 		Api.fetchData({ 
       per_page : pagination.per_page,
       page     : pagination.current_page,
