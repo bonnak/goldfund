@@ -30,7 +30,7 @@ class DepositController extends Controller
                         }                     
                     })
                     ->orderBy('created_at', 'desc')
-                    ->paginate(request()->input('size'));
+                    ->paginate(request()->input('per_page'));
     }
 
     public function approve(Request $request)

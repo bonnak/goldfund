@@ -46441,7 +46441,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -47316,8 +47315,8 @@ var mutations = {
 var actions = {
   fetchData: function fetchData(_ref3) {
     var commit = _ref3.commit;
-    var query = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-    var pagination = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : state.pagination;
+    var pagination = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : state.pagination;
+    var query = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     __WEBPACK_IMPORTED_MODULE_0__api_ApiDeposit__["a" /* default */].fetchData({
       per_page: pagination.per_page,
@@ -48307,11 +48306,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.search_query = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-addon"
-  }, [_c('i', {
-    staticClass: "fa fa-search"
-  })])]), _vm._v(" "), _c('md-table', {
+  })]), _vm._v(" "), _c('md-table', {
     on: {
       "sort": _vm.onSort
     }
@@ -48379,7 +48374,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "md-size": _vm.pagination.per_page,
       "md-total": _vm.pagination.total,
       "md-page": _vm.pagination.current_page,
-      "md-page-options": [5, 10, 25, 50],
+      "md-page-options": [5, 10, 50, 100],
       "md-label": "Per page"
     },
     on: {
