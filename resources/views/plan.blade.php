@@ -32,76 +32,76 @@
             <div class="row">
                 <div class="col-md-6">
                     <img src="images/plan/plan2.png" class="img-reponsive" style="margin: 0 auto;width: 100%;"/>
-                    <p style="font-size:18px;  color:#306"> <span class="glyphicon glyphicon-chevron-right"></span>
+                    <p style="font-size:18px;  color:#306; padding-left: 45px;"> <span class="glyphicon glyphicon-chevron-right"></span>
 
                         For Binary Income One Left One Right is Compulsory.
 
                     </p>
 
-                    <p style="font-size:18px;  color:#309"> <span class="glyphicon glyphicon-chevron-right"></span>
+                    <p style="font-size:18px;  color:#309; padding-left: 45px;"> <span class="glyphicon glyphicon-chevron-right"></span>
 
                         Unlimited Depth 10% Binary.
 
                     </p>
 
-                    <p style="font-size:18px;  color:#30C"> <span class="glyphicon glyphicon-chevron-right"></span>
+                    <p style="font-size:18px;  color:#30C; padding-left: 45px;"> <span class="glyphicon glyphicon-chevron-right"></span>
 
                         <b>CAPPING:</b> As Per Your Investment Amount.
 
                     </p>
 
-                    <p style="font-size:18px;  color:#30F"><b>Example:</b> If Your Investment Amount is 10 USD Your Daily Capping is 10 USD on Binary Income. </p>
+                    <p style="font-size:18px;  color:#30F; padding-left: 45px;"><b>Example:</b> If Your Investment Amount is 10 USD Your Daily Capping is 10 USD on Binary Income. </p>
 
-                    <p style="font-size:18px;  color:#30F">
+                    <p style="font-size:18px;  color:#30F; padding-left: 45px;">
 
                         You can Invest More And Increase Your Daily Capping Limit.
 
                 </div>
                 <div class="col-md-6">
                     <img src="images/plan/plan3.png" class="img-reponsive" style="margin: 0 auto;width: 100%;"/>
-                    <p style="color:#C0F"><span class="glyphicon glyphicon-triangle-right">
+                    <p style="color:#C0F; padding-left: 51px;"><span class="glyphicon glyphicon-triangle-right">
 
             </span> Minimum Investment 50 USD.
 
                     </p>
 
-                    <p style="color:#C0C"><span class="glyphicon glyphicon-triangle-right">
+                    <p style="color:#C0C; padding-left: 51px;"><span class="glyphicon glyphicon-triangle-right">
 
             </span> Maximum Investment No Limit.
 
                     </p>
 
-                    <p style="color:#C09"><span class="glyphicon glyphicon-triangle-right">
+                    <p style="color:#C09; padding-left: 51px;"><span class="glyphicon glyphicon-triangle-right">
 
             </span> 3% Daily Growth 60 Days (Everyday).
 
                     </p>
 
-                    <p style="color:#C06"><span class="glyphicon glyphicon-triangle-right">
+                    <p style="color:#C06; padding-left: 51px;"><span class="glyphicon glyphicon-triangle-right">
 
             </span> Daily Withdrawal Minimum USD 10 - USD 500 .
 
                     </p>
 
-                    <p style="color:#C03"><span class="glyphicon glyphicon-triangle-right">
+                    <p style="color:#C03; padding-left: 51px;"><span class="glyphicon glyphicon-triangle-right">
 
             </span> No Transaction Charges.
 
                     </p>
 
-                    <p style="color:#C03"><span class="glyphicon glyphicon-triangle-right">
+                    <p style="color:#C03; padding-left: 51px;"><span class="glyphicon glyphicon-triangle-right">
 
             </span> Instant Withdrawal Creadited within 24-48 Hours in Your Bitcoin Wallet.
 
                     </p>
 
-                    <p style="color:#C03"><span class="glyphicon glyphicon-triangle-right">
+                    <p style="color:#C03; padding-left: 51px;"><span class="glyphicon glyphicon-triangle-right">
 
             </span><b>Daily Capping</b>: As Per your investment Amount.
 
                     </p>
 
-                    <p><span class="glyphicon glyphicon-triangle-right">
+                    <p style="color:#C03; padding-left: 51px;"><span class="glyphicon glyphicon-triangle-right">
 
             </span>Example Of Daily Capping.<span class="glyphicon glyphicon-hand-down"></span>
                 </div>

@@ -20,12 +20,18 @@
 	  					<router-link :to="{ path: '/deposit' }">
 							<i class="fa fa-money"></i><span>Deposit History</span>
 	  					</router-link>
-	  				</md-list-item>
-	  				<md-list-item>
-	  					<router-link :to="{ path: '/withdrawal' }">
-							<i class="fa fa-dollar"></i><span>Withdrawal</span>
-	  					</router-link>
-	  				</md-list-item>
+	  				</md-list-item>	  				
+  					<md-list-item>
+				    	<i class="fa fa-dollar"></i>
+				    	<span>Withdrawal</span>
+				    	<md-list-expand>
+				    		<md-list>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/pending' }"><span>Pending Withdrawal</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/approved' }"><span>Approved Withdrawal</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/cancelled' }"><span>Canceled Withdrawal</span></router-link></md-list-item>
+				            </md-list>
+				    	</md-list-expand>
+				    </md-list-item>
 	  				<md-list-item>
 	  					<router-link :to="{ path: '/geneology' }">
 							<i class="fa fa-sitemap"></i><span>Geneology</span>
@@ -43,7 +49,7 @@
 		<div class="page-content" ref="pageContent">
 		  <md-toolbar class="top-bar">
 			  <div class="md-toolbar-container">
-			    <md-button class="md-icon-button" id="btn-toggle-sidebar" @click="toggleLeftSidenav">
+			    <md-button class="md-icon-button" id="btn-toggle-sidebar" @click.native="toggleLeftSidenav">
 			      <md-icon>menu</md-icon>
 			    </md-button>
 
@@ -299,5 +305,41 @@ body.md-theme-app{
 	padding: 13px;
 	background: none;
 	text-align: center;
+}
+</style>
+
+<style lang="scss">
+.main-sidebar{
+	.md-sidenav-content{
+		.main-sidebar-links{
+			.md-list-expand{
+				.md-list-item{
+					.md-button{
+						padding-left: 72px;
+					}
+				}
+			}
+
+			.md-list{
+				.md-list-item{
+					i{
+						text-align: center;
+					}
+
+					.md-button-ghost {
+					    width: 100%;
+					    margin: 0;
+					    position: absolute;
+					    top: 0;
+					    right: 0;
+					    bottom: 0;
+					    left: 0;
+					    z-index: 1;
+					    border-radius: 0;
+					}
+				}
+			}
+		}
+	}
 }
 </style>
