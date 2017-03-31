@@ -118,3 +118,33 @@
 	  }
   }
 }
+
+
+.page-sidebar .page-sidebar-menu>li>a>.title, 
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>.title{
+	font-weight: 600;
+}
+
+.widget-thumb .widget-thumb-heading{
+	color: #000;
+    font-size: 16px;
+}
+
+.portlet.light>.portlet-title>.caption.caption-md>.caption-subject{
+	font-size: 19px;
+}
+
+.table-advance thead tr th{
+    background-color: #ffd155;
+    font-weight: 600;
+}
+
+
+.page-sidebar .page-sidebar-menu .sub-menu>li.active>a, 
+.page-sidebar .page-sidebar-menu .sub-menu>li.open>a, 
+.page-sidebar .page-sidebar-menu .sub-menu>li:hover>a, 
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li.active>a, 
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li.open>a, 
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li:hover>a{
+    color: #0173d4;
+}

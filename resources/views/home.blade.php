@@ -181,9 +181,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 text-center">
+        {{-- <div class="col-md-12 text-center">
             <img src="images/plan/plan1.png" class="img-reponsive" style="margin: 0 auto;"/>
-        </div>
+        </div> --}}
     </div>
 </section>
 {{-- <section>
