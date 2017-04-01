@@ -69,14 +69,13 @@
                     </div>
                     <nav class="navbar-collapse collapse" role="navigation" id="bs-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
-                            <li><a href="/">Home</a></li>
+                            {{-- <li><a href="/">Home</a></li> --}}
                             @if(!auth()->check())
                                 <li><a href="/register">Register</a></li>
                             @endif
                             <li><a href="{{url('plan')}}">Business Plan</a></li>
-                            <li class="dropdown">
+                            <li class="dropdown" id="service-menu">
                                 <a href="#" class="dropdown-toggle"
-                                   style="margin-bottom: 15px;background: none;color: #404040;"
                                    data-toggle="dropdown">
                                     Service
                                     <b class="caret"></b>
@@ -158,7 +157,7 @@
     <script src="/js-template/owl.carousel.min.js"></script>
     <script src="/js-template/smoothscroll.js"></script>
     <script src="/js-template/jquery.vegas.min.js"></script>
-    <script src="/js-template/zerif.js"></script>
+    <!-- <script src="/js-template/zerif.js"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
@@ -172,6 +171,16 @@
         $('#main-nav .navbar-toggle').click(function(){
             $('#bs-navbar-collapse').toggleClass('open');
         });
+
+        // $('#service-menu a.dropdown-toggle').hover(function(){
+        //     var dropdown_menu = $('#service-menu .dropdown-menu');
+        //     dropdown_menu.css('display', 'none');
+        //     dropdown_menu.css('opacity', '0');
+        // },function(){
+        //     var dropdown_menu = $('#service-menu .dropdown-menu');
+        //     dropdown_menu.css('display', 'flex');
+        //     dropdown_menu.css('opacity', '1');
+        // });
     </script>
     @yield('script')
 </body>
