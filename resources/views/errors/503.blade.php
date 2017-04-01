@@ -1,47 +1,29 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+<html lang="en">
+<head>
+	<title>Notify - Under Constraction and Coming Soon Template</title>
+	<meta charset="utf-8">
+	<meta name="author" content="pixelhint.com">
+	<meta name="description" content="Notify Under Constraction and Coming Soon Template"/>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/error/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/error/css/main.css">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+    <script type="text/javascript" src="/error/js/jquery.js"></script>
+    <script type="text/javascript" src="/error/js/TimeCircles.js"></script>
+    <script type="text/javascript" src="/error/js/backstretch.js"></script>
+    <script type="text/javascript" src="/error/js/main.js"></script>
+</head>
+<body>
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato', sans-serif;
-            }
+	<section class="content wrapper">
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+		<h1>Maintenance Mode</h1>
+		<p class="description">Sorry for inconvenient. We will get back soon.</p>
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+		<div class="counter clear" data-date="{{ Carbon\Carbon::now() }}"></div>
 
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
-            </div>
-        </div>
-    </body>
+	</section>
+	
+</body>
 </html>
