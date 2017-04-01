@@ -157,7 +157,7 @@
     <script src="/js-template/owl.carousel.min.js"></script>
     <script src="/js-template/smoothscroll.js"></script>
     <script src="/js-template/jquery.vegas.min.js"></script>
-    <!-- <script src="/js-template/zerif.js"></script> -->
+    <script src="/js-template/zerif.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
