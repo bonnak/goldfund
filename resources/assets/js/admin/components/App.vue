@@ -51,7 +51,7 @@
 		  <md-toolbar class="top-bar">
 			  <div class="md-toolbar-container">
 			    <md-button class="md-icon-button" id="btn-toggle-sidebar" @click.native="toggleLeftSidenav">
-			      <md-icon>menu</md-icon>
+			     	<i class="fa fa-bars"></i>
 			    </md-button>
 
 			    <span style="flex: 1;"></span>
