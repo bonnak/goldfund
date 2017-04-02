@@ -49618,7 +49618,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.toggleLeftSidenav($event)
       }
     }
-  }, [_c('md-icon', [_vm._v("menu")])], 1), _vm._v(" "), _c('span', {
+  }, [_c('i', {
+    staticClass: "fa fa-bars"
+  })]), _vm._v(" "), _c('span', {
     staticStyle: {
       "flex": "1"
     }
