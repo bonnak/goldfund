@@ -1,7 +1,7 @@
 export class Pagination {
 	constructor(data = null) {
         if(data === null){
-            this.per_page = 2;
+            this.per_page = 10;
             this.current_page = 1;
             return;
         }

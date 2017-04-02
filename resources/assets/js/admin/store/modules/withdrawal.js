@@ -8,8 +8,8 @@ const state = {
 
 const getters = {
 	pending: state => state.data.filter(item => item.status == 0),
-  approved: state => state.data.filter(item => item.status == 1),
-  canceled: state => state.data.filter(item => item.status == 2 || item.status == 3),
+  approve: state => state.data.filter(item => item.status == 1),
+  cancel: state => state.data.filter(item => item.status == 2 || item.status == 3),
 	pagination: state => state.pagination
 }
 
@@ -35,11 +35,12 @@ const mutations = {
 }
 
 const actions = {
-	getPending({ commit }, pagination = state.pagination, query = ''){
-    Api.getPending({ 
-      per_page : pagination.per_page,
-      page     : pagination.current_page,
-      query    : query
+	getPending({ commit, state }, param = { pagination: state.pagination, query: '' }){
+    Api.fetchData({ 
+      status   : 0,
+      per_page : param.pagination.per_page,
+      page     : param.pagination.current_page,
+      query    : param.query
     }).then(
       (response) => {
         commit('CLEAR_DATA');
@@ -48,11 +49,12 @@ const actions = {
     );
   },
 
-  getApproved({ commit }, pagination = state.pagination, query = ''){
-    Api.getApproved({ 
-      per_page : pagination.per_page,
-      page     : pagination.current_page,
-      query    : query
+  getApprove({ commit, state }, param = { pagination: state.pagination, query: '' }){
+    Api.fetchData({ 
+      status   : 1,
+      per_page : param.pagination.per_page,
+      page     : param.pagination.current_page,
+      query    : param.query
     }).then(
       (response) => {
         commit('CLEAR_DATA');
@@ -61,17 +63,18 @@ const actions = {
     );
   },
 
-  getCanceled({ commit }, pagination = state.pagination, query = ''){
-		Api.getCanceled({ 
-      per_page : pagination.per_page,
-      page     : pagination.current_page,
-      query    : query
+  getCancel({ commit, state }, param = { pagination: state.pagination, query: '' }){
+    Api.fetchData({ 
+      status   : [2, 3],
+      per_page : param.pagination.per_page,
+      page     : param.pagination.current_page,
+      query    : param.query
     }).then(
-			(response) => {
+      (response) => {
         commit('CLEAR_DATA');
         commit('RECEIVE_DATA', { body: response.data });
       }
-		);
+    );
 	},
 
   approve({ commit }, data){

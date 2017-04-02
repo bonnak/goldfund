@@ -161,10 +161,6 @@ export default{
         	this.approving_data = null;
         	this.$refs['dialog_approve'].close();
         }
-	},
-
-	watch:{
-		
 	}
 }
 </script>

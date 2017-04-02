@@ -37,8 +37,7 @@ export default{
 
 		reloadData(){
 			this.pagination.current_page = 1;
-			this.query_search = '';
-			// this.fetchData({ pagination: this.pagination, query: this.query_search });
+			this.fetchData({ pagination: this.pagination, query: '' });
 		}
 	},
 

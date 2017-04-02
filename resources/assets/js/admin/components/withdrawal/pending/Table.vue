@@ -1,12 +1,22 @@
 <template>
 	<md-table-card>
-		<div class="search">
-		  	<input type="text" 
-                class="form-control input-sm" 
-                placeholder="Search ..." 
-                v-model="search_query" 
-                @keyup="searchData">		
-		</div>
+		<md-layout md-gutter>
+			<md-layout>
+				<md-button class="btn-refresh" @click.native="reloadData">
+					<i class="fa fa-refresh"></i>
+					<md-tooltip md-direction="bottom">Refresh</md-tooltip>
+				</md-button>
+			</md-layout>
+			<md-layout></md-layout>
+			<md-layout>
+		  		<div class="search">
+		  			<input type="text" 
+                		class="form-control input-sm" 
+                		placeholder="Search ..." 
+                		v-model="query_search">		
+				</div>
+			</md-layout>
+		</md-layout>
     	<md-table @sort="onSort">
 		  <md-table-header>
 		    <md-table-row>
@@ -39,14 +49,14 @@
 		        <md-table-cell>{{ el.created_at }}</md-table-cell>
 		        <md-table-cell class="flex-end-action">
 		        	<md-button 
-		        		class="md-fab md-primary md-mini"
+		        		class="md-fab md-primary md-mini btn-action"
 		        		@click.native="openConfirmApprove(el)"
 		        		v-if="el.status == 0">
 					    	<i class="fa fa-check"></i>
 					    	<md-tooltip md-direction="top">Approve</md-tooltip>
 					</md-button>
 					<md-button 
-		        		class="md-fab md-danger md-mini"
+		        		class="md-fab md-danger md-mini btn-action"
 		        		@click.native="openConfirmCancel(el)"
 		        		v-if="el.status === 0">
 					    	<i class="fa fa-close"></i>
@@ -58,10 +68,11 @@
 		</md-table>
 
 		<md-table-pagination v-if="pagination.per_page <= pagination.total"
+			ref="pagination"
 		    :md-size="pagination.per_page"
 		    :md-total="pagination.total"
 		    :md-page="pagination.current_page"
-		    :md-page-options="[10, 50, 100]"
+		    :md-page-options="[2, 10, 50, 100]"
 		    md-label="Per page"
 		    @pagination="onPagination">
 		</md-table-pagination>
@@ -109,7 +120,6 @@ export default{
 	data(){
 		return {
 			contentHtml : '<div></div>',
-			search_query: '',
 			canceling_data: null,
 			approving_data: null
 		}
@@ -147,10 +157,6 @@ export default{
 	    	this.contentHtml = '<div></div>'
 	    },
 
-	    searchData: _.debounce(function () {
-            this.fetchData(this.search_query);
-        }, 500),
-
         openConfirmCancel(data){
         	this.canceling_data = data;
         	this.$refs['dialog_cancel'].open();
@@ -185,43 +191,3 @@ export default{
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-.md-theme-app{
-	&.md-button{
-		&.md-raised{
-			width: 100%;
-		}
-
-		i{
-		    display: block;
-		    margin-left: -5px;
-		    color: #fff;
-		}
-	}
-}
-
-.search{
-    position: relative;
-    right: 0;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-
-    input{
-        border-radius: 20px;
-        width: 250px;
-    }
-
-    span{
-        border: none;
-        background: transparent;
-        padding: 0 0 0 5px;
-        font-size: 22px;
-        display: inline-block;
-        margin-right: 15px;
-    }
-}
-</style>

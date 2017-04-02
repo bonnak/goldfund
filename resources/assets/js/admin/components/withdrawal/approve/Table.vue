@@ -1,12 +1,22 @@
 <template>
 	<md-table-card>
-		<div class="search">
-		  	<input type="text" 
-                class="form-control input-sm" 
-                placeholder="Search ..." 
-                v-model="search_query" 
-                @keyup="searchData">		
-		</div>
+		<md-layout md-gutter>
+			<md-layout>
+				<md-button class="btn-refresh" @click.native="reloadData">
+					<i class="fa fa-refresh"></i>
+					<md-tooltip md-direction="bottom">Refresh</md-tooltip>
+				</md-button>
+			</md-layout>
+			<md-layout></md-layout>
+			<md-layout>
+		  		<div class="search">
+		  			<input type="text" 
+                		class="form-control input-sm" 
+                		placeholder="Search ..." 
+                		v-model="query_search">		
+				</div>
+			</md-layout>
+		</md-layout>
     	<md-table @sort="onSort">
 		  <md-table-header>
 		    <md-table-row>
@@ -16,7 +26,6 @@
 		    	<md-table-head>Status</md-table-head>
 		    	<md-table-head>Bitcoin Address</md-table-head>
 		    	<md-table-head>Created Date</md-table-head>
-		    	<md-table-head>Updated Date</md-table-head>
 		    </md-table-row>
 		  </md-table-header>
 
@@ -37,16 +46,16 @@
 		        	</a>
 		        </md-table-cell>		        
 		        <md-table-cell>{{ el.created_at }}</md-table-cell>
-		        <md-table-cell>{{ el.updated_at }}</md-table-cell>
 		    </md-table-row>
 		  </md-table-body>
 		</md-table>
 
 		<md-table-pagination v-if="pagination.per_page <= pagination.total"
+			ref="pagination"
 		    :md-size="pagination.per_page"
 		    :md-total="pagination.total"
 		    :md-page="pagination.current_page"
-		    :md-page-options="[10, 50, 100]"
+		    :md-page-options="[2, 10, 50, 100]"
 		    md-label="Per page"
 		    @pagination="onPagination">
 		</md-table-pagination>
@@ -72,13 +81,14 @@ export default{
 	data(){
 		return {
 			contentHtml : '<div></div>',
-			search_query: ''
+			canceling_data: null,
+			approving_data: null
 		}
 	},
 
 	computed: {
 	    ...mapGetters({
-	      data_grid: 'withdrawal/canceled',
+	      data_grid: 'withdrawal/approve',
 	      pagination: 'withdrawal/pagination'
 	    })
 	},
@@ -92,7 +102,7 @@ export default{
 
 	methods:{
 		...mapActions({
-	  		fetchData: 'withdrawal/getCanceled'
+	  		fetchData: 'withdrawal/getApprove'
 	  	}),
 
 	  	openDialog(data)
@@ -104,51 +114,7 @@ export default{
 
 	    onCloseDlg(type) {
 	    	this.contentHtml = '<div></div>'
-	    },
-
-	    searchData: _.debounce(function () {
-            this.fetchData(this.search_query);
-        }, 500)
+	    }
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-.md-theme-app{
-	&.md-button{
-		&.md-raised{
-			width: 100%;
-		}
-
-		i{
-		    display: block;
-		    margin-left: -5px;
-		    color: #fff;
-		}
-	}
-}
-
-.search{
-    position: relative;
-    right: 0;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-
-    input{
-        border-radius: 20px;
-        width: 250px;
-    }
-
-    span{
-        border: none;
-        background: transparent;
-        padding: 0 0 0 5px;
-        font-size: 22px;
-        display: inline-block;
-        margin-right: 15px;
-    }
-}
-</style>

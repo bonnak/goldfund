@@ -5,32 +5,31 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Withdrawal;
+use App\Customer;
 
 class WithdrawalController extends Controller
 {
-    public function getPending()
-    {
+    public function getData()
+    {       
+        extract(request()->all());
+
         return Withdrawal::with('owner')
-                    ->where('status', 0)
+                    ->whereIn('status', is_array($status) ? $status : [$status])                   
+                    ->where(function($inner_query) use ($query){
+                        if($query == '') return;
+
+                        $inner_query->whereIn(
+                            'cust_id', 
+                            Customer::where('username', 'like', $query . '%')
+                                    ->orWhere('email', 'like', $query . '%')
+                                    ->orWhere('bitcoin_account', 'like', $query . '%')
+                                    ->get()
+                                    ->pluck('id')
+                        );                     
+                    })
                     ->orderBy('created_at', 'desc')
-                    ->paginate(request()->input('per_page'));
+                    ->paginate($per_page);
     }
-
-    public function getApproved()
-    {
-        return Withdrawal::with('owner')
-                    ->where('status', 1)
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(request()->input('per_page'));
-    } 
-
-    public function getCanceled()
-    {
-    	return Withdrawal::with('owner')
-    				->whereIn('status', [2, 3])
-                    ->orderBy('created_at', 'desc')
-    				->paginate(request()->input('per_page'));
-    }    
 
     public function approve(Request $request)
     {

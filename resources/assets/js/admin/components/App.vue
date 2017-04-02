@@ -22,7 +22,7 @@
 				    	<md-list-expand>
 				    		<md-list>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/pending' }"><span>Pending Deposit</span></router-link></md-list-item>
-				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/approve' }"><span>Approved Deposit</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/approve' }"><span>Approve Deposit</span></router-link></md-list-item>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/expire' }"><span>Expire Deposit</span></router-link></md-list-item>
 				            </md-list>
 				    	</md-list-expand>
@@ -33,8 +33,8 @@
 				    	<md-list-expand>
 				    		<md-list>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/pending' }"><span>Pending Withdrawal</span></router-link></md-list-item>
-				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/approved' }"><span>Approved Withdrawal</span></router-link></md-list-item>
-				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/canceled' }"><span>Canceled Withdrawal</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/approve' }"><span>Approve Withdrawal</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/cancel' }"><span>Cancel Withdrawal</span></router-link></md-list-item>
 				            </md-list>
 				    	</md-list-expand>
 				    </md-list-item>

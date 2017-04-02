@@ -32,9 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 	//Withdrawal
 	Route::post('/withdrawal/approve', 'Admin\WithdrawalController@approve');
 	Route::post('/withdrawal/cancel', 'Admin\WithdrawalController@cancel');
-	Route::get('/withdrawal/pending', 'Admin\WithdrawalController@getPending');
-	Route::get('/withdrawal/approved', 'Admin\WithdrawalController@getApproved');
-	Route::get('/withdrawal/canceled', 'Admin\WithdrawalController@getCanceled');
+	Route::get('/withdrawal', 'Admin\WithdrawalController@getData');
 
 	//Company profile
 	Route::get('company/profile', 'Admin\CompanyProfileController@getData');

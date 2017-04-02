@@ -15,9 +15,4 @@ class Withdrawal extends Model
     {
     	return $this->belongsTo(Customer::class, 'cust_id', 'id');
     }
-
-    public function allowWithdraw()
-    {
-    	return false;
-    }
 }
