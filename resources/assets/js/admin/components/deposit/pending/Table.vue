@@ -73,7 +73,7 @@
 		    :md-size="pagination.per_page"
 		    :md-total="pagination.total"
 		    :md-page="pagination.current_page"
-		    :md-page-options="[2, 10, 50, 100]"
+		    :md-page-options="[10, 50, 100]"
 		    md-label="Per page"
 		    @pagination="onPagination">
 		</md-table-pagination>

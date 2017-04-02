@@ -49601,7 +49601,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "md-size": _vm.pagination.per_page,
       "md-total": _vm.pagination.total,
       "md-page": _vm.pagination.current_page,
-      "md-page-options": [2, 10, 50, 100],
+      "md-page-options": [10, 50, 100],
       "md-label": "Per page"
     },
     on: {
@@ -50040,7 +50040,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "md-size": _vm.pagination.per_page,
       "md-total": _vm.pagination.total,
       "md-page": _vm.pagination.current_page,
-      "md-page-options": [2, 10, 50, 100],
+      "md-page-options": [10, 50, 100],
       "md-label": "Per page"
     },
     on: {
@@ -50234,7 +50234,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "md-size": _vm.pagination.per_page,
       "md-total": _vm.pagination.total,
       "md-page": _vm.pagination.current_page,
-      "md-page-options": [2, 10, 50, 100],
+      "md-page-options": [10, 50, 100],
       "md-label": "Per page"
     },
     on: {
@@ -50801,7 +50801,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "md-size": _vm.pagination.per_page,
       "md-total": _vm.pagination.total,
       "md-page": _vm.pagination.current_page,
-      "md-page-options": [2, 10, 50, 100],
+      "md-page-options": [10, 50, 100],
       "md-label": "Per page"
     },
     on: {
@@ -51639,7 +51639,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "md-size": _vm.pagination.per_page,
       "md-total": _vm.pagination.total,
       "md-page": _vm.pagination.current_page,
-      "md-page-options": [2, 10, 50, 100],
+      "md-page-options": [10, 50, 100],
       "md-label": "Per page"
     },
     on: {
@@ -51748,7 +51748,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "md-size": _vm.pagination.per_page,
       "md-total": _vm.pagination.total,
       "md-page": _vm.pagination.current_page,
-      "md-page-options": [2, 10, 50, 100],
+      "md-page-options": [10, 50, 100],
       "md-label": "Per page"
     },
     on: {
