@@ -1,11 +1,22 @@
 <template>
 	<md-table-card>
-		<div class="search">
-		  	<input type="text" 
-                class="form-control input-sm" 
-                placeholder="Search ..." 
-                v-model="query_search">		
-		</div>
+		<md-layout md-gutter>
+			<md-layout>
+				<md-button class="btn-refresh" @click.native="reloadData">
+					<i class="fa fa-refresh"></i>
+					<md-tooltip md-direction="bottom">Refresh</md-tooltip>
+				</md-button>
+			</md-layout>
+			<md-layout></md-layout>
+			<md-layout>
+		  		<div class="search">
+		  			<input type="text" 
+                		class="form-control input-sm" 
+                		placeholder="Search ..." 
+                		v-model="query_search">		
+				</div>
+			</md-layout>
+		</md-layout>
     	<md-table @sort="onSort">
 		  <md-table-header>
 		    <md-table-row>
@@ -38,14 +49,14 @@
 		        </md-table-cell>
 		        <md-table-cell class="flex-end-action">
 		        	<md-button 
-		        		class="md-fab md-primary md-mini"
+		        		class="md-fab md-primary md-mini btn-action"
 		        		@click.native="openConfirmApprove(el)"
 		        		v-if="el.status == 0">
 					    	<i class="fa fa-check"></i>
 					    	<md-tooltip md-direction="top">Approve</md-tooltip>
 					</md-button>
 					<md-button 
-		        		class="md-fab md-green md-mini"
+		        		class="md-fab md-green md-mini btn-action"
 		        		@click.native="showViewInfo(el)">
 					    	<i class="fa fa-eye"></i>
 					    	<md-tooltip md-direction="top">View</md-tooltip>
@@ -155,43 +166,3 @@ export default{
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-.md-theme-app{
-	&.md-button{
-		&.md-raised{
-			width: 100%;
-		}
-
-		i{
-		    display: block;
-		    margin-left: -5px;
-		    color: #fff;
-		}
-	}
-}
-
-.search{
-    position: relative;
-    right: 0;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-
-    input{
-        border-radius: 20px;
-        width: 250px;
-    }
-
-    span{
-        border: none;
-        background: transparent;
-        padding: 0 0 0 5px;
-        font-size: 22px;
-        display: inline-block;
-        margin-right: 15px;
-    }
-}
-</style>

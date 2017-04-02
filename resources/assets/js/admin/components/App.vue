@@ -270,6 +270,10 @@ body.md-theme-app{
 <style lang="scss">
 .md-theme-app.md-button:not([disabled]).md-green.md-fab{
 	background-color: #47a567;
+
+	&:hover{
+		background-color: #34c164 !important;
+	}
 }
 
 .label-gold{
@@ -361,5 +365,53 @@ body.md-theme-app{
 			display: none;
 		}
 	}
+}
+
+
+.md-button{
+	&.md-raised{
+		width: 100%;
+	}
+
+	&.btn-action{
+		i{
+		    display: block;
+		    margin-left: -5px;
+		    color: #fff;
+		}
+	}
+
+	&.btn-refresh{
+		min-width: auto;
+
+		i{
+			font-size: 20px; 
+			color: #636b6f;
+		}
+	}
+}
+
+.search{
+    position: relative;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
+    input{
+        border-radius: 20px;
+        width: 250px;
+    }
+
+    span{
+        border: none;
+        background: transparent;
+        padding: 0 0 0 5px;
+        font-size: 22px;
+        display: inline-block;
+        margin-right: 15px;
+    }
 }
 </style>

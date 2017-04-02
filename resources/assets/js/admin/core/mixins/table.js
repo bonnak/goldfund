@@ -33,6 +33,12 @@ export default{
 				pagination: { per_page: pagination.size, current_page: pagination.page },
 				query: this.query_search
 			});
+		},
+
+		reloadData(){
+			this.pagination.current_page = 1;
+			this.query_search = '';
+			// this.fetchData({ pagination: this.pagination, query: this.query_search });
 		}
 	},
 
@@ -48,6 +54,13 @@ export default{
         'pagination.current_page': function(val) {			
             this.$refs['pagination'].currentPage = val;
             this.$refs['pagination'].subTotal = val * this.pagination.per_page;
+		},
+
+		'data_grid': function(val){
+			if(val.length === 0 && this.pagination.total > 0){
+				this.pagination.current_page = 1;
+				this.fetchData({ pagination: this.pagination, query: this.query_search });
+			}
 		}
 	}
 }
