@@ -1,5 +1,5 @@
 const routes = [
-  { path: '/user', component: require('./components/user/Index.vue') },
+  // { path: '/user', component: require('./components/user/Index.vue') },
   { path: '/customer', component: require('./components/customer/Index.vue') },
 
   { path: '/deposit/pending', component: require('./components/deposit/pending/Index.vue') },

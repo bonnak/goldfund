@@ -6,11 +6,6 @@
 			</div>
 			<div class="main-sidebar-links phone-viewport">
 				<md-list>
-					<md-list-item>
-				    	<router-link :to="{ path: '/user' }">
-							<i class="fa fa-user"></i><span>User</span>
-		  				</router-link>
-				    </md-list-item>
 	  				<md-list-item>
 			    		<router-link :to="{ path: '/customer' }">
 							<i class="fa fa-users"></i><span>Customer</span>

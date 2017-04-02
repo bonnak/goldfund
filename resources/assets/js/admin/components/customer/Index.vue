@@ -1,8 +1,9 @@
 <template>
 	<div>
 	    <component :is="current_view" :data="data"
-	    		@show-create="current_view = '_Create'"	      		
-	    		@show-view="showView"
+	    		@show-create="current_view = '_Create'"	 
+	    		@show-view="showView"     		
+	    		@show-edit="showEdit"
 	    		@close-form="current_view = '_Table'">
 	  	</component>
   </div>
@@ -15,9 +16,9 @@ import _Table from './Table.vue'
 import _View from './View.vue'
 
 export default{
-	
+
 	mixins: [_mixin],
-	
+
 	components: {
 		_Table,
 		_View
@@ -28,6 +29,17 @@ export default{
 			current_view : '_Table',
 			data: null
 		}
+	},
+
+	methods:{
+		...mapActions({
+	  		clearStore: 'customer/clearStore'
+		})
+	},
+
+	beforeRouteLeave (to, from, next){
+    	this.clearStore();
+    	next();
 	}
 }
 </script>

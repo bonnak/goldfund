@@ -10,7 +10,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 
 	Route::get('/users', 'Admin\UserController@users');
 
-	Route::get('/customers', 'Admin\CustomerController@customers');
+	Route::get('/customers', 'Admin\CustomerController@getData');
 
 	Route::get('/deposit', 'Admin\DepositController@getData');
 	Route::post('/deposit/approve', 'Admin\DepositController@approve');
