@@ -43,6 +43,11 @@ export default{
 			}
 			
             this.fetchData({ pagination: this.pagination, query: this.query_search });
-        }, 500)
+        }, 500),
+
+        'pagination.current_page': function(val) {			
+            this.$refs['pagination'].currentPage = val;
+            this.$refs['pagination'].subTotal = val * this.pagination.per_page;
+		}
 	}
 }

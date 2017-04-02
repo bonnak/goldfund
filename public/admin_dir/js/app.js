@@ -1576,7 +1576,12 @@ function applyToTag (styleElement, obj) {
 			}
 
 			this.fetchData({ pagination: this.pagination, query: this.query_search });
-		}, 500)
+		}, 500),
+
+		'pagination.current_page': function paginationCurrent_page(val) {
+			this.$refs['pagination'].currentPage = val;
+			this.$refs['pagination'].subTotal = val * this.pagination.per_page;
+		}
 	}
 };
 
@@ -49947,6 +49952,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -49998,7 +50004,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			this.approving_data = null;
 			this.$refs['dialog_approve'].close();
 		}
-	})
+	}),
+
+	watch: {}
 };
 
 /***/ }),
@@ -50419,6 +50427,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v("View")])], 1)], 1)], 1)
   }))], 1), _vm._v(" "), (_vm.pagination.per_page <= _vm.pagination.total) ? _c('md-table-pagination', {
+    ref: "pagination",
     attrs: {
       "md-size": _vm.pagination.per_page,
       "md-total": _vm.pagination.total,

@@ -55,7 +55,8 @@
 		  </md-table-body>
 		</md-table>
 
-		<md-table-pagination v-if="pagination.per_page <= pagination.total"
+		<md-table-pagination v-if="pagination.per_page <= pagination.total" 
+			ref="pagination"
 		    :md-size="pagination.per_page"
 		    :md-total="pagination.total"
 		    :md-page="pagination.current_page"
@@ -147,6 +148,10 @@ export default{
         	this.approving_data = null;
         	this.$refs['dialog_approve'].close();
         }
+	},
+
+	watch:{
+		
 	}
 }
 </script>
