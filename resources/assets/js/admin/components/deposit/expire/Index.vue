@@ -11,7 +11,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import _mixin from '../../core/mixins'
+import _mixin from '../../../core/mixins'
 import _Table from './Table.vue'
 import _View from './View.vue'
 
@@ -33,7 +33,7 @@ export default{
 
 	methods:{
 		...mapActions({
-	  		clearStore: 'customer/clearStore'
+	  		clearStore: 'deposit/clearStore'
 		})
 	},
 

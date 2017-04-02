@@ -6,20 +6,21 @@
 			</div>
 			<div class="main-sidebar-links phone-viewport">
 				<md-list>
-					<md-list-item>
-				    	<router-link :to="{ path: '/user' }">
-							<i class="fa fa-user"></i><span>User</span>
-		  				</router-link>
-				    </md-list-item>
 	  				<md-list-item>
 			    		<router-link :to="{ path: '/customer' }">
 							<i class="fa fa-users"></i><span>Customer</span>
 	  					</router-link>
 	  				</md-list-item>
 	  				<md-list-item>
-	  					<router-link :to="{ path: '/deposit' }">
-							<i class="fa fa-money"></i><span>Deposit History</span>
-	  					</router-link>
+	  					<i class="fa fa-money"></i>
+				    	<span>Deposit</span>
+				    	<md-list-expand>
+				    		<md-list>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/pending' }"><span>Pending Deposit</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/approve' }"><span>Approve Deposit</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/expire' }"><span>Expire Deposit</span></router-link></md-list-item>
+				            </md-list>
+				    	</md-list-expand>
 	  				</md-list-item>	  				
   					<md-list-item>
 				    	<i class="fa fa-dollar"></i>
@@ -27,8 +28,8 @@
 				    	<md-list-expand>
 				    		<md-list>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/pending' }"><span>Pending Withdrawal</span></router-link></md-list-item>
-				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/approved' }"><span>Approved Withdrawal</span></router-link></md-list-item>
-				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/canceled' }"><span>Canceled Withdrawal</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/approve' }"><span>Approve Withdrawal</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/withdrawal/cancel' }"><span>Cancel Withdrawal</span></router-link></md-list-item>
 				            </md-list>
 				    	</md-list-expand>
 				    </md-list-item>
@@ -264,6 +265,10 @@ body.md-theme-app{
 <style lang="scss">
 .md-theme-app.md-button:not([disabled]).md-green.md-fab{
 	background-color: #47a567;
+
+	&:hover{
+		background-color: #34c164 !important;
+	}
 }
 
 .label-gold{
@@ -355,5 +360,53 @@ body.md-theme-app{
 			display: none;
 		}
 	}
+}
+
+
+.md-button{
+	&.md-raised{
+		width: 100%;
+	}
+
+	&.btn-action{
+		i{
+		    display: block;
+		    margin-left: -5px;
+		    color: #fff;
+		}
+	}
+
+	&.btn-refresh{
+		min-width: auto;
+
+		i{
+			font-size: 20px; 
+			color: #636b6f;
+		}
+	}
+}
+
+.search{
+    position: relative;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
+    input{
+        border-radius: 20px;
+        width: 250px;
+    }
+
+    span{
+        border: none;
+        background: transparent;
+        padding: 0 0 0 5px;
+        font-size: 22px;
+        display: inline-block;
+        margin-right: 15px;
+    }
 }
 </style>

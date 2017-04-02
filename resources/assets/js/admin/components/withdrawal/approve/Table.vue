@@ -26,7 +26,6 @@
 		    	<md-table-head>Status</md-table-head>
 		    	<md-table-head>Bitcoin Address</md-table-head>
 		    	<md-table-head>Created Date</md-table-head>
-		    	<md-table-head>Action</md-table-head>
 		    </md-table-row>
 		  </md-table-header>
 
@@ -47,22 +46,6 @@
 		        	</a>
 		        </md-table-cell>		        
 		        <md-table-cell>{{ el.created_at }}</md-table-cell>
-		        <md-table-cell class="flex-end-action">
-		        	<md-button 
-		        		class="md-fab md-primary md-mini btn-action"
-		        		@click.native="openConfirmApprove(el)"
-		        		v-if="el.status == 0">
-					    	<i class="fa fa-check"></i>
-					    	<md-tooltip md-direction="top">Approve</md-tooltip>
-					</md-button>
-					<md-button 
-		        		class="md-fab md-danger md-mini btn-action"
-		        		@click.native="openConfirmCancel(el)"
-		        		v-if="el.status === 0">
-					    	<i class="fa fa-close"></i>
-					    	<md-tooltip md-direction="top">Cancel</md-tooltip>
-					</md-button>
-		        </md-table-cell>
 		    </md-table-row>
 		  </md-table-body>
 		</md-table>
@@ -83,28 +66,6 @@
 		   @close="onCloseDlg"
 		  ref="dialog_bitcoin_address">
 		</md-dialog-alert>
-
-		<md-dialog md-open-from="#fab" md-close-to="#fab" :ref="'dialog_approve'">
-			<md-dialog-title>
-				<span><i class="fa fa fa-check-circle icon-success"></i> Warning</span>
-			</md-dialog-title>
-			<md-dialog-content>Are you sure want to approve?</md-dialog-content>
-			<md-dialog-actions>
-		    	<md-button class="md-primary" @click.native="confirmApprove()">Yes</md-button>
-		    	<md-button class="md-primary" @click.native="rejectApprove()">No</md-button>
-			</md-dialog-actions>
-		</md-dialog>
-
-		<md-dialog md-open-from="#fab" md-close-to="#fab" :ref="'dialog_cancel'">
-			<md-dialog-title>
-				<span><i class="fa fa-exclamation-triangle icon-danger"></i> Warning</span>
-			</md-dialog-title>
-			<md-dialog-content>Are you sure want to cancel?</md-dialog-content>
-			<md-dialog-actions>
-		    	<md-button class="md-primary" @click.native="confirmCancel()">Yes</md-button>
-		    	<md-button class="md-primary" @click.native="rejectCancel()">No</md-button>
-			</md-dialog-actions>
-		</md-dialog>
   </md-table-card>
 </template>
 
@@ -127,7 +88,7 @@ export default{
 
 	computed: {
 	    ...mapGetters({
-	      data_grid: 'withdrawal/pending',
+	      data_grid: 'withdrawal/approve',
 	      pagination: 'withdrawal/pagination'
 	    })
 	},
@@ -141,9 +102,7 @@ export default{
 
 	methods:{
 		...mapActions({
-	  		fetchData: 'withdrawal/getPending',
-	  		approveWithdrawal: 'withdrawal/approve',
-	  		cancelWithdrawal: 'withdrawal/cancel',
+	  		fetchData: 'withdrawal/getApprove'
 	  	}),
 
 	  	openDialog(data)
@@ -155,39 +114,7 @@ export default{
 
 	    onCloseDlg(type) {
 	    	this.contentHtml = '<div></div>'
-	    },
-
-        openConfirmCancel(data){
-        	this.canceling_data = data;
-        	this.$refs['dialog_cancel'].open();
-        },
-
-        confirmCancel(){
-        	this.cancelWithdrawal(this.canceling_data);  
-        	this.canceling_data = null;      	
-        	this.$refs['dialog_cancel'].close();
-        },
-
-        rejectCancel(){
-        	this.canceling_data = null;
-        	this.$refs['dialog_cancel'].close();
-        },
-
-        openConfirmApprove(data){
-        	this.approving_data = data;
-        	this.$refs['dialog_approve'].open();
-        },
-
-        confirmApprove(){
-			this.approveWithdrawal(this.approving_data);  
-        	this.approving_data = null;      	
-        	this.$refs['dialog_approve'].close();
-        },
-
-        rejectApprove(){
-        	this.approving_data = null;
-        	this.$refs['dialog_approve'].close();
-        }
+	    }
 	}
 }
 </script>

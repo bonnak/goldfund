@@ -43,11 +43,22 @@ class CustomerController extends Controller
 		}
   }
 
+  public function getData()
+  {       
+      extract(request()->all());
 
-  public function customers()
-  {
-  	return Customer::with(['sponsor', 'country'])->paginate(request()->input('per_page'));
+      return Customer::with(['sponsor', 'country'])                  
+                  ->where(function($inner_query) use ($query){
+                      if($query == '') return;
+
+                      $inner_query->where('username', 'like', $query . '%')
+                                  ->orWhere('email', 'like', $query . '%')
+                                  ->orWhere('bitcoin_account', 'like', $query . '%');                     
+                  })
+                  ->orderBy('created_at', 'desc')
+                  ->paginate($per_page);
   }
+
 
   public function editEmail(Request $request)
   {

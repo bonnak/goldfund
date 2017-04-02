@@ -19,23 +19,28 @@ const mutations = {
     }); 
   },
 
-  CLEAR_STORE (state){
-    state.data.splice(0, state.data.length);
-  }
+  CLEAR_DATA (state){
+      state.data.splice(0, state.data.length);
+  },
+
+  RESET_PAGINATION (state){
+      state.pagination = new Pagination();
+  },
 }
 
 const actions = {
-	fetchData({ commit }, pagination = state.pagination){
-		Api.fetchData({ 
-      per_page : pagination.per_page,
-      page     : pagination.current_page
+	fetchData({ commit, state }, param = { pagination: state.pagination, query: '' }){
+    Api.fetchData({ 
+      per_page : param.pagination.per_page,
+      page     : param.pagination.current_page,
+      query    : param.query
     }).then(
-			(response) => {
-        commit('CLEAR_STORE');
+      (response) => {
+        commit('CLEAR_DATA');
         commit('RECEIVE_DATA', { body: response.data });
       }
-		);
-	},
+    );
+  },
 
   editEmail({ commit }, data){ 
     return new Promise((resolve, reject) => {
@@ -69,6 +74,11 @@ const actions = {
           }
         );
     });
+  },
+
+  clearStore({ commit }){
+    commit('CLEAR_DATA');
+    commit('RESET_PAGINATION');
   }
 }
 

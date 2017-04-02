@@ -14,23 +14,26 @@ class DepositController extends Controller
 {
     use DepositEarningTrait;
 
-    public function history()
-    {
-        $query_string = request()->exists('query') ? request()->input('query') : '';
+    public function getData()
+    {       
+        extract(request()->all());
 
     	return Deposit::with(['plan', 'owner'])
-                    ->where(function($query) use ($query_string){
-                        if($query_string != ''){
-                            $customer = Customer::where('username', 'like', $query_string . '%')
-                                                ->orWhere('email', 'like', $query_string . '%')
-                                                ->orWhere('bitcoin_account', 'like', $query_string . '%')
-                                                ->get();
+                    ->whereIn('status', is_array($status) ? $status : [$status])                   
+                    ->where(function($inner_query) use ($query){
+                        if($query == '') return;
 
-                            $query->whereIn('cust_id', is_null($customer) ? '' : $customer->pluck('id'));
-                        }                     
+                        $inner_query->whereIn(
+                            'cust_id', 
+                            Customer::where('username', 'like', $query . '%')
+                                    ->orWhere('email', 'like', $query . '%')
+                                    ->orWhere('bitcoin_account', 'like', $query . '%')
+                                    ->get()
+                                    ->pluck('id')
+                        );                     
                     })
                     ->orderBy('created_at', 'desc')
-                    ->paginate(request()->input('per_page'));
+                    ->paginate($per_page);
     }
 
     public function approve(Request $request)
