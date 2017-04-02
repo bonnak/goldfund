@@ -1,8 +1,8 @@
 import Api from './Api';
 
 export default {
-  fetchData(pagination) {
-    return Api.get('deposit/history',  pagination);
+  fetchData(params) {
+    return Api.get('deposit',  params);
   },
 
   approve(data){

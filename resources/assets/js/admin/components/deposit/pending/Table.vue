@@ -4,8 +4,7 @@
 		  	<input type="text" 
                 class="form-control input-sm" 
                 placeholder="Search ..." 
-                v-model="search_query" 
-                @keyup="searchData">		
+                v-model="query_search">		
 		</div>
     	<md-table @sort="onSort">
 		  <md-table-header>
@@ -60,7 +59,7 @@
 		    :md-size="pagination.per_page"
 		    :md-total="pagination.total"
 		    :md-page="pagination.current_page"
-		    :md-page-options="[10, 50, 100]"
+		    :md-page-options="[2, 10, 50, 100]"
 		    md-label="Per page"
 		    @pagination="onPagination">
 		</md-table-pagination>
@@ -87,9 +86,8 @@
 </template>
 
 <script>
-import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
-import _mixin from '../../core/mixins/table'
+import _mixin from '../../../core/mixins/table'
 
 export default{
 
@@ -98,14 +96,13 @@ export default{
 	data(){
 		return {
 			contentHtml : '<div></div>',
-			search_query: '',
 			approving_data: null
 		}
 	},
 
 	computed: {
 	    ...mapGetters({
-	      data_grid: 'deposit/data',
+	      data_grid: 'deposit/pending',
 	      pagination: 'deposit/pagination'
 	    })
 	},
@@ -119,7 +116,7 @@ export default{
 
 	methods:{
 		...mapActions({
-	  		fetchData: 'deposit/fetchData',
+	  		fetchData: 'deposit/fetchPending',
 	  		approveDeposit: 'deposit/approve'
 	  	}),
 
@@ -134,10 +131,6 @@ export default{
 	    onCloseDlg(type) {
 	    	this.contentHtml = '<div></div>'
 	    },
-
-	    searchData: _.debounce(function () {
-            this.fetchData(this.search_query);
-        }, 500),
 
         openConfirmApprove(data){
         	this.approving_data = data;

@@ -17,9 +17,15 @@
 	  					</router-link>
 	  				</md-list-item>
 	  				<md-list-item>
-	  					<router-link :to="{ path: '/deposit' }">
-							<i class="fa fa-money"></i><span>Deposit History</span>
-	  					</router-link>
+	  					<i class="fa fa-money"></i>
+				    	<span>Deposit</span>
+				    	<md-list-expand>
+				    		<md-list>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/pending' }"><span>Pending Deposit</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/approved' }"><span>Approved Deposit</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/canceled' }"><span>Canceled Deposit</span></router-link></md-list-item>
+				            </md-list>
+				    	</md-list-expand>
 	  				</md-list-item>	  				
   					<md-list-item>
 				    	<i class="fa fa-dollar"></i>
