@@ -22,8 +22,8 @@
 				    	<md-list-expand>
 				    		<md-list>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/pending' }"><span>Pending Deposit</span></router-link></md-list-item>
-				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/approved' }"><span>Approved Deposit</span></router-link></md-list-item>
-				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/canceled' }"><span>Canceled Deposit</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/approve' }"><span>Approved Deposit</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/deposit/expire' }"><span>Expire Deposit</span></router-link></md-list-item>
 				            </md-list>
 				    	</md-list-expand>
 	  				</md-list-item>	  				

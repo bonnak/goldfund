@@ -50,13 +50,6 @@
 		        	</a>
 		        </md-table-cell>
 		        <md-table-cell class="flex-end-action">
-		        	<md-button 
-		        		class="md-fab md-primary md-mini btn-action"
-		        		@click.native="openConfirmApprove(el)"
-		        		v-if="el.status == 0">
-					    	<i class="fa fa-check"></i>
-					    	<md-tooltip md-direction="top">Approve</md-tooltip>
-					</md-button>
 					<md-button 
 		        		class="md-fab md-green md-mini btn-action"
 		        		@click.native="showViewInfo(el)">
@@ -84,18 +77,6 @@
 		   @close="onCloseDlg"
 		  ref="dialog_blankslip">
 		</md-dialog-alert>
-
-		<md-dialog md-open-from="#fab" md-close-to="#fab" :ref="'dialog_approve'">
-			<md-dialog-title>
-				<span><i class="fa fa fa-check-circle icon-success"></i> Warning</span>
-			</md-dialog-title>
-			<md-dialog-content>Are you sure want to approve?</md-dialog-content>
-			<md-dialog-actions>
-		    	<md-button class="md-primary" @click.native="confirmApprove()">Yes</md-button>
-		    	<md-button class="md-primary" @click.native="rejectApprove()">No</md-button>
-			</md-dialog-actions>
-		</md-dialog>
-
   </md-table-card>
 </template>
 
@@ -116,7 +97,7 @@ export default{
 
 	computed: {
 	    ...mapGetters({
-	      data_grid: 'deposit/pending',
+	      data_grid: 'deposit/expire',
 	      pagination: 'deposit/pagination'
 	    })
 	},
@@ -130,7 +111,7 @@ export default{
 
 	methods:{
 		...mapActions({
-	  		fetchData: 'deposit/fetchPending',
+	  		fetchData: 'deposit/fetchExpire',
 	  		approveDeposit: 'deposit/approve'
 	  	}),
 
@@ -144,23 +125,7 @@ export default{
 
 	    onCloseDlg(type) {
 	    	this.contentHtml = '<div></div>'
-	    },
-
-        openConfirmApprove(data){
-        	this.approving_data = data;
-        	this.$refs['dialog_approve'].open();
-        },
-
-        confirmApprove(){
-			this.approveDeposit(this.approving_data);  
-        	this.approving_data = null;      	
-        	this.$refs['dialog_approve'].close();
-        },
-
-        rejectApprove(){
-        	this.approving_data = null;
-        	this.$refs['dialog_approve'].close();
-        }
+	    }
 	},
 
 	watch:{

@@ -3,6 +3,8 @@ const routes = [
   { path: '/customer', component: require('./components/customer/Index.vue') },
 
   { path: '/deposit/pending', component: require('./components/deposit/pending/Index.vue') },
+  { path: '/deposit/approve', component: require('./components/deposit/approve/Index.vue') },
+  { path: '/deposit/expire', component: require('./components/deposit/expire/Index.vue') },
 
   { path: '/withdrawal/pending', component: require('./components/withdrawal/pending/Index.vue') },
   { path: '/withdrawal/approved', component: require('./components/withdrawal/approved/Index.vue') },

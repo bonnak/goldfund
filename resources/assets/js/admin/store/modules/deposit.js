@@ -8,8 +8,9 @@ const state = {
 
 const getters = {
 	pending: state => state.data.filter(item => item.status == 0),
-  approved: state => state.data.filter(item => item.status == 1),
-  canceled: state => state.data.filter(item => item.status == 2),
+  approve: state => state.data.filter(item => item.status == 1),
+  cancel: state => state.data.filter(item => item.status == 2 || item.status == 3),
+  expire: state => state.data.filter(item => item.status == 4),
 	pagination: state => state.pagination
 }
 
@@ -48,6 +49,48 @@ const actions = {
       }
 		);
 	},
+
+  fetchApprove({ commit, state }, param = { pagination: state.pagination, query: '' }){
+    Api.fetchData({ 
+      status   : 1,
+      per_page : param.pagination.per_page,
+      page     : param.pagination.current_page,
+      query    : param.query
+    }).then(
+      (response) => {
+        commit('CLEAR_DATA');
+        commit('RECEIVE_DATA', { body: response.data });
+      }
+    );
+  },
+
+  fetchCancel({ commit, state }, param = { pagination: state.pagination, query: '' }){
+    Api.fetchData({ 
+      status   : [2, 3],
+      per_page : param.pagination.per_page,
+      page     : param.pagination.current_page,
+      query    : param.query
+    }).then(
+      (response) => {
+        commit('CLEAR_DATA');
+        commit('RECEIVE_DATA', { body: response.data });
+      }
+    );
+  },
+
+  fetchExpire({ commit, state }, param = { pagination: state.pagination, query: '' }){
+    Api.fetchData({ 
+      status   : 4,
+      per_page : param.pagination.per_page,
+      page     : param.pagination.current_page,
+      query    : param.query
+    }).then(
+      (response) => {
+        commit('CLEAR_DATA');
+        commit('RECEIVE_DATA', { body: response.data });
+      }
+    );
+  },
 
   approve({ commit }, data){
     Api.approve(data).then(
