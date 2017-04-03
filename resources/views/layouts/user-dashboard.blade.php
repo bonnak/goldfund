@@ -37,7 +37,7 @@
      </script>
 </head>
 <body ng-controller="AppController"
-      class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo page-on-load"
+      class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo page-on-load body-dash"
       ng-class="{'page-sidebar-closed': settings.layout.pageSidebarClosed}">
 <!-- BEGIN PAGE SPINNER -->
 <div ng-spinner-bar class="page-spinner-bar">
@@ -74,7 +74,7 @@
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
-<div data-ng-include="'tpl/footer.html'" data-ng-controller="FooterController" class="page-footer"> </div>
+{{-- <div data-ng-include="'tpl/footer.html'" data-ng-controller="FooterController" class="page-footer"> </div> --}}
 <!-- END FOOTER -->
 
 <div class="modal fade" role="dialog" id="modal-alert-expire">

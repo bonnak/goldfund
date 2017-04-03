@@ -1,3 +1,14 @@
+body.body-dash{
+    background-origin: border-box;
+	background: url(/images/backgrounds/dash_back.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-clip: border-box;
+	background-color: gold;
+	background-blend-mode: multiply;
+}
+
 .page-content-wrapper{
 	.page-content{
 		padding-top: 0;
@@ -6,20 +17,20 @@
 			.widget-thumb{
 				.widget-thumb-wrap{
 					text-align: center;
-			    position: relative;
+			    	position: relative;
 
 					.widget-thumb-icon{
-				    position: absolute;
-				    left: 0;
-				    top: 0;
-				    padding: 0;
-				    color: #707375;
-		        font-size: 30px;
+					    position: absolute;
+					    left: 0;
+					    top: 0;
+					    padding: 0;
+					    color: #707375;
+			        	font-size: 30px;
 
-		        img{
-		        	width: 33px; 
-		        	filter: grayscale(100%);
-		        }
+				        img{
+				        	width: 33px; 
+				        	filter: grayscale(100%);
+				        }
 					}
 				}
 			}
