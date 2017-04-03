@@ -15,6 +15,10 @@ body.body-dash{
 
 		.box-dash{
 			.widget-thumb{
+				.widget-thumb-heading{
+			    	font-size: 14px;
+			    }
+
 				.widget-thumb-wrap{
 					text-align: center;
 			    	position: relative;
@@ -25,12 +29,19 @@ body.body-dash{
 					    top: 0;
 					    padding: 0;
 					    color: #707375;
-			        	font-size: 30px;
+			        	font-size: 25px;
 
 				        img{
-				        	width: 33px; 
+				        	width: 25px; 
 				        	filter: grayscale(100%);
+				        	margin-top: -5px;
 				        }
+					}
+
+					.widget-thumb-body{
+						.widget-thumb-body-stat{
+							font-size: 25px;
+						}
 					}
 				}
 			}
