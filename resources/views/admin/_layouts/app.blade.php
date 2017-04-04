@@ -18,6 +18,8 @@
 
 
   <link rel="stylesheet" href="/admin_dir/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/froala-editor/css/froala_editor.pkgd.min.css">
+  <link rel="stylesheet" type="text/css" href="/froala-editor/css/froala_style.min.css">
   <link rel="stylesheet" href="/admin_dir/css/admin.css">
 </head>
 <body {{ Auth::guest() ? 'class=login' : ''}}>
@@ -27,6 +29,8 @@
 	  <div id="admin-app">
 	  </div>
     <script type="text/javascript" src="/bn/paper-full.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script> -->
+    <!-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script> -->
 	  <script src="/admin_dir/js/app.js"></script>
 	@endif
 </body>

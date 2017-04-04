@@ -20,6 +20,10 @@ export default{
 			this.$emit('show-edit', data);
 		},
 
+		showCreate(){
+			this.$emit('show-create');
+		},
+
 		onSelect(data){
 		 	console.log(data);
 		},

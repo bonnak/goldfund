@@ -1,4 +1,12 @@
 require('../bootstrap');
+
+require('froala-editor/js/froala_editor.pkgd.min')
+// require('froala-editor/css/froala_editor.pkgd.min.css')
+// require('font-awesome/css/font-awesome.css')
+// require('froala-editor/css/froala_style.min.css')
+import VueFroala from 'vue-froala-wysiwyg'
+Vue.use(VueFroala)
+
 import routes from './routes';
 
 import store from './store'

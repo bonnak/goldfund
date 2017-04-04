@@ -37,6 +37,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 	//Company profile
 	Route::get('company/profile', 'Admin\CompanyProfileController@getData');
 	Route::put('company/profile', 'Admin\CompanyProfileController@update');
+
+	//Page
+	Route::get('/faq', 'Admin\FaqController@getData');
+	Route::post('/faq', 'Admin\FaqController@create');
+	Route::put('/faq/update', 'Admin\FaqController@update');
 });
 
 
