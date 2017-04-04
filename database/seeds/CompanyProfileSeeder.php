@@ -19,6 +19,7 @@ class CompanyProfileSeeder extends Seeder
         	[ 'field' => 'email', 'value' => 'bitcompanytrading@gmail.com' ],
         	[ 'field' => 'phone', 'value' => '+18882936433' ],
             [ 'field' => 'bitcoin_address', 'value' => '18yPTZTbHFVwpcPrUSUMhy3b91vKcwutdK' ],
+            [ 'field' => 'about-us', 'value' => '' ],
         ]);
     }
 }

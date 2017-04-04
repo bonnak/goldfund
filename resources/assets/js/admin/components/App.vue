@@ -43,6 +43,16 @@
 							<i class="fa fa-building"></i><span>Company Profile</span>
 	  					</router-link>
   					</md-list-item>
+  					<md-list-item>
+				    	<i class="fa fa-file-text"></i>
+				    	<span>Page</span>
+				    	<md-list-expand>
+				    		<md-list>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/page/faq' }"><span>Faq</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/page/about-us' }"><span>About Us</span></router-link></md-list-item>
+				            </md-list>
+				    	</md-list-expand>
+				    </md-list-item>
 			  	</md-list>
 			</div>
 		</md-sidenav>
@@ -408,5 +418,10 @@ body.md-theme-app{
         display: inline-block;
         margin-right: 15px;
     }
+}
+
+.md-theme-app.md-button:not([disabled]).md-primary.md-raised, 
+.md-theme-app.md-button:not([disabled]).md-primary.md-fab{
+	color: #fff !important;
 }
 </style>

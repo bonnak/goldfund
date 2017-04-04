@@ -8,12 +8,36 @@ use App\CompanyProfile;
 
 class CompanyProfileController extends Controller
 {
+    public function aboutUs()
+    {
+        return CompanyProfile::where('field', 'about-us')
+                                ->first();
+                                // ->mapWithKeys(function ($item) {
+                                //     return [$item['field'] => $item['value']];
+                                // });
+    }
+
+    public function updateAboutUs(Request $request)
+    {
+        $data = CompanyProfile::where('field', 'about-us')->first();
+
+        if(is_null($data)) return response()->json(['error' => 'No data found.'], 422);
+
+        $data->value = $request->value;
+        $data->save();
+
+        return response()->json(['msg' => 'Update successfully.'], 200);
+    } 
+
     public function getData()
     {
-    	return CompanyProfile::get()
-    			->mapWithKeys(function ($item) {
-				    return [$item['field'] => $item['value']];
-				});
+    	return CompanyProfile::whereIn('field', [ 
+                                'phone', 'address', 'email', 'bitcoin_address'
+                            ])
+                            ->get()
+                			->mapWithKeys(function ($item) {
+            				    return [$item['field'] => $item['value']];
+            				});
     }
 
     public function update(Request $request)

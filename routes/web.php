@@ -44,7 +44,9 @@ Route::get('/home', function(){
 });
 
 Route::get('/about-us', function(){
-	return view('about-us');
+	$data = \App\CompanyProfile::where('field', 'about-us')->first();
+
+	return view('about-us', compact('data'));
 });
 
 Route::get('/contact-us', 'ContactController@index');

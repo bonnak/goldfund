@@ -35,8 +35,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 	Route::get('/withdrawal', 'Admin\WithdrawalController@getData');
 
 	//Company profile
-	Route::get('company/profile', 'Admin\CompanyProfileController@getData');
-	Route::put('company/profile', 'Admin\CompanyProfileController@update');
+	Route::get('/company/profile', 'Admin\CompanyProfileController@getData');
+	Route::put('/company/profile', 'Admin\CompanyProfileController@update');
+	Route::get('/company/about-us', 'Admin\CompanyProfileController@aboutUs');
+	Route::put('/company/about-us', 'Admin\CompanyProfileController@updateAboutUs');
+
+	//Page
+	Route::get('/faq', 'Admin\FaqController@getData');
+	Route::post('/faq', 'Admin\FaqController@create');
+	Route::put('/faq/update', 'Admin\FaqController@update');
 });
 
 
