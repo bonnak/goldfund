@@ -15,6 +15,7 @@ const routes = [
   { path: '/geneology', component: require('./components/Geneology.vue') },
   { path: '/company/profile', component: require('./components/company/Index.vue') },
   { path: '/page/faq', component: require('./components/pages/faq/Index.vue') },
+  { path: '/page/about-us', component: require('./components/pages/about-us/Edit.vue') },
 ]
 
 export default routes ;

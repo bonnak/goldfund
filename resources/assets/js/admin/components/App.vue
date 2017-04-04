@@ -49,6 +49,7 @@
 				    	<md-list-expand>
 				    		<md-list>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/page/faq' }"><span>Faq</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset"><router-link :to="{ path: '/page/about-us' }"><span>About Us</span></router-link></md-list-item>
 				            </md-list>
 				    	</md-list-expand>
 				    </md-list-item>

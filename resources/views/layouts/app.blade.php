@@ -13,12 +13,14 @@
     <link rel="shortcut icon" href="images/icons/favicon.png">
     <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72"
-          href="http://demo.templateocean.com/wrapbootstrap/zerif-html/v1.3.1/images/icons/apple-touch-icon-72x72.png">
+          href="https://demo.templateocean.com/wrapbootstrap/zerif-html/v1.3.1/images/icons/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png">
     <!-- =========================
          STYLESHEETS Template
     ============================== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/admin_dir/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/froala-editor/css/froala_editor.pkgd.min.css">
+    <link rel="stylesheet" type="text/css" href="/froala-editor/css/froala_style.min.css">
     <link rel="stylesheet" href="/css-template/bootstrap.min.css">
     <link rel="stylesheet" href="/css-template/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="/css-template/owl.theme.css">
@@ -33,7 +35,7 @@
     <link rel="stylesheet" href="/css-template/styles.css">
     <link rel="stylesheet" href="/css-template/responsive.css">
     <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400|Homemade+Apple'
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Montserrat:700,400|Homemade+Apple'
           rel='stylesheet' type='text/css'>
           
     <link rel="stylesheet" href="/css/app.css">

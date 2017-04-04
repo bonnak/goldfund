@@ -793,7 +793,7 @@ width: -webkit-calc(100% / 2);
 	margin-top: -15px;
 }
 .about-us p {
-	text-align: justify;
+	/*text-align: justify;*/
 	color: #939393;
 }
 .about-us .column {
