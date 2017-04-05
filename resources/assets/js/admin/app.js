@@ -7,6 +7,9 @@ require('froala-editor/js/froala_editor.pkgd.min')
 import VueFroala from 'vue-froala-wysiwyg'
 Vue.use(VueFroala)
 
+import Notification from './core/ui/Notification'
+Vue.use(Notification)
+
 import routes from './routes';
 
 import store from './store'

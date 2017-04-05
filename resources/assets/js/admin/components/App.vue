@@ -425,3 +425,28 @@ body.md-theme-app{
 	color: #fff !important;
 }
 </style>
+
+<style lang="sass">
+@import '~bulma'
+
+.notifications
+  position: fixed
+  top: auto
+  bottom: 20px
+  right: 0
+  z-index: 1024 + 233
+  pointer-events: none
+
+  @include tablet()
+    max-width: 320px
+
+  .notification
+    margin: 20px
+
+.notification
+  position: relative
+  min-width: 240px
+  backface-visibility: hidden
+  transform: translate3d(0, 0, 90)
+  pointer-events: all
+</style>
