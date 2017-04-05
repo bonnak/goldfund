@@ -9,26 +9,27 @@ use Acme\BinaryTree;
 class BinaryController extends Controller
 {
     public function getData()
-    {
-		// $tree = new BinaryTree();
-		// $tree->render(
-		// 	Customer::with('children')
-		// 			->where('username', auth()->user()->username)
-		// 			->first()
-		// ); 
+    {		
+    	// $customer_hierachy = Customer::with('children')
+					// 		->where(function($query){
+					// 			if( request()->exists('query_username') &&
+					// 				trim(request()->input('query_username')) != ''){
+					// 				$query->where('username', request()->input('query_username'))
+					// 					  ->where('sponsor_id', auth()->user()->id);
+					// 			}else{
+					// 				$query->where('username', auth()->user()->username);
+					// 			} 
+					// 		})
+					// 		->first();
+					
 
-		// return $tree->toArray();
-		
+		$query = request()->exists('query_username') && !empty(request()->input('query_username')) ? 
+								request()->input('query_username') 
+								: auth()->user()->username;
+
     	$customer_hierachy = Customer::with('children')
-							->where(function($query){
-								if( request()->exists('query_username') &&
-									trim(request()->input('query_username')) != ''){
-									$query->where('username', request()->input('query_username'))
-										  ->where('sponsor_id', auth()->user()->id);
-								}else{
-									$query->where('username', auth()->user()->username);
-								} 
-							})
+							->where('username', $query)
+							->orWhere('email', $query)
 							->first();
 
 		if(is_null($customer_hierachy)) return null;

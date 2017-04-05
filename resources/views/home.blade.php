@@ -102,13 +102,13 @@
         </div>
     </div>
 </section>
-<section data-ng-controller="liveUser as vm" ng-cloak>
+<section class="section-stat" data-ng-controller="liveUser as vm" ng-cloak>
     <div class="container">
       <div class="row wow fadeInRight animated">
           <h2>Statistics</h2>
           <div data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
               <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-4 registers">
                       <h4>Last Registrations</h4>
                       <br/>
                       <dl>
@@ -137,7 +137,7 @@
                         <p class="text">Invested</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 investments">
                     <h4>Last Investments</h4>
                     <br/>
                     <dl>

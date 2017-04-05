@@ -124,11 +124,11 @@ angular.module('MetronicApp')
                     event.returnValue = false;
                 }
 
-                /** DOMMouseScroll is for mozilla. */
-                if (window.addEventListener)
-                        window.addEventListener('DOMMouseScroll', internalHandler, false);
-                /** IE/Opera. */
-                window.onmousewheel = document.onmousewheel = internalHandler;
+                // /** DOMMouseScroll is for mozilla. */
+                // if (window.addEventListener)
+                //         window.addEventListener('DOMMouseScroll', internalHandler, false);
+                // /** IE/Opera. */
+                // window.onmousewheel = document.onmousewheel = internalHandler;
 
                 
                 var data = treeValue;

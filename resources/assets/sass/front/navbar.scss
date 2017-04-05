@@ -179,3 +179,21 @@
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li:hover>a{
     color: #0173d4;
 }
+
+@media(max-width: 991px){
+	.navbar{
+		.top-menu{
+			.navbar-nav{
+				>li.dropdown:last-child{
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 767px){
+	.page-header.navbar .page-top{
+		display: none;
+	}
+}

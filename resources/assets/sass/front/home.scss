@@ -108,6 +108,14 @@
 			margin-top: 20px;
 		}
 	}
+
+	section.section-stat{
+		.registers, .investments{
+			h4{
+				margin-left: 15px;
+			}
+		}
+	}
 }
 
 @media(max-width: 1000px){
@@ -118,6 +126,12 @@
 	#service-menu{
 		img{
 			display: none;
+		}
+	}
+
+	section.section-stat{
+		.registers, .investments{
+			text-align: center;
 		}
 	}
 }
