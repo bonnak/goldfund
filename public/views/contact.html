@@ -17,31 +17,33 @@
                 </div>
                 
                 <div class="row">
-                    <form class="form-horizontal" role="form" method="POST" ng-submit="vm.onFormSubmit()">
-                        <div class="form-group">
-                            <label for="name" class="col-md-2 control-label">Name</label>
-                            <div class="col-md-10">
-                                <input type="text" id="name" class="form-control" autofocus ng-model="vm.model.name">
+                    <div class="col-sm-12">
+                        <form class="form-horizontal" role="form" method="POST" ng-submit="vm.onFormSubmit()">
+                            <div class="form-group">
+                                <label for="name" class="col-md-2 control-label">Name</label>
+                                <div class="col-md-10">
+                                    <input type="text" id="name" class="form-control" autofocus ng-model="vm.model.name">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-2 control-label">Email</label>
-                            <div class="col-md-10">
-                                <input type="email" id="email" class="form-control" ng-model="vm.model.email">
+                            <div class="form-group">
+                                <label for="email" class="col-md-2 control-label">Email</label>
+                                <div class="col-md-10">
+                                    <input type="email" id="email" class="form-control" ng-model="vm.model.email">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="col-md-2 control-label">Message</label>
-                            <div class="col-md-10">
-                                <textarea class="form-control" rows="3" id="message" ng-model="vm.model.message"></textarea>
+                            <div class="form-group">
+                                <label for="message" class="col-md-2 control-label">Message</label>
+                                <div class="col-md-10">
+                                    <textarea class="form-control" rows="3" id="message" ng-model="vm.model.message"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-2 col-md-offset-6 btn-submit-wrap">
-                                <button type="submit" class="btn blue">Send Message</button>
+                            <div class="form-group">
+                                <div class="col-md-2 col-md-offset-6 btn-submit-wrap">
+                                    <button type="submit" class="btn blue">Send Message</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

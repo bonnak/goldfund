@@ -12,7 +12,6 @@
         </md-card-content>
         <md-card-actions class="space-between">
             <md-button class="md-primary" @click.native="save(model)">Save</md-button>
-            <md-button class="md-primary" @click.native="closeForm()">Close</md-button>
         </md-card-actions>
     </md-card>
 </template>
@@ -37,13 +36,19 @@ export default{
         });
     },
 
-    methods:{
+    mounted(){
+    },
 
+    methods:{
         save(model){
             Api.put('company/about-us', model).then((response) => {
-                this.closeForm();
+                this.$notify({
+                    message: 'Save successfully',
+                    type: 'success'
+                });
             });
         }
     }
 }
 </script>
+
