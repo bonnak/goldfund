@@ -44,5 +44,13 @@ footer{
 				}
 			}
 		}
+
+		@media (max-width: 767px){
+			.dl-horizontal dt {
+			    float: left;
+			    clear: left;
+			    white-space: nowrap;
+			}
+		}
 	}
 }

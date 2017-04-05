@@ -16,6 +16,7 @@ const routes = [
   { path: '/company/profile', component: require('./components/company/Index.vue') },
   { path: '/page/faq', component: require('./components/pages/faq/Index.vue') },
   { path: '/page/about-us', component: require('./components/pages/about-us/Edit.vue') },
+  { path: '/page/what-is-forex', component: require('./components/pages/what-is-forex/Edit.vue') },
 ]
 
 export default routes ;
