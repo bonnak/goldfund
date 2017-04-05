@@ -45752,6 +45752,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -47423,7 +47424,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        __WEBPACK_IMPORTED_MODULE_1__api_Api__["a" /* default */].get('company/about-us').then(function (response) {
+        __WEBPACK_IMPORTED_MODULE_1__api_Api__["a" /* default */].get('page/about-us').then(function (response) {
             _this.model = response.data;
         });
     },
@@ -47434,7 +47435,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         save: function save(model) {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_1__api_Api__["a" /* default */].put('company/about-us', model).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_1__api_Api__["a" /* default */].put('page/about-us', model).then(function (response) {
                 _this2.$notify({
                     message: 'Save successfully',
                     type: 'success'
@@ -48565,7 +48566,7 @@ var routes = [
 
 // { path: '/plan', component: require('./components/plan/Index.vue') },
 
-{ path: '/geneology', component: __webpack_require__(130) }, { path: '/company/profile', component: __webpack_require__(132) }, { path: '/page/faq', component: __webpack_require__(149) }, { path: '/page/about-us', component: __webpack_require__(146) }];
+{ path: '/geneology', component: __webpack_require__(130) }, { path: '/company/profile', component: __webpack_require__(132) }, { path: '/page/faq', component: __webpack_require__(149) }, { path: '/page/about-us', component: __webpack_require__(146) }, { path: '/page/what-is-forex', component: __webpack_require__(219) }];
 
 /* harmony default export */ __webpack_exports__["a"] = routes;
 
@@ -51777,7 +51778,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         path: '/page/about-us'
       }
     }
-  }, [_c('span', [_vm._v("About Us")])])], 1)], 1)], 1)], 1)], 1)], 1)]), _vm._v(" "), _c('div', {
+  }, [_c('span', [_vm._v("About Us")])])], 1), _vm._v(" "), _c('md-list-item', {
+    staticClass: "md-inset"
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        path: '/page/what-is-forex'
+      }
+    }
+  }, [_c('span', [_vm._v("What is forex")])])], 1)], 1)], 1)], 1)], 1)], 1)]), _vm._v(" "), _c('div', {
     ref: "pageContent",
     staticClass: "page-content"
   }, [_c('md-toolbar', {
@@ -53368,6 +53377,158 @@ if(false) {
  }
  // When the module is disposed, remove the <style> tags
  module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_mixins_table__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_Api__ = __webpack_require__(6);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__core_mixins_table__["a" /* default */]],
+
+    data: function data() {
+        return {
+            model: {}
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        __WEBPACK_IMPORTED_MODULE_1__api_Api__["a" /* default */].get('page/what-is-forex').then(function (response) {
+            _this.model = response.data;
+        });
+    },
+    mounted: function mounted() {},
+
+
+    methods: {
+        save: function save(model) {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_1__api_Api__["a" /* default */].put('page/what-is-forex', model).then(function (response) {
+                _this2.$notify({
+                    message: 'Save successfully',
+                    type: 'success'
+                });
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(218),
+  /* template */
+  __webpack_require__(220),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\Portfolio\\goldfund\\resources\\assets\\js\\admin\\components\\pages\\what-is-forex\\Edit.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Edit.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4851ba9b", Component.options)
+  } else {
+    hotAPI.reload("data-v-4851ba9b", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('md-card', {
+    staticClass: "content-form"
+  }, [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v("About Us")])]), _vm._v(" "), _c('md-card-content', {
+    staticClass: "content-body"
+  }, [_c('div', {
+    staticClass: "col-md-12 sec-block"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('froala', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.model.value),
+      expression: "model.value"
+    }],
+    attrs: {
+      "tag": 'textarea'
+    },
+    domProps: {
+      "value": (_vm.model.value)
+    },
+    on: {
+      "input": function($event) {
+        _vm.model.value = $event
+      }
+    }
+  })], 1)])]), _vm._v(" "), _c('md-card-actions', {
+    staticClass: "space-between"
+  }, [_c('md-button', {
+    staticClass: "md-primary",
+    nativeOn: {
+      "click": function($event) {
+        _vm.save(_vm.model)
+      }
+    }
+  }, [_vm._v("Save")])], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4851ba9b", module.exports)
+  }
 }
 
 /***/ })

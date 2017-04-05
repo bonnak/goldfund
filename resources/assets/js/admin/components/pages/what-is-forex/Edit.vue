@@ -31,7 +31,7 @@ export default{
     },
 
     created(){
-        Api.get('page/about-us').then((response) => {
+        Api.get('page/what-is-forex').then((response) => {
             this.model = response.data;
         });
     },
@@ -41,7 +41,7 @@ export default{
 
     methods:{
         save(model){
-            Api.put('page/about-us', model).then((response) => {
+            Api.put('page/what-is-forex', model).then((response) => {
                 this.$notify({
                     message: 'Save successfully',
                     type: 'success'

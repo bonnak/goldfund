@@ -20,6 +20,7 @@ class CompanyProfileSeeder extends Seeder
         	[ 'field' => 'phone', 'value' => '+18882936433' ],
             [ 'field' => 'bitcoin_address', 'value' => '18yPTZTbHFVwpcPrUSUMhy3b91vKcwutdK' ],
             [ 'field' => 'about-us', 'value' => '' ],
+            [ 'field' => 'what-is-forex', 'value' => '' ],
         ]);
     }
 }

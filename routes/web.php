@@ -62,7 +62,8 @@ Route::get('/plan', function(){
 Route::get('/faq', 'FaqController@get');
 
 Route::get('/what-is-forex', function(){
-	return view('what-is-forex');
+	$data = \App\CompanyProfile::where('field', 'what-is-forex')->first();
+	return view('what-is-forex', compact('data'));
 });
 
 
