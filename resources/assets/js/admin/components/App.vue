@@ -117,6 +117,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="scss">
@@ -426,27 +427,72 @@ body.md-theme-app{
 }
 </style>
 
-<style lang="sass">
-@import '~bulma'
 
-.notifications
-  position: fixed
-  top: auto
-  bottom: 20px
-  right: 0
-  z-index: 1024 + 233
-  pointer-events: none
+<style lang="scss">
+.notifications{
+  position: fixed;
+  top: auto;
+  bottom: 20px;
+  right: 0;
+  z-index: 1024 + 233;
+  pointer-events: none;
 
-  @include tablet()
-    max-width: 320px
+	.notification{
+    	margin: 20px;
+	}
+}
 
-  .notification
-    margin: 20px
+.notification{
+	position: relative;
+	min-width: 182px;
+	backface-visibility: hidden;
+	transform: translate3d(0, 0, 90);
+	pointer-events: all;
+	border-radius: 3px;
+	padding: 20px 10px 20px 20px;
 
-.notification
-  position: relative
-  min-width: 240px
-  backface-visibility: hidden
-  transform: translate3d(0, 0, 90)
-  pointer-events: all
+	&.is-success{
+	    background-color: #23d160;
+	    color: #fff;
+	}
+
+	.delete{
+		position: absolute !important;
+    	right: 0.5em;
+    	top: 0.5em;
+		user-select: none;
+		background-color: rgba(10, 10, 10, 0.2);
+		border: none;
+		border-radius: 290486px;
+		cursor: pointer;
+		display: inline-block;
+		font-size: 1rem;
+		height: 20px;
+		outline: none;
+		position: relative;
+		vertical-align: top;
+		width: 20px;
+
+		&::before, &::after {
+		    background-color: white;
+		    content: "";
+		    display: block;
+		    left: 50%;
+		    position: absolute;
+		    top: 50%;
+		    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+		    transform-origin: center center;
+		}
+
+		&::before {
+		    height: 2px;
+		    width: 50%;
+		}
+
+		&::after {
+		    height: 50%;
+		    width: 2px;
+		}
+	}
+}
 </style>

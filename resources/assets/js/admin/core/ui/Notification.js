@@ -12,7 +12,7 @@ export default (Vue, options) => {
 				message: '',
 				type: '',
 				direction: '',
-				duration: 1000000,
+				duration: 1000,
 				container: '.notifications'
 			}, options)
 		});
