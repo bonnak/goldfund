@@ -131,7 +131,7 @@ body.md-theme-app{
 	transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
 	&.open-nav{
-		margin-left: 280px
+		margin-left: 250px
 	}
 
 	.main-content{
@@ -142,8 +142,8 @@ body.md-theme-app{
 
 .main-sidebar{
 	.md-sidenav-content{
-		width: 280px;
-		left: -280px;
+		width: 250px;
+		left: -250px;
 		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 		background-color: #222d32 !important;
 		display: flex;
