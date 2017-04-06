@@ -51,6 +51,16 @@
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/page/faq' }"><span>Faq</span></router-link></md-list-item>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/page/about-us' }"><span>About Us</span></router-link></md-list-item>
 				        		<md-list-item class="md-inset"><router-link :to="{ path: '/page/what-is-forex' }"><span>What is forex</span></router-link></md-list-item>
+				        		<md-list-item class="md-inset service-menu">
+							    	<span>Service</span>
+							    	<md-list-expand>
+							    		<md-list>
+							    			<md-list-item class="md-inset"><router-link :to="{ path: '/page/service/bitcoin-mining' }"><span>Bitcoin Mining</span></router-link></md-list-item>
+							    			<md-list-item class="md-inset"><router-link :to="{ path: '/page/service/forex-trading' }"><span>Forex Trading</span></router-link></md-list-item>
+							    			<md-list-item class="md-inset"><router-link :to="{ path: '/page/service/gold-trading' }"><span>Gold Trading</span></router-link></md-list-item>
+							    		</md-list>
+						    		</md-list-expand>
+					    		</md-list-item>
 				            </md-list>
 				    	</md-list-expand>
 				    </md-list-item>
@@ -494,6 +504,12 @@ body.md-theme-app{
 		    height: 50%;
 		    width: 2px;
 		}
+	}
+}
+
+.service-menu{
+	.md-list-item{
+		margin-left: 20px;
 	}
 }
 </style>

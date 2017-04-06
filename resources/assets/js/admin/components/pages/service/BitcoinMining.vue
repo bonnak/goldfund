@@ -1,12 +1,12 @@
 <template>
 	<md-card class="content-form">
         <md-card-header>
-            <div class="md-title">What is FOREX</div>
+            <div class="md-title">Bitcoin Mining</div>
         </md-card-header>
         <md-card-content class="content-body">
             <div class="col-md-12 sec-block">
                 <div class="form-group">
-                    <froala :tag="'textarea'" v-model="model.value"></froala>
+                    <froala :tag="'textarea'" v-model="model.description"></froala>
                 </div>
             </div>
         </md-card-content>
@@ -31,7 +31,7 @@ export default{
     },
 
     created(){
-        Api.get('page/what-is-forex').then((response) => {
+        Api.get('page/service/bitcoin-mining').then((response) => {
             this.model = response.data;
         });
     },
@@ -41,7 +41,7 @@ export default{
 
     methods:{
         save(model){
-            Api.put('page/what-is-forex', model).then((response) => {
+            Api.put('page/service/bitcoin-mining', model).then((response) => {
                 this.$notify({
                     message: 'Save successfully',
                     type: 'success'

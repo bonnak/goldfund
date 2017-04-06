@@ -17,6 +17,9 @@ const routes = [
   { path: '/page/faq', component: require('./components/pages/faq/Index.vue') },
   { path: '/page/about-us', component: require('./components/pages/about-us/Edit.vue') },
   { path: '/page/what-is-forex', component: require('./components/pages/what-is-forex/Edit.vue') },
+  { path: '/page/service/bitcoin-mining', component: require('./components/pages/service/BitcoinMining.vue') },
+  { path: '/page/service/forex-trading', component: require('./components/pages/service/ForexTrading.vue') },
+  { path: '/page/service/gold-trading', component: require('./components/pages/service/GoldTrading.vue') },
 ]
 
 export default routes ;
