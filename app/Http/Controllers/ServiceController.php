@@ -7,8 +7,12 @@ use App\Service;
 
 class ServiceController extends Controller
 {
-    public function get($id){
-        $service = Service::find($id);
+    public function get($slug)
+    {
+        $service = Service::where('slug', $slug)->first();
+
+        if(is_null($service)) return redirect('/');
+
         return view('service', compact('service'));
     }
 }

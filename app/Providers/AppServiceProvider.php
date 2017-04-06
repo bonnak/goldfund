@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
         // menu
         if (Schema::hasTable('services')) {
-            $menus = Service::select('title','id')->get();
+            $menus = Service::select('title','slug')->get();
 
             \View::share('menus', $menus);
         }

@@ -67,4 +67,4 @@ Route::get('/what-is-forex', function(){
 });
 
 
-Route::get('/service/{id}', 'ServiceController@get');
+Route::get('/service/{slug}', 'ServiceController@get');
