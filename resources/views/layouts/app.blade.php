@@ -93,7 +93,7 @@
                                 <ul class="dropdown-menu">
                                     @foreach($menus as $menu)
                                         <li>
-                                            <a href="{{url('service/' . $menu->id)}}">
+                                            <a href="{{url('service/' . $menu->slug)}}">
                                                 {{$menu->title}}
                                             </a>
                                         </li>
