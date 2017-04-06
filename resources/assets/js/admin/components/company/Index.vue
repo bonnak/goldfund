@@ -2,8 +2,8 @@
 	<div>
 	    <component :is="current_view" :data="data"
 	    		@show-create="current_view = '_Create'"	 
-	    		@show-view="showInfoView"     		
-	    		@show-edit="showEditView"
+	    		@show-view="showView"     		
+	    		@show-edit="showEdit"
 	    		@close-form="current_view = '_View'">
 	  	</component>
   </div>

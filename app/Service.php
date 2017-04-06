@@ -9,7 +9,7 @@ class Service extends Model
     protected $table = 'services';
 
     protected $fillable = [
-        'title', 'description'
+        'title', 'slug', 'description'
     ];
 
 }

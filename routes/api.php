@@ -46,6 +46,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 	Route::put('/page/about-us', 'Admin\PageController@updateAboutUs');
 	Route::get('/page/what-is-forex', 'Admin\PageController@whatIsForex');
 	Route::put('/page/what-is-forex', 'Admin\PageController@updateWhatIsForex');
+	Route::get('/page/service/bitcoin-mining', 'Admin\PageController@bitcoinMining');
+	Route::put('/page/service/bitcoin-mining', 'Admin\PageController@updateBitcoinMining');
+	Route::get('/page/service/forex-trading', 'Admin\PageController@forexTrading');
+	Route::put('/page/service/forex-trading', 'Admin\PageController@updateForexTrading');
+	Route::get('/page/service/gold-trading', 'Admin\PageController@goldTrading');
+	Route::put('/page/service/gold-trading', 'Admin\PageController@updateGoldTrading');
 });
 
 

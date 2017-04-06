@@ -17,6 +17,7 @@ class ServicesTableSeeder extends Seeder
         $service = [
             [
                 'title' => 'Bitcoin Mining',
+                'slug'  => 'bitcoin-mining',
                 'description' => '<p style="font-size:24px; font-weight:bold">What is Bitcoin Mining</p><p style="text-align:justify">
                 Bitcoin mining is a lot like a giant lottery where you compete with your mining
                 hardware with everyone on the network to earn bitcoins. Faster Bitcoin mining hardware
@@ -38,6 +39,7 @@ class ServicesTableSeeder extends Seeder
             ],
             [
                 'title' => 'Forex Trading',
+                'slug'  => 'forex-trading',
                 'description' => ' <p style="font-size:24px; font-weight:bold">What is Forex Trading</p>
                     <p style="text-align:justify">Essentially, forex trading is the act of simultaneously
                     buying one currency while selling another, primarily for the purpose of speculation.
@@ -74,6 +76,7 @@ class ServicesTableSeeder extends Seeder
             ],
             [
                 'title' => 'Gold Trading',
+                'slug'  => 'gold-trading',
                 'description' => '<p style="font-size:24px; font-weight:bold">What is Gold Trading</p>
                     <p style="text-align:justify">economic regions or countries, until recent times.
                     Many European countries implemented gold standards in the latter part of the 19th
