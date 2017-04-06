@@ -1624,7 +1624,7 @@ var root = 'api/admin/';
 		var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
 		return new Promise(function (resolve, reject) {
-			Axios.post(root + uri, data).then(function (response) {
+			Axios.post(root + uri, data, options).then(function (response) {
 				resolve(response);
 			}).catch(function (error) {
 				reject(error.response);

@@ -15,7 +15,7 @@ export default{
 
 	post(uri, data = null, options = null){
 		return new Promise((resolve, reject) => {
-			Axios.post(root + uri, data)
+			Axios.post(root + uri, data, options)
 			.then((response) => {
 		    resolve(response);
 		  })
