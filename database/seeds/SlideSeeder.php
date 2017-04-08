@@ -13,6 +13,8 @@ class SlideSeeder extends Seeder
      */
     public function run()
     {
+        Slide::truncate();
+
         Slide::insert([
         	['image' => '/storage/images/slide/1.png', 'order' => 1],
         	['image' => '/storage/images/slide/2.jpg', 'order' => 2],
