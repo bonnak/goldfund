@@ -118,6 +118,17 @@
 	}
 }
 
+#service-menu{
+	.dropdown-menu>li>a:hover{
+		color: rgb(233, 102, 86) !important;
+	    outline: none !important;
+	}
+
+	&.dropdown.open a{
+		background: transparent !important;
+	}
+}
+
 @media(max-width: 1000px){
 	section.quotes-string{
 		opacity: 0;
