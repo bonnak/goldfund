@@ -20,6 +20,8 @@ const routes = [
   { path: '/page/service/bitcoin-mining', component: require('./components/pages/service/BitcoinMining.vue') },
   { path: '/page/service/forex-trading', component: require('./components/pages/service/ForexTrading.vue') },
   { path: '/page/service/gold-trading', component: require('./components/pages/service/GoldTrading.vue') },
+
+  { path: '/setting/slide', component: require('./components/setting/Slide.vue') },
 ]
 
 export default routes ;
