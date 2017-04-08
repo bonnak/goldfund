@@ -64,6 +64,13 @@
 				            </md-list>
 				    	</md-list-expand>
 				    </md-list-item>
+				    <md-list-item>
+				    	<i class="fa fa-cogs"></i>
+				    	<span>Setting</span>
+				    	<md-list-expand>
+				    		<md-list-item class="md-inset"><router-link :to="{ path: '/setting/slide' }"><span>Slide</span></router-link></md-list-item>
+				    	</md-list-expand>
+				    </md-list-item>
 			  	</md-list>
 			</div>
 		</md-sidenav>

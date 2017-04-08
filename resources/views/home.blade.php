@@ -280,4 +280,18 @@
 <script src="/angular/angular-moment/angular-moment.min.js"></script>
 <script src="/js/controllers/liveUserController.js"></script>
 <script src="/js/controllers/PriceQuoteController.js"></script>
+
+<script>   
+    /* ================================
+    ===  BACKGROUND SLIDER        ====
+    ================================= */
+    $.vegas('slideshow', {
+      delay:7000,
+      backgrounds:[
+        @foreach($slides as $slide)
+            { src: '{{ $slide->image }}', fade:1000 },
+        @endforeach
+      ]
+    });
+</script>
 @endsection
