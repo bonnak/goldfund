@@ -68,3 +68,6 @@ Route::get('/what-is-forex', function(){
 
 
 Route::get('/service/{slug}', 'ServiceController@get');
+
+// Customer send mail
+Route::post('/customer/message', 'UserController@sendMessage');

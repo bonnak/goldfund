@@ -36,6 +36,7 @@ class CustomerQuestionMail extends Mailable
         // }
 
         return $this->from($this->data['email'])
+                    ->subject($this->data['subject'])
                     ->view('emails.question')
                     ->with([
                         'msg' => $this->data['message'],
