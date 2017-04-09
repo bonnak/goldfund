@@ -32,6 +32,29 @@ class UserController extends Controller
 
     public function sendMessage()
     {
+        $validator = \Validator::make(request()->all(),[
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'subject'   => 'required',
+            'message'   => 'required',
+        ]);
+
+        if($validator->fails())
+        {
+            if(request()->ajax())
+            {
+                return response()->json([
+                    'errors' => $validator->getMessageBag()
+                ], 403);
+            }
+            else
+            {
+                return redirect()->back()
+                                ->withErrors($validator)
+                                ->withInput();
+            }                
+        }
+
         $data = collect(request()->all());
         $attachment = request()->file('attachment');
         if( !is_null($attachment)) 
@@ -50,6 +73,9 @@ class UserController extends Controller
         \Mail::to(CompanyProfile::where('field', 'email')->first()->value)
             ->send(new CustomerQuestionMail($data));
 
-        return request()->all();
+        
+        return request()->ajax() ? 
+                    response()->json('Your message has been sent.', 200) : 
+                    redirect()->back()->with(['success' => 'Your message has been sent.']);
     }
 }
