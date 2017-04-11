@@ -43,6 +43,11 @@
     </script>
     <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=dZTUo1IWx810Ug" style="display:none" height="1" width="1" alt="" /></noscript>
     <!-- End Alexa Certify Javascript -->
+
+    <!-- GoUrl payment-->
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='Expires' content='-1'>
+    <script src='/crypto/cryptobox.min.js' type='text/javascript'></script>
 </head>
 <body ng-controller="AppController"
       class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo page-on-load body-dash"

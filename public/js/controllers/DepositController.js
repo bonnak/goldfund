@@ -5,7 +5,8 @@ angular.module('MetronicApp').controller('DepositController', [
     'Restful',
     'uploadManager',
     '$rootScope',
-    function($scope, $anchorScroll, $state, Restful, uploadManager, $rootScope) {
+    '$sce',
+    function($scope, $anchorScroll, $state, Restful, uploadManager, $rootScope, $sce) {
         var vm = this;
         vm.model = {
             plan_id: '',
@@ -82,9 +83,17 @@ angular.module('MetronicApp').controller('DepositController', [
             Restful.post('/api/transaction/auth', { trans_password: vm.model.trans_password })
             .then(
                 function(data){
-                    $('#deposit_modal').modal();
+                    Restful.get('/api/payment/crypto').then(
+                        function(response){
+                            console.log(response);
 
-                    vm.validation.trans_password = '';
+                            vm.languages_list = $sce.trustAsHtml(response.data.languages_list);
+                            vm.paymentbox = $sce.trustAsHtml(response.data.paymentbox);
+
+                            $('#deposit_modal').modal();
+                            vm.validation.trans_password = '';
+                        }
+                    );
                 },
                 function(response){
                     if(response.status !== 500){

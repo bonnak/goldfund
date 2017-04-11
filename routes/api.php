@@ -110,4 +110,6 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 	// Customer send mail
 	Route::post('customer/message', 'UserController@sendMessage');
+
+	Route::get('/payment/crypto', 'PaymentController@index');
 });
