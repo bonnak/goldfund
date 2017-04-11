@@ -83,10 +83,8 @@ angular.module('MetronicApp').controller('DepositController', [
             Restful.post('/api/transaction/auth', { trans_password: vm.model.trans_password })
             .then(
                 function(data){
-                    Restful.get('/api/payment/crypto').then(
+                    Restful.get('/api/payment/crypto?deposit_amount=' + vm.model.amount).then(
                         function(response){
-                            console.log(response);
-
                             vm.languages_list = $sce.trustAsHtml(response.data.languages_list);
                             vm.paymentbox = $sce.trustAsHtml(response.data.paymentbox);
 

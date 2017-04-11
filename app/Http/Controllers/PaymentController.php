@@ -3,30 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
     public function index()
     {
-		$orderID	=  'deposit_';
-		$userID		= '';
-		$orderID = preg_replace('/[^A-Za-z0-9\.\_\-\@]/', '', $orderID);
-		$userID = preg_replace('/[^A-Za-z0-9\.\_\-\@]/', '', $userID);
+    	if(!request()->exists('deposit_amount')) throw new HttpException(403, 'No deposit.');
 
 
-		$options = array( 
-		"public_key"  => "9812AAVkUmYBitcoin77BTCPUBCa2dR770wNNstdk7hmp8s3ew", 		
-		"private_key" => "9812AAVkUmYBitcoin77BTCPRV6pwgOMgxMq81Fn9nMCnWTGrm", 		
-		"webdev_key" =>  "", 		
-		"orderID"     => $orderID,  									
-		"userID" 	  => $userID,
-		"userFormat"  => "COOKIE",
-		"amount" 	  => 0,
-		"amountUSD"   => 1,
-		"period"      => "60 DAYS",
-		"iframeID"    => "",
-		"language" 	  => 'en' 
-		);   
+    	$deposit_amount = request()->input('deposit_amount');
+		$orderID	= 'deposit_' . Carbon::now()->timestamp;//is_null(auth()->user()) ? 'deposit_unknown' : 'deposit_' . auth()->user()->deposit->id;
+		$userID		= is_null(auth()->user()) ? '' : auth()->user()->username;
+		$orderID	= preg_replace('/[^A-Za-z0-9\.\_\-\@]/', '', $orderID);
+		$userID		= preg_replace('/[^A-Za-z0-9\.\_\-\@]/', '', $userID);
+
+
+		$options = [
+			"public_key"  => env('GOURL_PUBLIC_KEY'), 		
+			"private_key" => env('GOURL_PRIVATE_KEY'), 		
+			"webdev_key"  =>  "", 		
+			"orderID"     => $orderID,  									
+			"userID" 	  => $userID,
+			"userFormat"  => "COOKIE",
+			"amount" 	  => 0,
+			"amountUSD"   => $deposit_amount,
+			"period"      => "60 DAYS",
+			"iframeID"    => "",
+			"language" 	  => 'en' 
+		];   
 
 		
 		// Initialise Payment Class

@@ -108,15 +108,12 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Deposit Fund</h4>
                 </div>
-                <div class="modal-body">               
+                <div class="modal-body"> 
+                    <div ng-bind-html="vm.paymentbox"></div>                
                     <div class="note note-warning">
                         <p>After you deposit. Please upload your blank slip (Bitcoin transaction)
                             for us to verify your deposit.</p>
-                    </div>
-                    <div class="block-chain">
-                        <img ng-src="{{ vm.qr_code }}">
-                        <span>{{ vm.bitcoin_address }}</span>
-                    </div>
+                    </div>  
                     <div class="bankslip">
                         <span class="btn green fileinput-button" onClick="document.getElementById('bankslip-file').click()">
                             <i class="fa fa-upload"></i>

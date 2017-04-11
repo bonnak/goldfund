@@ -20,7 +20,7 @@
  *  array("your_privatekey_for_box1", "your_privatekey_for_box2 (otional), etc...");
  */
  
- $cryptobox_private_keys = array('9812AAVkUmYBitcoin77BTCPRV6pwgOMgxMq81Fn9nMCnWTGrm');
+ $cryptobox_private_keys = [env('GOURL_PRIVATE_KEY')];
 
 
 
