@@ -80,25 +80,39 @@ angular.module('MetronicApp').controller('DepositController', [
         };
 
         vm.showDepositModal = function(){
-            Restful.post('/api/transaction/auth', { trans_password: vm.model.trans_password })
-            .then(
-                function(data){
-                    Restful.get('/api/payment/crypto?deposit_amount=' + vm.model.amount).then(
-                        function(response){
-                            vm.languages_list = $sce.trustAsHtml(response.data.languages_list);
-                            vm.paymentbox = $sce.trustAsHtml(response.data.paymentbox);
+            // Restful.post('/api/transaction/auth', { trans_password: vm.model.trans_password })
+            // .then(
+            //     function(data){
+            //         Restful.get('/api/payment/crypto?deposit_amount=' + vm.model.amount).then(
+            //             function(response){
+            //                 vm.languages_list = $sce.trustAsHtml(response.data.languages_list);
+            //                 vm.paymentbox = $sce.trustAsHtml(response.data.paymentbox);
 
-                            $('#deposit_modal').modal();
-                            vm.validation.trans_password = '';
-                        }
-                    );
-                },
-                function(response){
-                    if(response.status !== 500){
-                        vm.validation.trans_password = response.data.error;
-                    }
-                }
-            );           
+            //                 $('#deposit_modal').modal();
+            //                 vm.validation.trans_password = '';
+            //             }
+            //         );
+            //     },
+            //     function(response){
+            //         if(response.status !== 500){
+            //             vm.validation.trans_password = response.data.error;
+            //         }
+            //     }
+            // );   
+            
+            vm.loading = true;
+
+            Restful.save('api/deposit', vm.model).then(function(data){
+                // $('#deposit_modal').on('hidden.bs.modal', function () {
+                //     $state.go('deposit_history');
+                // });
+                
+                // $('#deposit_modal').modal('hide');
+            }, function(err_response){
+                console.log(err_response);
+            }).finally(function () {
+                vm.loading= false;
+            });      
         };
 
         vm.initialConfigUpload = function(){

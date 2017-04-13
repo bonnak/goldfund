@@ -13,6 +13,7 @@ use chillerlan\QRCode\Output\QRImage;
 use chillerlan\QRCode\QRCode;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Exceptions\InvalidPasswordException;
 
 class DepositController extends Controller
 {
@@ -27,6 +28,9 @@ class DepositController extends Controller
 
     public function create(DepositRequest $request)
     {
+        $this->authorizeTransaction($request);
+        $this->depositOnceUntilExpiration();
+
         $deposit = Deposit::create([
     		'cust_id' => auth()->user()->id, 
     		'plan_id' => $request->input('plan_id'), 
@@ -37,12 +41,8 @@ class DepositController extends Controller
             'bankslip' => $request->bankslip
     	]);
 
-    	// Broadcast a memerber just deposit.
-        // event(new MemberDeposited(
-        //     Deposit::with('owner')->where('id', $deposit->id)->first()
-        // ));
-
         return response()->json($deposit->toArray());
+        //return response()->json($this->paymentBox($deposit), 200);
     }
 
     public function history()
@@ -78,5 +78,62 @@ class DepositController extends Controller
         //return  'data:image/jpeg;base64,' . base64_encode(\Storage::get($photo->store('images/deposit/bankslip')));
         
         return 'storage/' . $photo->store('images/deposit/bankslip');
+    }
+
+    private function authorizeTransaction(Request $request)
+    {
+        if(is_null($request->trans_password))
+            throw new InvalidPasswordException('This field is required.');
+
+        if(! \Hash::check($request->trans_password, auth()->user()->trans_password))
+        {
+            throw new InvalidPasswordException('Invalid transaction password');
+        }
+
+        return 1;
+    }
+
+    private function depositOnceUntilExpiration()
+    {
+        $count = Deposit::where('cust_id' , auth()->user()->id)
+                            ->whereIn('status', [0, 1])
+                            ->count();
+
+        if($count > 0) throw new HttpException(422, 'You have already deposited.');;        
+    }
+
+    private function paymentBox($deposit)
+    {
+        $orderID    = 'deposit_' . $deposit->id;
+        $userID     = auth()->user()->username;
+        $orderID    = preg_replace('/[^A-Za-z0-9\.\_\-\@]/', '', $orderID);
+        $userID     = preg_replace('/[^A-Za-z0-9\.\_\-\@]/', '', $userID);
+
+
+        $options = [
+            "public_key"  => env('GOURL_PUBLIC_KEY'),       
+            "private_key" => env('GOURL_PRIVATE_KEY'),      
+            "webdev_key"  =>  "",       
+            "orderID"     => $orderID,                                      
+            "userID"      => $userID,
+            "userFormat"  => "COOKIE",
+            "amount"      => 0,
+            "amountUSD"   => $deposit->amount,
+            "period"      => $deposit->plan->duration . ' DAYS',
+            "iframeID"    => "",
+            "language"    => 'en' 
+        ];   
+
+        
+        // Initialise Payment Class
+        $box1 = new \Cryptobox ($options); 
+        $paymentbox = $box1->display_cryptobox(false);
+        $languages_list = display_language_box('en');
+
+
+        return [
+            'languages_list' => $languages_list,
+            'paymentbox' => $paymentbox,
+        ];
     }
 }
