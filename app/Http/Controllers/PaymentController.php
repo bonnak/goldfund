@@ -28,7 +28,7 @@ class PaymentController extends Controller
 			"userID" 	  => $userID,
 			"userFormat"  => "COOKIE",
 			"amount" 	  => 0,
-			"amountUSD"   => 0.5,
+			"amountUSD"   => $deposit_amount,
 			"period"      => "60 DAYS",
 			"iframeID"    => "",
 			"language" 	  => 'en' 

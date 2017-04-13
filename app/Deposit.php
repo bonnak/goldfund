@@ -14,7 +14,9 @@ class Deposit extends Model
     protected $table = 'deposits';
 
     protected $fillable = [ 
-	  	'cust_id', 'plan_id', 'amount', 'status', 'issue_date',  'expire_date', 'bankslip'
+	  	'cust_id', 'plan_id', 'amount', 
+	  	'status', 'issue_date',  'expire_date', 
+	  	'bankslip', 'paid',
 	];
 
 	public function owner()

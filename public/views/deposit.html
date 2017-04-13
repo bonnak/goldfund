@@ -1,6 +1,6 @@
 <form name="depositForm" novalidate role="form" class="form-horizontal">
     <div class="row">
-        <div class="col-md-12" ng-if="vm.allow_deposited">
+        <div class="col-md-12" ng-if="vm.deposited == 0">
             <div class="portlet light bordered">
                 <div class="portlet-title">
                     <div class="caption font-blue-sharp">
@@ -43,6 +43,9 @@
                     </div>
                 </div>
                 <div class="portlet-body">
+                    <div class="alert alert-danger" ng-if="vm.error">
+                        {{ vm.error }}
+                    </div>
                     <div class="form-group" ng-class="{'has-error' : vm.inValid() }">
                         <label class="col-md-2 control-label"><span class="required">* </span>Amount</label>
                         <div class="col-md-4">    
@@ -70,7 +73,8 @@
                         <label class="col-md-2">
                         </label>
                         <div class="col-md-4">
-                            <button class="btn blue" ng-click="vm.showDepositModal()" ng-disabled="vm.inValid() || vm.model.trans_password == ''">
+                            <button class="btn blue" ng-click="vm.save()" ng-disabled="vm.inValid() || vm.model.trans_password == '' || vm.loading">
+                                <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
                                 Deposit
                             </button>
                         </div>
@@ -78,7 +82,21 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12" ng-if="vm.allow_deposited === false">
+        <div class="col-md-12" ng-if="vm.deposited == 2">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-blue-sharp">
+                        <span class="caption-subject bold uppercase">
+                            Make Deposit
+                        </span>
+                    </div>
+                </div>
+                <div class="portlet-body">                
+                    <div ng-bind-html="vm.paymentbox"></div> 
+                </div>
+            </div>            
+        </div>
+        <div class="col-md-12" ng-if="vm.deposited == 1">
             <div class="portlet light bordered">
                 <div class="portlet-title">
                     <div class="caption font-blue-sharp">
@@ -109,41 +127,7 @@
                     <h4 class="modal-title">Deposit Fund</h4>
                 </div>
                 <div class="modal-body"> 
-                    <div ng-bind-html="vm.paymentbox"></div>                
-                    <div class="note note-warning">
-                        <p>After you deposit. Please upload your blank slip (Bitcoin transaction)
-                            for us to verify your deposit.</p>
-                    </div>  
-                    <div class="bankslip">
-                        <span class="btn green fileinput-button" onClick="document.getElementById('bankslip-file').click()">
-                            <i class="fa fa-upload"></i>
-                            <span>Upload your bankslip</span>
-                            <input type="file" accept="image/*"
-                                    id="bankslip-file" 
-                                    name="file" 
-                                    data-url="/api/photo/upload" 
-                                    upload>
-                        </span>
-                        <div class="img-bankslip" id="preview"> 
-                            <div class="alert alert-danger" data-ng-if="vm.upload.is_success ===  false">
-                                <strong><i class="fa fa-exclamation"></i>&nbsp;</strong> {{ vm.upload.error }} 
-                            </div>                             
-                            <img id="blah" ng-src="{{ vm.upload.photo }}" alt="your image" data-ng-if="vm.upload.is_success === true"/>
-                            <div class="progress" ng-show="vm.upload.in_progress">
-                                <div class="progress-bar progress-bar-success" 
-                                    role="progressbar" 
-                                    ng-style="{'width': vm.upload.percentage + '%' }">
-                                    <span class="sr-only"> {{ vm.upload.percentage }}% Complete (success) </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="modal-footer">
-                    <button class="btn blue" ng-click="vm.save();" ng-disabled="!vm.upload.is_success || vm.loading">
-                        <i class="fa fa-spinner fa-spin" ng-show="vm.loading"></i>
-                        Submit
-                    </button>
+                    <div ng-bind-html="vm.paymentbox"></div>    
                 </div>
             </form>
         </div>

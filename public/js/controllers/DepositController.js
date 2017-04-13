@@ -24,40 +24,24 @@ angular.module('MetronicApp').controller('DepositController', [
             is_success : null,
             in_progress : false
         };
-        vm.allow_deposited = null;
-
-        vm.save = function(){
-            if (!$scope.depositForm.$valid) {
-                $anchorScroll();
-                return;
-            }
-            vm.loading = true;
-
-            Restful.save('api/deposit', vm.model).success(function(data){
-                $('#deposit_modal').on('hidden.bs.modal', function () {
-                    $state.go('deposit_history');
-                });
-                
-                $('#deposit_modal').modal('hide');
-            }).finally(function () {
-                vm.loading= false;
-            });
-        };
+        vm.deposited = null;
 
         vm.getHistory = function(params){
             Restful.get('api/deposit/history').success(function(data){
                 vm.deposits = data;
 
                 if(vm.deposits.length === 0){
-                    vm.allow_deposited = true;
+                    vm.deposited = 0;
                 }else if(vm.deposits.length >0){
-                    vm.allow_deposited = false;
+                    var deposit = vm.deposits.find(function(element){ return element.status == 0; });
 
-                    vm.deposits.forEach(function(deposit){
-                        if(deposit.status !== 0 && deposit.status !== 1){
-                            vm.allow_deposited = true;
-                        }
-                    });
+                    if(deposit == null || deposit.status != 0){
+                        vm.deposited = 0;
+                    }else if(deposit.status == 0 && deposit.paid == 1){
+                        vm.deposited = 1;
+                    }else if(deposit.status == 0 && deposit.paid == 0){
+                        vm.deposited = 2;
+                    }
                 }
             });
         };
@@ -79,37 +63,15 @@ angular.module('MetronicApp').controller('DepositController', [
             return vm.model.amount < vm.model.min_deposit  || vm.model.amount > vm.model.max_deposit;
         };
 
-        vm.showDepositModal = function(){
-            // Restful.post('/api/transaction/auth', { trans_password: vm.model.trans_password })
-            // .then(
-            //     function(data){
-            //         Restful.get('/api/payment/crypto?deposit_amount=' + vm.model.amount).then(
-            //             function(response){
-            //                 vm.languages_list = $sce.trustAsHtml(response.data.languages_list);
-            //                 vm.paymentbox = $sce.trustAsHtml(response.data.paymentbox);
-
-            //                 $('#deposit_modal').modal();
-            //                 vm.validation.trans_password = '';
-            //             }
-            //         );
-            //     },
-            //     function(response){
-            //         if(response.status !== 500){
-            //             vm.validation.trans_password = response.data.error;
-            //         }
-            //     }
-            // );   
-            
+        vm.save = function(){ 
             vm.loading = true;
 
-            Restful.save('api/deposit', vm.model).then(function(data){
-                // $('#deposit_modal').on('hidden.bs.modal', function () {
-                //     $state.go('deposit_history');
-                // });
-                
-                // $('#deposit_modal').modal('hide');
+            Restful.save('api/deposit', vm.model).then(function(response){
+                vm.languages_list = $sce.trustAsHtml(response.data.languages_list);
+                vm.paymentbox = $sce.trustAsHtml(response.data.paymentbox);
+                vm.deposited = 2;
             }, function(err_response){
-                console.log(err_response);
+                vm.error = err_response.data.error;
             }).finally(function () {
                 vm.loading= false;
             });      

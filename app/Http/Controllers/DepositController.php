@@ -32,17 +32,18 @@ class DepositController extends Controller
         $this->depositOnceUntilExpiration();
 
         $deposit = Deposit::create([
-    		'cust_id' => auth()->user()->id, 
-    		'plan_id' => $request->input('plan_id'), 
-    		'amount' => $request->input('amount'), 
+            'cust_id' => auth()->user()->id, 
+            'plan_id' => $request->input('plan_id'), 
+            'amount' => $request->input('amount'), 
             'status' => 0,
+            'paid'  => false,
             'issue_date' => null,
             'expire_date' => null,
             'bankslip' => $request->bankslip
-    	]);
+        ]); 
 
-        return response()->json($deposit->toArray());
-        //return response()->json($this->paymentBox($deposit), 200);
+        //return response()->json(Deposit::with('plan')->find($deposit->id));
+        return response()->json($this->paymentBox(Deposit::with('plan')->find($deposit->id)), 200);
     }
 
     public function history()
@@ -95,11 +96,22 @@ class DepositController extends Controller
 
     private function depositOnceUntilExpiration()
     {
-        $count = Deposit::where('cust_id' , auth()->user()->id)
+        $deposit = Deposit::where('cust_id' , auth()->user()->id)
                             ->whereIn('status', [0, 1])
-                            ->count();
+                            ->first();        
+            
 
-        if($count > 0) throw new HttpException(422, 'You have already deposited.');;        
+        if($deposit) 
+        {
+            if($deposit->status == 0 && $deposit->paid == false)
+            {
+                throw new HttpException(422, 'Your deposit is not yet paid.'); 
+            }
+            else
+            {
+                throw new HttpException(422, 'You have already deposited.'); 
+            }                   
+        }
     }
 
     private function paymentBox($deposit)
