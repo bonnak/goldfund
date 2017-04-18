@@ -136,6 +136,9 @@ class DepositController extends Controller
             "language"    => 'en' 
         ];   
 
+
+        payment_unrecognised();
+
         
         // Initialise Payment Class
         $box1 = new \Cryptobox ($options); 

@@ -6,9 +6,7 @@
 </head>
 <body>
 
-<div style='margin:30px 0 5px 480px'>Language: &#160; <?php echo $languages_list; ?></div>  
 <?php echo $paymentbox; ?>
-<!-- <?php echo $message; ?> -->
 
 </body>
 </html>
