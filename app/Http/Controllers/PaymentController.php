@@ -7,6 +7,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Carbon\Carbon;
 use App\Payment\Cryptobox;
 use App\Deposit;
+use App\Customer;
 
 class PaymentController extends Controller
 {
@@ -170,7 +171,7 @@ class PaymentController extends Controller
     {
     	if($payment_details['status'] != 'payment_received') return;
 
-    	$deposit = Deposit::where('cust_id', $payment_details['user'])
+    	$deposit = Deposit::where('cust_id', Customer::find($payment_details['user'])->id)
                         ->where('id', $payment_details['order'])
                         ->where('status', 0)
                         ->where('paid', false)
