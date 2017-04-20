@@ -179,6 +179,7 @@ class PaymentController extends Controller
 
         if(!is_null($deposit))
         {
+        	$deposit->status = 1;
         	$deposit->paid = true;
         	$deposit->save();
         }
