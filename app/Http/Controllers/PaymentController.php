@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Carbon\Carbon;
 use App\Payment\Cryptobox;
+use App\Deposit;
 
 class PaymentController extends Controller
 {
@@ -72,6 +73,7 @@ class PaymentController extends Controller
 
     public function callBack()
     {        	
+    	return 
      	// a.
 		if ($_POST) foreach ($_POST as $k => $v) if (is_string($v)) $_POST[$k] = trim($v);
 
@@ -151,13 +153,34 @@ class PaymentController extends Controller
 			 *  Read more - https://gourl.io/api-php.html#ipn
 		         */
 
-			if (in_array($box_status, array("cryptobox_newrecord", "cryptobox_updated")) && function_exists('cryptobox_new_payment')) cryptobox_new_payment($paymentID, $_POST, $box_status);
+			// if (in_array($box_status, array("cryptobox_newrecord", "cryptobox_updated")) && function_exists('cryptobox_new_payment')) cryptobox_new_payment($paymentID, $_POST, $box_status);
+			if (in_array($box_status, array("cryptobox_newrecord", "cryptobox_updated"))) 
+			{
+				$this->cryptobox_new_payment($paymentID, $_POST, $box_status);
+			}
 		}   
 
 		else
 			$box_status = "Only POST Data Allowed";
 
 
-			echo $box_status; // don't delete it     
-		}
+		echo $box_status; // don't delete it     
+	}
+
+    function cryptobox_new_payment($paymentID = 0, $payment_details = array(), $box_status = "")
+    {
+    	if($payment_details['status'] != 'payment_received') return;
+
+    	$deposit = Deposit::where('cust_id', $payment_details['user'])
+                        ->where('id', $payment_details['order'])
+                        ->where('status', 0)
+                        ->where('paid', false)
+                        ->first();
+
+        if(!is_null($deposit))
+        {
+        	$deposit->paid = true;
+        	$deposit->save();
+        }
+    }
 }

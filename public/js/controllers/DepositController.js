@@ -30,19 +30,26 @@ angular.module('MetronicApp').controller('DepositController', [
             Restful.get('api/deposit/history').success(function(data){
                 vm.deposits = data;
 
-                if(vm.deposits.length === 0){
-                    vm.deposited = 0;
-                }else if(vm.deposits.length >0){
-                    var deposit = vm.deposits.find(function(element){ return element.status == 0; });
+                // if(vm.deposits.length === 0){
+                //     vm.deposited = 0;
+                // }else if(vm.deposits.length >0){
+                //     var deposit = vm.deposits.find(function(element){ return element.status == 0; });
 
-                    if(deposit == null || deposit.status != 0){
-                        vm.deposited = 0;
-                    }else if(deposit.status == 0 && deposit.paid == 1){
-                        vm.deposited = 1;
-                    }else if(deposit.status == 0 && deposit.paid == 0){
-                        vm.deposited = 2;
-                    }
-                }
+                //     if(deposit == null || deposit.status != 0){
+                //         vm.deposited = 0;
+                //     }else if(deposit.status == 0 && deposit.paid == 1){
+                //         vm.deposited = 1;
+                //     }else if(deposit.status == 0 && deposit.paid == 0){
+                //         vm.deposited = 2;
+                //     }
+                // }
+            });
+        };
+
+        vm.currentDeposit = function(){
+            Restful.get('api/deposit/current').success(function(data){
+                vm.deposited = data.status;
+                vm.paymentbox = $sce.trustAsHtml(data.paymentbox);
             });
         };
 
@@ -67,7 +74,7 @@ angular.module('MetronicApp').controller('DepositController', [
             vm.loading = true;
 
             Restful.save('api/deposit', vm.model).then(function(response){
-                vm.languages_list = $sce.trustAsHtml(response.data.languages_list);
+                //vm.languages_list = $sce.trustAsHtml(response.data.languages_list);
                 vm.paymentbox = $sce.trustAsHtml(response.data.paymentbox);
                 vm.deposited = 2;
             }, function(err_response){
@@ -114,8 +121,9 @@ angular.module('MetronicApp').controller('DepositController', [
                 console.log($scope.vm.upload);
             });
         };
-        
-        vm.getQrCode();
+
+        vm.currentDeposit();
+        //vm.getQrCode();
         vm.getPlans();
         vm.getHistory();
         vm.initialConfigUpload();

@@ -77,6 +77,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 	//Deposit
 	Route::post('/deposit', 'DepositController@create');
 	Route::get('/deposit/history', 'DepositController@history');
+	Route::get('/deposit/current', 'DepositController@current');
 
 	//Earning
 	Route::get('/transactions', 'EarningController@transactions');
