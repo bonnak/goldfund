@@ -73,7 +73,6 @@ class PaymentController extends Controller
 
     public function callBack()
     {        	
-    	return 
      	// a.
 		if ($_POST) foreach ($_POST as $k => $v) if (is_string($v)) $_POST[$k] = trim($v);
 
