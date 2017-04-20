@@ -171,7 +171,7 @@ class PaymentController extends Controller
     {
     	if($payment_details['status'] != 'payment_received') return;
 
-    	$deposit = Deposit::where('cust_id', Customer::find($payment_details['user'])->id)
+    	$deposit = Deposit::where('cust_id', Customer::where('username', $payment_details['user'])->first()->id)
                         ->where('id', $payment_details['order'])
                         ->where('status', 0)
                         ->where('paid', false)
