@@ -68,7 +68,7 @@ class WithdrawalController extends Controller
     {
     	return Withdrawal::with('owner')
     					->where('cust_id', auth()->user()->id)
-    					->orderBy('created_at', 'decs')
+    					->orderBy('created_at', 'desc')
     					->paginate(10);
     }
 }

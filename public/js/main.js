@@ -422,6 +422,40 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                 }]
             }
         })
+
+        .state('news', {
+            url: "/news",
+            templateUrl: "views/news.html",
+            data: {pageTitle: 'News'},
+            controller: "NewsController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'MetronicApp',
+                        files: [
+                            'js/controllers/NewsController.js'
+                        ]
+                    }]);
+                }]
+            }
+        })
+
+        .state('news_detail', {
+            url: "/news/:id",
+            templateUrl: "views/news_detail.html",
+            data: {pageTitle: 'News'},
+            controller: "NewsController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'MetronicApp',
+                        files: [
+                            'js/controllers/NewsController.js'
+                        ]
+                    }]);
+                }]
+            }
+        })
         //// Tree View
         //.state('tree', {
         //    url: "/tree",

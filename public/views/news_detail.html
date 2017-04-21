@@ -1,0 +1,32 @@
+<div class="row">    
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cursor font-yellow hide"></i>
+                    <span class="caption-subject font-yellow bold uppercase">
+                        News
+                    </span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mt-news">
+                            <div class="mt-news-body">
+                                <div class="mt-news-info">
+                                    <h2>{{ vm.news.title }}</h2>
+                                    <span class="text-muted">{{ vm.news.published_date }}</span>
+                                </div>
+                                <div class="mt-news-text"><p ng-bind-html="vm.news.content"></p></div>
+                                <div class="mt-news-details">
+                                    <a class="btn yellow btn-outline sbold uppercase" href="#/news">Back to news</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

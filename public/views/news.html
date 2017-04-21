@@ -1,0 +1,34 @@
+<div class="row">    
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cursor font-yellow hide"></i>
+                    <span class="caption-subject font-yellow bold uppercase">
+                        All News
+                    </span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ng-repeat="(key, item) in vm.all_news.data">
+                            <div class="mt-news">
+                                <div class="mt-news-body">
+                                    <div class="mt-news-info">
+                                        <h2>{{ item.title }}</h2>
+                                        <span class="text-muted">{{ item.published_date }}</span>
+                                    </div>
+                                    <div class="mt-news-text"><p ng-bind-html="item.content.substring(0, 500) + ' ...'"></p></div>
+                                    <div class="mt-news-details">
+                                        <a class="btn yellow btn-outline sbold uppercase" href="#/news/{{item.id}}">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

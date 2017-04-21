@@ -71,6 +71,11 @@
 				    		<md-list-item class="md-inset"><router-link :to="{ path: '/setting/slide' }"><span>Slide</span></router-link></md-list-item>
 				    	</md-list-expand>
 				    </md-list-item>
+				    <md-list-item>
+			    		<router-link :to="{ path: '/news' }">
+							<i class="fa fa-newspaper-o"></i><span>News</span>
+	  					</router-link>
+	  				</md-list-item>
 			  	</md-list>
 			</div>
 		</md-sidenav>

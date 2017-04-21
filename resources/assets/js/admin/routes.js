@@ -22,6 +22,8 @@ const routes = [
   { path: '/page/service/gold-trading', component: require('./components/pages/service/GoldTrading.vue') },
 
   { path: '/setting/slide', component: require('./components/setting/Slide.vue') },
+
+  { path: '/news', component: require('./components/news/Index.vue') },
 ]
 
 export default routes ;

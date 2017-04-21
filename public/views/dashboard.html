@@ -7,7 +7,7 @@
 <div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading font-gold">Days Left</h4>
+            <h4 class="widget-thumb-heading font-yellow">Days Left</h4>
             <div class="widget-thumb-wrap">  
                 <i class="widget-thumb-icon fa fa-sun-o"></i>               
                 <div class="widget-thumb-body">                    
@@ -21,7 +21,7 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading font-gold">Active Deposit</h4>
+            <h4 class="widget-thumb-heading font-yellow">Active Deposit</h4>
             <div class="widget-thumb-wrap">  
                 <i class="widget-thumb-icon fa fa-dollar"></i>               
                 <div class="widget-thumb-body">                    
@@ -32,7 +32,7 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading font-gold">Daily Earning</h4>
+            <h4 class="widget-thumb-heading font-yellow">Daily Earning</h4>
             <div class="widget-thumb-wrap">                
                 <i class="widget-thumb-icon"><img src="/images/icons/dollar_tick.png"></i> 
                 <div class="widget-thumb-body">                    
@@ -45,7 +45,7 @@
 <div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading font-gold">Sponsor</h4>
+            <h4 class="widget-thumb-heading font-yellow">Sponsor</h4>
             <div class="widget-thumb-wrap">                
                 <i class="widget-thumb-icon fa fa-user"></i> 
                 <div class="widget-thumb-body">                    
@@ -56,7 +56,7 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading font-gold">Level</h4>
+            <h4 class="widget-thumb-heading font-yellow">Level</h4>
             <div class="widget-thumb-wrap">  
                 <i class="widget-thumb-icon fa fa-line-chart"></i>                
                 <div class="widget-thumb-body">                    
@@ -67,7 +67,7 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading font-gold">Binary</h4>
+            <h4 class="widget-thumb-heading font-yellow">Binary</h4>
             <div class="widget-thumb-wrap">  
                 <i class="widget-thumb-icon fa fa-sitemap"></i>                
                 <div class="widget-thumb-body">                    
@@ -81,7 +81,7 @@
 <div class="row box-dash">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading font-gold">Available Balance</h4>
+            <h4 class="widget-thumb-heading font-yellow">Available Balance</h4>
             <div class="widget-thumb-wrap">  
                 <i class="widget-thumb-icon"><img src="/images/icons/wallet.png"></i>              
                 <div class="widget-thumb-body">                    
@@ -92,7 +92,7 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading font-gold">Withdrawal</h4>
+            <h4 class="widget-thumb-heading font-yellow">Withdrawal</h4>
             <div class="widget-thumb-wrap">   
                 <i class="widget-thumb-icon fa fa-credit-card"></i>             
                 <div class="widget-thumb-body">                    
@@ -103,7 +103,7 @@
     </div> 
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-            <h4 class="widget-thumb-heading font-gold">Total Downlines</h4>
+            <h4 class="widget-thumb-heading font-yellow">Total Downlines</h4>
             <div class="widget-thumb-wrap">   
                 <i class="widget-thumb-icon fa fa-group"></i>             
                 <div class="widget-thumb-body">                    
@@ -119,8 +119,8 @@
         <div class="portlet light bordered">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cursor font-gold hide"></i>
-                    <span class="caption-subject font-gold bold uppercase">
+                    <i class="icon-cursor font-yellow hide"></i>
+                    <span class="caption-subject font-yellow bold uppercase">
                         Referral Link
                     </span>
                 </div>
@@ -136,13 +136,48 @@
     </div>
 </div>
 
+<div class="row">    
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cursor font-yellow hide"></i>
+                    <span class="caption-subject font-yellow bold uppercase">
+                        Latest News
+                    </span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ng-repeat="(key, item) in vm.news">
+                            <div class="mt-news">
+                                <div class="mt-news-body">
+                                    <div class="mt-news-info">
+                                        <h2>{{ item.title }}</h2>
+                                        <span class="text-muted">{{ item.published_date }}</span>
+                                    </div>
+                                    <div class="mt-news-text"><p ng-bind-html="item.content.substring(0, 500) + ' ...'"></p></div>
+                                    <div class="mt-news-details">
+                                        <a class="btn yellow btn-outline sbold uppercase" href="#/news/{{item.id}}">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- <div class="row">    
     <div class="col-md-12">
         <div class="portlet light bordered">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cursor font-gold hide"></i>
-                    <span class="caption-subject font-gold bold uppercase">
+                    <i class="icon-cursor font-yellow hide"></i>
+                    <span class="caption-subject font-yellow bold uppercase">
                         History
                     </span>
                 </div>

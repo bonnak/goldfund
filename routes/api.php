@@ -58,6 +58,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api_admin'], function()
 	Route::post('/setting/slide', 'Admin\SlideController@addNew');
 	Route::delete('/setting/slide/{id}', 'Admin\SlideController@delete');
 	Route::put('/setting/slide', 'Admin\SlideController@update');
+
+	//News	
+	Route::get('/news', 'PostController@news');
+	Route::post('/news', 'PostController@create');
+	Route::put('/news', 'PostController@update');
 });
 
 
@@ -113,4 +118,9 @@ Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('customer/message', 'UserController@sendMessage');
 
 	Route::get('/payment/crypto', 'PaymentController@index');
+
+	//News
+	Route::get('/news/latest', 'PostController@latestNews');
+	Route::get('/news', 'PostController@get');
+	Route::get('/news/{id}', 'PostController@getById');
 });

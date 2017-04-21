@@ -59,3 +59,19 @@ body.body-dash{
 .control-label{
 	font-weight: 700;
 }
+
+.mt-news{
+	.mt-news-body{
+		.mt-news-info{
+			margin-bottom: 17px;
+
+			h2{
+				margin-top: 0;
+			}
+		}
+
+		.mt-news-details{
+			text-align: right;
+		}
+	}
+}

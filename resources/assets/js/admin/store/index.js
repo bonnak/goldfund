@@ -8,6 +8,7 @@ import deposit from './modules/deposit'
 import plan from './modules/plan'
 import withdrawal from './modules/withdrawal'
 import faq from './modules/faq'
+import news from './modules/news'
 
 Vue.use(Vuex)
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     deposit,
     plan,
     withdrawal,
-    faq
+    faq,
+    news
   }
 })
