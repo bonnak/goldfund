@@ -8,9 +8,12 @@ use Carbon\Carbon;
 use App\Payment\Cryptobox;
 use App\Deposit;
 use App\Customer;
+use App\Traits\DepositEarningTrait;
 
 class PaymentController extends Controller
 {
+	use DepositEarningTrait;
+
     public function index()
     {
     	if(!request()->exists('deposit_amount')) throw new HttpException(403, 'No deposit.');
@@ -178,10 +181,11 @@ class PaymentController extends Controller
                         ->first();
 
         if(!is_null($deposit))
-        {
-        	$deposit->status = 1;
-        	$deposit->paid = true;
-        	$deposit->save();
+        {        
+        	$this->activateDepositAccount($deposit);
+        	$this->sponsorReceiveCommission($deposit); 
+	        $this->levelsReceiveCommission($deposit); 
+	        $this->sponsorReceiveBinaryPairCommission($deposit);  
         }
     }
 }

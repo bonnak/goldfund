@@ -93,7 +93,7 @@ class DepositController extends Controller
                         ->first();
 
         return response()->json([
-            'status' => is_null($deposit) ? 0 : ($deposit->status == 0 && $deposit->paid == 0 ? 2 : 1),
+            'deposit' => $deposit,
             'paymentbox' => !is_null($deposit) && $deposit->status == 0 && $deposit->paid == 0 ? $this->cryptoBox($deposit)['paymentbox'] : '',
         ], 200);
     }

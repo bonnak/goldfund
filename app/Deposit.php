@@ -8,6 +8,7 @@ use App\Plan;
 use App\SponsorEarningCommission;
 use App\LevelEarningCommission;
 use App\Earning;
+use App\CryptoPayment;
 
 class Deposit extends Model
 {
@@ -42,5 +43,10 @@ class Deposit extends Model
 	public function daily_earning()
 	{
 		return $this->hasMany(Earning::class, 'deposit_id', 'id');
+	}
+
+	public function crypto_payment()
+	{
+		return $this->hasOne(CryptoPayment::class, 'orderID', 'id');
 	}
 }

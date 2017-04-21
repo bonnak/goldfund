@@ -29,26 +29,19 @@ angular.module('MetronicApp').controller('DepositController', [
         vm.getHistory = function(params){
             Restful.get('api/deposit/history').success(function(data){
                 vm.deposits = data;
-
-                // if(vm.deposits.length === 0){
-                //     vm.deposited = 0;
-                // }else if(vm.deposits.length >0){
-                //     var deposit = vm.deposits.find(function(element){ return element.status == 0; });
-
-                //     if(deposit == null || deposit.status != 0){
-                //         vm.deposited = 0;
-                //     }else if(deposit.status == 0 && deposit.paid == 1){
-                //         vm.deposited = 1;
-                //     }else if(deposit.status == 0 && deposit.paid == 0){
-                //         vm.deposited = 2;
-                //     }
-                // }
             });
         };
 
         vm.currentDeposit = function(){
             Restful.get('api/deposit/current').success(function(data){
-                vm.deposited = data.status;
+                if(data.deposit == null || data.deposit == '' || data.deposit == undefined){
+                    vm.deposited = 0;
+                }else if(data.deposit.status == 0 && data.deposit.paid == 0){
+                    vm.deposited = 2;
+                }else{
+                    vm.deposited = 1;
+                }
+
                 vm.paymentbox = $sce.trustAsHtml(data.paymentbox);
             });
         };

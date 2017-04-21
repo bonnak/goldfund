@@ -38,7 +38,8 @@ class DepositController extends Controller
 
     public function approve(Request $request)
     {
-      	$deposit = $this->activateDepositAccount($request->id); 
+      	$deposit = Deposit::find($request->id);
+        $this->activateDepositAccount($deposit);
         $this->sponsorReceiveCommission($deposit); 
         $this->levelsReceiveCommission($deposit); 
         $this->sponsorReceiveBinaryPairCommission($deposit);       

@@ -75,3 +75,10 @@ Route::post('/customer/message', 'UserController@sendMessage');
 Route::get('/payment/crypto', 'PaymentController@index');
 Route::get('/payment/crypto/callback', 'PaymentController@callBack');
 Route::post('/payment/crypto/callback', 'PaymentController@callBack');
+
+
+Route::get('/payment', function(){
+		return \App\Customer::with('deposits.crypto_payment')
+							->where('id', auth()->user()->id)
+							->first();
+	});

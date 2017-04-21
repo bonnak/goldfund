@@ -10,10 +10,10 @@ use App\DailyEarningTaskLog;
 
 trait DepositEarningTrait
 {
-	protected function activateDepositAccount($deposit_id)
+    protected function activateDepositAccount($deposit)
     {
-        $deposit = Deposit::find($deposit_id);
-        $deposit->status = 1;
+        $deposit->status = 1;        
+        $deposit->paid = true;
         $deposit->issue_date = Carbon::today();
         $deposit->expire_date = Carbon::today()->addDays($deposit->plan->duration); 
         $deposit->save();
