@@ -26,7 +26,7 @@ class AddColDepositIdInCryptoPayments extends Migration
     public function down()
     {
         Schema::table('crypto_payments', function (Blueprint $table) {
-            //
+            $table->dropColumn('deposit_id');
         });
     }
 }
