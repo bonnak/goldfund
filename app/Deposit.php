@@ -47,6 +47,6 @@ class Deposit extends Model
 
 	public function crypto_payment()
 	{
-		return $this->hasOne(CryptoPayment::class, 'orderID', 'id');
+		return $this->hasOne(CryptoPayment::class, 'deposit_id', 'id');
 	}
 }

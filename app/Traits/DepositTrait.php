@@ -7,6 +7,7 @@ use App\Deposit;
 use App\Payment\Cryptobox;
 use App\Exceptions\InvalidPasswordException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Carbon\Carbon;
 
 trait DepositTrait
 {
@@ -45,7 +46,7 @@ trait DepositTrait
 
     public function cryptoBox($deposit)
     {
-        $orderID    = $deposit->id;
+        $orderID    = $deposit->id . '_' . Carbon::now()->timestamp;
         $userID     = auth()->user()->username;
         $orderID    = preg_replace('/[^A-Za-z0-9\.\_\-\@]/', '', $orderID);
         $userID     = preg_replace('/[^A-Za-z0-9\.\_\-\@]/', '', $userID);

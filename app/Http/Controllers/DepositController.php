@@ -43,7 +43,7 @@ class DepositController extends Controller
             'paid'  => false,
             'issue_date' => null,
             'expire_date' => null,
-            'bankslip' => $request->bankslip
+            //'bankslip' => $request->bankslip
         ]); 
 
         //return response()->json(Deposit::with('plan')->find($deposit->id));
