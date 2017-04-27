@@ -157,7 +157,7 @@ class PaymentController extends Controller
 		         */
 
 			// if (in_array($box_status, array("cryptobox_newrecord", "cryptobox_updated")) && function_exists('cryptobox_new_payment')) cryptobox_new_payment($paymentID, $_POST, $box_status);
-			if (in_array($box_status, array("cryptobox_newrecord", "cryptobox_updated"))) 
+			if (in_array($box_status, array("cryptobox_newrecord"))) 
 			{
 				$this->cryptobox_new_payment($paymentID, $_POST, $box_status);
 			}

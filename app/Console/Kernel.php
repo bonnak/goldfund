@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
          Commands\ApproveEarning::class,
          Commands\DailyEarning::class,
+         Commands\ExpireDeposit::class,
     ];
 
     /**
@@ -37,6 +38,13 @@ class Kernel extends ConsoleKernel
                  ->daily()
                  ->sendOutputTo(
                     'storage/logs/earning_approve' . Carbon::today()->format('Ymd') . '.log'
+                )
+                 ->emailOutputTo('chea.bonnak@gmail.com');
+
+        $schedule->command('earning:expire')
+                 ->daily()
+                 ->sendOutputTo(
+                    'storage/logs/earning_expire' . Carbon::today()->format('Ymd') . '.log'
                 )
                  ->emailOutputTo('chea.bonnak@gmail.com');
     }
