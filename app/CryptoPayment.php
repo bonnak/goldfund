@@ -27,6 +27,7 @@ class CryptoPayment extends Model
         'processed',
         'processedDate',
         'recordCreated',
+        'deposit_id',
 	];
 
 	public $timestamps = false;

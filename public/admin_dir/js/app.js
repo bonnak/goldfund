@@ -46777,6 +46777,47 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -47004,6 +47045,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(3);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -47322,6 +47404,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(3);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -52141,7 +52264,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.data.bankslip
     }
-  })])])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
+  })])])])]), _vm._v(" "), (_vm.data.crypto_payment != null) ? _c('div', [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v("Payment History")])]), _vm._v(" "), _c('md-card-content', {
+    staticClass: "content-body"
+  }, [_c('div', {
+    staticClass: "col-md-12 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Box ID")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.boxID))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Order ID")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.orderID))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Bitcoin amount")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.amount))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("USD amount")]), _vm._v(" "), _c('dd', [_vm._v("$ " + _vm._s(_vm.data.crypto_payment.amountUSD))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Unrecognised")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("isActive")(_vm.data.crypto_payment.unrecognised)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Tx ID")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.txID))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Tx Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.txDate))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Tx Confirmed")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("isActive")(_vm.data.crypto_payment.txConfirmed)))])])])])], 1) : _vm._e(), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
     staticClass: "md-primary",
     nativeOn: {
       "click": function($event) {
@@ -52206,7 +52351,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.data.bankslip
     }
-  })])])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
+  })])])])]), _vm._v(" "), (_vm.data.crypto_payment != null) ? _c('div', [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v("Payment History")])]), _vm._v(" "), _c('md-card-content', {
+    staticClass: "content-body"
+  }, [_c('div', {
+    staticClass: "col-md-12 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Box ID")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.boxID))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Order ID")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.orderID))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Bitcoin amount")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.amount))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("USD amount")]), _vm._v(" "), _c('dd', [_vm._v("$ " + _vm._s(_vm.data.crypto_payment.amountUSD))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Unrecognised")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("isActive")(_vm.data.crypto_payment.unrecognised)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Tx ID")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.txID))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Tx Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.txDate))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Tx Confirmed")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("isActive")(_vm.data.crypto_payment.txConfirmed)))])])])])], 1) : _vm._e(), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
     staticClass: "md-primary",
     nativeOn: {
       "click": function($event) {
@@ -53429,7 +53596,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.data.bankslip
     }
-  })])])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
+  })])])])]), _vm._v(" "), (_vm.data.crypto_payment != null) ? _c('div', [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v("Payment History")])]), _vm._v(" "), _c('md-card-content', {
+    staticClass: "content-body"
+  }, [_c('div', {
+    staticClass: "col-md-12 sec-block"
+  }, [_c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Box ID")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.boxID))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Order ID")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.orderID))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Bitcoin amount")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.amount))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("USD amount")]), _vm._v(" "), _c('dd', [_vm._v("$ " + _vm._s(_vm.data.crypto_payment.amountUSD))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Unrecognised")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("isActive")(_vm.data.crypto_payment.unrecognised)))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Tx ID")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.txID))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Tx Date")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm.data.crypto_payment.txDate))])]), _vm._v(" "), _c('dl', {
+    staticClass: "dl-horizontal"
+  }, [_c('dt', [_vm._v("Tx Confirmed")]), _vm._v(" "), _c('dd', [_vm._v(_vm._s(_vm._f("isActive")(_vm.data.crypto_payment.txConfirmed)))])])])])], 1) : _vm._e(), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
     staticClass: "md-primary",
     nativeOn: {
       "click": function($event) {

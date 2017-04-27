@@ -53,6 +53,47 @@
         </dl>
       </div>
     </md-card-content>
+    <div v-if="data.crypto_payment != null">
+      <md-card-header>
+        <div class="md-title">Payment History</div>
+      </md-card-header>
+      <md-card-content class="content-body">
+        <div class="col-md-12 sec-block">
+          <dl class="dl-horizontal">
+            <dt>Box ID</dt>
+            <dd>{{ data.crypto_payment.boxID }}</dd>
+          </dl>
+          <dl class="dl-horizontal">
+            <dt>Order ID</dt>
+            <dd>{{ data.crypto_payment.orderID }}</dd>
+          </dl>
+          <dl class="dl-horizontal">
+            <dt>Bitcoin amount</dt>
+            <dd>{{ data.crypto_payment.amount }}</dd>
+          </dl>
+          <dl class="dl-horizontal">
+            <dt>USD amount</dt>
+            <dd>$ {{ data.crypto_payment.amountUSD }}</dd>
+          </dl>
+          <dl class="dl-horizontal">
+            <dt>Unrecognised</dt>
+            <dd>{{ data.crypto_payment.unrecognised | isActive }}</dd>
+          </dl>
+          <dl class="dl-horizontal">
+            <dt>Tx ID</dt>
+            <dd>{{ data.crypto_payment.txID }}</dd>
+          </dl>
+          <dl class="dl-horizontal">
+            <dt>Tx Date</dt>
+            <dd>{{ data.crypto_payment.txDate }}</dd>
+          </dl>
+          <dl class="dl-horizontal">
+            <dt>Tx Confirmed</dt>
+            <dd>{{ data.crypto_payment.txConfirmed | isActive }}</dd>
+          </dl>
+        </div>
+      </md-card-content>
+    </div> 
     <md-card-actions>
 	    <md-button class="md-primary" @click.native="closeForm()">Close</md-button>
 	  </md-card-actions>

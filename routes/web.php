@@ -79,6 +79,6 @@ Route::post('/payment/crypto/callback', 'PaymentController@callBack');
 
 Route::get('/payment', function(){
 		return \App\Customer::with('deposits.crypto_payment')
-							->where('id', auth()->user()->id)
-							->first();
+							//->where('id', auth()->user()->id)
+							->get();
 	});
