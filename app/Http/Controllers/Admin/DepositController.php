@@ -18,7 +18,7 @@ class DepositController extends Controller
     {       
         extract(request()->all());
 
-    	return Deposit::with(['plan', 'owner'])
+    	return Deposit::with(['plan', 'owner', 'crypto_payment'])
                     ->whereIn('status', is_array($status) ? $status : [$status])                   
                     ->where(function($inner_query) use ($query){
                         if($query == '') return;
