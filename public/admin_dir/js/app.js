@@ -46392,6 +46392,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuex__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_mixins_table__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_Api__ = __webpack_require__(6);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -46461,6 +46462,129 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -46478,30 +46602,58 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			validation: {
 				email: '',
 				bitcoin_account: ''
-			}
+			},
+			daily_earning: [],
+			direct_earning: [],
+			level_earning: [],
+			binary_earning: [],
+			withdrawals: []
 		};
+	},
+	created: function created() {
+		var _this = this;
+
+		__WEBPACK_IMPORTED_MODULE_2__api_Api__["a" /* default */].get('customer/' + this.data.id + '/earning/daily').then(function (response) {
+			_this.daily_earning = response.data;
+		});
+
+		__WEBPACK_IMPORTED_MODULE_2__api_Api__["a" /* default */].get('customer/' + this.data.id + '/earning/direct').then(function (response) {
+			_this.direct_earning = response.data;
+		});
+
+		__WEBPACK_IMPORTED_MODULE_2__api_Api__["a" /* default */].get('customer/' + this.data.id + '/earning/level').then(function (response) {
+			_this.level_earning = response.data;
+		});
+
+		__WEBPACK_IMPORTED_MODULE_2__api_Api__["a" /* default */].get('customer/' + this.data.id + '/earning/binary').then(function (response) {
+			_this.binary_earning = response.data;
+		});
+
+		__WEBPACK_IMPORTED_MODULE_2__api_Api__["a" /* default */].get('customer/' + this.data.id + '/withdrawals').then(function (response) {
+			_this.withdrawals = response.data;
+		});
 	},
 
 
 	methods: _extends({
 		editEmail: function editEmail(data) {
-			var _this = this;
+			var _this2 = this;
 
 			this.saveEmail(data).then(function (response) {
-				_this.show_edit_email = false;
-				_this.validation.email = '';
+				_this2.show_edit_email = false;
+				_this2.validation.email = '';
 			}, function (err_response) {
-				_this.validation.email = err_response.data.error;
+				_this2.validation.email = err_response.data.error;
 			});
 		},
 		editBitCoinAddress: function editBitCoinAddress(data) {
-			var _this2 = this;
+			var _this3 = this;
 
 			this.saveBitCoinAddress(data).then(function (response) {
-				_this2.show_edit_bitcoin_account = false;
-				_this2.validation.bitcoin_account = '';
+				_this3.show_edit_bitcoin_account = false;
+				_this3.validation.bitcoin_account = '';
 			}, function (err_response) {
-				_this2.validation.bitcoin_account = err_response.data.error;
+				_this3.validation.bitcoin_account = err_response.data.error;
 			});
 		}
 	}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])({
@@ -54707,7 +54859,63 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "color": "red"
     }
-  }, [_vm._v(_vm._s(_vm.validation.bitcoin_account))]) : _vm._e()]) : _vm._e()])])]), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
+  }, [_vm._v(_vm._s(_vm.validation.bitcoin_account))]) : _vm._e()]) : _vm._e()])])]), _vm._v(" "), _c('div', [_c('md-tabs', {
+    staticClass: "md-transparent"
+  }, [_c('md-tab', {
+    attrs: {
+      "md-label": "Daily Earning"
+    }
+  }, [_c('md-table', [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Created Date")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.daily_earning), function(earning) {
+    return _c('md-table-row', [_c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(earning.amount)))]), _vm._v(" "), _c('md-table-cell', [(earning.status == 0) ? _c('span', {
+      staticClass: "label label-sm label-warning"
+    }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (earning.status == 1) ? _c('span', {
+      staticClass: "label label-sm label-success"
+    }, [_vm._v("Approved")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(earning.created_at))])], 1)
+  }))], 1)], 1), _vm._v(" "), _c('md-tab', {
+    attrs: {
+      "md-label": "Direct Earning"
+    }
+  }, [_c('md-table', [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("From")]), _vm._v(" "), _c('md-table-head', [_vm._v("Created Date")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.direct_earning), function(earning) {
+    return _c('md-table-row', [_c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(earning.amount)))]), _vm._v(" "), _c('md-table-cell', [(earning.status == 0) ? _c('span', {
+      staticClass: "label label-sm label-warning"
+    }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (earning.status == 1) ? _c('span', {
+      staticClass: "label label-sm label-success"
+    }, [_vm._v("Approved")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(earning.deposit.owner.username))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(earning.created_at))])], 1)
+  }))], 1)], 1), _vm._v(" "), _c('md-tab', {
+    attrs: {
+      "md-label": "Level Earning"
+    }
+  }, [_c('md-table', [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Level")]), _vm._v(" "), _c('md-table-head', [_vm._v("From")]), _vm._v(" "), _c('md-table-head', [_vm._v("Created Date")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.level_earning), function(earning) {
+    return _c('md-table-row', [_c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(earning.amount)))]), _vm._v(" "), _c('md-table-cell', [(earning.status == 0) ? _c('span', {
+      staticClass: "label label-sm label-warning"
+    }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (earning.status == 1) ? _c('span', {
+      staticClass: "label label-sm label-success"
+    }, [_vm._v("Approved")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(earning.level_number))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(earning.deposit.owner.username))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(earning.created_at))])], 1)
+  }))], 1)], 1), _vm._v(" "), _c('md-tab', {
+    attrs: {
+      "md-label": "Binary Earning"
+    }
+  }, [_c('md-table', [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Left")]), _vm._v(" "), _c('md-table-head', [_vm._v("Right")]), _vm._v(" "), _c('md-table-head', [_vm._v("Created Date")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.binary_earning), function(earning) {
+    return _c('md-table-row', [_c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(earning.amount)))]), _vm._v(" "), _c('md-table-cell', [(earning.status == 0) ? _c('span', {
+      staticClass: "label label-sm label-warning"
+    }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (earning.status == 1) ? _c('span', {
+      staticClass: "label label-sm label-success"
+    }, [_vm._v("Approved")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(earning.left_child.username))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(earning.right_child.username))]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(earning.created_at))])], 1)
+  }))], 1)], 1), _vm._v(" "), _c('md-tab', {
+    attrs: {
+      "md-label": "Withdrawal"
+    }
+  }, [_c('md-table', [_c('md-table-header', [_c('md-table-row', [_c('md-table-head', [_vm._v("Amount")]), _vm._v(" "), _c('md-table-head', [_vm._v("Status")]), _vm._v(" "), _c('md-table-head', [_vm._v("Created Date")])], 1)], 1), _vm._v(" "), _c('md-table-body', _vm._l((_vm.withdrawals), function(withdrawal) {
+    return _c('md-table-row', [_c('md-table-cell', [_vm._v(_vm._s(_vm._f("currency")(withdrawal.amount)))]), _vm._v(" "), _c('md-table-cell', [(withdrawal.status == 0) ? _c('span', {
+      staticClass: "label label-sm label-warning"
+    }, [_vm._v("Pending")]) : _vm._e(), _vm._v(" "), (withdrawal.status == 1) ? _c('span', {
+      staticClass: "label label-sm label-success"
+    }, [_vm._v("Approved")]) : _vm._e(), _vm._v(" "), (withdrawal.status == 2) ? _c('span', {
+      staticClass: "label label-sm label-danger"
+    }, [_vm._v("Canceled")]) : _vm._e(), _vm._v(" "), (withdrawal.status == 3) ? _c('span', {
+      staticClass: "label label-sm label-danger"
+    }, [_vm._v("Canceled by user")]) : _vm._e()]), _vm._v(" "), _c('md-table-cell', [_vm._v(_vm._s(withdrawal.created_at))])], 1)
+  }))], 1)], 1)], 1)], 1), _vm._v(" "), _c('md-card-actions', [_c('md-button', {
     staticClass: "md-primary",
     nativeOn: {
       "click": function($event) {

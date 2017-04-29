@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Customer;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Earning;
+use App\SponsorEarningCommission;
+use App\LevelEarningCommission;
+use App\BinaryEarningCommission;
+use App\Withdrawal;
 
 class CustomerController extends Controller
 {
@@ -80,5 +85,39 @@ class CustomerController extends Controller
   	$customer->save();
 
   	return  [ 'msg' => 'Bitcoin address update successfully.'];
+  }
+
+  public function dailyEarning($id)
+  {
+      return Earning::where('cust_id', $id)->orderBy('created_at', 'desc')->get();
+  }
+
+  public function directEarning($id)
+  {
+      return SponsorEarningCommission::with('deposit.owner')
+                                      ->where('sponsor_id', $id)
+                                      ->orderBy('created_at', 'desc')
+                                      ->get();
+  }
+
+  public function levelEarning($id)
+  {
+      return LevelEarningCommission::with('deposit.owner')
+                                    ->where('cust_id', $id)
+                                    ->orderBy('created_at', 'desc')
+                                    ->get();
+  }
+
+  public function binaryEarning($id)
+  {
+      return BinaryEarningCommission::with(['left_child', 'right_child'])
+                                    ->where('cust_id', $id)
+                                    ->orderBy('created_at', 'desc')
+                                    ->get();
+  }
+
+  public function withdrawal($id)
+  {
+      return Withdrawal::where('cust_id', $id)->orderBy('created_at', 'desc')->get();
   }
 }

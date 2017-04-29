@@ -59,6 +59,128 @@
     		</dl>
       </div>
     </md-card-content>
+    <div>
+      <md-tabs class="md-transparent">
+        <md-tab md-label="Daily Earning">
+          <md-table>
+            <md-table-header>
+              <md-table-row>
+                <md-table-head>Amount</md-table-head>
+                <md-table-head>Status</md-table-head>
+                <md-table-head>Created Date</md-table-head>
+              </md-table-row>
+            </md-table-header>
+            <md-table-body>
+              <md-table-row v-for="earning in daily_earning">
+                <md-table-cell>{{ earning.amount | currency }}</md-table-cell>
+                <md-table-cell>
+                  <span class="label label-sm label-warning" v-if="earning.status == 0">Pending</span>
+                  <span class="label label-sm label-success" v-if="earning.status == 1">Approved</span>
+                </md-table-cell>
+                <md-table-cell>{{ earning.created_at }}</md-table-cell>
+              </md-table-row>
+            </md-table-body>
+          </md-table>
+        </md-tab>
+        <md-tab md-label="Direct Earning">
+          <md-table>
+            <md-table-header>
+              <md-table-row>
+                <md-table-head>Amount</md-table-head>
+                <md-table-head>Status</md-table-head>
+                <md-table-head>From</md-table-head>
+                <md-table-head>Created Date</md-table-head>
+              </md-table-row>
+            </md-table-header>
+            <md-table-body>
+              <md-table-row v-for="earning in direct_earning">
+                <md-table-cell>{{ earning.amount | currency }}</md-table-cell>
+                <md-table-cell>
+                  <span class="label label-sm label-warning" v-if="earning.status == 0">Pending</span>
+                  <span class="label label-sm label-success" v-if="earning.status == 1">Approved</span>
+                </md-table-cell>
+                <md-table-cell>{{ earning.deposit.owner.username }}</md-table-cell>
+                <md-table-cell>{{ earning.created_at }}</md-table-cell>
+              </md-table-row>
+            </md-table-body>
+          </md-table>
+        </md-tab>
+        <md-tab md-label="Level Earning">
+          <md-table>
+            <md-table-header>
+              <md-table-row>
+                <md-table-head>Amount</md-table-head>
+                <md-table-head>Status</md-table-head>
+                <md-table-head>Level</md-table-head>
+                <md-table-head>From</md-table-head>
+                <md-table-head>Created Date</md-table-head>
+              </md-table-row>
+            </md-table-header>
+            <md-table-body>
+              <md-table-row v-for="earning in level_earning">
+                <md-table-cell>{{ earning.amount | currency }}</md-table-cell>
+                <md-table-cell>
+                  <span class="label label-sm label-warning" v-if="earning.status == 0">Pending</span>
+                  <span class="label label-sm label-success" v-if="earning.status == 1">Approved</span>
+                </md-table-cell>
+                <md-table-cell>{{ earning.level_number }}</md-table-cell>
+                <md-table-cell>{{ earning.deposit.owner.username }}</md-table-cell>
+                <md-table-cell>{{ earning.created_at }}</md-table-cell>
+              </md-table-row>
+            </md-table-body>
+          </md-table>
+        </md-tab>
+        <md-tab md-label="Binary Earning">
+          <md-table>
+            <md-table-header>
+              <md-table-row>
+                <md-table-head>Amount</md-table-head>
+                <md-table-head>Status</md-table-head>
+                <md-table-head>Left</md-table-head>
+                <md-table-head>Right</md-table-head>
+                <md-table-head>Created Date</md-table-head>
+              </md-table-row>
+            </md-table-header>
+            <md-table-body>
+              <md-table-row v-for="earning in binary_earning">
+                <md-table-cell>{{ earning.amount | currency }}</md-table-cell>
+                <md-table-cell>
+                  <span class="label label-sm label-warning" v-if="earning.status == 0">Pending</span>
+                  <span class="label label-sm label-success" v-if="earning.status == 1">Approved</span>
+                </md-table-cell>
+                <md-table-cell>{{ earning.left_child.username }}</md-table-cell>
+                <md-table-cell>{{ earning.right_child.username }}</md-table-cell>
+                <md-table-cell>{{ earning.created_at }}</md-table-cell>
+              </md-table-row>
+            </md-table-body>
+          </md-table>
+        </md-tab>
+        <md-tab md-label="Withdrawal">
+          <md-table>
+            <md-table-header>
+              <md-table-row>
+                <md-table-head>Amount</md-table-head>
+                <md-table-head>Status</md-table-head>
+                <md-table-head>Created Date</md-table-head>
+              </md-table-row>
+            </md-table-header>
+            <md-table-body>
+              <md-table-row v-for="withdrawal in withdrawals">
+                <md-table-cell>{{ withdrawal.amount | currency }}</md-table-cell>
+                <md-table-cell>
+                  <span class="label label-sm label-warning" v-if="withdrawal.status == 0">Pending</span>
+                  <span class="label label-sm label-success" v-if="withdrawal.status == 1">Approved</span>
+                  <span class="label label-sm label-danger" v-if="withdrawal.status == 2">Canceled</span>
+                  <span class="label label-sm label-danger" v-if="withdrawal.status == 3">Canceled by user</span>
+                </md-table-cell>
+                <md-table-cell>{{ withdrawal.created_at }}</md-table-cell>
+              </md-table-row>
+            </md-table-body>
+          </md-table>
+        </md-tab>
+        </md-tab>
+      </md-tabs>
+    </div>
     <md-card-actions>
 	    <md-button class="md-primary" @click.native="closeForm()">Close</md-button>
 	  </md-card-actions>
@@ -68,6 +190,7 @@
 <script>
 import { mapActions } from 'vuex'
 import _mixin from '../../core/mixins/table'
+import Api from '../../api/Api'
 
 export default{
 
@@ -82,9 +205,36 @@ export default{
 			validation: {
 				email: '',
 				bitcoin_account: ''
-			}
+			},
+      daily_earning : [],
+      direct_earning : [],
+      level_earning : [],
+      binary_earning : [],
+      withdrawals : []
 		}
 	},
+
+  created(){
+    Api.get('customer/' + this.data.id + '/earning/daily').then(response => {
+      this.daily_earning = response.data;
+    });
+
+    Api.get('customer/' + this.data.id + '/earning/direct').then(response => {
+      this.direct_earning = response.data;
+    });
+
+    Api.get('customer/' + this.data.id + '/earning/level').then(response => {
+      this.level_earning = response.data;
+    });
+
+    Api.get('customer/' + this.data.id + '/earning/binary').then(response => {
+      this.binary_earning = response.data;
+    });
+
+    Api.get('customer/' + this.data.id + '/withdrawals').then(response => {
+      this.withdrawals = response.data;
+    });
+  },
 
 	methods:{
 		editEmail(data){
