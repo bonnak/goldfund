@@ -128,34 +128,56 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 sec-block">
-                        <dl class="dl-horizontal">
-                          <dt><i class="icon-fontawesome-webfont-302 red-text"></i></dt>
-                          <dd>{{ $company_profile['address'] }}</dd>
-                        </dl>
-                        <dl class="dl-horizontal">
-                          <dt><i class="icon-fontawesome-webfont-329 green-text"></i></dt>
-                          <dd>{{ $company_profile['email'] }}</dd>
-                        </dl>
-                        <dl class="dl-horizontal">
-                          <dt><i class="icon-fontawesome-webfont-101 blue-text"></i></dt>
-                          <dd>{{ $company_profile['phone'] }}</dd>
-                        </dl>
+                    <div class="col-md-6">
+                        <div class="col-md-4 block-link">
+                            <h3 class="title">Trading</h3>
+                            <ul class="list">
+                                <li><a href="">Forex Trading</a></li>
+                                <li><a href="">Forex Margin</a></li>
+                                <li><a href="">Forex Pricing</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 block-link">
+                            <h3 class="title">Mining</h3>
+                            <ul class="list">
+                                <li><a href="">Advantage of gold</a></li>
+                                <li><a href="">Gold Trade</a></li>
+                                <li><a href="">Trading and Markets</a></li>
+                                <li><a href="">Invest in gold</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 block-link">
+                            <h3 class="title">Useful links</h3>
+                            <ul class="list">
+                                <li><a href="">Forex News</a></li>
+                                <li><a href="">Gold Technical Analysis</a></li>
+                                <li><a href="">Crypto Market</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-md-3 sec-block">
-                        <img src="/images/60-day-unconditional-guarantee.png" class="img-responsive">
-                    </div>
-                    <div class="col-md-3 sec-block contact">
-                        <img src="/images/symantec_norton_sites_seal.jpg" width="83px">
-                        <img src="/images/PositiveSSL-comodo.png" width="140px">
-                    </div>
-                    <div class="col-md-3 sec-block">
-                        <h2 style=" font-size: 20px !important;margin-bottom: 0px;">We Support</h2>
-                        <img src="/images/Bitcoin_logo.svg.png" class="img-responsive">
+                    <div class="col-md-6">
+                            <div class="col-md-8 sec-block">
+                                <dl class="dl-horizontal">
+                                  <dt><i class="icon-fontawesome-webfont-302 red-text"></i></dt>
+                                  <dd>{{ $company_profile['address'] }}</dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                  <dt><i class="icon-fontawesome-webfont-329 green-text"></i></dt>
+                                  <dd>{{ $company_profile['email'] }}</dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                  <dt><i class="icon-fontawesome-webfont-101 blue-text"></i></dt>
+                                  <dd>{{ $company_profile['phone'] }}</dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-4 sec-block">
+                                <h2 style=" font-size: 20px !important;margin-bottom: 0px;">We Support</h2>
+                                <img src="/images/Bitcoin_logo.svg.png" class="img-responsive" style="width:100px; margin: 0 auto;">
+                            </div>
                     </div>
                 </div>
-            </div> <!-- / END CONTAINER -->
-        </footer> <!-- / END FOOOTER  -->
+            </div>
+        </footer>
     </div>
 
     <!-- SCRIPTS -->

@@ -1,7 +1,7 @@
 footer{
 
 	.sec-block{
-		padding-top: 30px;
+		//padding-top: 30px;
 		padding-bottom: 30px;
 		color: #939393;
 		text-align: left;
@@ -50,6 +50,27 @@ footer{
 			    float: left;
 			    clear: left;
 			    white-space: nowrap;
+			}
+		}
+	}
+}
+
+footer{
+	padding-top: 10px;
+
+	.block-link{
+		.title{
+		    font-size: 20px;
+			margin-bottom: 14px; 
+			font-weight: 600;
+		}
+		.list{
+			a{				
+				color: #939393;
+
+				&:hover{
+					text-decoration: underline;
+				}
 			}
 		}
 	}

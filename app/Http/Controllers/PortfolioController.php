@@ -16,7 +16,7 @@ class PortfolioController extends Controller
 
     public function live()
     {
-        $customers = Customer::orderBy('id', 'desc')->limit(10)->get();
+        $customers = Customer::with(['deposit', 'country'])->orderBy('id', 'desc')->limit(10)->get();
         $total_member = Customer::count();
         $last_deposits = Deposit::with('owner')->orderBy('id', 'desc')->limit(10)->get();
         $invested_capital = Deposit::sum('amount');

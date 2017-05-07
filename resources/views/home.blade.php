@@ -105,16 +105,17 @@
 <section class="section-stat" data-ng-controller="liveUser as vm" ng-cloak>
     <div class="container">
       <div class="row wow fadeInRight animated">
-          <h2>Statistics</h2>
+          <h2 style="text-decoration: underline;">Statistics</h2>
           <div data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
               <div class="row">
                   <div class="col-md-4 registers">
-                      <h4>Last Registrations</h4>
+                      <h4 style="text-decoration: underline;">Last Registrations</h4>
                       <br/>
                       <dl>
                           <div data-ng-repeat="customer in vm.customers">
                               <div class="col-md-6 col-xs-6 align-left">
-                                  <span am-time-ago="customer.created_at"></span>
+                                  {{-- <span am-time-ago="customer.created_at"></span> --}}
+                                  @{{ customer.country.name }}
                                 </div>
                                 <div class="col-md-6 col-xs-6 align-left">
                                    @{{customer.username }}
@@ -124,10 +125,10 @@
                 </div>
                 <div class="col-md-4">
                     <br/>
-                    <div class="stat">
+                    {{-- <div class="stat">
                         <p class="num">500</p>
                         <p class="text">Days Online</p>
-                    </div>
+                    </div> --}}
                     <div class="stat">
                         <p class="num">@{{ vm.totalMember + 100 }}</p>
                         <p class="text">Members</p>
@@ -138,7 +139,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 investments">
-                    <h4>Last Investments</h4>
+                    <h4 style="text-decoration: underline;">Last Investments</h4>
                     <br/>
                     <dl>
                         <div ng-repeat="last_deposit in vm.lastDeposits">
@@ -159,7 +160,7 @@
 <section data-ng-controller="liveUser as vm" ng-cloak>
     <div class="container">
         <div class="row">
-            <h2>investment Plan</h2>
+            <h2 style="text-decoration: underline;">investment Plan</h2>
             <div>
                 <div class="row">
                     <div class="bs-five-area">
