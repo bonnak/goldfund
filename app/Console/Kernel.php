@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
          Commands\ApproveEarning::class,
          Commands\DailyEarning::class,
+         Commands\ExpireDeposit::class,
     ];
 
     /**
@@ -26,15 +27,22 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('earning:daily')
+        $schedule->command('earning:expire')
                  ->daily()
+                 ->sendOutputTo(
+                    'storage/logs/earning_expire' . Carbon::today()->format('Ymd') . '.log'
+                )
+                 ->emailOutputTo('chea.bonnak@gmail.com');
+
+        $schedule->command('earning:daily')
+                 ->dailyAt('00:30')
                  ->sendOutputTo(
                     'storage/logs/earning_daily' . Carbon::today()->format('Ymd') . '.log'
                 )
                  ->emailOutputTo('chea.bonnak@gmail.com');
 
         $schedule->command('earning:approve')
-                 ->daily()
+                 ->dailyAt('00:30')
                  ->sendOutputTo(
                     'storage/logs/earning_approve' . Carbon::today()->format('Ymd') . '.log'
                 )
